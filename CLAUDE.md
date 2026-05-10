@@ -1,1 +1,1 @@
-@prompt.txt
+@tools/prompt.txt
