@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Livres — Dessin</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ede8df;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #2e1f10;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.1em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover {
+        border-bottom-color: #5a3e28;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 3rem 2rem 6rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #1a1008;
+        margin: 0 0 0.3rem;
+      }
+
+      .subtitle {
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-size: 1.15rem;
+        color: #6b6560;
+        margin: 0 0 2.5rem;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #c8b89a;
+        margin: 2rem 0;
+      }
+
+      h2 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 0.95rem;
+        font-weight: normal;
+        font-style: italic;
+        color: #5a5550;
+        margin: 2rem 0 1rem;
+      }
+
+      table.booklist {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.booklist tr {
+        border-bottom: 1px dashed #4e4e4d;
+      }
+
+      table.booklist tr:last-child {
+        border-bottom: none;
+      }
+
+      table.booklist td {
+        padding: 1rem 0.5rem 1rem 0;
+        vertical-align: top;
+      }
+
+      td.cover {
+        width: 160px;
+        padding-right: 1.2rem;
+      }
+
+      td.cover img {
+        width: 140px;
+        height: auto;
+        display: block;
+        filter: grayscale(15%);
+      }
+
+      td.cover .no-cover {
+        width: 70px;
+        height: 100px;
+        background: #d4c4aa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-size: 0.65rem;
+        color: #221a12;
+        text-align: center;
+      }
+
+      .book-title {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #2a1f14;
+        margin-bottom: 0.2rem;
+      }
+
+      .book-author {
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-size: 0.85rem;
+        color: #6b6560;
+        margin-bottom: 0.5rem;
+      }
+
+      ul.links {
+        list-style: none;
+        padding: 0;
+        margin: 0.3rem 0 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 0.82rem;
+      }
+
+      ul.links li {
+        margin-bottom: 0.2rem;
+        padding-left: 1em;
+        text-indent: -1em;
+      }
+
+      ul.links li::before {
+        content: "→ ";
+        color: #c8b89a;
+      }
+
+      ul.links a {
+        color: #5a3e28;
+      }
+
+      ul.links a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid #5a3e28;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-size: 0.8rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">drawing</a></li>
+        <li><a href="../notes.html">notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Livres — Dessin</h1>
+      <p class="subtitle"><b>à lire</b> / drawing / books</p>
+
+      <h2>Dessin</h2>
+
+      <table class="booklist">
+        <tr>
+          <td class="cover">
+            <img
+              src="book_covers/web_atelier-poche.jpg"
+              alt="couverture L'atelier de poche"
+            />
+          </td>
+          <td>
+            <div class="book-title">
+              L'atelier de poche : 52 semaines à dessiner
+            </div>
+            <div class="book-author">Michel Lauricella</div>
+            <ul class="links">
+              <li>
+                <a
+                  href="https://www.mollat.com/livres/2232040/michel-lauricella-l-atelier-de-poche-52-semaines-a-dessiner"
+                  >mollat.com</a
+                >
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="cover">
+            <img
+              src="book_covers/web_form-space-vision.jpg"
+              alt="couverture Form Space and Vision"
+            />
+          </td>
+          <td>
+            <div class="book-title">Form Space And Vision</div>
+            <div class="book-author">Graham Collier — 1963</div>
+            <ul class="links">
+              <li>
+                <a
+                  href="https://archive.org/details/formspacevisioni0000coll/page/n9/mode/2up"
+                  >archive.org</a
+                >
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="cover">
+            <img
+              src="book_covers/web_artists-handbook.jpg"
+              alt="couverture Artist's Handbook"
+            />
+          </td>
+          <td>
+            <div class="book-title">
+              Artists Handbook Of Materials And Techniques
+            </div>
+            <div class="book-author">Ralph Mayer</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="cover">
+            <img
+              src="book_covers/web_white-cube.jpg"
+              alt="couverture White Cube"
+            />
+          </td>
+          <td>
+            <div class="book-title">
+              White Cube — L'espace de la galerie et son idéologie
+            </div>
+            <div class="book-author">Brian O'Doherty</div>
+            <ul class="links">
+              <li>
+                <a
+                  href="https://www.lespressesdureel.com/EN/ouvrage.php?id=1423&menu=0"
+                  >lespressesdureel.com</a
+                >
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+      <footer>in progress — 05/2026</footer>
+    </div>
+  </body>
+</html>
