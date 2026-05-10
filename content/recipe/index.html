@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recettes / Cooking</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0e5d4;
+        font-family: "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.2em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2rem 2rem 4rem 1rem;
+        box-sizing: border-box;
+      }
+
+      .header {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        margin-bottom: 2.5rem;
+      }
+
+      .header img {
+        width: 180px;
+        height: auto;
+        display: block;
+        flex-shrink: 0;
+        image-rendering: pixelated;
+      }
+
+      .header-text {
+        flex: 1;
+        padding-top: 0.5rem;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #7a5c3a;
+        margin: 0 0 1rem;
+      }
+
+      .header-text p {
+        line-height: 1.7;
+        margin: 0 0 0.8rem;
+        font-size: 1rem;
+        color: #3a2a1a;
+      }
+
+      h2 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #9a7d5f;
+        font-weight: normal;
+        margin: 2rem 0 0.6rem;
+      }
+
+      .recipe-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+      }
+
+      .recipe-list li {
+        padding: 0.3rem 0;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        border-bottom: 1px dotted #d4bc9a;
+      }
+
+      .recipe-list li a {
+        color: #5a3e28;
+        text-decoration: none;
+      }
+
+      .recipe-list li a:hover {
+        text-decoration: underline;
+      }
+
+      .recipe-list li .note {
+        font-size: 0.82rem;
+        color: #9a7d5f;
+        margin-left: 0.5rem;
+      }
+
+      .wip {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b09070;
+        font-style: italic;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="index.html" class="active">cooking</a></li>
+        <li><a href="../notes.html">notes</a></li>
+        <li><a href="../projects.html">projects</a></li>
+        <li><a href="#">reading</a></li>
+        <li><a href="../todo.html">todo</a></li>
+        <li><a href="../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <img src="web_cooking.png" alt="pixel kitchen" />
+
+      <p>todo</p>
+    </div>
+  </body>
+</html>
