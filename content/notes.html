@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ede8dd;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1e1712;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.2em;
+      }
+
+      nav {
+        width: 160px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2.5rem 2rem 5rem 1rem;
+        box-sizing: border-box;
+      }
+
+      .page-header {
+        border-bottom: 1px solid #b8a88a;
+        padding-bottom: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .page-header h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #7a5c3a;
+        font-weight: normal;
+        margin: 0 0 0.4rem;
+      }
+
+      .page-header p {
+        font-size: 0.92rem;
+        color: #5a3e28;
+        margin: 0;
+        font-style: italic;
+      }
+
+      .note-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .note-list li {
+        border-bottom: 1px dashed #c8b89a;
+        padding: 0.9rem 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 0.5rem 2rem;
+        align-items: baseline;
+      }
+
+      .note-list li:first-child {
+        border-top: 1px dashed #c8b89a;
+      }
+
+      .note-title {
+        font-size: 1rem;
+        color: #1e1712;
+      }
+
+      .note-title a {
+        color: #3d2200;
+        text-decoration: none;
+        border-bottom: 1px solid #c8b89a;
+      }
+
+      .note-title a:hover {
+        border-bottom-color: #5a3e28;
+      }
+
+      .note-tag {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #9a7d5f;
+        white-space: nowrap;
+      }
+
+      .note-desc {
+        grid-column: 1 / -1;
+        font-size: 0.88rem;
+        color: #5a3e28;
+        font-style: italic;
+        margin-top: 0.15rem;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.7rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" class="active">notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <div class="page-header">
+        <h1>Notes</h1>
+        <p>half-finished pages, scraps, refs —</p>
+      </div>
+
+      <ul class="note-list">
+        <li>
+          <span class="note-title">
+            <a href="music/angine_de_poitrine_refs.html"
+              >Angine de Poitrine — références &amp; influences</a
+            >
+          </span>
+          <span class="note-tag">music</span>
+          <span class="note-desc"
+            >Groupes et festivals cités dans
+            <em>La Galaxie Angine de Poitrine</em> (MUSinc, mai 2026)</span
+          >
+        </li>
+      </ul>
+
+      <footer>05/26</footer>
+    </div>
+  </body>
+</html>
