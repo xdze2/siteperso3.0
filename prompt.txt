@@ -50,3 +50,8 @@ Keep css minimal, no need for consistency and polishing
 - Resize to max 300px wide (never upscale).
 - Aggressive color reduction: posterize 4 levels, Riemersma dither, 16 colors.
 - Output format: PNG if the source has an alpha channel, JPEG otherwise.
+
+**Screenshot (`screenshot.sh`):**
+- Captures a URL to JPEG using `chromium --headless`.
+- Usage: `./screenshot.sh <url> [output.jpg]`
+- Applies the same color reduction pipeline as `imgprocess.sh` (posterize 8, Riemersma dither, 16 colors).
