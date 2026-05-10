@@ -1,0 +1,24 @@
+
+
+Create and maintain a static HTML and CSS personal site
+
+- the html pages are in content/ dir
+- the inbox dir is the draft folder for new page idea
+
+
+
+- *The Aesthetic Philosophy:**
+ * **Hand-Made but Serious:** It should feel like  physical notebook, permanent in progress, chaotic, Scrapbook, 
+Avoid too flashy animations, neon colors, or distracting GIFs.
+ * **Texture:** Use a subtle, light-colored paper texture background (off-white, cream, or very light grey).
+ * **Typography:** Use a 'Typewriter' or 'Monospace' font for headers and a highly readable Serif font (like Georgia or Baskerville) for body text to give it a literary feel.
+- retro early internet look, 
+- style can vary from page to page
+ 
+> **Technical Requirements:**
+> 1. **Pure HTML/CSS:** No JavaScript frameworks. Everything should be in one HTML file with an internal `<style>` block.
+> 2. **Layout:**
+> * A centered, fixed-width container (around 750px) to mimic a page.
+> * A simple top-left navigation list (Home, Library, Thoughts, About).
+
+> **The Goal:** The site should look like it was lovingly hand-coded in a text editor by someone who cares more about ideas than 'engagement' metrics."
