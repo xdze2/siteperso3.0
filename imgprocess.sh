@@ -30,6 +30,9 @@ for INPUT in "${ARGS[@]}"; do
 
   DIR=$(dirname "$INPUT")
   FILENAME=$(basename "$INPUT")
+  STEM="${FILENAME%.*}"
+  # slugify: lowercase, collapse non-alnum runs to hyphens, trim edge hyphens
+  SLUG=$(echo "$STEM" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]\+/-/g; s/^-//; s/-$//')
 
   # --detour forces PNG (needs alpha); otherwise PNG only if source has alpha
   if [[ "$DETOUR" -eq 1 ]]; then
@@ -39,7 +42,7 @@ for INPUT in "${ARGS[@]}"; do
   else
     EXT="jpg"
   fi
-  OUTPUT="$DIR/${PREFIX}${FILENAME%.*}.${EXT}"
+  OUTPUT="$DIR/${PREFIX}${SLUG}.${EXT}"
 
   if [[ "$DETOUR" -eq 1 ]]; then
     convert "$INPUT" \
