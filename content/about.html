@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0e5d4;
+        font-family: "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.4em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2rem 2rem 4rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.85rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #7a5c3a;
+        margin: 0 0 2rem;
+      }
+
+      .portrait {
+        float: right;
+        margin: 0 0 1.5rem 2rem;
+        width: 220px;
+      }
+
+      .portrait img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: sepia(20%);
+      }
+
+      .portrait figcaption {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.65rem;
+        color: #9a7d5f;
+        margin-top: 0.4rem;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin: 0 0 1.1rem;
+      }
+
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #c8b89a;
+        margin: 2rem 0;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">cooking</a></li>
+        <li><a href="notes.html">notes</a></li>
+        <li><a href="#">projects</a></li>
+        <li><a href="#">reading</a></li>
+        <li><a href="about.html" class="active">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>About</h1>
+
+      <div>
+        <figure>
+          <img src="web_claude-code.jpg" alt="Claude Code" />
+          <figcaption>claude code, 2025</figcaption>
+        </figure>
+
+        <p>This site is a personal scrapbook — a place to put things down.</p>
+
+        <p>
+          Notes, recipes, half-formed ideas, project sketches, reading lists.
+          Some pages are finished. Most are not. That is fine.
+        </p>
+
+        <p>
+          Built by hand. No framework, no tracker, no cookie banner. Pure HTML
+          and CSS 4.0, lovingly over-engineered in places, blissfully
+          under-engineered in others.
+        </p>
+
+        <p>
+          Claude-Code helps write and maintain this site — An odd collaboration:
+          I type the ideas, it types the tags.
+        </p>
+      </div>
+
+      <p>
+        grow slowly, in no particular order --
+        <a href="https://indieweb.org/digital_garden"
+          >https://indieweb.org/digital_garden</a
+        >
+        —
+      </p>
+
+      <footer>05/2026 — work in progress, always</footer>
+    </div>
+  </body>
+</html>
