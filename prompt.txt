@@ -6,6 +6,9 @@ Create and maintain a static HTML and CSS personal site
 - the inbox dir is the draft folder for new page idea
 
 
+the site is a personal web page, pre-blog era, collection of notes, half redacted, more like a scrap book,  
+to collect idea, though, cooking recipes, project idea, todo list..etc
+
 
 - *The Aesthetic Philosophy:**
  * **Hand-Made but Serious:** It should feel like  physical notebook, permanent in progress, chaotic, Scrapbook, 

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scrapbook / Commonplace</title>
+    <style>
+      /* Paper texture via SVG noise — no external dependency */
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #eed7b1;
+        font-family: "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.4em;
+      }
+
+      /* Vertical left nav */
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2rem 2rem 4rem 1rem;
+        box-sizing: border-box;
+      }
+
+      /* Separator */
+      hr {
+        border: none;
+        border-top: 1px solid #c8b89a;
+        margin: 0 0 3rem;
+      }
+
+      /* Hero section */
+      .hero {
+        display: flex;
+        gap: 2.5rem;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+      }
+
+      .hero-image {
+        flex-shrink: 0;
+        width: 220px;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .hero-text {
+        flex: 1;
+        padding-top: 0.5rem;
+      }
+
+      .hero-text h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.05rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #7a5c3a;
+        margin: 0 0 1.2rem;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        line-height: 1.75;
+        margin: 0 0 1rem;
+        color: #2a1f14;
+      }
+
+      .hero-text .datestamp {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        color: #9a7d5f;
+        margin-top: 1.5rem;
+      }
+
+      /* Tags section */
+      .tags-section {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid #c8b89a;
+      }
+
+      .tags-section h2 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #9a7d5f;
+        margin: 0 0 1rem;
+        font-weight: normal;
+      }
+
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .tag-list li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.82rem;
+        color: #5a3e28;
+        text-decoration: none;
+      }
+
+      .tag-list li a:hover {
+        text-decoration: underline;
+      }
+
+      .tag-list li a::before {
+        content: "#";
+        color: #c8b89a;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+
+      /* Responsive */
+      @media (max-width: 540px) {
+        .hero {
+          flex-direction: column;
+        }
+        .hero-image {
+          width: 160px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="#">cooking</a></li>
+        <li><a href="#">notes</a></li>
+        <li><a href="#">projects</a></li>
+        <li><a href="#">reading</a></li>
+        <li><a href="#">todo</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <div class="hero">
+        <div class="hero-image">
+          <img src="scrapbook_001.jpeg" alt="Scrapbook / Commonplace book" />
+        </div>
+        <div class="hero-text">
+          <h1>index</h1>
+          <p>
+            My personal site, note taking place — to put things down — notes,
+            recipes, half-formed ideas, project sketches, things. Permanently in
+            progress.
+          </p>
+          <p>Some pages are finished. Most are not. That is fine.</p>
+
+          <p>05/26</p>
+        </div>
+      </div>
+
+      <footer>half-hand-coded</footer>
+    </div>
+  </body>
+</html>
