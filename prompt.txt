@@ -3,7 +3,7 @@
 Create and maintain a static HTML and CSS personal site
 
 - the html pages are in content/ dir
-- the inbox dir is the draft folder for new page idea
+- the inbox/ dir is the draft folder for new page idea
 
 
 the site is a personal web page, pre-blog era, collection of notes, half redacted, more like a scrap book,  
@@ -12,7 +12,7 @@ to collect idea, though, cooking recipes, project idea, todo list..etc
 
 - *The Aesthetic Philosophy:**
  * **Hand-Made but Serious:** It should feel like  physical notebook, permanent in progress, chaotic, Scrapbook, 
-Avoid too flashy animations, neon colors, or distracting GIFs.
+Avoid too flashy animations, neon colors
  * **Texture:** Use a subtle, light-colored paper texture background (off-white, cream, or very light grey).
  * **Typography:** Use a 'Typewriter' or 'Monospace' font for headers and a highly readable Serif font (like Georgia or Baskerville) for body text to give it a literary feel.
 - retro early internet look, 
@@ -20,12 +20,21 @@ Avoid too flashy animations, neon colors, or distracting GIFs.
  
 > **Technical Requirements:**
 > 1. **Pure HTML/CSS:** No JavaScript frameworks. Everything should be in one HTML file with an internal `<style>` block.
+Keep css minimal, no need for consistency and polishing
 > 2. **Layout:**
 > * A fixed-width container (around 750px) to mimic a page.
 > * A vertical navigation on the left margin (Home + tag list).
 > 3. **File structure:** HTML pages live in `content/`. The index is `content/index.html`.
 
 > **The Goal:** The site should look like it was lovingly hand-coded in a text editor by someone who cares more about ideas than 'engagement' metrics."
+
+
+
+---
+
+**Privacy:**
+- Before publishing any page, strip all sensitive information: personal IDs, tokens, session IDs or tracking parameters in URLs (e.g. `?id=`, `?ref=`, `&utm_`), email addresses, phone numbers, and any other personally identifiable data that leaked from a source.
+- Use generic slugs for filenames (e.g. `recipe-lentils.html`, not `doc-38472.html`).
 
 ---
 
