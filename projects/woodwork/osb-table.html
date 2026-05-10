@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bureau OSB</title>
+    <style>
+      :root {
+        --bg: #f0e8d8;
+        --bg2: #e6ddc8;
+        --fg: #1e1608;
+        --fg-dim: #8a7a60;
+        --border: #c0a880;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg);
+        font-family: "Times New Roman", Georgia, serif;
+        color: var(--fg);
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.1em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2.5rem 2rem 6rem 1.5rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", monospace;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #3a2710;
+        margin: 0 0 0.3rem;
+      }
+
+      .subtitle {
+        font-family: "Courier New", monospace;
+        font-size: 0.72rem;
+        color: var(--fg-dim);
+        margin: 0 0 2rem;
+      }
+
+      h2 {
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #7a5c3a;
+        margin: 2rem 0 0.6rem;
+      }
+
+      p {
+        line-height: 1.75;
+        margin: 0 0 1rem;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .specs {
+        font-family: "Courier New", monospace;
+        font-size: 0.82rem;
+        background: var(--bg2);
+        border-left: 2px solid var(--border);
+        padding: 0.8rem 1rem;
+        margin: 1.2rem 0;
+        line-height: 1.8;
+      }
+
+      .specs span {
+        color: var(--fg-dim);
+        display: inline-block;
+        width: 10em;
+      }
+
+      img {
+        display: block;
+        margin: 1.5rem 0;
+        filter: sepia(15%);
+      }
+
+      img.half {
+        width: 50%;
+      }
+
+      .note {
+        font-size: 0.85rem;
+        font-style: italic;
+        color: var(--fg-dim);
+        border-left: 2px solid var(--border);
+        padding: 0.5rem 1rem;
+        margin: 1.2rem 0;
+        line-height: 1.7;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        font-family: "Courier New", monospace;
+        font-size: 0.72rem;
+        color: var(--fg-dim);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../" class="active">projects</a></li>
+        <li><a href="../../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Bureau OSB</h1>
+      <p class="subtitle">woodwork / assemblage / tourillons / 2025</p>
+
+      <img class="half" src="web_osb-table3d.png" alt="vue 3D du bureau OSB" />
+
+      <p>
+        Bureau de bricolage en OSB 15 mm. Plateau et pieds taillés dans un seul
+        panneau (35 €). Assemblage collage + tourillons. Pieds boulonnés sur
+        double traverse sous le plateau — démontables. Écrous à griffes M6 noyés
+        dans la double épaisseur.
+      </p>
+
+      <img src="web_osb-table.png" alt="bureau OSB avec pieds assemblés" />
+
+      <h2>Dimensions</h2>
+
+      <div class="specs">
+        <div><span>plateau</span>125 × 70 cm</div>
+        <div><span>pieds</span>10 × 10 × 74,5 cm</div>
+        <div><span>épaisseur</span>OSB 15 mm</div>
+        <div><span>coût matériau</span>35 €</div>
+      </div>
+
+      <p>
+        Largeur des pieds = longueur des traverses latérales (74,5 + 50 cm, même
+        coupe).
+      </p>
+
+      <h2>Congés</h2>
+
+      <ul>
+        <li>Plateau : R85 mm (trop petit, R100 serait mieux)</li>
+        <li>Pieds : R30 mm</li>
+      </ul>
+
+      <footer>// projet — 2025</footer>
+    </div>
+  </body>
+</html>
