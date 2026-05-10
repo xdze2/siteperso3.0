@@ -15,7 +15,7 @@ usage() {
 URL="$1"
 OUTPUT="${2:-screenshot.jpg}"
 STEM="${OUTPUT%.*}"
-TMP=$(mktemp /tmp/screenshot_XXXXXX.png)
+TMP=$(mktemp ./screenshot_XXXXXX.png)
 
 chromium --headless --screenshot="$TMP" --window-size="${WIDTH},2000" "$URL" 2>/dev/null
 

@@ -55,3 +55,4 @@ Keep css minimal, no need for consistency and polishing
 - Captures a URL to JPEG using `chromium --headless`.
 - Usage: `./screenshot.sh <url> [output.jpg]`
 - Applies the same color reduction pipeline as `imgprocess.sh` (posterize 8, Riemersma dither, 16 colors).
+- Must be run from the project root. Uses a local temp file (not /tmp) — chromium writes relative to CWD.
