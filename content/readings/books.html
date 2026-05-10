@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Livres — Dessin</title>
+    <title>Lectures — Eco, pol</title>
     <style>
       body {
         margin: 0;
         padding: 0;
         background-color: #ede8df;
         font-family: Georgia, "Times New Roman", serif;
-        color: #2e1f10;
+        color: #2a1f14;
         min-height: 100vh;
         display: flex;
         font-size: 1.1em;
@@ -57,33 +57,29 @@
       }
 
       h1 {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 1.6rem;
-        font-weight: bold;
-        color: #1a1008;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #7a5c3a;
         margin: 0 0 0.3rem;
       }
 
       .subtitle {
-        font-family: Georgia, "Times New Roman", serif;
-        font-style: italic;
-        font-size: 1.15rem;
-        color: #6b6560;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
         margin: 0 0 2.5rem;
       }
 
-      hr {
-        border: none;
-        border-top: 1px solid #c8b89a;
-        margin: 2rem 0;
-      }
-
       h2 {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 0.95rem;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.82rem;
         font-weight: normal;
-        font-style: italic;
-        color: #5a5550;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #9a7d5f;
         margin: 2rem 0 1rem;
       }
 
@@ -93,7 +89,7 @@
       }
 
       table.booklist tr {
-        border-bottom: 1px dashed #4e4e4d;
+        border-bottom: 1px dashed #d4c4aa;
       }
 
       table.booklist tr:last-child {
@@ -106,12 +102,12 @@
       }
 
       td.cover {
-        width: 160px;
+        width: 80px;
         padding-right: 1.2rem;
       }
 
       td.cover img {
-        width: 140px;
+        width: 70px;
         height: auto;
         display: block;
         filter: grayscale(15%);
@@ -124,26 +120,24 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: Georgia, "Times New Roman", serif;
-        font-style: italic;
-        font-size: 0.65rem;
-        color: #221a12;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.6rem;
+        color: #9a7d5f;
         text-align: center;
       }
 
       .book-title {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 1rem;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.88rem;
         font-weight: bold;
         color: #2a1f14;
         margin-bottom: 0.2rem;
       }
 
       .book-author {
-        font-family: Georgia, "Times New Roman", serif;
-        font-style: italic;
-        font-size: 0.85rem;
-        color: #6b6560;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #9a7d5f;
         margin-bottom: 0.5rem;
       }
 
@@ -151,8 +145,8 @@
         list-style: none;
         padding: 0;
         margin: 0.3rem 0 0;
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 0.82rem;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
       }
 
       ul.links li {
@@ -179,9 +173,8 @@
         margin-top: 4rem;
         padding-top: 1.5rem;
         border-top: 1px solid #c8b89a;
-        font-family: Georgia, "Times New Roman", serif;
-        font-style: italic;
-        font-size: 0.8rem;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
         color: #b0946f;
       }
     </style>
@@ -190,36 +183,38 @@
     <nav>
       <ul>
         <li><a href="../index.html">Home</a></li>
-        <li><a href="#">drawing</a></li>
-        <li><a href="../readings/books.html">readings</a></li>
+        <li><a href="#">readings</a></li>
+        <li><a href="../drawing/books.html">drawing</a></li>
         <li><a href="../notes.html">notes</a></li>
       </ul>
     </nav>
 
     <div class="page">
-      <h1>Livres — Dessin</h1>
-      <p class="subtitle"><b>à lire</b> / drawing / books</p>
+      <img
+        src="web_stack.png"
+        alt="stack"
+        style="max-width: 100%; margin-top: 2rem; display: block"
+      />
 
-      <h2>Dessin</h2>
+      <h1>Lectures</h1>
+      <p class="subtitle">à lire, peut être</p>
 
       <table class="booklist">
         <tr>
           <td class="cover">
             <img
-              src="book_covers/web_atelier-poche.jpg"
-              alt="couverture L'atelier de poche"
+              src="book_covers/web_soin-des-choses.jpg"
+              alt="couverture Le soin des choses"
             />
           </td>
           <td>
-            <div class="book-title">
-              L'atelier de poche : 52 semaines à dessiner
-            </div>
-            <div class="book-author">Michel Lauricella</div>
+            <div class="book-title">Le soin des choses</div>
+            <div class="book-author">Jérôme Denis, David Pontille</div>
             <ul class="links">
               <li>
                 <a
-                  href="https://www.mollat.com/livres/2232040/michel-lauricella-l-atelier-de-poche-52-semaines-a-dessiner"
-                  >mollat.com</a
+                  href="https://www.editionsladecouverte.fr/le_soin_des_choses-9782348064838"
+                  >editionsladecouverte.fr</a
                 >
               </li>
             </ul>
@@ -227,19 +222,15 @@
         </tr>
         <tr>
           <td class="cover">
-            <img
-              src="book_covers/web_form-space-vision.jpg"
-              alt="couverture Form Space and Vision"
-            />
+            <div class="no-cover">no cover</div>
           </td>
           <td>
-            <div class="book-title">Form Space And Vision</div>
-            <div class="book-author">Graham Collier — 1963</div>
+            <div class="book-title">La Fable des abeilles</div>
+            <div class="book-author">Bernard Mandeville</div>
             <ul class="links">
               <li>
-                <a
-                  href="https://archive.org/details/formspacevisioni0000coll/page/n9/mode/2up"
-                  >archive.org</a
+                <a href="https://fr.wikipedia.org/wiki/La_Fable_des_abeilles"
+                  >wikipedia.org</a
                 >
               </li>
             </ul>
@@ -247,36 +238,13 @@
         </tr>
         <tr>
           <td class="cover">
-            <img
-              src="book_covers/web_artists-handbook.jpg"
-              alt="couverture Artist's Handbook"
-            />
+            <div class="no-cover">no cover</div>
           </td>
           <td>
-            <div class="book-title">
-              Artists Handbook Of Materials And Techniques
-            </div>
-            <div class="book-author">Ralph Mayer</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="cover">
-            <img
-              src="book_covers/web_white-cube.jpg"
-              alt="couverture White Cube"
-            />
-          </td>
-          <td>
-            <div class="book-title">
-              White Cube — L'espace de la galerie et son idéologie
-            </div>
-            <div class="book-author">Brian O'Doherty</div>
+            <div class="book-title">Goffman et l'ordre de l'interaction : un exemple de sociologie compréhensive</div>
             <ul class="links">
               <li>
-                <a
-                  href="https://www.lespressesdureel.com/EN/ouvrage.php?id=1423&menu=0"
-                  >lespressesdureel.com</a
-                >
+                <a href="https://hal.science/hal-04291905v1">hal.science</a>
               </li>
             </ul>
           </td>
