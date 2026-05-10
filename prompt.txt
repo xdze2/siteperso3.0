@@ -53,6 +53,7 @@ Keep css minimal, no need for consistency and polishing
 
 **Screenshot (`screenshot.sh`):**
 - Captures a URL to JPEG using `chromium --headless`.
-- Usage: `./screenshot.sh <url> [output.jpg]`
+- Usage: `./screenshot.sh <url> [output.jpg] [crop_height|no-crop]`
+- Crops to 16:9 (800×450) by default. Pass a custom height or `no-crop` to override.
 - Applies the same color reduction pipeline as `imgprocess.sh` (posterize 8, Riemersma dither, 16 colors).
 - Must be run from the project root. Uses a local temp file (not /tmp) — chromium writes relative to CWD.
