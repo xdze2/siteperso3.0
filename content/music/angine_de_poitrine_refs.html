@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angine de Poitrine — références</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ede8df;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1e1712;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.2em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2.5rem 2rem 5rem 1rem;
+        box-sizing: border-box;
+      }
+
+      .page-header {
+        border-bottom: 1px solid #b8a88a;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* .header-hero {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        margin-bottom: 1.2rem;
+      } */
+
+      .header-hero img {
+        width: 520px;
+        flex-shrink: 0;
+        display: block;
+      }
+
+      .header-hero-text {
+        flex: 1;
+        padding-top: 0.2rem;
+      }
+
+      .page-header h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: #7a5c3a;
+        font-weight: normal;
+        margin: 0 0 0.3rem;
+      }
+
+      .page-header .subtitle {
+        font-size: 1.5rem;
+        font-style: italic;
+        color: #1e1712;
+        margin: 0 0 0.8rem;
+        line-height: 1.3;
+      }
+
+      .page-header .intro {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: #3d2f22;
+        margin: 0;
+      }
+
+      .source-note {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.72rem;
+        color: #9a7d5f;
+        margin-top: 1rem;
+      }
+
+      .source-note a {
+        color: #9a7d5f;
+      }
+
+      .yt-badge {
+        display: inline-block;
+        background: #ff0000;
+        color: #fff;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.62rem;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        padding: 1px 4px;
+        border-radius: 2px;
+        vertical-align: middle;
+        margin-right: 5px;
+        line-height: 1.4;
+      }
+
+      section {
+        margin-bottom: 2.5rem;
+      }
+
+      section h2 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9a7d5f;
+        font-weight: normal;
+        margin: 0 0 1.2rem;
+        border-bottom: 1px dashed #c8b89a;
+        padding-bottom: 0.4rem;
+      }
+
+      .ref-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .ref-list li {
+        display: grid;
+        grid-template-columns: 180px 1fr auto;
+        gap: 0.4rem 1.2rem;
+        align-items: center;
+        line-height: 1.5;
+      }
+
+      .ref-name {
+        font-weight: bold;
+        font-size: 0.98rem;
+        color: #1e1712;
+      }
+
+      .ref-desc {
+        font-size: 0.92rem;
+        color: #3d2f22;
+        font-style: italic;
+      }
+
+      .ref-chips {
+        display: flex;
+        gap: 0.35rem;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .chip {
+        display: inline-block;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.6rem;
+        font-weight: bold;
+        letter-spacing: 0.04em;
+        padding: 2px 5px;
+        border-radius: 2px;
+        text-decoration: none;
+        line-height: 1.5;
+        white-space: nowrap;
+      }
+
+      .chip-deezer {
+        background: #a238ff;
+        color: #fff;
+      }
+
+      .chip-deezer:hover {
+        background: #8a20e0;
+      }
+
+      .chip-wiki {
+        background: #e8e0d4;
+        color: #3d2f22;
+        border: 1px solid #b8a88a;
+      }
+
+      .chip-wiki:hover {
+        background: #d4c8b4;
+      }
+
+      .festival-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .festival-list li {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 0.5rem 1.5rem;
+        align-items: baseline;
+        line-height: 1.5;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.7rem;
+        color: #b0946f;
+      }
+
+      @media (max-width: 600px) {
+        .ref-list li,
+        .festival-list li {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#" class="active">music</a></li>
+        <li><a href="#">cooking</a></li>
+        <li><a href="#">notes</a></li>
+        <li><a href="#">projects</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <div class="page-header">
+        <div class="header-hero">
+          <img
+            src="web_Screenshot_poit_YouTube.png"
+            alt="Angine de Poitrine — capture YouTube"
+          />
+          <div class="header-hero-text">
+            <p class="subtitle">
+              Angine de Poitrine — références &amp; influences
+            </p>
+            <p class="intro">
+              Liste des groupes de musique et festivals cités dans la vidéo
+              <em>La Galaxie Angine de Poitrine</em>, avec les influences et
+              inspirations déclarées du groupe.
+            </p>
+          </div>
+        </div>
+        <p class="source-note">
+          Made from : MUSinc 2 mai 2026
+
+          <a href="https://www.youtube.com/watch?v=CAZBGgtHC_k"
+            ><span class="yt-badge">&#9654; YouTube</span>La Galaxie Angine de
+            Poitrine : Influences et Inspirations</a
+          >
+        </p>
+      </div>
+
+      <section>
+        <ul class="ref-list">
+          <li>
+            <span class="ref-name">Frank Zappa</span>
+            <span class="ref-desc">liberté totale d'écriture, absurde injecté dans la musique</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Frank%20Zappa/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Frank_Zappa" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Primus</span>
+            <span class="ref-desc">groove "bancal" mais maîtrisé</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Primus/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Primus_(band)" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Captain Beefheart</span>
+            <span class="ref-desc">musique chaotique, déconstruite, quasi "illisible"</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Captain%20Beefheart/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Captain_Beefheart" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Can</span>
+            <span class="ref-desc">répétition, grooves hypnotiques et circulaires</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Can/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Can_(band)" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Tera Melos</span>
+            <span class="ref-desc">déconstruction des rythmes, rupture de structures</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Tera%20Melos/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Tera_Melos" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Hella</span>
+            <span class="ref-desc">déconstruction des rythmes</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Hella/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Hella_(band)" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Don Caballero</span>
+            <span class="ref-desc">référence fondatrice du Math Rock</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Don%20Caballero/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Don_Caballero" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Lightning Bolt</span>
+            <span class="ref-desc">énergie brute, "chaos contrôlé"</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Lightning%20Bolt/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Lightning_Bolt_(band)" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">King Gizzard &amp; the Lizard Wizard</span>
+            <span class="ref-desc">microtonalité, instruments modifiés</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/King%20Gizzard%20and%20the%20Lizard%20Wizard/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/King_Gizzard_and_the_Lizard_Wizard" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Devo</span>
+            <span class="ref-desc">approche conceptuelle, ironique et mécanique du groove</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Devo/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Devo" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Horse Lords</span>
+            <span class="ref-desc">répétition et systèmes mathématiques poussés</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Horse%20Lords/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Horse_Lords" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Mr. Bungle</span>
+            <span class="ref-desc">changements de style imprévisibles</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Mr.%20Bungle/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Mr._Bungle" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Battles</span>
+            <span class="ref-desc">motifs évolutifs, structures atypiques</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Battles/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Battles_(band)" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">Giraffes? Giraffes!</span>
+            <span class="ref-desc">musique complexe avec formation minimale</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/Giraffes%3F%20Giraffes!/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/Giraffes%3F_Giraffes!" target="_blank">Wikipedia</a></span>
+          </li>
+          <li>
+            <span class="ref-name">The Kooks</span>
+            <span class="ref-desc">remplacés comme têtes d'affiche d'un festival récent</span>
+            <span class="ref-chips"><a class="chip chip-deezer" href="https://www.deezer.com/search/The%20Kooks/artist" target="_blank">Deezer</a><a class="chip chip-wiki" href="https://en.wikipedia.org/wiki/The_Kooks" target="_blank">Wikipedia</a></span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Festivals</h2>
+        <ul class="festival-list">
+          <li>
+            <span class="ref-name">M pour Montréal</span>
+            <span class="ref-desc">scène émergente en contexte professionnel</span>
+          </li>
+          <li>
+            <span class="ref-name">Festival International de Jazz de Montréal</span>
+            <span class="ref-desc">événement mondial, très prestigieux</span>
+          </li>
+          <li>
+            <span class="ref-name">Manchester Psych Fest</span>
+            <span class="ref-desc">musique psychédélique et expérimentale</span>
+          </li>
+          <li>
+            <span class="ref-name">Les Trans Musicales de Rennes</span>
+            <span class="ref-desc">festival français, réputation de dénicher des projets singuliers</span>
+          </li>
+          <li>
+            <span class="ref-name">The Great Escape (Brighton)</span>
+            <span class="ref-desc">grand showcase industrie, têtes d'affiche de la soirée d'ouverture</span>
+          </li>
+          <li>
+            <span class="ref-name">Field of Vision</span>
+            <span class="ref-desc">festival organisé par King Gizzard and the Lizard Wizard</span>
+          </li>
+          <li>
+            <span class="ref-name">Edinburgh Psych Fest</span>
+            <span class="ref-desc">identités artistiques fortes, "inclassables"</span>
+          </li>
+        </ul>
+      </section>
+
+      <footer>notes — 05/26</footer>
+    </div>
+  </body>
+</html>
