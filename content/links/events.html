@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Agenda local — liens</title>
+<style>
+  body {
+    background: #f5f0e8;
+    font-family: "Times New Roman", serif;
+    font-size: 1.1em;
+    color: #2a1f14;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  nav {
+    width: 140px;
+    flex-shrink: 0;
+    padding: 2rem 1rem 4rem 2rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  nav ul li a {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #5a3e28;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav ul li a:hover,
+  nav ul li a.active {
+    border-bottom-color: #5a3e28;
+  }
+
+  .page {
+    flex: 1;
+    max-width: 960px;
+    padding: 2rem 2rem 4rem 1rem;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #999;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.2em;
+  }
+
+  .subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 2em;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2em;
+  }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #bbb;
+    background: #faf7f0;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-color 0.15s;
+  }
+
+  .card:hover {
+    border-color: #666;
+    box-shadow: 3px 3px 0 #ccc;
+  }
+
+  .card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-bottom: 1px solid #bbb;
+  }
+
+  .card-body {
+    padding: 0.7em 0.8em 0.9em;
+  }
+
+  .card-body h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85em;
+    margin: 0 0 0.3em 0;
+    color: #111;
+  }
+
+  .card-body .url {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.7em;
+    color: #999;
+    margin-bottom: 0.5em;
+  }
+
+  .card-body p {
+    margin: 0;
+    font-size: 0.85em;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  footer {
+    margin-top: 3em;
+    padding-top: 0.5em;
+    border-top: 1px solid #aaa;
+    font-size: 0.8em;
+    color: #888;
+    font-family: 'Courier New', Courier, monospace;
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../recipe/index.html">cooking</a></li>
+      <li><a href="../notes.html">notes</a></li>
+      <li><a href="../projects.html">projects</a></li>
+      <li><a href="#">reading</a></li>
+      <li><a href="../todo.html">todo</a></li>
+      <li><a href="../about.html">about</a></li>
+    </ul>
+  </nav>
+
+<div class="page">
+
+  <h1>Agenda local</h1>
+  <p class="subtitle">Sites à consulter pour l'agenda local — Tarn et environs</p>
+
+  <div class="card-grid">
+
+    <a class="card" href="https://www.tourisme-tarn.com/agenda-tarnais/" target="_blank">
+      <img src="img/tourisme-tarn.jpg" alt="tourisme-tarn.com">
+      <div class="card-body">
+        <h2>Agenda tarnais — Tourisme Tarn</h2>
+        <div class="url">tourisme-tarn.com</div>
+        <p>Agenda officiel du tourisme dans le Tarn. Expositions, fêtes, marchés, spectacles.</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://tarn.demosphere.net/" target="_blank">
+      <img src="img/demosphere.jpg" alt="tarn.demosphere.net">
+      <div class="card-body">
+        <h2>Demosphere Tarn</h2>
+        <div class="url">tarn.demosphere.net</div>
+        <p>Agenda sportif et associatif du Tarn. Événements des clubs et associations locales.</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.lepetitagenda.com" target="_blank">
+      <img src="img/lepetitagenda.jpg" alt="lepetitagenda.com">
+      <div class="card-body">
+        <h2>Le Petit Agenda</h2>
+        <div class="url">lepetitagenda.com</div>
+        <p>Agenda culturel généraliste France. Concerts, expos, théâtre, cinéma.</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://www.infolocale.fr/" target="_blank">
+      <img src="img/infolocale.jpg" alt="infolocale.fr">
+      <div class="card-body">
+        <h2>Infolocale</h2>
+        <div class="url">infolocale.fr</div>
+        <p>Agenda local France entière, par département. Foires, vide-greniers, manifestations.</p>
+      </div>
+    </a>
+
+  </div>
+
+  <footer>
+    <hr>
+    agenda local · liens
+  </footer>
+</div>
+</body>
+</html>
