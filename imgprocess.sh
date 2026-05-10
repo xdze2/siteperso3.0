@@ -27,7 +27,7 @@ for INPUT in "$@"; do
   OUTPUT="$DIR/${PREFIX}${FILENAME%.*}.${EXT}"
 
   convert "$INPUT" \
-    -resize "${MAX_WIDTH}x>" \
+    -thumbnail "${MAX_WIDTH}x>" \
     -posterize 8 \
     -dither Riemersma \
     -colors "$COLORS" \
