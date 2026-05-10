@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integral Imaging — Static 3D Print</title>
+    <style>
+      :root {
+        --bg: #f0ece2;
+        --bg2: #e6e1d6;
+        --fg: #1a170f;
+        --fg-dim: #8a8470;
+        --green: #3a6e2a;
+        --amber: #7a5a0a;
+        --red: #8a2a10;
+        --border: #c8c0aa;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg);
+        font-family: "Courier New", Courier, monospace;
+        color: var(--fg);
+        min-height: 100vh;
+        display: flex;
+        font-size: 0.9em;
+      }
+
+      nav {
+        width: 150px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 1.5rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+        border-right: 1px solid var(--border);
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      nav ul li a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover {
+        border-bottom-color: #5a3e28;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2.5rem 2rem 6rem 2rem;
+        box-sizing: border-box;
+      }
+
+      .prompt-line {
+        font-size: 0.78rem;
+        color: var(--fg-dim);
+        margin-bottom: 1.8rem;
+      }
+
+      .prompt-line::before {
+        content: "$ ";
+        color: var(--green);
+      }
+
+      h1 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--green);
+        margin: 0 0 0.2rem;
+        letter-spacing: 0.05em;
+      }
+
+      .subtitle {
+        font-size: 0.72rem;
+        color: var(--fg-dim);
+        margin: 0 0 2.5rem;
+      }
+
+      h2 {
+        font-size: 0.85rem;
+        font-weight: normal;
+        color: var(--amber);
+        margin: 2.5rem 0 0.8rem;
+        letter-spacing: 0.08em;
+      }
+
+      h2::before {
+        content: "## ";
+        color: var(--fg-dim);
+      }
+
+      p {
+        line-height: 1.75;
+        margin: 0 0 1rem;
+        color: var(--fg);
+      }
+
+      ul {
+        line-height: 1.75;
+        margin: 0 0 1rem;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .page li {
+        margin-bottom: 0.4rem;
+        padding-left: 1.4em;
+        position: relative;
+      }
+
+      .page li::before {
+        content: "-";
+        position: absolute;
+        left: 0;
+        color: var(--fg-dim);
+      }
+
+      strong {
+        color: #030301;
+      }
+
+      em {
+        font-style: normal;
+        color: var(--amber);
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.85rem;
+        margin: 1rem 0 1.5rem;
+      }
+
+      th {
+        font-size: 0.72rem;
+        text-align: left;
+        padding: 0.35rem 0.8rem;
+        border-bottom: 1px solid var(--border);
+        color: var(--fg-dim);
+        letter-spacing: 0.06em;
+      }
+
+      td {
+        padding: 0.35rem 0.8rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+
+      tr:hover td {
+        background: var(--bg2);
+      }
+
+      .block {
+        font-size: 0.83rem;
+        padding: 0.7rem 1rem;
+        margin: 1.2rem 0;
+        border-left: 2px solid;
+        background: var(--bg2);
+        line-height: 1.7;
+      }
+
+      .block-note {
+        border-color: var(--fg-dim);
+        color: var(--fg);
+      }
+
+      .block-warn {
+        border-color: var(--amber);
+        color: var(--fg);
+      }
+
+      .block-kill {
+        border-color: var(--red);
+        color: var(--fg);
+        font-size: 110%;
+        /* font-weight: 600; */
+      }
+
+      .block-kill::before {
+        content: "[!] WHY NOT DO IT\A";
+        white-space: pre;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        color: var(--red);
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+
+      a {
+        color: var(--green);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.72rem;
+        color: var(--fg-dim);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../../index.html">home</a></li>
+        <li><a href="../../../projects.html">projects</a></li>
+        <li><a href="../../../notes.html">notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <p class="prompt-line">cat projects/dont_do/integral-imaging.md</p>
+
+      <h1>INTEGRAL IMAGING</h1>
+      <p class="subtitle">project / dont_do / 3d-print / light-field / 1908</p>
+
+      <p>
+        Make a static printed 3D image using a microlens array — a true integral
+        photograph, not a lenticular flip. Full parallax: move your head in any
+        direction and see around the objects. No glasses needed. Gabriel
+        Lippmann proposed this in 1908. Still basically impossible to do well at
+        home.
+      </p>
+
+      <div class="block block-kill">
+        The resolution trade-off is brutal. Every microlens = one 3D pixel. A
+        100×100 lens array on a 4K screen gives you a 100×100 image. Alignment
+        tolerance is &lt;15 µm — a human hair is 75 µm. Thermal expansion alone
+        can ruin a print. DIY path exists but the margin for error is
+        microscopic, literally.
+      </div>
+
+      <h2>how it works</h2>
+
+      <p>
+        A sheet of tiny lenses sits over a high-resolution print. Each microlens
+        covers a small cluster of pixels — the <em>elemental image</em>
+        — each pixel encoding a slightly different viewing angle. The lenses
+        redirect those rays so that your left and right eye (and any lateral
+        movement) receive the correct perspective. Result: a reconstructed 3D
+        image floating in or behind the lens plane.
+      </p>
+
+      <p>
+        Unlike stereoscopic 3D (two views only), integral imaging gives
+        <strong>full 2D parallax</strong> — up/down and left/right — and avoids
+        the vergence-accommodation conflict that causes eye strain in regular 3D
+        cinema.
+      </p>
+
+      <h2>the numbers</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>parameter</th>
+            <th>diy / amateur</th>
+            <th>professional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>lens pitch</td>
+            <td>1.0 mm (25 LPI)</td>
+            <td>0.25 mm (100 LPI)</td>
+          </tr>
+          <tr>
+            <td>print resolution</td>
+            <td>600 DPI</td>
+            <td>2400 – 4800 DPI</td>
+          </tr>
+          <tr>
+            <td>alignment tolerance</td>
+            <td>~100 µm (visible ghosting)</td>
+            <td>&lt;15 µm (clean 3D)</td>
+          </tr>
+          <tr>
+            <td>views per lens</td>
+            <td>5 – 10</td>
+            <td>20 – 60</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The math: 50 lenses/inch × 20 viewing angles =
+        <strong>1000 px/inch</strong>
+        minimum. For smooth parallax motion, 2400 DPI is the professional entry
+        point. Standard inkjet printers top out around 1200 DPI, optimistic.
+      </p>
+
+      <div class="block block-note">
+        A pitch error of 0.008 mm (lens nominal 0.508 mm, print generated for
+        0.500 mm) compounds: after 60 lenses, the image is half a lens-width out
+        of sync. The whole thing goes wrong fast.
+      </div>
+
+      <h2>why it fails for static prints</h2>
+
+      <ul>
+        <li>
+          <strong>Moiré:</strong> printed dot pitch vs. lens pitch must match
+          exactly or you get wavy interference patterns across the whole image.
+        </li>
+        <li>
+          <strong>Thermal/humidity drift:</strong> plastic lens sheet and paper
+          expand at different rates. A few degrees shifts pixels out from under
+          their lenses.
+        </li>
+        <li>
+          <strong>Registration:</strong> gluing a lens sheet onto a print and
+          centering every lens over every elemental image across the whole
+          surface is a precision manufacturing problem. Pros print directly onto
+          the back of the lens sheet with a UV flatbed — skips lamination
+          entirely.
+        </li>
+      </ul>
+
+      <h2>lenticular vs. integral</h2>
+
+      <p>
+        Most "3D" prints in shops are <strong>lenticular</strong>: cylindrical
+        lens ridges, parallax only left-right, easy to align. Integral imaging
+        uses a <em>fly's-eye</em> array — thousands of tiny round bubbles —
+        giving true 2D parallax. Aligning to a bubble grid is an order of
+        magnitude harder than aligning to vertical lines.
+      </p>
+
+      <h2>artists doing it anyway</h2>
+
+      <ul>
+        <li>
+          <strong>Jeff Robb</strong> — custom 3D capture rig, dozens of angles,
+          large-format high-DPI sheets. Calls it "sculpture in a frame."
+        </li>
+        <li>
+          <strong>Patrick Boyd</strong> — active since 80s/90s, lenticular
+          photography as spatial medium. [<a
+            href="https://www.instagram.com/patrick_boyd_light/"
+            >instagram</a
+          >]
+        </li>
+        <li>
+          <strong>Yaacov Agam</strong> — kinetic art, physical corrugated
+          surfaces as microlens precursor, Agamographs. [<a
+            href="https://www.youtube.com/watch?v=siQG_-yWyWU"
+            >youtube</a
+          >]
+        </li>
+        <li>
+          <strong>r/lenticular_art</strong> — makers using Python + Blender to
+          generate elemental image grids for microlens arrays. [<a
+            href="https://www.reddit.com/r/lenticular_art/"
+            >reddit</a
+          >]
+        </li>
+        <li>
+          <strong>Looking Glass Factory</strong> — digital light field displays,
+          active community, useful for previewing 3D scenes before a print.
+        </li>
+      </ul>
+
+      <h2>if you were to try</h2>
+
+      <ul>
+        <li>
+          Get a fly's-eye lens sheet with known pitch (e.g. 0.5 mm). Measure it.
+          Don't trust the spec.
+        </li>
+        <li>
+          Generate elemental image grids in Blender (scripts exist) or use
+          Looking Glass tools to preview the scene first.
+        </li>
+        <li>
+          Print at 2400 DPI minimum on a UV flatbed that prints directly onto
+          the lens sheet backing — skip lamination entirely.
+        </li>
+        <li>Control temperature during printing and mounting. Seriously.</li>
+        <li>Test at postcard scale before committing to large format.</li>
+      </ul>
+
+      <div class="block block-warn">
+        Pro shortcut: print directly onto the back of the lens sheet using a UV
+        flatbed. Most home setups can't do this. Without it, every lamination
+        attempt is a new opportunity to be 50 µm off.
+      </div>
+
+      <footer>// idea — 05/2026</footer>
+    </div>
+  </body>
+</html>
