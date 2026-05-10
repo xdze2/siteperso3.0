@@ -21,7 +21,17 @@ Avoid too flashy animations, neon colors, or distracting GIFs.
 > **Technical Requirements:**
 > 1. **Pure HTML/CSS:** No JavaScript frameworks. Everything should be in one HTML file with an internal `<style>` block.
 > 2. **Layout:**
-> * A centered, fixed-width container (around 750px) to mimic a page.
-> * A simple top-left navigation list (Home, Library, Thoughts, About).
+> * A fixed-width container (around 750px) to mimic a page.
+> * A vertical navigation on the left margin (Home + tag list).
+> 3. **File structure:** HTML pages live in `content/`. The index is `content/index.html`.
 
 > **The Goal:** The site should look like it was lovingly hand-coded in a text editor by someone who cares more about ideas than 'engagement' metrics."
+
+---
+
+**Image processing (`imgprocess.sh`):**
+- Wrapper around ImageMagick `convert`.
+- Input: one or more image paths. Output: same directory, prefixed `web_`.
+- Resize to max 300px wide (never upscale).
+- Aggressive color reduction: posterize 4 levels, Riemersma dither, 16 colors.
+- Output format: PNG if the source has an alpha channel, JPEG otherwise.
