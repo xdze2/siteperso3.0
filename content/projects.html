@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0e5d4;
+        font-family: "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.1em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 800px;
+        padding: 2rem 2rem 4rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #7a5c3a;
+        margin: 0 0 0.4rem;
+      }
+
+      .subtitle {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.72rem;
+        color: #b0946f;
+        margin: 0 0 2rem;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #c8b89a;
+        margin: 0 0 2.5rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+      }
+
+      .card {
+        border: 1px solid #c8b89a;
+        padding: 1rem;
+        background: #faf5ed;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .card:hover {
+        background: #f5eedd;
+        border-color: #a08060;
+      }
+
+      .card-thumb {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 0.75rem;
+        filter: sepia(20%);
+      }
+
+      .card-thumb-placeholder {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        background: #e8dece;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.65rem;
+        color: #b0946f;
+        letter-spacing: 0.1em;
+      }
+
+      .card-tag {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #b0946f;
+        margin-bottom: 0.3rem;
+      }
+
+      .card-title {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.82rem;
+        color: #3a2710;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      .card-desc {
+        font-size: 0.78rem;
+        line-height: 1.55;
+        color: #4a3520;
+        margin: 0;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">cooking</a></li>
+        <li><a href="notes.html">notes</a></li>
+        <li><a href="projects.html" class="active">projects</a></li>
+        <li><a href="#">reading</a></li>
+        <li><a href="todo.html">todo</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Projects</h1>
+      <p class="subtitle">things made / in progress / abandoned</p>
+      <hr />
+
+      <div class="grid">
+
+        <a class="card" href="diy/moulage_platre/index.html">
+          <img
+            class="card-thumb"
+            src="diy/moulage_platre/web_untitled.jpg"
+            alt="Moulage plâtre"
+          />
+          <div class="card-tag">diy</div>
+          <div class="card-title">Moulage Plâtre — Alginate</div>
+          <p class="card-desc">Technique de moulage à l'alginate et coulée plâtre. Notes de matériaux et ratios.</p>
+        </a>
+
+      </div>
+
+      <footer>half-hand-coded</footer>
+    </div>
+  </body>
+</html>
