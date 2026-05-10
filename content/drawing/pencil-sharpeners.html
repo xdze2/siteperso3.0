@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pencil Sharpeners</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ede8df;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.1em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover {
+        border-bottom-color: #5a3e28;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 3rem 2rem 6rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #7a5c3a;
+        margin: 0 0 0.3rem;
+      }
+
+      .subtitle {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+        margin: 0 0 2.5rem;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #c8b89a;
+        margin: 2rem 0;
+      }
+
+      h2 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.82rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #9a7d5f;
+        margin: 2rem 0 0.8rem;
+      }
+
+      p {
+        line-height: 1.8;
+        margin: 0 0 1rem;
+      }
+
+      ul.links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.82rem;
+      }
+
+      ul.links li {
+        margin-bottom: 0.5rem;
+        padding-left: 1em;
+        text-indent: -1em;
+      }
+
+      ul.links li::before {
+        content: "→ ";
+        color: #c8b89a;
+      }
+
+      ul.links a {
+        color: #5a3e28;
+      }
+
+      ul.links a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid #5a3e28;
+      }
+
+      .chip {
+        display: inline-block;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.72rem;
+        padding: 0.1em 0.45em;
+        border: 1px solid currentColor;
+        border-radius: 2px;
+        text-decoration: none;
+        vertical-align: middle;
+        margin-left: 0.4em;
+      }
+
+      .chip-amazon {
+        color: #b05a00;
+        border-color: #c8824a;
+      }
+
+      .chip-amazon:hover {
+        background: #c8824a;
+        color: #fff;
+      }
+
+      .chip-shop {
+        color: #3a6b3a;
+        border-color: #7aaa7a;
+      }
+
+      .chip-shop:hover {
+        background: #7aaa7a;
+        color: #fff;
+      }
+
+      .url-display {
+        display: block;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.68rem;
+        color: #b0946f;
+        margin-top: 0.15rem;
+        padding-left: 0.2em;
+        word-break: break-all;
+      }
+
+      .sharpener-entry {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px dashed #d4c4aa;
+      }
+
+      .sharpener-entry:last-child {
+        border-bottom: none;
+      }
+
+      .sharpener-entry img {
+        max-width: 120px;
+        height: auto;
+        display: block;
+        margin: 0.6rem 0 0.5rem;
+        filter: grayscale(20%);
+      }
+
+      .sharpener-name {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #2a1f14;
+        margin-bottom: 0.3rem;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">drawing</a></li>
+        <li><a href="../notes.html">notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Pencil Sharpeners</h1>
+      <p class="subtitle">notes / drawing / tools</p>
+
+      <p>
+        A proper sharpener matters more than you'd expect. The difference between
+        a bad point and a good one shows up in the line. Collecting notes on what
+        seems worth getting.
+      </p>
+
+      <hr />
+
+      <h2>Models to look at</h2>
+
+      <div class="sharpener-entry">
+        <div class="sharpener-name">Dahle 133</div>
+        <p>German helical blade. Supposed to be very good. The benchmark.</p>
+      </div>
+
+      <div class="sharpener-entry">
+        <div class="sharpener-name">Sonic Ribigaku Karu — half manual</div>
+        <img src="pencil_sharpeners/web_yellow-lv-8070-y-sonic-49701160.png" alt="Sonic Ribigaku Karu yellow half-manual sharpener" style="max-width:160px; height:auto; margin:0.6rem 0;" />
+        <p>
+          Japanese. Half-manual means you crank to sharpen but the mechanism
+          handles the rotation. Compact. Interesting concept.
+        </p>
+        <ul class="links">
+          <li>
+            office-japan.jp
+            <a class="chip chip-shop" href="https://office-japan.jp/en/products/sonic-ribigaku-karu-half-manual-pencil-sharpener-yellow-lv-8070-y-sonic-4970116039606-10-sets?variant=47232897646814">office-japan.jp</a>
+            <span class="url-display">office-japan.jp/…/sonic-ribigaku-karu-half-manual…lv-8070-y</span>
+          </li>
+          <li>
+            Sonic 802 Guide
+            <a class="chip chip-amazon" href="https://www.amazon.fr/802-Guide-taille-crayon-Sonic-P%C3%AAche-Japon/dp/B00651989M">amazon.fr</a>
+            <span class="url-display">amazon.fr/…/B00651989M</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sharpener-entry">
+        <div class="sharpener-name">Taille-crayon manivelle — motif maman canard</div>
+        <img src="pencil_sharpeners/web_japn_pencil_sharp.png" alt="Duck crank pencil sharpener" style="max-width:160px; height:auto; margin:0.6rem 0;" />
+        <p>
+          Crank sharpener shaped like a mother duck with a duckling. Manual, satisfying to use presumably.
+          Found on Amazon FR.
+        </p>
+        <ul class="links">
+          <li>Taille-crayon canard <a class="chip chip-amazon" href="https://www.amazon.fr/Taille-crayon-manivelle-Motif-maman-canard/dp/B0CFHD2TYB">amazon.fr</a></li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <h2>Some electric options (AFMAT)</h2>
+
+      <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <img src="web_sharpener-afmat-black.jpg" alt="AFMAT electric sharpener, black" style="max-width:140px; height:auto;" />
+        <img src="web_sharpener-afmat-blue.jpg" alt="AFMAT rechargeable sharpener, blue" style="max-width:140px; height:auto;" />
+      </div>
+
+      <hr />
+
+      <h2>Links &amp; sources</h2>
+
+      <ul class="links">
+        <li><a href="https://www.afmat.com/collections/pencil-sharpener">afmat.com — sharpener range</a></li>
+        <li><a href="https://www.reddit.com/r/pencils/comments/1rgks0x/best_mechanical_pencil_sharpener/">r/pencils — best mechanical sharpener thread</a></li>
+        <li><a href="https://www.jetpens.com/Pencil-Sharpeners/ct/1255">jetpens.com — curated selection</a></li>
+      </ul>
+
+      <footer>in progress — 05/2026</footer>
+    </div>
+  </body>
+</html>
