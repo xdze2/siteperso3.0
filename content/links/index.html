@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bookmarks</title>
+    <style>
+      body {
+        background: #f5f0e8;
+        font-family: "Times New Roman", serif;
+        font-size: 1.1em;
+        color: #2a1f14;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-height: 100vh;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 2rem 2rem 4rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.4em;
+        letter-spacing: 0.05em;
+        border-bottom: 1px solid #999;
+        padding-bottom: 0.3em;
+        margin-bottom: 1.5em;
+      }
+
+      ul.links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul.links li {
+        margin-bottom: 0.8em;
+      }
+
+      ul.links li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px dotted #aaa;
+      }
+
+      ul.links li a:hover {
+        border-bottom-color: #5a3e28;
+      }
+
+      ul.links li span {
+        font-size: 0.85em;
+        color: #888;
+        margin-left: 0.8em;
+      }
+
+      footer {
+        margin-top: 3em;
+        padding-top: 0.5em;
+        border-top: 1px solid #aaa;
+        font-size: 0.8em;
+        color: #888;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html">projects</a></li>
+        <li><a href="index.html" class="active">bookmarks</a></li>
+        <li><a href="../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Bookmarks</h1>
+
+      <ul class="links">
+        <li>
+          <a href="events.html">events</a><span>agenda local — Tarn</span>
+        </li>
+      </ul>
+
+      <footer>
+        <hr />
+        bookmarks
+      </footer>
+    </div>
+  </body>
+</html>
