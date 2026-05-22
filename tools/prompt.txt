@@ -2,7 +2,7 @@
 
 Create and maintain a static HTML and CSS personal site
 
-- the html pages are in content/ dir
+- the html pages pages live at the root
 - the inbox/ dir is the draft folder for new page idea
 
 
