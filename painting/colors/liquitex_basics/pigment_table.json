@@ -1,0 +1,1024 @@
+{
+  "colors": [
+    {
+      "name": "Cadmium Orange Hue",
+      "color_id": "basics-acrylic-color-cadmium-orange-hue",
+      "image": "basics-acrylic-color-cadmium-orange-hue.png",
+      "pigments": [
+        "PO73"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Cadmium Yellow Light Hue",
+      "color_id": "basics-acrylic-color-cadmium-yellow-light-hue",
+      "image": "basics-acrylic-color-cadmium-yellow-light-hue.png",
+      "pigments": [
+        "PY3"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Dioxazine Purple",
+      "color_id": "basics-acrylic-color-dioxazine-purple",
+      "image": "basics-acrylic-color-dioxazine-purple.png",
+      "pigments": [
+        "PV23RS"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Ivory Black",
+      "color_id": "basics-acrylic-color-ivory-black",
+      "image": "basics-acrylic-color-ivory-black.png",
+      "pigments": [
+        "PBk9"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Mars Black",
+      "color_id": "basics-acrylic-color-mars-black",
+      "image": "basics-acrylic-color-mars-black.png",
+      "pigments": [
+        "PBk11"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Naphthol Crimson",
+      "color_id": "basics-acrylic-color-naphthol-crimson",
+      "image": "basics-acrylic-color-naphthol-crimson.png",
+      "pigments": [
+        "PR170"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Phthalocyanine Blue",
+      "color_id": "basics-acrylic-color-phthalocyanine-blue",
+      "image": "basics-acrylic-color-phthalocyanine-blue.png",
+      "pigments": [
+        "PB15:3"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Phthalocyanine Green",
+      "color_id": "basics-acrylic-color-phthalocyanine-green",
+      "image": "basics-acrylic-color-phthalocyanine-green.png",
+      "pigments": [
+        "PG7"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Primary Blue",
+      "color_id": "basics-acrylic-color-primary-blue",
+      "image": "basics-acrylic-color-primary-blue.png",
+      "pigments": [
+        "PB15:3"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Primary Red",
+      "color_id": "basics-acrylic-color-primary-red",
+      "image": "basics-acrylic-color-primary-red.png",
+      "pigments": [
+        "PV19"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Primary Yellow",
+      "color_id": "basics-acrylic-color-primary-yellow",
+      "image": "basics-acrylic-color-primary-yellow.png",
+      "pigments": [
+        "PY74"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Pyrrole Red",
+      "color_id": "basics-acrylic-color-pyrrole-red",
+      "image": "basics-acrylic-color-pyrrole-red.png",
+      "pigments": [
+        "PR254"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Quinacridone Magenta",
+      "color_id": "basics-acrylic-color-quinacridone-magenta",
+      "image": "basics-acrylic-color-quinacridone-magenta.png",
+      "pigments": [
+        "PR122"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Titanium White",
+      "color_id": "basics-acrylic-color-titanium-white",
+      "image": "basics-acrylic-color-titanium-white.png",
+      "pigments": [
+        "PW6"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Transparent Mixing White",
+      "color_id": "basics-acrylic-color-transparent-mixing-white",
+      "image": "basics-acrylic-color-transparent-mixing-white.png",
+      "pigments": [
+        "PW6"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Transparent Red",
+      "color_id": "basics-acrylic-color-transparent-red",
+      "image": "basics-acrylic-color-transparent-red.png",
+      "pigments": [
+        "PR209"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Transparent Yellow",
+      "color_id": "basics-acrylic-color-transparent-yellow",
+      "image": "basics-acrylic-color-transparent-yellow.png",
+      "pigments": [
+        "PY128"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Ultramarine Blue",
+      "color_id": "basics-acrylic-color-ultramarine-blue",
+      "image": "basics-acrylic-color-ultramarine-blue.png",
+      "pigments": [
+        "PB29"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Yellow Oxide",
+      "color_id": "basics-acrylic-color-yellow-oxide",
+      "image": "basics-acrylic-color-yellow-oxide.png",
+      "pigments": [
+        "PY42"
+      ],
+      "group": "pure",
+      "pure": true
+    },
+    {
+      "name": "Cadmium Red Light Hue",
+      "color_id": "basics-acrylic-color-cadmium-red-light-hue",
+      "image": "basics-acrylic-color-cadmium-red-light-hue.png",
+      "pigments": [
+        "PR9",
+        "PY74"
+      ],
+      "group": "yellow-orange",
+      "pure": false
+    },
+    {
+      "name": "Cadmium Yellow Deep Hue",
+      "color_id": "basics-acrylic-color-cadmium-yellow-deep-hue",
+      "image": "basics-acrylic-color-cadmium-yellow-deep-hue.png",
+      "pigments": [
+        "PW6",
+        "PY83"
+      ],
+      "group": "yellow-orange",
+      "pure": false
+    },
+    {
+      "name": "Cadmium Yellow Medium Hue",
+      "color_id": "basics-acrylic-color-cadmium-yellow-medium-hue",
+      "image": "basics-acrylic-color-cadmium-yellow-medium-hue.png",
+      "pigments": [
+        "PY74",
+        "PY83"
+      ],
+      "group": "yellow-orange",
+      "pure": false
+    },
+    {
+      "name": "Vivid Red Orange",
+      "color_id": "basics-acrylic-color-vivid-red-orange",
+      "image": "basics-acrylic-color-vivid-red-orange.png",
+      "pigments": [
+        "PO73",
+        "PY139"
+      ],
+      "group": "yellow-orange",
+      "pure": false
+    },
+    {
+      "name": "Alizarin Crimson Hue Permanent",
+      "color_id": "basics-acrylic-color-alizarin-crimson-hue-permanent",
+      "image": "basics-acrylic-color-alizarin-crimson-hue-permanent.png",
+      "pigments": [
+        "DPP",
+        "PR179",
+        "PR202"
+      ],
+      "group": "red",
+      "pure": false
+    },
+    {
+      "name": "Cadmium Red Deep Hue",
+      "color_id": "basics-acrylic-color-cadmium-red-deep-hue",
+      "image": "basics-acrylic-color-cadmium-red-deep-hue.png",
+      "pigments": [
+        "PR170",
+        "PV19"
+      ],
+      "group": "red",
+      "pure": false
+    },
+    {
+      "name": "Cadmium Red Medium Hue",
+      "color_id": "basics-acrylic-color-cadmium-red-medium-hue",
+      "image": "basics-acrylic-color-cadmium-red-medium-hue.png",
+      "pigments": [
+        "PR170",
+        "PR9"
+      ],
+      "group": "red",
+      "pure": false
+    },
+    {
+      "name": "Light Pink",
+      "color_id": "basics-acrylic-color-light-pink",
+      "image": "basics-acrylic-color-light-pink.png",
+      "pigments": [
+        "PO36",
+        "PR188",
+        "PW6"
+      ],
+      "group": "red",
+      "pure": false
+    },
+    {
+      "name": "Medium Magenta",
+      "color_id": "basics-acrylic-color-medium-magenta",
+      "image": "basics-acrylic-color-medium-magenta.png",
+      "pigments": [
+        "PR122",
+        "PW6"
+      ],
+      "group": "red",
+      "pure": false
+    },
+    {
+      "name": "Rose Pink",
+      "color_id": "basics-acrylic-color-rose-pink",
+      "image": "basics-acrylic-color-rose-pink.png",
+      "pigments": [
+        "PR122",
+        "PR188",
+        "PW6"
+      ],
+      "group": "red",
+      "pure": false
+    },
+    {
+      "name": "Brilliant Purple",
+      "color_id": "basics-acrylic-color-brilliant-purple",
+      "image": "basics-acrylic-color-brilliant-purple.png",
+      "pigments": [
+        "PV23RS",
+        "PW6"
+      ],
+      "group": "violet",
+      "pure": false
+    },
+    {
+      "name": "Deep Violet",
+      "color_id": "basics-acrylic-color-deep-violet",
+      "image": "basics-acrylic-color-deep-violet.png",
+      "pigments": [
+        "PR122",
+        "PV23RS"
+      ],
+      "group": "violet",
+      "pure": false
+    },
+    {
+      "name": "Light Blue Violet",
+      "color_id": "basics-acrylic-color-light-blue-violet",
+      "image": "basics-acrylic-color-light-blue-violet.png",
+      "pigments": [
+        "PB29",
+        "PV23RS",
+        "PW6"
+      ],
+      "group": "violet",
+      "pure": false
+    },
+    {
+      "name": "Prism Violet",
+      "color_id": "basics-acrylic-color-prism-violet",
+      "image": "basics-acrylic-color-prism-violet.png",
+      "pigments": [
+        "PR122",
+        "PV23RS"
+      ],
+      "group": "violet",
+      "pure": false
+    },
+    {
+      "name": "Purple Gray",
+      "color_id": "basics-acrylic-color-purple-gray",
+      "image": "basics-acrylic-color-purple-gray.png",
+      "pigments": [
+        "PR188",
+        "PV23RS",
+        "PW6"
+      ],
+      "group": "violet",
+      "pure": false
+    },
+    {
+      "name": "Blue Gray",
+      "color_id": "basics-acrylic-color-blue-gray",
+      "image": "basics-acrylic-color-blue-gray.png",
+      "pigments": [
+        "PB15:3",
+        "PB29",
+        "PBK7",
+        "PW6"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Brilliant Blue",
+      "color_id": "basics-acrylic-color-brilliant-blue",
+      "image": "basics-acrylic-color-brilliant-blue.png",
+      "pigments": [
+        "PB15:3",
+        "PG7",
+        "PW6"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Cerulean Blue Hue",
+      "color_id": "basics-acrylic-color-cerulean-blue-hue",
+      "image": "basics-acrylic-color-cerulean-blue-hue.png",
+      "pigments": [
+        "PB15:3",
+        "PB29",
+        "PG7",
+        "PW6"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Cobalt Blue Hue",
+      "color_id": "basics-acrylic-color-cobalt-blue-hue",
+      "image": "basics-acrylic-color-cobalt-blue-hue.png",
+      "pigments": [
+        "PB15:3",
+        "PB29",
+        "PW6"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Light Blue Permanent",
+      "color_id": "basics-acrylic-color-light-blue-permanent",
+      "image": "basics-acrylic-color-light-blue-permanent.png",
+      "pigments": [
+        "PB15:3",
+        "PG7",
+        "PW6"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Prussian Blue Hue",
+      "color_id": "basics-acrylic-color-prussian-blue-hue",
+      "image": "basics-acrylic-color-prussian-blue-hue.png",
+      "pigments": [
+        "PB15:3",
+        "PBK7",
+        "PV23RS"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Turquoise Blue",
+      "color_id": "basics-acrylic-color-turquoise-blue",
+      "image": "basics-acrylic-color-turquoise-blue.png",
+      "pigments": [
+        "PB15:3",
+        "PG7",
+        "PW6"
+      ],
+      "group": "blue",
+      "pure": false
+    },
+    {
+      "name": "Bright Aqua Green",
+      "color_id": "basics-acrylic-color-bright-aqua-green",
+      "image": "basics-acrylic-color-bright-aqua-green.png",
+      "pigments": [
+        "PG7",
+        "PW6"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Brilliant Yellow Green",
+      "color_id": "basics-acrylic-color-brilliant-yellow-green",
+      "image": "basics-acrylic-color-brilliant-yellow-green.png",
+      "pigments": [
+        "PG7",
+        "PW6",
+        "PY3",
+        "PY74"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Green Deep Permanent",
+      "color_id": "basics-acrylic-color-green-deep-permanent",
+      "image": "basics-acrylic-color-green-deep-permanent.png",
+      "pigments": [
+        "PBK7",
+        "PG36"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Hooker's Green Hue Permanent",
+      "color_id": "basics-acrylic-color-hooker-s-green-hue-permanent",
+      "image": "basics-acrylic-color-hooker-s-green-hue-permanent.png",
+      "pigments": [
+        "PBK9",
+        "PG7",
+        "PY74"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Light Green Permanent",
+      "color_id": "basics-acrylic-color-light-green-permanent",
+      "image": "basics-acrylic-color-light-green-permanent.png",
+      "pigments": [
+        "PG7",
+        "PW6",
+        "PY74"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Light Olive Green",
+      "color_id": "basics-acrylic-color-light-olive-green",
+      "image": "basics-acrylic-color-light-olive-green.png",
+      "pigments": [
+        "PG7",
+        "PW6",
+        "PY42",
+        "PY74"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Lime Green",
+      "color_id": "basics-acrylic-color-lime-green",
+      "image": "basics-acrylic-color-lime-green.png",
+      "pigments": [
+        "PG7",
+        "PW6",
+        "PY74"
+      ],
+      "group": "green",
+      "pure": false
+    },
+    {
+      "name": "Bronze Yellow",
+      "color_id": "basics-acrylic-color-bronze-yellow",
+      "image": "basics-acrylic-color-bronze-yellow.png",
+      "pigments": [
+        "PBK11",
+        "PR101",
+        "PY42"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Burnt Sienna",
+      "color_id": "basics-acrylic-color-burnt-sienna",
+      "image": "basics-acrylic-color-burnt-sienna.png",
+      "pigments": [
+        "PBK9",
+        "PR101"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Burnt Umber",
+      "color_id": "basics-acrylic-color-burnt-umber",
+      "image": "basics-acrylic-color-burnt-umber.png",
+      "pigments": [
+        "PB29",
+        "PBK9",
+        "PR101"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Raw Sienna",
+      "color_id": "basics-acrylic-color-raw-sienna",
+      "image": "basics-acrylic-color-raw-sienna.png",
+      "pigments": [
+        "PBK9",
+        "PR101",
+        "PY42"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Raw Umber",
+      "color_id": "basics-acrylic-color-raw-umber",
+      "image": "basics-acrylic-color-raw-umber.png",
+      "pigments": [
+        "PB29",
+        "PO73",
+        "PY139"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Red Oxide",
+      "color_id": "basics-acrylic-color-red-oxide",
+      "image": "basics-acrylic-color-red-oxide.png",
+      "pigments": [
+        "PR101",
+        "PY42"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Unbleached Titanium",
+      "color_id": "basics-acrylic-color-unbleached-titanium",
+      "image": "basics-acrylic-color-unbleached-titanium.png",
+      "pigments": [
+        "PBK11",
+        "PR101",
+        "PW6",
+        "PY42"
+      ],
+      "group": "earth",
+      "pure": false
+    },
+    {
+      "name": "Green Gray",
+      "color_id": "basics-acrylic-color-green-gray",
+      "image": "basics-acrylic-color-green-gray.png",
+      "pigments": [
+        "PB29",
+        "PW6",
+        "PY42"
+      ],
+      "group": "neutral",
+      "pure": false
+    },
+    {
+      "name": "Naples Yellow Hue",
+      "color_id": "basics-acrylic-color-naples-yellow-hue",
+      "image": "basics-acrylic-color-naples-yellow-hue.png",
+      "pigments": [
+        "PW6",
+        "PY42",
+        "PY83"
+      ],
+      "group": "neutral",
+      "pure": false
+    },
+    {
+      "name": "Neutral Gray 5",
+      "color_id": "basics-acrylic-color-neutral-gray-5",
+      "image": "basics-acrylic-color-neutral-gray-5.png",
+      "pigments": [
+        "PBK9",
+        "PW6",
+        "PY42"
+      ],
+      "group": "neutral",
+      "pure": false
+    },
+    {
+      "name": "Parchment",
+      "color_id": "basics-acrylic-color-parchment",
+      "image": "basics-acrylic-color-parchment.png",
+      "pigments": [
+        "PBK7",
+        "PG7",
+        "PW6",
+        "PY42"
+      ],
+      "group": "neutral",
+      "pure": false
+    },
+    {
+      "name": "Payne's Gray",
+      "color_id": "basics-acrylic-color-payne-s-gray",
+      "image": "basics-acrylic-color-payne-s-gray.png",
+      "pigments": [
+        "PB29",
+        "PBK9",
+        "PR122"
+      ],
+      "group": "neutral",
+      "pure": false
+    }
+  ],
+  "pigments": [
+    {
+      "pigment_code": "PY128",
+      "color_ids": [
+        "basics-acrylic-color-transparent-yellow"
+      ],
+      "family": "Yellow",
+      "pure_color": "basics-acrylic-color-transparent-yellow"
+    },
+    {
+      "pigment_code": "PY139",
+      "color_ids": [
+        "basics-acrylic-color-vivid-red-orange",
+        "basics-acrylic-color-raw-umber"
+      ],
+      "family": "Yellow",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PY3",
+      "color_ids": [
+        "basics-acrylic-color-cadmium-yellow-light-hue",
+        "basics-acrylic-color-brilliant-yellow-green"
+      ],
+      "family": "Yellow",
+      "pure_color": "basics-acrylic-color-cadmium-yellow-light-hue"
+    },
+    {
+      "pigment_code": "PY42",
+      "color_ids": [
+        "basics-acrylic-color-yellow-oxide",
+        "basics-acrylic-color-light-olive-green",
+        "basics-acrylic-color-bronze-yellow",
+        "basics-acrylic-color-raw-sienna",
+        "basics-acrylic-color-red-oxide",
+        "basics-acrylic-color-unbleached-titanium",
+        "basics-acrylic-color-green-gray",
+        "basics-acrylic-color-naples-yellow-hue",
+        "basics-acrylic-color-neutral-gray-5",
+        "basics-acrylic-color-parchment"
+      ],
+      "family": "Yellow",
+      "pure_color": "basics-acrylic-color-yellow-oxide"
+    },
+    {
+      "pigment_code": "PY74",
+      "color_ids": [
+        "basics-acrylic-color-primary-yellow",
+        "basics-acrylic-color-cadmium-red-light-hue",
+        "basics-acrylic-color-cadmium-yellow-medium-hue",
+        "basics-acrylic-color-brilliant-yellow-green",
+        "basics-acrylic-color-hooker-s-green-hue-permanent",
+        "basics-acrylic-color-light-green-permanent",
+        "basics-acrylic-color-light-olive-green",
+        "basics-acrylic-color-lime-green"
+      ],
+      "family": "Yellow",
+      "pure_color": "basics-acrylic-color-primary-yellow"
+    },
+    {
+      "pigment_code": "PY83",
+      "color_ids": [
+        "basics-acrylic-color-cadmium-yellow-deep-hue",
+        "basics-acrylic-color-cadmium-yellow-medium-hue",
+        "basics-acrylic-color-naples-yellow-hue"
+      ],
+      "family": "Yellow",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PO36",
+      "color_ids": [
+        "basics-acrylic-color-light-pink"
+      ],
+      "family": "Orange",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PO73",
+      "color_ids": [
+        "basics-acrylic-color-cadmium-orange-hue",
+        "basics-acrylic-color-vivid-red-orange",
+        "basics-acrylic-color-raw-umber"
+      ],
+      "family": "Orange",
+      "pure_color": "basics-acrylic-color-cadmium-orange-hue"
+    },
+    {
+      "pigment_code": "DPP",
+      "color_ids": [
+        "basics-acrylic-color-alizarin-crimson-hue-permanent"
+      ],
+      "family": "Red",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PR101",
+      "color_ids": [
+        "basics-acrylic-color-bronze-yellow",
+        "basics-acrylic-color-burnt-sienna",
+        "basics-acrylic-color-burnt-umber",
+        "basics-acrylic-color-raw-sienna",
+        "basics-acrylic-color-red-oxide",
+        "basics-acrylic-color-unbleached-titanium"
+      ],
+      "family": "Red",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PR122",
+      "color_ids": [
+        "basics-acrylic-color-quinacridone-magenta",
+        "basics-acrylic-color-medium-magenta",
+        "basics-acrylic-color-rose-pink",
+        "basics-acrylic-color-deep-violet",
+        "basics-acrylic-color-prism-violet",
+        "basics-acrylic-color-payne-s-gray"
+      ],
+      "family": "Red",
+      "pure_color": "basics-acrylic-color-quinacridone-magenta"
+    },
+    {
+      "pigment_code": "PR170",
+      "color_ids": [
+        "basics-acrylic-color-naphthol-crimson",
+        "basics-acrylic-color-cadmium-red-deep-hue",
+        "basics-acrylic-color-cadmium-red-medium-hue"
+      ],
+      "family": "Red",
+      "pure_color": "basics-acrylic-color-naphthol-crimson"
+    },
+    {
+      "pigment_code": "PR179",
+      "color_ids": [
+        "basics-acrylic-color-alizarin-crimson-hue-permanent"
+      ],
+      "family": "Red",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PR188",
+      "color_ids": [
+        "basics-acrylic-color-light-pink",
+        "basics-acrylic-color-rose-pink",
+        "basics-acrylic-color-purple-gray"
+      ],
+      "family": "Red",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PR202",
+      "color_ids": [
+        "basics-acrylic-color-alizarin-crimson-hue-permanent"
+      ],
+      "family": "Red",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PR209",
+      "color_ids": [
+        "basics-acrylic-color-transparent-red"
+      ],
+      "family": "Red",
+      "pure_color": "basics-acrylic-color-transparent-red"
+    },
+    {
+      "pigment_code": "PR254",
+      "color_ids": [
+        "basics-acrylic-color-pyrrole-red"
+      ],
+      "family": "Red",
+      "pure_color": "basics-acrylic-color-pyrrole-red"
+    },
+    {
+      "pigment_code": "PR9",
+      "color_ids": [
+        "basics-acrylic-color-cadmium-red-light-hue",
+        "basics-acrylic-color-cadmium-red-medium-hue"
+      ],
+      "family": "Red",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PV19",
+      "color_ids": [
+        "basics-acrylic-color-primary-red",
+        "basics-acrylic-color-cadmium-red-deep-hue"
+      ],
+      "family": "Violet",
+      "pure_color": "basics-acrylic-color-primary-red"
+    },
+    {
+      "pigment_code": "PV23RS",
+      "color_ids": [
+        "basics-acrylic-color-dioxazine-purple",
+        "basics-acrylic-color-brilliant-purple",
+        "basics-acrylic-color-deep-violet",
+        "basics-acrylic-color-light-blue-violet",
+        "basics-acrylic-color-prism-violet",
+        "basics-acrylic-color-purple-gray",
+        "basics-acrylic-color-prussian-blue-hue"
+      ],
+      "family": "Violet",
+      "pure_color": "basics-acrylic-color-dioxazine-purple"
+    },
+    {
+      "pigment_code": "PB15:3",
+      "color_ids": [
+        "basics-acrylic-color-phthalocyanine-blue",
+        "basics-acrylic-color-primary-blue",
+        "basics-acrylic-color-blue-gray",
+        "basics-acrylic-color-brilliant-blue",
+        "basics-acrylic-color-cerulean-blue-hue",
+        "basics-acrylic-color-cobalt-blue-hue",
+        "basics-acrylic-color-light-blue-permanent",
+        "basics-acrylic-color-prussian-blue-hue",
+        "basics-acrylic-color-turquoise-blue"
+      ],
+      "family": "Blue",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PB29",
+      "color_ids": [
+        "basics-acrylic-color-ultramarine-blue",
+        "basics-acrylic-color-light-blue-violet",
+        "basics-acrylic-color-blue-gray",
+        "basics-acrylic-color-cerulean-blue-hue",
+        "basics-acrylic-color-cobalt-blue-hue",
+        "basics-acrylic-color-burnt-umber",
+        "basics-acrylic-color-raw-umber",
+        "basics-acrylic-color-green-gray",
+        "basics-acrylic-color-payne-s-gray"
+      ],
+      "family": "Blue",
+      "pure_color": "basics-acrylic-color-ultramarine-blue"
+    },
+    {
+      "pigment_code": "PG36",
+      "color_ids": [
+        "basics-acrylic-color-green-deep-permanent"
+      ],
+      "family": "Green",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PG7",
+      "color_ids": [
+        "basics-acrylic-color-phthalocyanine-green",
+        "basics-acrylic-color-brilliant-blue",
+        "basics-acrylic-color-cerulean-blue-hue",
+        "basics-acrylic-color-light-blue-permanent",
+        "basics-acrylic-color-turquoise-blue",
+        "basics-acrylic-color-bright-aqua-green",
+        "basics-acrylic-color-brilliant-yellow-green",
+        "basics-acrylic-color-hooker-s-green-hue-permanent",
+        "basics-acrylic-color-light-green-permanent",
+        "basics-acrylic-color-light-olive-green",
+        "basics-acrylic-color-lime-green",
+        "basics-acrylic-color-parchment"
+      ],
+      "family": "Green",
+      "pure_color": "basics-acrylic-color-phthalocyanine-green"
+    },
+    {
+      "pigment_code": "PW6",
+      "color_ids": [
+        "basics-acrylic-color-titanium-white",
+        "basics-acrylic-color-transparent-mixing-white",
+        "basics-acrylic-color-cadmium-yellow-deep-hue",
+        "basics-acrylic-color-light-pink",
+        "basics-acrylic-color-medium-magenta",
+        "basics-acrylic-color-rose-pink",
+        "basics-acrylic-color-brilliant-purple",
+        "basics-acrylic-color-light-blue-violet",
+        "basics-acrylic-color-purple-gray",
+        "basics-acrylic-color-blue-gray",
+        "basics-acrylic-color-brilliant-blue",
+        "basics-acrylic-color-cerulean-blue-hue",
+        "basics-acrylic-color-cobalt-blue-hue",
+        "basics-acrylic-color-light-blue-permanent",
+        "basics-acrylic-color-turquoise-blue",
+        "basics-acrylic-color-bright-aqua-green",
+        "basics-acrylic-color-brilliant-yellow-green",
+        "basics-acrylic-color-light-green-permanent",
+        "basics-acrylic-color-light-olive-green",
+        "basics-acrylic-color-lime-green",
+        "basics-acrylic-color-unbleached-titanium",
+        "basics-acrylic-color-green-gray",
+        "basics-acrylic-color-naples-yellow-hue",
+        "basics-acrylic-color-neutral-gray-5",
+        "basics-acrylic-color-parchment"
+      ],
+      "family": "White",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PBK11",
+      "color_ids": [
+        "basics-acrylic-color-bronze-yellow",
+        "basics-acrylic-color-unbleached-titanium"
+      ],
+      "family": "Black",
+      "pure_color": "basics-acrylic-color-mars-black"
+    },
+    {
+      "pigment_code": "PBK7",
+      "color_ids": [
+        "basics-acrylic-color-blue-gray",
+        "basics-acrylic-color-prussian-blue-hue",
+        "basics-acrylic-color-green-deep-permanent",
+        "basics-acrylic-color-parchment"
+      ],
+      "family": "Black",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PBK9",
+      "color_ids": [
+        "basics-acrylic-color-hooker-s-green-hue-permanent",
+        "basics-acrylic-color-burnt-sienna",
+        "basics-acrylic-color-burnt-umber",
+        "basics-acrylic-color-raw-sienna",
+        "basics-acrylic-color-neutral-gray-5",
+        "basics-acrylic-color-payne-s-gray"
+      ],
+      "family": "Black",
+      "pure_color": "basics-acrylic-color-ivory-black"
+    },
+    {
+      "pigment_code": "PBk11",
+      "color_ids": [
+        "basics-acrylic-color-mars-black"
+      ],
+      "family": "",
+      "pure_color": null
+    },
+    {
+      "pigment_code": "PBk9",
+      "color_ids": [
+        "basics-acrylic-color-ivory-black"
+      ],
+      "family": "",
+      "pure_color": null
+    }
+  ]
+}
