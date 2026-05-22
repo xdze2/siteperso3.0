@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Liquitex Basics — Color List</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f0e8d8;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1a1209;
+    min-height: 100vh;
+    display: flex;
+    font-size: 1.1em;
+  }
+
+  nav {
+    width: 140px;
+    flex-shrink: 0;
+    padding: 2rem 1rem 4rem 2rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  nav ul li a {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #5a3e28;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  nav ul li a:hover, nav ul li a.active {
+    border-bottom-color: #5a3e28;
+  }
+
+  .page {
+    flex: 1;
+    max-width: 750px;
+    padding: 2.5rem 2rem 5rem 1rem;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: 'Courier New', monospace;
+    font-size: 1.3em;
+    letter-spacing: 0.06em;
+    border-bottom: 2px solid #1a1209;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.2em;
+  }
+
+  p.sub {
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 0;
+    font-family: 'Courier New', monospace;
+  }
+
+  p.sub a {
+    color: #5a3e28;
+  }
+
+  h2.group {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888;
+    margin: 2.5em 0 0.8em 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.3em;
+  }
+
+  .color-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .color-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9em;
+    padding: 0.45em 0;
+    border-bottom: 1px dotted #ccc;
+  }
+
+  .color-item img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid #bbb;
+  }
+
+  .color-name {
+    flex: 1;
+    font-size: 0.95em;
+    line-height: 1.2;
+  }
+
+  .pure-mark {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65em;
+    color: #888;
+    vertical-align: middle;
+    margin-left: 0.3em;
+  }
+
+  .pigments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    justify-content: flex-end;
+  }
+
+  .pig-chip {
+    font-family: 'Courier New', monospace;
+    font-size: 0.68em;
+    padding: 1px 5px;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+
+  .pig-chip.Y  { color: #8a7000; background: #fff9c0; }
+  .pig-chip.O  { color: #7a3a00; background: #ffe4c0; }
+  .pig-chip.R  { color: #7a0010; background: #ffd0d4; }
+  .pig-chip.V  { color: #4a0060; background: #ead8f5; }
+  .pig-chip.B  { color: #001a6a; background: #d0dcff; }
+  .pig-chip.G  { color: #004a20; background: #c8f0d0; }
+  .pig-chip.W  { color: #555;    background: #f5f5f5; border-color: #aaa; }
+  .pig-chip.K  { color: #eee;    background: #333; border-color: #111; }
+  .pig-chip.?  { color: #555;    background: #e8e8e8; }
+
+  .mixing {
+    font-size: 0.72em;
+    color: #666;
+    font-family: 'Courier New', monospace;
+    margin-top: 0.15em;
+    font-style: italic;
+  }
+
+  .unmixable {
+    font-size: 0.7em;
+    color: #b06020;
+    font-family: 'Courier New', monospace;
+    margin-top: 0.15em;
+  }
+
+  footer {
+    margin-top: 3em;
+    padding-top: 0.6em;
+    border-top: 1px solid #aaa;
+    font-size: 0.75em;
+    color: #888;
+    font-family: 'Courier New', monospace;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="../../../index.html">Home</a></li>
+    <li><a href="../../../notes.html">Notes</a></li>
+    <li><a href="../../../projects/">Projects</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+<h1>Liquitex Basics — Colors</h1>
+<p class="sub">pigment composition · mixing possibilities · <a href="pigment-matrix.html">pigment matrix →</a></p>
+
+<div id="content"></div>
+
+<footer>liquitex basics acrylic · data from manufacturer specs</footer>
+
+</div>
+
+<script>
+const FAMILY_CLASS = {
+  Yellow: 'Y', Orange: 'O', Red: 'R', Violet: 'V',
+  Blue: 'B', Green: 'G', White: 'W', Black: 'K'
+};
+
+const GROUP_LABELS = {
+  pure: 'Single pigment',
+  'yellow-orange': 'Yellow / Orange',
+  red: 'Red',
+  violet: 'Violet',
+  blue: 'Blue',
+  green: 'Green',
+  earth: 'Earth',
+  neutral: 'Neutral / Gray',
+};
+
+Promise.all([
+  fetch('pigment_table.json').then(r => r.json()),
+  fetch('mixings.json').then(r => r.json()),
+]).then(([table, mixings]) => {
+  // build pigment -> family map
+  const pigFamily = {};
+  for (const p of table.pigments) {
+    pigFamily[p.pigment_code] = p.family || '';
+  }
+
+  // group colors
+  const groups = {};
+  for (const c of table.colors) {
+    (groups[c.group] = groups[c.group] || []).push(c);
+  }
+
+  const groupOrder = ['pure', 'yellow-orange', 'red', 'violet', 'blue', 'green', 'earth', 'neutral'];
+  const container = document.getElementById('content');
+
+  for (const gkey of groupOrder) {
+    const colors = groups[gkey];
+    if (!colors) continue;
+
+    const h2 = document.createElement('h2');
+    h2.className = 'group';
+    h2.textContent = GROUP_LABELS[gkey] || gkey;
+    container.appendChild(h2);
+
+    const ul = document.createElement('ul');
+    ul.className = 'color-list';
+
+    for (const c of colors) {
+      const mx = mixings[c.name] || {};
+      const mixable = mx.mixable_from || [];
+
+      const li = document.createElement('li');
+      li.className = 'color-item';
+
+      // swatch image
+      const img = document.createElement('img');
+      img.src = `images_web/${c.image}`;
+      img.alt = c.name;
+      li.appendChild(img);
+
+      // name + mixing info
+      const nameCol = document.createElement('div');
+      nameCol.style.flex = '1';
+
+      const nameEl = document.createElement('div');
+      nameEl.className = 'color-name';
+      const nameLink = document.createElement('a');
+      nameLink.href = `https://www.liquitex.com/collections/basics-acrylic-paints/products/${c.color_id}`;
+      nameLink.target = '_blank';
+      nameLink.rel = 'noopener';
+      nameLink.textContent = c.name;
+      nameLink.style.color = 'inherit';
+      nameEl.appendChild(nameLink);
+      if (c.pure) {
+        const mark = document.createElement('span');
+        mark.className = 'pure-mark';
+        mark.textContent = '●';
+        nameLink.appendChild(mark);
+      }
+      nameCol.appendChild(nameEl);
+
+      if (!c.pure) {
+        const infoEl = document.createElement('div');
+        if (mixable.length > 0) {
+          infoEl.className = 'mixing';
+          infoEl.textContent = '= ' + mixable[0].join(' + ');
+        } else {
+          infoEl.className = 'unmixable';
+          infoEl.textContent = 'unique pigments';
+        }
+        nameCol.appendChild(infoEl);
+      }
+
+      li.appendChild(nameCol);
+
+      // pigment chips
+      const chips = document.createElement('div');
+      chips.className = 'pigments';
+      for (const pig of c.pigments) {
+        const fam = pigFamily[pig] || '';
+        const cls = FAMILY_CLASS[fam] || '?';
+        const a = document.createElement('a');
+        a.href = `https://artistpigments.org/pigments/${pig}/info`;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.style.textDecoration = 'none';
+        const chip = document.createElement('span');
+        chip.className = `pig-chip ${cls}`;
+        chip.textContent = pig;
+        a.appendChild(chip);
+        chips.appendChild(a);
+      }
+      li.appendChild(chips);
+
+      ul.appendChild(li);
+    }
+
+    container.appendChild(ul);
+  }
+});
+</script>
+</body>
+</html>

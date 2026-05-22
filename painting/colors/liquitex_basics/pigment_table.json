@@ -367,7 +367,7 @@
       "pigments": [
         "PB15:3",
         "PB29",
-        "PBK7",
+        "PBk7",
         "PW6"
       ],
       "group": "blue",
@@ -428,7 +428,7 @@
       "image": "basics-acrylic-color-prussian-blue-hue.png",
       "pigments": [
         "PB15:3",
-        "PBK7",
+        "PBk7",
         "PV23RS"
       ],
       "group": "blue",
@@ -475,7 +475,7 @@
       "color_id": "basics-acrylic-color-green-deep-permanent",
       "image": "basics-acrylic-color-green-deep-permanent.png",
       "pigments": [
-        "PBK7",
+        "PBk7",
         "PG36"
       ],
       "group": "green",
@@ -486,7 +486,7 @@
       "color_id": "basics-acrylic-color-hooker-s-green-hue-permanent",
       "image": "basics-acrylic-color-hooker-s-green-hue-permanent.png",
       "pigments": [
-        "PBK9",
+        "PBk9",
         "PG7",
         "PY74"
       ],
@@ -535,7 +535,7 @@
       "color_id": "basics-acrylic-color-bronze-yellow",
       "image": "basics-acrylic-color-bronze-yellow.png",
       "pigments": [
-        "PBK11",
+        "PBk11",
         "PR101",
         "PY42"
       ],
@@ -547,7 +547,7 @@
       "color_id": "basics-acrylic-color-burnt-sienna",
       "image": "basics-acrylic-color-burnt-sienna.png",
       "pigments": [
-        "PBK9",
+        "PBk9",
         "PR101"
       ],
       "group": "earth",
@@ -559,7 +559,7 @@
       "image": "basics-acrylic-color-burnt-umber.png",
       "pigments": [
         "PB29",
-        "PBK9",
+        "PBk9",
         "PR101"
       ],
       "group": "earth",
@@ -570,7 +570,7 @@
       "color_id": "basics-acrylic-color-raw-sienna",
       "image": "basics-acrylic-color-raw-sienna.png",
       "pigments": [
-        "PBK9",
+        "PBk9",
         "PR101",
         "PY42"
       ],
@@ -605,7 +605,7 @@
       "color_id": "basics-acrylic-color-unbleached-titanium",
       "image": "basics-acrylic-color-unbleached-titanium.png",
       "pigments": [
-        "PBK11",
+        "PBk11",
         "PR101",
         "PW6",
         "PY42"
@@ -642,7 +642,7 @@
       "color_id": "basics-acrylic-color-neutral-gray-5",
       "image": "basics-acrylic-color-neutral-gray-5.png",
       "pigments": [
-        "PBK9",
+        "PBk9",
         "PW6",
         "PY42"
       ],
@@ -654,7 +654,7 @@
       "color_id": "basics-acrylic-color-parchment",
       "image": "basics-acrylic-color-parchment.png",
       "pigments": [
-        "PBK7",
+        "PBk7",
         "PG7",
         "PW6",
         "PY42"
@@ -668,7 +668,7 @@
       "image": "basics-acrylic-color-payne-s-gray.png",
       "pigments": [
         "PB29",
-        "PBK9",
+        "PBk9",
         "PR122"
       ],
       "group": "neutral",
@@ -972,8 +972,9 @@
       "pure_color": null
     },
     {
-      "pigment_code": "PBK11",
+      "pigment_code": "PBk11",
       "color_ids": [
+        "basics-acrylic-color-mars-black",
         "basics-acrylic-color-bronze-yellow",
         "basics-acrylic-color-unbleached-titanium"
       ],
@@ -981,7 +982,7 @@
       "pure_color": "basics-acrylic-color-mars-black"
     },
     {
-      "pigment_code": "PBK7",
+      "pigment_code": "PBk7",
       "color_ids": [
         "basics-acrylic-color-blue-gray",
         "basics-acrylic-color-prussian-blue-hue",
@@ -992,8 +993,9 @@
       "pure_color": null
     },
     {
-      "pigment_code": "PBK9",
+      "pigment_code": "PBk9",
       "color_ids": [
+        "basics-acrylic-color-ivory-black",
         "basics-acrylic-color-hooker-s-green-hue-permanent",
         "basics-acrylic-color-burnt-sienna",
         "basics-acrylic-color-burnt-umber",
@@ -1003,22 +1005,6 @@
       ],
       "family": "Black",
       "pure_color": "basics-acrylic-color-ivory-black"
-    },
-    {
-      "pigment_code": "PBk11",
-      "color_ids": [
-        "basics-acrylic-color-mars-black"
-      ],
-      "family": "",
-      "pure_color": null
-    },
-    {
-      "pigment_code": "PBk9",
-      "color_ids": [
-        "basics-acrylic-color-ivory-black"
-      ],
-      "family": "",
-      "pure_color": null
     }
   ]
 }

@@ -1,0 +1,674 @@
+{
+  "Cadmium Orange Hue": {
+    "pigments": [
+      "PO73"
+    ],
+    "mixable_from": []
+  },
+  "Cadmium Yellow Light Hue": {
+    "pigments": [
+      "PY3"
+    ],
+    "mixable_from": []
+  },
+  "Dioxazine Purple": {
+    "pigments": [
+      "PV23RS"
+    ],
+    "mixable_from": []
+  },
+  "Ivory Black": {
+    "pigments": [
+      "PBk9"
+    ],
+    "mixable_from": []
+  },
+  "Mars Black": {
+    "pigments": [
+      "PBk11"
+    ],
+    "mixable_from": []
+  },
+  "Naphthol Crimson": {
+    "pigments": [
+      "PR170"
+    ],
+    "mixable_from": []
+  },
+  "Phthalocyanine Blue": {
+    "pigments": [
+      "PB15:3"
+    ],
+    "mixable_from": [
+      [
+        "Primary Blue"
+      ]
+    ]
+  },
+  "Phthalocyanine Green": {
+    "pigments": [
+      "PG7"
+    ],
+    "mixable_from": []
+  },
+  "Primary Blue": {
+    "pigments": [
+      "PB15:3"
+    ],
+    "mixable_from": [
+      [
+        "Phthalocyanine Blue"
+      ]
+    ]
+  },
+  "Primary Red": {
+    "pigments": [
+      "PV19"
+    ],
+    "mixable_from": []
+  },
+  "Primary Yellow": {
+    "pigments": [
+      "PY74"
+    ],
+    "mixable_from": []
+  },
+  "Pyrrole Red": {
+    "pigments": [
+      "PR254"
+    ],
+    "mixable_from": []
+  },
+  "Quinacridone Magenta": {
+    "pigments": [
+      "PR122"
+    ],
+    "mixable_from": []
+  },
+  "Titanium White": {
+    "pigments": [
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Transparent Mixing White"
+      ]
+    ]
+  },
+  "Transparent Mixing White": {
+    "pigments": [
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Titanium White"
+      ]
+    ]
+  },
+  "Transparent Red": {
+    "pigments": [
+      "PR209"
+    ],
+    "mixable_from": []
+  },
+  "Transparent Yellow": {
+    "pigments": [
+      "PY128"
+    ],
+    "mixable_from": []
+  },
+  "Ultramarine Blue": {
+    "pigments": [
+      "PB29"
+    ],
+    "mixable_from": []
+  },
+  "Yellow Oxide": {
+    "pigments": [
+      "PY42"
+    ],
+    "mixable_from": []
+  },
+  "Cadmium Red Light Hue": {
+    "pigments": [
+      "PR9",
+      "PY74"
+    ],
+    "mixable_from": []
+  },
+  "Cadmium Yellow Deep Hue": {
+    "pigments": [
+      "PW6",
+      "PY83"
+    ],
+    "mixable_from": []
+  },
+  "Cadmium Yellow Medium Hue": {
+    "pigments": [
+      "PY74",
+      "PY83"
+    ],
+    "mixable_from": []
+  },
+  "Vivid Red Orange": {
+    "pigments": [
+      "PO73",
+      "PY139"
+    ],
+    "mixable_from": []
+  },
+  "Alizarin Crimson Hue Permanent": {
+    "pigments": [
+      "DPP",
+      "PR179",
+      "PR202"
+    ],
+    "mixable_from": []
+  },
+  "Cadmium Red Deep Hue": {
+    "pigments": [
+      "PR170",
+      "PV19"
+    ],
+    "mixable_from": [
+      [
+        "Naphthol Crimson",
+        "Primary Red"
+      ]
+    ]
+  },
+  "Cadmium Red Medium Hue": {
+    "pigments": [
+      "PR170",
+      "PR9"
+    ],
+    "mixable_from": []
+  },
+  "Light Pink": {
+    "pigments": [
+      "PO36",
+      "PR188",
+      "PW6"
+    ],
+    "mixable_from": []
+  },
+  "Medium Magenta": {
+    "pigments": [
+      "PR122",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Quinacridone Magenta",
+        "Titanium White"
+      ],
+      [
+        "Quinacridone Magenta",
+        "Transparent Mixing White"
+      ]
+    ]
+  },
+  "Rose Pink": {
+    "pigments": [
+      "PR122",
+      "PR188",
+      "PW6"
+    ],
+    "mixable_from": []
+  },
+  "Brilliant Purple": {
+    "pigments": [
+      "PV23RS",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Dioxazine Purple",
+        "Titanium White"
+      ],
+      [
+        "Dioxazine Purple",
+        "Transparent Mixing White"
+      ]
+    ]
+  },
+  "Deep Violet": {
+    "pigments": [
+      "PR122",
+      "PV23RS"
+    ],
+    "mixable_from": [
+      [
+        "Prism Violet"
+      ]
+    ]
+  },
+  "Light Blue Violet": {
+    "pigments": [
+      "PB29",
+      "PV23RS",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Ultramarine Blue",
+        "Brilliant Purple"
+      ]
+    ]
+  },
+  "Prism Violet": {
+    "pigments": [
+      "PR122",
+      "PV23RS"
+    ],
+    "mixable_from": [
+      [
+        "Deep Violet"
+      ]
+    ]
+  },
+  "Purple Gray": {
+    "pigments": [
+      "PR188",
+      "PV23RS",
+      "PW6"
+    ],
+    "mixable_from": []
+  },
+  "Blue Gray": {
+    "pigments": [
+      "PB15:3",
+      "PB29",
+      "PBk7",
+      "PW6"
+    ],
+    "mixable_from": []
+  },
+  "Brilliant Blue": {
+    "pigments": [
+      "PB15:3",
+      "PG7",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Light Blue Permanent"
+      ],
+      [
+        "Turquoise Blue"
+      ]
+    ]
+  },
+  "Cerulean Blue Hue": {
+    "pigments": [
+      "PB15:3",
+      "PB29",
+      "PG7",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Phthalocyanine Green",
+        "Cobalt Blue Hue"
+      ],
+      [
+        "Ultramarine Blue",
+        "Brilliant Blue"
+      ],
+      [
+        "Ultramarine Blue",
+        "Light Blue Permanent"
+      ],
+      [
+        "Ultramarine Blue",
+        "Turquoise Blue"
+      ],
+      [
+        "Brilliant Blue",
+        "Cobalt Blue Hue"
+      ],
+      [
+        "Cobalt Blue Hue",
+        "Light Blue Permanent"
+      ],
+      [
+        "Cobalt Blue Hue",
+        "Turquoise Blue"
+      ],
+      [
+        "Cobalt Blue Hue",
+        "Bright Aqua Green"
+      ]
+    ]
+  },
+  "Cobalt Blue Hue": {
+    "pigments": [
+      "PB15:3",
+      "PB29",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Phthalocyanine Blue",
+        "Titanium White",
+        "Ultramarine Blue"
+      ],
+      [
+        "Phthalocyanine Blue",
+        "Transparent Mixing White",
+        "Ultramarine Blue"
+      ],
+      [
+        "Primary Blue",
+        "Titanium White",
+        "Ultramarine Blue"
+      ],
+      [
+        "Primary Blue",
+        "Transparent Mixing White",
+        "Ultramarine Blue"
+      ]
+    ]
+  },
+  "Light Blue Permanent": {
+    "pigments": [
+      "PB15:3",
+      "PG7",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Brilliant Blue"
+      ],
+      [
+        "Turquoise Blue"
+      ]
+    ]
+  },
+  "Prussian Blue Hue": {
+    "pigments": [
+      "PB15:3",
+      "PBk7",
+      "PV23RS"
+    ],
+    "mixable_from": []
+  },
+  "Turquoise Blue": {
+    "pigments": [
+      "PB15:3",
+      "PG7",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Brilliant Blue"
+      ],
+      [
+        "Light Blue Permanent"
+      ]
+    ]
+  },
+  "Bright Aqua Green": {
+    "pigments": [
+      "PG7",
+      "PW6"
+    ],
+    "mixable_from": [
+      [
+        "Phthalocyanine Green",
+        "Titanium White"
+      ],
+      [
+        "Phthalocyanine Green",
+        "Transparent Mixing White"
+      ]
+    ]
+  },
+  "Brilliant Yellow Green": {
+    "pigments": [
+      "PG7",
+      "PW6",
+      "PY3",
+      "PY74"
+    ],
+    "mixable_from": [
+      [
+        "Cadmium Yellow Light Hue",
+        "Light Green Permanent"
+      ],
+      [
+        "Cadmium Yellow Light Hue",
+        "Lime Green"
+      ]
+    ]
+  },
+  "Green Deep Permanent": {
+    "pigments": [
+      "PBk7",
+      "PG36"
+    ],
+    "mixable_from": []
+  },
+  "Hooker's Green Hue Permanent": {
+    "pigments": [
+      "PBk9",
+      "PG7",
+      "PY74"
+    ],
+    "mixable_from": [
+      [
+        "Ivory Black",
+        "Phthalocyanine Green",
+        "Primary Yellow"
+      ]
+    ]
+  },
+  "Light Green Permanent": {
+    "pigments": [
+      "PG7",
+      "PW6",
+      "PY74"
+    ],
+    "mixable_from": [
+      [
+        "Lime Green"
+      ]
+    ]
+  },
+  "Light Olive Green": {
+    "pigments": [
+      "PG7",
+      "PW6",
+      "PY42",
+      "PY74"
+    ],
+    "mixable_from": [
+      [
+        "Yellow Oxide",
+        "Light Green Permanent"
+      ],
+      [
+        "Yellow Oxide",
+        "Lime Green"
+      ]
+    ]
+  },
+  "Lime Green": {
+    "pigments": [
+      "PG7",
+      "PW6",
+      "PY74"
+    ],
+    "mixable_from": [
+      [
+        "Light Green Permanent"
+      ]
+    ]
+  },
+  "Bronze Yellow": {
+    "pigments": [
+      "PBk11",
+      "PR101",
+      "PY42"
+    ],
+    "mixable_from": [
+      [
+        "Mars Black",
+        "Red Oxide"
+      ]
+    ]
+  },
+  "Burnt Sienna": {
+    "pigments": [
+      "PBk9",
+      "PR101"
+    ],
+    "mixable_from": []
+  },
+  "Burnt Umber": {
+    "pigments": [
+      "PB29",
+      "PBk9",
+      "PR101"
+    ],
+    "mixable_from": [
+      [
+        "Ultramarine Blue",
+        "Burnt Sienna"
+      ]
+    ]
+  },
+  "Raw Sienna": {
+    "pigments": [
+      "PBk9",
+      "PR101",
+      "PY42"
+    ],
+    "mixable_from": [
+      [
+        "Ivory Black",
+        "Red Oxide"
+      ],
+      [
+        "Yellow Oxide",
+        "Burnt Sienna"
+      ],
+      [
+        "Burnt Sienna",
+        "Red Oxide"
+      ]
+    ]
+  },
+  "Raw Umber": {
+    "pigments": [
+      "PB29",
+      "PO73",
+      "PY139"
+    ],
+    "mixable_from": [
+      [
+        "Ultramarine Blue",
+        "Vivid Red Orange"
+      ]
+    ]
+  },
+  "Red Oxide": {
+    "pigments": [
+      "PR101",
+      "PY42"
+    ],
+    "mixable_from": []
+  },
+  "Unbleached Titanium": {
+    "pigments": [
+      "PBk11",
+      "PR101",
+      "PW6",
+      "PY42"
+    ],
+    "mixable_from": [
+      [
+        "Titanium White",
+        "Bronze Yellow"
+      ],
+      [
+        "Transparent Mixing White",
+        "Bronze Yellow"
+      ]
+    ]
+  },
+  "Green Gray": {
+    "pigments": [
+      "PB29",
+      "PW6",
+      "PY42"
+    ],
+    "mixable_from": [
+      [
+        "Titanium White",
+        "Ultramarine Blue",
+        "Yellow Oxide"
+      ],
+      [
+        "Transparent Mixing White",
+        "Ultramarine Blue",
+        "Yellow Oxide"
+      ]
+    ]
+  },
+  "Naples Yellow Hue": {
+    "pigments": [
+      "PW6",
+      "PY42",
+      "PY83"
+    ],
+    "mixable_from": [
+      [
+        "Yellow Oxide",
+        "Cadmium Yellow Deep Hue"
+      ]
+    ]
+  },
+  "Neutral Gray 5": {
+    "pigments": [
+      "PBk9",
+      "PW6",
+      "PY42"
+    ],
+    "mixable_from": [
+      [
+        "Ivory Black",
+        "Titanium White",
+        "Yellow Oxide"
+      ],
+      [
+        "Ivory Black",
+        "Transparent Mixing White",
+        "Yellow Oxide"
+      ]
+    ]
+  },
+  "Parchment": {
+    "pigments": [
+      "PBk7",
+      "PG7",
+      "PW6",
+      "PY42"
+    ],
+    "mixable_from": []
+  },
+  "Payne's Gray": {
+    "pigments": [
+      "PB29",
+      "PBk9",
+      "PR122"
+    ],
+    "mixable_from": [
+      [
+        "Ivory Black",
+        "Quinacridone Magenta",
+        "Ultramarine Blue"
+      ]
+    ]
+  }
+}
