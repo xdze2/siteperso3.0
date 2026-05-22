@@ -6,23 +6,70 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 MIXED_CSV = ROOT / "liquitex_basics/colors-mixed.csv"
+PURE_CSV = ROOT / "liquitex_basics/colors-pure.csv"
 PIGMENTS_CSV = ROOT / "liquitex_basics/pigments.csv"
+SPECS_CSV = ROOT / "liquitex_basics/liquitex-basics-specs.csv"
 OUT = ROOT / "liquitex_basics/pigment-matrix.html"
 
 GROUP_ORDER = ["yellow-orange", "red", "violet", "blue", "green", "earth", "neutral"]
 FAMILY_ORDER = ["Yellow", "Orange", "Red", "Violet", "Blue", "Green", "White", "Black"]
 
+FAMILY_COLOR = {
+    "Yellow":  "#e8d44d",
+    "Orange":  "#e8933a",
+    "Red":     "#c94040",
+    "Violet":  "#7c5c9e",
+    "Blue":    "#3a6db5",
+    "Green":   "#4a9e5c",
+    "White":   "#cccccc",
+    "Black":   "#555555",
+}
+
+
+def load_slugs():
+    """Map color name -> image slug from the specs CSV page_url."""
+    slugs = {}
+    with open(SPECS_CSV) as f:
+        for row in csv.DictReader(f):
+            name = row["name"].removeprefix("Basics Acrylic Color ")
+            slug = row["page_url"].rstrip("/").rsplit("/", 1)[-1]
+            slugs[name] = slug
+    return slugs
+
+
+def read_pure():
+    slugs = load_slugs()
+    colors = []
+    with open(PURE_CSV) as f:
+        for row in csv.DictReader(f):
+            name = row["name"]
+            pig = row["pigment_code"].strip()
+            colors.append({
+                "name": name,
+                "code": row["colour_code"],
+                "group": "pure",
+                "pigments": [pig],
+                "slug": slugs.get(name, ""),
+                "pure": True,
+            })
+    colors.sort(key=lambda c: c["name"])
+    return colors
+
 
 def read_mixed():
+    slugs = load_slugs()
     colors = []
     with open(MIXED_CSV) as f:
         for row in csv.DictReader(f):
             pigments = [p.strip() for p in row["pigment_code"].split(",")]
+            name = row["name"]
             colors.append({
-                "name": row["name"],
+                "name": name,
                 "code": row["colour_code"],
                 "group": row["group"],
                 "pigments": pigments,
+                "slug": slugs.get(name, ""),
+                "pure": False,
             })
     colors.sort(key=lambda c: (GROUP_ORDER.index(c["group"]) if c["group"] in GROUP_ORDER else 99, c["name"]))
     return colors
@@ -41,50 +88,70 @@ def read_pigments():
     return pigs
 
 
-def build_html(colors, pigments):
-    # color name -> set of pigment codes
-    color_to_pigs = {c["name"]: set(c["pigments"]) for c in colors}
-
-    # --- header row: one th per pigment, rotated, grouped by family ---
-    pig_headers = ""
-    prev_family = None
+def color_row(c, pigments):
+    color_to_pigs = set(c["pigments"])
+    img = f'<img src="images_web/{c["slug"]}.png" width="20" height="20" alt="">'
+    row_cls = ' class="pure-row"' if c["pure"] else ""
+    cells = f'<td class="color-name-cell">{img} {c["name"]}</td>'
     for p in pigments:
-        if p["family"] != prev_family:
-            pig_headers += f'<th class="family-sep" title="{p["family"]}"></th>'
-            prev_family = p["family"]
-        pure_label = f'<span class="pure-tag" title="{p["pure"]}">&bull;</span>' if p["pure"] else ""
-        pig_headers += f'<th class="pig-name"><span>{p["code"]}{pure_label}</span></th>'
+        hit = p["code"] in color_to_pigs
+        col_cls = "no-pure" if not p["pure"] else ""
+        cell_cls = f"cell hit {col_cls}".strip() if hit else f"cell miss {col_cls}".strip()
+        cells += f'<td class="{cell_cls}">{p["code"] if hit else ""}</td>'
+    return f"<tr{row_cls}>{cells}</tr>\n"
 
-    # --- body rows: one per color, grouped by group ---
-    rows_html = ""
+
+def section_header(label, ncols):
+    return f'<tr class="section-header"><td colspan="{ncols + 1}" class="section-label">{label}</td></tr>\n'
+
+
+def build_html(pure_colors, mixed_colors, pigments):
+    ncols = len(pigments)
+
+    # --- colgroup: one col per pigment for column styling ---
+    colgroup = '<colgroup><col class="col-label"></colgroup>\n<colgroup>\n'
+    for p in pigments:
+        fam_cls = f"fam-{p['family'].lower()}"
+        colgroup += f'  <col class="col-pig {fam_cls}">\n'
+    colgroup += '</colgroup>'
+
+    # --- family bar row: spans of th per family ---
+    # count pigments per family in order
+    from itertools import groupby
+    family_bar = '<tr class="family-bar"><th></th>'
+    for family, group in groupby(pigments, key=lambda p: p["family"]):
+        count = sum(1 for _ in group)
+        color = FAMILY_COLOR.get(family, "#ccc")
+        family_bar += f'<th colspan="{count}" class="family-bar-cell" style="--fam-color:{color}">{family}</th>'
+    family_bar += '</tr>'
+
+    # --- header row: one th per pigment, rotated ---
+    pig_headers = ""
+    for p in pigments:
+        cls = "" if p["pure"] else ' class="no-pure"'
+        pig_headers += f'<th{cls}><div class="pig-name"><span>{p["code"]}</span></div></th>'
+
+    # --- body: pure colors first, then mixed grouped by group ---
+    rows_html = section_header("single-pigment", ncols)
+    for c in pure_colors:
+        rows_html += color_row(c, pigments)
+
+    rows_html += f'<tr class="group-spacer"><td colspan="{ncols + 1}"></td></tr>\n'
+    rows_html += section_header("mixed", ncols)
+
     prev_group = None
-    for c in colors:
+    for c in mixed_colors:
         if c["group"] != prev_group:
-            cols = len(pigments) + len(set(p["family"] for p in pigments)) + 2
-            rows_html += f'<tr class="group-spacer"><td colspan="{cols}"></td></tr>'
+            if prev_group is not None:
+                rows_html += f'<tr class="group-spacer"><td colspan="{ncols + 1}"></td></tr>\n'
             prev_group = c["group"]
-
-        cells = f'<td class="color-name-cell">{c["name"]}</td><td class="color-group">{c["group"]}</td>'
-
-        prev_family = None
-        for p in pigments:
-            if p["family"] != prev_family:
-                cells += '<td class="family-sep-cell"></td>'
-                prev_family = p["family"]
-            hit = p["code"] in color_to_pigs[c["name"]]
-            cells += f'<td class="cell {"hit" if hit else "miss"}">{"&#x25CF;" if hit else ""}</td>'
-
-        rows_html += f"<tr>{cells}</tr>\n"
+        rows_html += color_row(c, pigments)
 
     # legend
     legend_rows = ""
     for p in pigments:
         pure_cell = p["pure"] if p["pure"] else "<em>—</em>"
         legend_rows += f"<tr><td>{p['code']}</td><td>{p['family']}</td><td>{pure_cell}</td></tr>\n"
-
-    family_legend = "  ".join(
-        f'<span class="gl-group">{f}</span>' for f in FAMILY_ORDER
-    )
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -97,7 +164,7 @@ def build_html(colors, pigments):
     background: #f5f0e8;
     color: #222;
     margin: 2em auto;
-    max-width: 1200px;
+    max-width: 1600px;
     font-size: 0.95em;
   }}
   h1 {{ font-size: 1.4em; letter-spacing: 0.05em; margin-bottom: 0.2em; }}
@@ -114,13 +181,28 @@ def build_html(colors, pigments):
     border: none;
   }}
 
+  /* family bar */
+  tr.family-bar th {{ padding: 0; border: none; }}
+  th.family-bar-cell {{
+    font-size: 0.65em;
+    font-weight: normal;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 2px 0 2px 3px;
+    background: var(--fam-color);
+    border-right: 2px solid #f5f0e8;
+  }}
+
   /* rotated pigment headers */
-  th.pig-name {{
+  th .pig-name {{
     height: 100px;
-    vertical-align: bottom;
+    display: flex;
+    align-items: flex-end;
     padding-bottom: 4px;
   }}
-  th.pig-name span {{
+  th .pig-name span {{
     display: block;
     transform: rotate(-60deg);
     transform-origin: bottom left;
@@ -130,65 +212,59 @@ def build_html(colors, pigments):
     color: #444;
     padding-left: 4px;
   }}
-
-  /* family separator columns */
-  th.family-sep, td.family-sep-cell {{
-    width: 8px;
-    min-width: 8px;
-    background: #e0d8cc;
-  }}
+  th.no-pure .pig-name span {{ color: #aaa; }}
 
   /* color label cells */
   td.color-name-cell {{
-    font-size: 0.82em;
-    padding-right: 6px;
-    padding-left: 2px;
+    font-size: 0.78em;
+    padding: 1px 8px 1px 2px;
     white-space: nowrap;
-    min-width: 180px;
+    vertical-align: middle;
+    line-height: 1;
   }}
-  td.color-group {{
-    font-size: 0.72em;
-    color: #999;
-    padding-right: 10px;
-    white-space: nowrap;
-    min-width: 80px;
+  td.color-name-cell img {{
+    vertical-align: middle;
+    margin-right: 4px;
   }}
 
   /* data cells */
   td.cell {{
-    width: 18px;
-    min-width: 18px;
-    height: 18px;
+    width: 44px;
+    min-width: 44px;
+    height: 15px;
     text-align: center;
-    font-size: 0.7em;
-    border: 1px solid #ddd;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.58em;
+    border: 1px solid #e8e2d8;
+    vertical-align: middle;
+    padding: 0;
   }}
-  td.cell.hit {{ color: #222; background: #d4c9b0; }}
+  td.cell.hit  {{ color: #333; background: #c8bda4; }}
   td.cell.miss {{ color: transparent; background: #f8f4ee; }}
+  td.cell.no-pure.hit  {{ background: #bfc8b0; }}
+  td.cell.no-pure.miss {{ background: #f2f5ee; }}
 
-  tr:hover td.cell {{ border-color: #aaa; }}
+  tr:nth-child(even) td.cell.miss     {{ background: #ede8e0; }}
+  tr:nth-child(even) td.cell.no-pure.miss {{ background: #e6e9e0; }}
+  tr:nth-child(even) td.color-name-cell {{ background: #ede8e0; }}
+
+  tr:hover td.cell {{ border-color: #bbb; }}
   tr:hover td.color-name-cell {{ font-weight: bold; }}
 
+  /* pure color rows */
+  tr.pure-row td.color-name-cell {{ font-style: italic; color: #555; }}
+
+  /* section header rows */
+  tr.section-header td.section-label {{
+    font-size: 0.72em;
+    color: #999;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 0 2px 2px;
+  }}
+
   /* group spacer rows */
-  tr.group-spacer td {{ height: 8px; background: transparent; }}
-
-  /* pure-color bullet */
-  .pure-tag {{
-    color: #aaa;
-    font-size: 0.9em;
-    margin-left: 1px;
-    cursor: default;
-  }}
-
-  /* family legend */
-  .group-legend {{ margin: 1em 0; font-size: 0.8em; color: #555; }}
-  .gl-group {{
-    display: inline-block;
-    margin-right: 1em;
-    padding: 1px 6px;
-    background: #e0d8cc;
-    border-radius: 2px;
-  }}
+  tr.group-spacer td {{ height: 8px; }}
 
   /* legend table */
   table.legend {{
@@ -214,17 +290,17 @@ def build_html(colors, pigments):
 
 <h1>Liquitex Basics — Pigment Matrix</h1>
 <p class="sub">
-  Each row is a mixed color. Each column is a pigment, grouped by family.<br>
-  &#x25CF; = pigment used in that color. &bull; after the code = a pure single-pigment tube exists.
+  Each row is a mixed color. Each column is a pigment.<br>
+  &#x25CF; = pigment used. Greyed columns have no pure single-pigment tube in the Basics range.
 </p>
-
-<div class="group-legend">Pigment families: {family_legend}</div>
 
 <div class="matrix-wrap">
 <table class="matrix">
+  {colgroup}
   <thead>
+    {family_bar}
     <tr>
-      <th colspan="2"></th>
+      <th></th>
       {pig_headers}
     </tr>
   </thead>
@@ -252,9 +328,10 @@ def build_html(colors, pigments):
 
 
 def main():
-    colors = read_mixed()
+    pure_colors = read_pure()
+    mixed_colors = read_mixed()
     pigments = read_pigments()
-    html = build_html(colors, pigments)
+    html = build_html(pure_colors, mixed_colors, pigments)
     OUT.write_text(html)
     print(f"Written: {OUT}")
 
