@@ -1,0 +1,29 @@
+pigment_code,family,pure_color,mixed_colors
+PY3,Yellow,Cadmium Yellow Light Hue,Brilliant Yellow Green
+PY42,Yellow,Yellow Oxide,"Bronze Yellow,Raw Sienna,Red Oxide,Unbleached Titanium,Light Olive Green,Neutral Gray 5,Naples Yellow Hue,Green Gray,Parchment,Raw Umber"
+PY74,Yellow,Primary Yellow,"Cadmium Yellow Medium Hue,Cadmium Red Light Hue,Hooker's Green Hue Permanent,Light Green Permanent,Light Olive Green,Lime Green,Brilliant Yellow Green"
+PY83,Yellow,,"Cadmium Yellow Medium Hue,Cadmium Yellow Deep Hue,Naples Yellow Hue"
+PY128,Yellow,Transparent Yellow,
+PY139,Yellow,,"Vivid Red Orange,Raw Umber"
+PO36,Orange,,"Light Pink"
+PO73,Orange,Cadmium Orange Hue,"Vivid Red Orange,Raw Umber"
+PR9,Red,,"Cadmium Red Light Hue,Cadmium Red Medium Hue"
+PR101,Red,,"Bronze Yellow,Raw Sienna,Red Oxide,Burnt Sienna,Burnt Umber,Unbleached Titanium"
+PR122,Red,Quinacridone Magenta,"Rose Pink,Medium Magenta,Deep Violet,Prism Violet,Payne's Gray"
+PR170,Red,Naphthol Crimson,"Cadmium Red Medium Hue,Cadmium Red Deep Hue"
+PR179,Red,,"Alizarin Crimson Hue Permanent"
+PR188,Red,,"Light Pink,Rose Pink,Purple Gray"
+PR202,Red,,"Alizarin Crimson Hue Permanent"
+PR209,Red,Transparent Red,
+PR254,Red,Pyrrole Red,
+DPP,Red,,"Alizarin Crimson Hue Permanent"
+PV19,Violet,Primary Red,"Cadmium Red Deep Hue"
+PV23RS,Violet,Dioxazine Purple,"Brilliant Purple,Deep Violet,Prism Violet,Purple Gray,Light Blue Violet,Prussian Blue Hue"
+PB15:3,Blue,"Phthalocyanine Blue,Primary Blue","Prussian Blue Hue,Cobalt Blue Hue,Cerulean Blue Hue,Brilliant Blue,Light Blue Permanent,Turquoise Blue,Blue Gray"
+PB29,Blue,Ultramarine Blue,"Light Blue Violet,Cobalt Blue Hue,Cerulean Blue Hue,Blue Gray,Green Gray,Raw Umber,Burnt Umber,Payne's Gray"
+PG7,Green,Phthalocyanine Green,"Cerulean Blue Hue,Brilliant Blue,Light Blue Permanent,Turquoise Blue,Bright Aqua Green,Hooker's Green Hue Permanent,Light Green Permanent,Light Olive Green,Lime Green,Brilliant Yellow Green,Parchment"
+PG36,Green,,"Green Deep Permanent"
+PW6,White,"Titanium White,Transparent Mixing White","Cadmium Yellow Deep Hue,Light Pink,Rose Pink,Medium Magenta,Brilliant Purple,Purple Gray,Light Blue Violet,Cobalt Blue Hue,Cerulean Blue Hue,Brilliant Blue,Light Blue Permanent,Turquoise Blue,Blue Gray,Bright Aqua Green,Light Green Permanent,Light Olive Green,Lime Green,Brilliant Yellow Green,Green Gray,Naples Yellow Hue,Unbleached Titanium,Parchment,Neutral Gray 5"
+PBK7,Black,,"Prussian Blue Hue,Green Deep Permanent,Blue Gray,Parchment"
+PBK9,Black,Ivory Black,"Hooker's Green Hue Permanent,Raw Sienna,Burnt Sienna,Burnt Umber,Neutral Gray 5,Payne's Gray"
+PBK11,Black,Mars Black,"Bronze Yellow,Unbleached Titanium"
