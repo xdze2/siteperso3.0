@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading list — blogs &amp; articles</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #efe7d6;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.1em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover {
+        border-bottom-color: #5a3e28;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 750px;
+        padding: 3rem 2rem 6rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1.05rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #6b4a2a;
+        margin: 0 0 0.3rem;
+      }
+
+      .subtitle {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.78rem;
+        color: #a8895f;
+        margin: 0 0 3rem;
+      }
+
+      .entry {
+        margin-bottom: 2.4rem;
+        padding-left: 0.2rem;
+        border-left: 2px solid transparent;
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .entry:hover {
+        border-left-color: #c8a878;
+      }
+
+      .thumb {
+        width: 160px;
+        border: 1px solid #c8b89a;
+        box-shadow: 2px 2px 0 #d8c8a8;
+        display: block;
+      }
+
+      .thumb img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: grayscale(20%);
+      }
+
+      .site {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .site a {
+        color: #3a2614;
+        text-decoration: none;
+        border-bottom: 1px dashed #9a7d5f;
+      }
+
+      .site a:hover {
+        border-bottom-style: solid;
+      }
+
+      .site .domain {
+        color: #9a7d5f;
+        font-size: 0.78rem;
+        margin-left: 0.4em;
+      }
+
+      ul.refs {
+        list-style: none;
+        padding: 0;
+        margin: 0.2rem 0 0 1.3rem;
+        font-size: 0.92rem;
+      }
+
+      ul.refs li {
+        margin-bottom: 0.35rem;
+        padding-left: 1.1em;
+        text-indent: -1.1em;
+        line-height: 1.35;
+      }
+
+      ul.refs li::before {
+        content: "↳ ";
+        color: #b89464;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      ul.refs a {
+        color: #4a3320;
+        text-decoration: none;
+        border-bottom: 1px dotted #b89464;
+      }
+
+      ul.refs a:hover {
+        border-bottom-style: solid;
+      }
+
+      .note {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.74rem;
+        color: #a8895f;
+        margin-top: 0.3rem;
+        font-style: italic;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">blogs</a></li>
+        <li><a href="books.html">books</a></li>
+        <li><a href="../drawing/books.html">drawing books</a></li>
+        <li><a href="../notes.html">notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Reading list</h1>
+      <p class="subtitle">blogs, articles, things to come back to</p>
+
+      <div class="entry">
+        <a class="thumb" href="https://worrydream.com/">
+          <img src="site_screenshots/worrydream.jpg" alt="worrydream.com" />
+        </a>
+        <div>
+          <div class="site">
+            <a href="https://worrydream.com/">Bret Victor</a>
+            <span class="domain">worrydream.com</span>
+          </div>
+          <ul class="refs">
+            <li>
+              <a href="https://worrydream.com/ClimateChange/"
+                >What can a technologist do about climate change?</a
+              >
+            </li>
+            <li>
+              <a href="https://worrydream.com/LadderOfAbstraction/"
+                >Up and Down the Ladder of Abstraction</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <a class="thumb" href="https://waitbutwhy.com/">
+          <img src="site_screenshots/waitbutwhy.jpg" alt="waitbutwhy.com" />
+        </a>
+        <div>
+          <div class="site">
+            <a href="https://waitbutwhy.com/">Wait But Why</a>
+            <span class="domain">waitbutwhy.com</span>
+          </div>
+          <ul class="refs">
+            <li>
+              <a href="https://waitbutwhy.com/2018/04/picking-career.html"
+                >How to pick a career (that actually fits you)</a
+              >
+            </li>
+            <li>
+              <a href="https://waitbutwhy.com/2014/12/what-makes-you-you.html"
+                >What makes you you?</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <a
+          class="thumb"
+          href="https://interactivetextbooks.tudelft.nl/showthephysics/Introduction/About.html"
+        >
+          <img
+            src="site_screenshots/showthephysics.jpg"
+            alt="showthephysics"
+          />
+        </a>
+        <div>
+          <div class="site">
+            <a
+              href="https://interactivetextbooks.tudelft.nl/showthephysics/Introduction/About.html"
+              >Show the Physics</a
+            >
+            <span class="domain">interactivetextbooks.tudelft.nl</span>
+          </div>
+          <div class="note">interactive physics textbook, TU Delft</div>
+        </div>
+      </div>
+
+      <footer>in progress — 05/2026</footer>
+    </div>
+  </body>
+</html>
