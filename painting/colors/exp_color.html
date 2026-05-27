@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSL Color Matcher - AZERTY Edition</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #e8e8e8;
+        padding: 20px;
+      }
+
+      .experiment-container {
+        display: flex;
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .outer {
+        width: 250px;
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s ease;
+        border: 1px solid #ccc;
+      }
+
+      .outer.hidden {
+        background-color: transparent !important;
+        border-color: transparent;
+      }
+
+      .inner {
+        width: 70px;
+        height: 70px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .ui-panel {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 320px;
+      }
+
+      .control-group {
+        margin-bottom: 20px;
+      }
+
+      .control-group label {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .shortcut-hint {
+        font-size: 0.75em;
+        color: #888;
+        font-weight: normal;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        background: #333;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      button:hover {
+        background: #555;
+      }
+
+      #result {
+        margin-top: 15px;
+        text-align: center;
+        font-weight: bold;
+        min-height: 1.5em;
+      }
+
+      .legend {
+        margin-top: 20px;
+        font-size: 0.8em;
+        color: #666;
+        background: #ddd;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Color Matcher (AZERTY Controls)</h2>
+
+    <div
+      style="
+        max-width: 600px;
+        font-family: Georgia, serif;
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 20px;
+      "
+    >
+      <p>
+        Inspired by Josef Albers' <em>Interaction of Color</em> (1963) and his
+        <em>Homage to the Square</em> series. The same color looks different
+        depending on what surrounds it &mdash; try toggling the outer
+        backgrounds to see the inner square shift.
+      </p>
+      <p>
+        See <a href="https://www.youtube.com/watch?v=l3xpTtn7zo8">this video</a>
+        for an introduction.
+      </p>
+      <p>
+        <strong>The game:</strong> the left square shows a random target color.
+        Use the HSL sliders (or AZERTY keys) to match it on the right. Each
+        square sits on a different background, which biases your perception
+        &mdash; that's the whole point. Hit <em>Check Accuracy</em> to score
+        your guess.
+      </p>
+    </div>
+
+    <div class="checkbox-group">
+      <input type="checkbox" id="toggle-outer" checked />
+      <label for="toggle-outer">Display Outer Backgrounds</label>
+    </div>
+
+    <div class="experiment-container">
+      <div style="text-align: center; font-family: monospace; font-size: 0.9em">
+        <div style="margin-bottom: 5px">target</div>
+        <div class="outer" id="target-outer">
+          <div class="inner" id="target-inner"></div>
+        </div>
+      </div>
+      <div style="text-align: center; font-family: monospace; font-size: 0.9em">
+        <div style="margin-bottom: 5px">your guess</div>
+        <div class="outer" id="user-outer">
+          <div class="inner" id="user-inner"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui-panel">
+      <div class="control-group">
+        <label
+          >Hue: <span id="val-h">180</span>°
+          <span class="shortcut-hint">[A / Z]</span></label
+        >
+        <input type="range" id="h-slider" min="0" max="360" value="180" />
+      </div>
+      <div class="control-group">
+        <label
+          >Saturation: <span id="val-s">50</span>%
+          <span class="shortcut-hint">[Q / S]</span></label
+        >
+        <input type="range" id="s-slider" min="0" max="100" value="50" />
+      </div>
+      <div class="control-group">
+        <label
+          >Lightness: <span id="val-l">50</span>%
+          <span class="shortcut-hint">[W / X]</span></label
+        >
+        <input type="range" id="l-slider" min="0" max="100" value="50" />
+      </div>
+
+      <button onclick="checkResult()">Check Accuracy (Enter)</button>
+      <div id="result"></div>
+      <button
+        onclick="resetGame()"
+        style="margin-top: 10px; background: #eee; color: #333"
+      >
+        New Target (Space)
+      </button>
+    </div>
+
+    <div class="legend">
+      <strong>Shortcuts:</strong> Hue: A(-), Z(+) | Sat: Q(-), S(+) | Light:
+      W(-), X(+)
+    </div>
+
+    <script>
+      const targetInner = document.getElementById("target-inner");
+      const userInner = document.getElementById("user-inner");
+      const outerSquares = document.querySelectorAll(".outer");
+      const toggle = document.getElementById("toggle-outer");
+
+      const hS = document.getElementById("h-slider");
+      const sS = document.getElementById("s-slider");
+      const lS = document.getElementById("l-slider");
+
+      let target = { h: 0, s: 0, l: 0 };
+
+      function resetGame() {
+        target = {
+          h: Math.floor(Math.random() * 361),
+          s: Math.floor(Math.random() * 80) + 10,
+          l: Math.floor(Math.random() * 60) + 20,
+        };
+        targetInner.style.backgroundColor = `hsl(${target.h}, ${target.s}%, ${target.l}%)`;
+        document.getElementById("target-outer").style.backgroundColor =
+          `hsl(${Math.random() * 360}, 60%, 40%)`;
+        document.getElementById("user-outer").style.backgroundColor =
+          `hsl(${Math.random() * 360}, 60%, 40%)`;
+        document.getElementById("result").innerText = "";
+        updateUI();
+      }
+
+      function updateUI() {
+        document.getElementById("val-h").innerText = hS.value;
+        document.getElementById("val-s").innerText = sS.value;
+        document.getElementById("val-l").innerText = lS.value;
+        userInner.style.backgroundColor = `hsl(${hS.value}, ${sS.value}%, ${lS.value}%)`;
+      }
+
+      function checkResult() {
+        const h = parseInt(hS.value);
+        const s = parseInt(sS.value);
+        const l = parseInt(lS.value);
+
+        let hDiff = Math.abs(target.h - h);
+        if (hDiff > 180) hDiff = 360 - hDiff;
+
+        const sDiff = Math.abs(target.s - s);
+        const lDiff = Math.abs(target.l - l);
+
+        const totalError =
+          (hDiff / 180) * 0.5 + (sDiff / 100) * 0.25 + (lDiff / 100) * 0.25;
+        const accuracy = Math.max(0, 100 - totalError * 100).toFixed(1);
+
+        document.getElementById("result").innerText = `Accuracy: ${accuracy}%`;
+        document.getElementById("result").style.color =
+          accuracy > 92 ? "green" : "#d9534f";
+      }
+
+      // Key Listeners
+      window.addEventListener("keydown", (e) => {
+        const key = e.key.toLowerCase();
+        const step = e.shiftKey ? 10 : 1; // Hold Shift for larger steps
+
+        switch (key) {
+          case "a":
+            hS.value = parseInt(hS.value) - step;
+            updateUI();
+            break;
+          case "z":
+            hS.value = parseInt(hS.value) + step;
+            updateUI();
+            break;
+          case "q":
+            sS.value = parseInt(sS.value) - step;
+            updateUI();
+            break;
+          case "s":
+            sS.value = parseInt(sS.value) + step;
+            updateUI();
+            break;
+          case "w":
+            lS.value = parseInt(lS.value) - step;
+            updateUI();
+            break;
+          case "x":
+            lS.value = parseInt(lS.value) + step;
+            updateUI();
+            break;
+          case "enter":
+            checkResult();
+            break;
+          case " ":
+            e.preventDefault();
+            resetGame();
+            break;
+        }
+      });
+
+      [hS, sS, lS].forEach((s) => s.addEventListener("input", updateUI));
+      toggle.addEventListener("change", () => {
+        outerSquares.forEach((el) =>
+          toggle.checked
+            ? el.classList.remove("hidden")
+            : el.classList.add("hidden"),
+        );
+      });
+
+      resetGame();
+    </script>
+  </body>
+</html>

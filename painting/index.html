@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painting</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f0e5d4;
+        font-family: "Times New Roman", serif;
+        color: #2a1f14;
+        min-height: 100vh;
+        display: flex;
+        font-size: 1.1em;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      nav ul li a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        border-bottom-color: #5a3e28;
+      }
+
+      nav ul li a.active {
+        font-weight: bold;
+      }
+
+      .page {
+        flex: 1;
+        max-width: 800px;
+        padding: 2rem 2rem 4rem 1rem;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.9rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #7a5c3a;
+        margin: 0 0 0.4rem;
+      }
+
+      .subtitle {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.72rem;
+        color: #b0946f;
+        margin: 0 0 2rem;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid #c8b89a;
+        margin: 0 0 2.5rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+
+      .card {
+        border: 1px solid #c8b89a;
+        padding: 1rem;
+        background: #faf5ed;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .card:hover {
+        background: #f5eedd;
+        border-color: #a08060;
+      }
+
+      .card-thumb {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 0.75rem;
+        filter: sepia(20%);
+      }
+
+      .card-thumb-swatches {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 2px;
+        margin-bottom: 0.75rem;
+        background: #c8b89a;
+        padding: 2px;
+        box-sizing: border-box;
+      }
+
+      .card-thumb-swatches > span {
+        display: block;
+      }
+
+      .card-thumb-nested {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+        background: hsl(40, 60%, 45%);
+      }
+
+      .card-thumb-nested > span {
+        width: 35%;
+        height: 50%;
+        background: hsl(200, 55%, 55%);
+      }
+
+      .card-tag {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #b0946f;
+        margin-bottom: 0.3rem;
+      }
+
+      .card-title {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.82rem;
+        color: #3a2710;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
+
+      .card-desc {
+        font-size: 0.78rem;
+        line-height: 1.55;
+        color: #4a3520;
+        margin: 0;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #b0946f;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../recipe/index.html">cooking</a></li>
+        <li><a href="../notes.html">notes</a></li>
+        <li><a href="../projects/">projects</a></li>
+        <li><a href="./" class="active">painting</a></li>
+        <li><a href="../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Painting</h1>
+      <p class="subtitle">notes on color, pigments, experiments</p>
+      <hr />
+
+      <div class="grid">
+        <a class="card" href="colors/exp_color.html">
+          <div class="card-thumb-nested"><span></span></div>
+          <div class="card-tag">color · experiment</div>
+          <div class="card-title">Color Matcher</div>
+          <p class="card-desc">
+            HSL guessing game inspired by Albers' <em>Interaction of Color</em>.
+            Match the target square &mdash; the surrounding background biases
+            perception.
+          </p>
+        </a>
+
+        <a class="card" href="colors/liquitex_basics/index.html">
+          <div class="card-thumb-swatches">
+            <span style="background: #b81f25"></span>
+            <span style="background: #e8a92b"></span>
+            <span style="background: #f3d800"></span>
+            <span style="background: #6ea84f"></span>
+            <span style="background: #2a3f8a"></span>
+            <span style="background: #6b3a8c"></span>
+            <span style="background: #8b4a2a"></span>
+            <span style="background: #3a2a1a"></span>
+            <span style="background: #e8d8c0"></span>
+            <span style="background: #1a1a1a"></span>
+            <span style="background: #f5f0e8"></span>
+            <span style="background: #a8a8a8"></span>
+          </div>
+          <div class="card-tag">pigments · acrylic</div>
+          <div class="card-title">Liquitex Basics</div>
+          <p class="card-desc">
+            Pigment matrix and specs for the Liquitex Basics acrylic range
+            &mdash; swatches, mixings, references.
+          </p>
+        </a>
+      </div>
+
+      <footer>half-hand-coded</footer>
+    </div>
+  </body>
+</html>
