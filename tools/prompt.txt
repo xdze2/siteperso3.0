@@ -2,7 +2,6 @@
 
 Create and maintain a static HTML and CSS personal site
 
-- the html pages pages live at the root
 - the inbox/ dir is the draft folder for new page idea
 
 
@@ -30,7 +29,12 @@ Keep css minimal, no need for consistency and polishing
 > 2. **Layout:**
 > * A fixed-width container (around 750px) to mimic a page.
 > * A vertical navigation on the left margin (Home + tag list).
-> 3. **File structure:** HTML pages live in `content/`. The index is `content/index.html`.
+> 3. **File structure:**
+> * The home page is `index.html` at the project root. A few top-level pages also live at the root (`about.html`, `notes.html`, `todo.html`).
+> * Content is grouped into topic directories at the root, each acting as a small section (e.g. `drawing/`, `painting/`, `readings/`, `recipe/`, `projects/`, `links/`, `music/`, `diy/`, `thinking/`). A section usually has its own `index.html` plus the pages and any sub-topic folders for it.
+> * Sub-topics nest as needed (e.g. `painting/colors/liquitex_basics/`, `projects/thermal_models/`).
+> * Images live next to the page that uses them, often in a per-section folder (e.g. `images/`, `links/img/`, `readings/book_covers/`, `readings/site_screenshots/`, `painting/colors/liquitex_basics/images_web/`). Web-optimized versions are prefixed `web_` (see `imgprocess.sh`).
+> * `inbox/` is the draft folder for new ideas; `tools/` holds the helper scripts (`imgprocess.sh`, `screenshot.sh`) and this prompt.
 
 > **The Goal:** The site should look like it was lovingly hand-coded in a text editor by someone who cares more about ideas than 'engagement' metrics."
 
