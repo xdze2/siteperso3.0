@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machines &amp; usines, en peinture</title>
+    <style>
+      body {
+        margin: 0;
+        background: #ece6da;
+        background-image: radial-gradient(#e4ddcf 0.5px, transparent 0.5px);
+        background-size: 5px 5px;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #26221c;
+        display: flex;
+        font-size: 1.1em;
+        line-height: 1.5;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #4a4036;
+        text-decoration: none;
+      }
+      nav a.active { font-weight: bold; border-bottom: 1px solid #4a4036; }
+
+      .page {
+        max-width: 900px;
+        padding: 2rem 2rem 4rem 1rem;
+      }
+
+      h1, h2, h3, .meta, .links, .credit {
+        font-family: "Courier New", Courier, monospace;
+      }
+      h1 { font-size: 1.4rem; margin: 0 0 0.3rem; }
+      .intro { max-width: 620px; margin: 0 0 1rem; }
+      .disclaimer {
+        max-width: 620px;
+        margin: 0 0 3rem;
+        padding: 0.5rem 0.8rem;
+        border-left: 3px solid #8a3b1c;
+        font-size: 0.85em;
+        color: #5a5046;
+      }
+
+      h2 {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #8a3b1c;
+        margin: 4rem 0 1.5rem;
+      }
+
+      .p {
+        display: grid;
+        grid-template-columns: minmax(0, 500px) 1fr;
+        gap: 1.6rem;
+        margin-bottom: 3rem;
+        align-items: start;
+      }
+      .p img {
+        max-width: 100%;
+        margin-left: auto;
+        display: block;
+        border: 1px solid #3a332b;
+        box-shadow: 3px 3px 0 #c9bfae;
+      }
+
+      h3 { font-size: 1rem; margin: 0 0 0.2rem; }
+      .meta { font-size: 0.78rem; color: #6b5f50; margin: 0 0 0.8rem; }
+      .info p { margin: 0 0 0.8rem; font-size: 0.95em; }
+      .links { font-size: 0.75rem; }
+      .links a { color: #8a3b1c; }
+      .credit { font-size: 0.68rem; color: #8b8070; }
+
+      .todo { font-size: 0.95em; padding-left: 1.2rem; }
+      .todo li { margin-bottom: 0.4rem; }
+      .todo a { color: #8a3b1c; }
+      .todo a.g { font-family: "Courier New", Courier, monospace; font-size: 0.75rem; }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #8b8070;
+      }
+
+      @media (max-width: 760px) {
+        body { display: block; }
+        nav { position: static; height: auto; width: auto; padding: 1rem; }
+        nav li { display: inline; margin-right: 1rem; }
+        .page { padding: 1rem; }
+        .p { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../recipe/index.html">cooking</a></li>
+        <li><a href="../../notes.html">notes</a></li>
+        <li><a href="../../projects/">projects</a></li>
+        <li><a href="../" class="active">painting</a></li>
+        <li><a href="../../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Machines &amp; usines, en peinture</h1>
+      <p class="intro">
+        How painters dealt with forges, mills, trains and engines, from
+        Velázquez to The Matrix: painting, then photography and film. Work in progress. Images are low-res,
+        color-reduced, from Wikimedia Commons.
+      </p>
+      <p class="disclaimer">
+        Disclaimer: list, images and texts compiled with an AI model
+        (Claude Opus 5.5, <code>claude-opus-5-5</code>), mostly from memory
+        and Wikipedia. Dates, sizes, collections and anecdotes not all
+        checked. Fields marked (?) are uncertain.
+      </p>
+
+      <h2>Avant &mdash; the forge as myth</h2>
+
+      <article class="p" id="velazquez-forge">
+        <img src="images/web_velazquez-forge.jpg" style="width: 461px" alt="Velázquez, La Fragua de Vulcano" />
+        <div class="info">
+          <h3>La Fragua de Vulcano</h3>
+          <p class="meta">Diego Velázquez · 1630<br />oil on canvas, 223 × 290 cm<br />Museo del Prado, Madrid</p>
+          <p>
+            Apollo tells Vulcan his wife is cheating. The story is the excuse;
+            what's painted is a workshop: anvil, armour, tired bodies.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Vel%C3%A1zquez_-_La_Fragua_de_Vulcano_(Museo_del_Prado,_1630).jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/The_Forge_of_Vulcan">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <h2>1770&ndash;1860 &mdash; sublime, smoke, fire</h2>
+
+      <article class="p" id="wright-iron-forge">
+        <img src="images/web_wright-iron-forge.jpg" style="width: 423px" alt="Joseph Wright of Derby, An Iron Forge" />
+        <div class="info">
+          <h3>An Iron Forge</h3>
+          <p class="meta">Joseph Wright of Derby · 1772<br />oil on canvas, 121 × 132 cm<br />Tate Britain, London</p>
+          <p>
+            Night, a bar of white-hot iron, a water-powered tilt hammer. The
+            smith's family looks on. Industry painted like a nativity.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Joseph_Wright_of_Derby_(1734-1797)_-_An_Iron_Forge_-_T06670_-_Tate.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/An_Iron_Forge">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="wright-arkwright-mills">
+        <img src="images/web_wright-arkwright-mills.jpg" style="width: 467px" alt="Joseph Wright of Derby, Arkwright's Mills" />
+        <div class="info">
+          <h3>Arkwright's Mills</h3>
+          <p class="meta">Joseph Wright of Derby · c. 1795&ndash;96 (?)<br />oil on canvas<br />Derby Museum and Art Gallery</p>
+          <p>
+            Cromford at night. Every window is lit: the mill runs in shifts,
+            day and night. One of the first paintings of a factory.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Joseph_Wright_of_Derby_(1734-1797)_-_Arkwright%27s_Mills_-_2016-56-2_-_Derby_Museum_and_Art_Gallery.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="loutherbourg-coalbrookdale">
+        <img src="images/web_loutherbourg-coalbrookdale.jpg" style="width: 500px" alt="Loutherbourg, Coalbrookdale by Night" />
+        <div class="info">
+          <h3>Coalbrookdale by Night</h3>
+          <p class="meta">Philip James de Loutherbourg · 1801<br />oil on canvas, 68 × 107 cm<br />Science Museum, London</p>
+          <p>
+            The Madeley Wood furnaces. Flames and smoke fill half the sky.
+            Loutherbourg was a stage designer, and it shows: the furnace as
+            hell, as spectacle.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Philipp_Jakob_Loutherbourg_d._J._-_Coalbrookdale_by_Night_-_WGA13730.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Coalbrookdale_by_Night">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="turner-temeraire">
+        <img src="images/web_turner-temeraire.jpg" style="width: 471px" alt="Turner, The Fighting Temeraire" />
+        <div class="info">
+          <h3>The Fighting Temeraire</h3>
+          <p class="meta">J.M.W. Turner · 1839<br />oil on canvas, 91 × 122 cm<br />National Gallery, London</p>
+          <p>
+            A black steam tug drags a pale ghost of a battleship to the
+            breakers. Old world out, new world in. Sunset, of course.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:The_Fighting_Temeraire,_JMW_Turner,_National_Gallery.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/The_Fighting_Temeraire">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="turner-rain-steam-speed">
+        <img src="images/web_turner-rain-steam-speed.jpg" style="width: 470px" alt="Turner, Rain, Steam and Speed" />
+        <div class="info">
+          <h3>Rain, Steam and Speed &ndash; The Great Western Railway</h3>
+          <p class="meta">J.M.W. Turner · 1844<br />oil on canvas, 91 × 122 cm<br />National Gallery, London</p>
+          <p>
+            Maidenhead bridge. The locomotive comes out of the fog, straight
+            at you. A hare runs ahead of it on the track. The painting is
+            about speed more than about the machine.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Turner_-_Rain,_Steam_and_Speed_-_National_Gallery_file.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Rain,_Steam_and_Speed_%E2%80%93_The_Great_Western_Railway">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="bell-scott-iron-coal">
+        <img src="images/web_bell-scott-iron-coal.jpg" style="width: 409px" alt="William Bell Scott, Iron and Coal" />
+        <div class="info">
+          <h3>Iron and Coal</h3>
+          <p class="meta">William Bell Scott · 1855&ndash;61<br />oil on canvas, approx. 185 × 185 cm<br />Wallington Hall, National Trust</p>
+          <p>
+            Full title: <em>In the Nineteenth Century the Northumbrians show
+            the World what can be done with Iron and Coal</em>. Three
+            strikers, an Armstrong gun, Stephenson's bridge behind. Heroic,
+            a bit stiff.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:William_Bell_Scott_(1811-1890)_-_In_the_Nineteenth_Century_the_Northumbrians_Show_the_World_what_Can_Be_Done_with_Iron_and_Coal_-_584372_-_National_Trust.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="madox-brown-work">
+        <img src="images/web_madox-brown-work.jpg" style="width: 492px" alt="Ford Madox Brown, Work" />
+        <div class="info">
+          <h3>Work</h3>
+          <p class="meta">Ford Madox Brown · 1852&ndash;65<br />oil on canvas, 137 × 197 cm<br />Manchester Art Gallery</p>
+          <p>
+            Navvies digging a sewer in Hampstead. No machine at all, just
+            manual labour, with the idle rich and two philosophers
+            (Carlyle, Maurice) watching. Here for contrast.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Ford_Madox_Brown_-_Work_-_Google_Art_Project.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Work_(painting)">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <h2>1870&ndash;1900 &mdash; réalisme, gares, banlieues</h2>
+
+      <article class="p" id="menzel-eisenwalzwerk">
+        <img src="images/web_menzel-eisenwalzwerk.jpg" style="width: 500px" alt="Menzel, Das Eisenwalzwerk" />
+        <div class="info">
+          <h3>Das Eisenwalzwerk (Moderne Cyklopen)</h3>
+          <p class="meta">Adolph Menzel · 1872&ndash;75<br />oil on canvas, 158 × 254 cm<br />Alte Nationalgalerie, Berlin</p>
+          <p>
+            A rolling mill in Königshütte, Silesia. Menzel went there and made
+            dozens of sketches. Workers pull a glowing ingot; on the right a
+            shift eats lunch, washes. Near-documentary.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Adolph_Menzel_-_Eisenwalzwerk_-_Google_Art_Project.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="pissarro-usine-pontoise">
+        <img src="images/web_pissarro-usine-pontoise.jpg" style="width: 446px" alt="Pissarro, Usine près de Pontoise" />
+        <div class="info">
+          <h3>Usine près de Pontoise</h3>
+          <p class="meta">Camille Pissarro · 1873<br />oil on canvas<br />Springfield Museum of Fine Arts, MA (?)</p>
+          <p>
+            A sugar factory on the Oise. Chimney and smoke sit calmly in
+            the landscape, no drama. The factory is just part of the
+            countryside now.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Camille_Pissarro_-_Usine_pr%C3%A8s_de_Pontoise_-_1873.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="caillebotte-pont-europe">
+        <img src="images/web_caillebotte-pont-europe.jpg" style="width: 496px" alt="Caillebotte, Le Pont de l'Europe" />
+        <div class="info">
+          <h3>Le Pont de l'Europe</h3>
+          <p class="meta">Gustave Caillebotte · 1876<br />oil on canvas, 125 × 181 cm<br />Musée du Petit Palais, Genève</p>
+          <p>
+            The iron bridge over the Saint-Lazare tracks. Steel girders,
+            bourgeois strollers, a worker leaning on the rail. The trains
+            are only suggested by steam.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Caillebotte-PontdeL%27Europe-Geneva.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Le_Pont_de_l%27Europe">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="monet-saint-lazare">
+        <img src="images/web_monet-saint-lazare.jpg" style="width: 470px" alt="Monet, La Gare Saint-Lazare" />
+        <div class="info">
+          <h3>La Gare Saint-Lazare</h3>
+          <p class="meta">Claude Monet · 1877<br />oil on canvas, 75 × 104 cm<br />Musée d'Orsay, Paris</p>
+          <p>
+            One of twelve canvases. Monet got permission to have the trains
+            stopped and their boilers stoked for him. Steam under a
+            glass-and-iron roof: the station as a cathedral of vapour.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Claude_Monet_-_The_Saint-Lazare_Station_-_Google_Art_Project.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="seurat-baignade">
+        <img src="images/web_seurat-baignade.jpg" style="width: 498px" alt="Seurat, Une baignade à Asnières" />
+        <div class="info">
+          <h3>Une baignade, Asnières</h3>
+          <p class="meta">Georges Seurat · 1884<br />oil on canvas, 201 × 300 cm<br />National Gallery, London</p>
+          <p>
+            Workers bathing on a Sunday. In the background: the chimneys of
+            Clichy. Leisure in the foreground, industry behind.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Georges_Seurat_-_Une_baignade_%C3%A0_Asni%C3%A8res_-_National_Gallery.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Bathers_at_Asni%C3%A8res">wikipedia</a>
+          </p>
+          <p class="credit">photo CC BY-SA 4.0, see commons page</p>
+        </div>
+      </article>
+
+      <article class="p" id="vangogh-usines-clichy">
+        <img src="images/web_vangogh-usines-clichy.jpg" style="width: 470px" alt="Van Gogh, Factories at Asnières seen from the Quai de Clichy" />
+        <div class="info">
+          <h3>Usines à Asnières, vues du quai de Clichy</h3>
+          <p class="meta">Vincent van Gogh · summer 1887<br />oil on canvas, 54 × 72 cm<br />Saint Louis Art Museum</p>
+          <p>
+            Paris period. Red brick, chimneys, a big sky. Painted like a
+            wheat field.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Factories_at_Asni%C3%A8res,_Seen_from_the_Quai_de_Clichy.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="luce-charleroi">
+        <img src="images/web_luce-charleroi.jpg" style="width: 480px" alt="Maximilien Luce, usines près de Charleroi" />
+        <div class="info">
+          <h3>Usines près de Charleroi</h3>
+          <p class="meta">Maximilien Luce · 1897<br />oil on canvas<br />Musée d'Orsay, Paris</p>
+          <p>
+            Pointillism applied to the Pays Noir. Luce was an anarchist
+            and spent time in the Belgian mining region. Smoke turns to
+            coloured dots: pretty and dirty at once.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Maximilien_Luce_(1858-1941)_Fabrieken_bij_Charleroi_-_Mus%C3%A9e_d%27Orsay_Parijs_22-8-2017_16-28-31.JPG">commons</a>
+          </p>
+          <p class="credit">museum photo, slight glare</p>
+        </div>
+      </article>
+
+      <h2>1910&ndash;1930 &mdash; the machine as form</h2>
+
+      <article class="p" id="boccioni-citta-sale">
+        <img src="images/web_boccioni-citta-sale.jpg" style="width: 498px" alt="Boccioni, La città che sale" />
+        <div class="info">
+          <h3>La città che sale</h3>
+          <p class="meta">Umberto Boccioni · 1910<br />oil on canvas, 199 × 301 cm<br />MoMA, New York</p>
+          <p>
+            A building site in Milan's suburbs. The real engine here is a
+            giant red horse; the scaffolding is at the back. Futurism, the
+            year after the manifesto.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:The_City_Rises_by_Umberto_Boccioni_1910.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/The_City_Rises">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="delaunay-tour-eiffel">
+        <img src="images/web_delaunay-tour-eiffel.jpg" style="width: 362px" alt="Delaunay, Tour Eiffel" />
+        <div class="info">
+          <h3>Tour Eiffel</h3>
+          <p class="meta">Robert Delaunay · 1911<br />oil on canvas<br />collection: ?</p>
+          <p>
+            One of a long series (1909&ndash;12, then again in the 1920s).
+            The tower shatters, the buildings around it bend away. Engineering
+            as a subject in its own right.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Delaunay_-_Tour_Eiffel.jpeg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="russolo-automobile">
+        <img src="images/web_russolo-automobile.jpg" style="width: 469px" alt="Russolo, Dinamismo di un'automobile" />
+        <div class="info">
+          <h3>Dinamismo di un'automobile</h3>
+          <p class="meta">Luigi Russolo · 1912&ndash;13<br />oil on canvas, 106 × 140 cm<br />Centre Pompidou, Paris</p>
+          <p>
+            A car turned into a series of chevrons pointing in the direction
+            it's travelling. Russolo later built noise machines, the
+            <em>intonarumori</em>.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Luigi_Russolo_dynamism-of-a-car-1913.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Dynamism_of_a_Car">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="malevich-knife-grinder">
+        <img src="images/web_malevich-knife-grinder.jpg" style="width: 405px" alt="Malevich, The Knife Grinder" />
+        <div class="info">
+          <h3>The Knife Grinder (Principle of Glittering)</h3>
+          <p class="meta">Kazimir Malevich · 1912&ndash;13<br />oil on canvas, 80 × 80 cm<br />Yale University Art Gallery</p>
+          <p>
+            Cubo-futurist. A man at a grinding wheel: hands, foot and
+            stairs repeat like frames of a film. The body becomes part of
+            the mechanism.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:The_Knife_Grinder_Principle_of_Glittering_by_Kazimir_Malevich.jpeg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="duchamp-broyeuse">
+        <img src="images/web_duchamp-broyeuse.jpg" style="width: 369px" alt="Duchamp, Broyeuse de chocolat No. 2" />
+        <div class="info">
+          <h3>Broyeuse de chocolat, n° 2</h3>
+          <p class="meta">Marcel Duchamp · 1914<br />oil, thread and pencil on canvas, 65 × 54 cm<br />Philadelphia Museum of Art</p>
+          <p>
+            A machine Duchamp saw in a Rouen confectioner's shop window. Three
+            drums on a Louis XV table, painted flat like a technical drawing.
+            The threads are sewn on. It ended up in the <em>Grand Verre</em>
+            as the bachelor's machine, a "celibate" mechanism.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Chocolate_Grinder_No._2.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/The_Bride_Stripped_Bare_by_Her_Bachelors,_Even">grand verre</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="picabia-machine">
+        <img src="images/web_picabia-machine.jpg" style="width: 327px" alt="Picabia, Machine tournez vite" />
+        <div class="info">
+          <h3>Machine tournez vite</h3>
+          <p class="meta">Francis Picabia · c. 1916&ndash;18<br />on paper<br />National Gallery of Art, Washington (?)</p>
+          <p>
+            Two gears, numbered 1 and 2; the legend says 1 = woman,
+            2 = man. Mechanomorphic period: the machine as a joke, and as
+            sex.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Francis_Picabia,_1917_-_Machine_tournez_vite.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="leger-disques">
+        <img src="images/web_leger-disques.jpg" style="width: 351px" alt="Léger, Les Disques" />
+        <div class="info">
+          <h3>Les Disques</h3>
+          <p class="meta">Fernand Léger · 1918&ndash;19<br />oil on canvas<br />collection: ?</p>
+          <p>
+            Back from the trenches, where Léger was fascinated by the breech
+            of a 75 mm gun. Disks, tubes, flat bright colours. Not a
+            machine, but painting built the way a machine is.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Les_Disques,_1919_-_Fernand_L%C3%A9ger.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="leger-mecanicien">
+        <img src="images/web_leger-mecanicien-1920.jpg" style="width: 351px" alt="Léger, Le Mécanicien, 1920" />
+        <div class="info">
+          <h3>Le Mécanicien</h3>
+          <p class="meta">Fernand Léger · 1920<br />oil on canvas, 116 × 89 cm<br />National Gallery of Canada, Ottawa</p>
+          <p>
+            Moustache, tattoo, cigarette, a ring on his finger. Arms like
+            polished pistons. The worker as a calm, solid machine, posing
+            like a classical portrait.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Le_M%C3%A9canicien,_1920_-_Fernand_L%C3%A9ger.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="ernst-celebes">
+        <img src="images/web_ernst-celebes.jpg" style="width: 376px" alt="Max Ernst, The Elephant Celebes" />
+        <div class="info">
+          <h3>The Elephant Celebes</h3>
+          <p class="meta">Max Ernst · 1921<br />oil on canvas, 125 × 108 cm<br />Tate Modern, London</p>
+          <p>
+            Based on a photo of a Sudanese corn bin. It became a boiler-elephant:
+            riveted belly, hose for a trunk, a bull's head. A headless woman
+            beckons. A machine from a dream.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/The_Elephant_Celebes">wikipedia</a>
+          </p>
+          <p class="credit">image via en.wikipedia (PD-US)</p>
+        </div>
+      </article>
+
+      <article class="p" id="klee-zwitscher">
+        <img src="images/web_klee-zwitscher.jpg" style="width: 348px" alt="Klee, Die Zwitscher-Maschine" />
+        <div class="info">
+          <h3>Die Zwitscher-Maschine</h3>
+          <p class="meta">Paul Klee · 1922<br />watercolour and oil transfer on paper, 41 × 31 cm<br />MoMA, New York</p>
+          <p>
+            Four birds on a wire, with a crank. Turn it and they sing.
+            A tiny, ironic machine. The Nazis showed it as "degenerate" in 1937.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Die_Zwitscher-Maschine_(Twittering_Machine),_1922_-_Paul_Klee.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/Twittering_Machine">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="demuth-my-egypt">
+        <img src="images/web_demuth-my-egypt.jpg" style="width: 372px" alt="Demuth, My Egypt" />
+        <div class="info">
+          <h3>My Egypt</h3>
+          <p class="meta">Charles Demuth · 1927<br />oil, graphite on board, 91 × 76 cm<br />Whitney Museum, New York</p>
+          <p>
+            A grain elevator in Lancaster, Pennsylvania, seen from below.
+            Its pyramids. Precisionism: clean, empty, no worker. Is the
+            title ironic or not? Still argued about.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Charles_Demuth_-_My_Egypt.jpg">commons</a> ·
+            <a href="https://en.wikipedia.org/wiki/My_Egypt">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <h2>1930&ndash;1946 &mdash; fresques, précision, effort de guerre</h2>
+
+      <article class="p" id="benton-america-today">
+        <img src="images/web_benton-america-today.jpg" style="width: 500px" alt="Benton, America Today, Instruments of Power" />
+        <div class="info">
+          <h3>America Today &ndash; Instruments of Power</h3>
+          <p class="meta">Thomas Hart Benton · 1930&ndash;31<br />egg tempera and oil on linen, ten panels<br />Metropolitan Museum of Art, New York</p>
+          <p>
+            Painted for the New School boardroom. Train, plane, dynamo, oil
+            derrick, all packed into one panel. The rest of the cycle covers
+            steel, coal, cities, the Midwest.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/America_Today">wikipedia</a>
+          </p>
+          <p class="credit">low-res image, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="sheeler-river-rouge">
+        <img src="images/web_sheeler-river-rouge.jpg" style="width: 446px" alt="Sheeler, River Rouge Plant" />
+        <div class="info">
+          <h3>River Rouge Plant</h3>
+          <p class="meta">Charles Sheeler · 1932<br />oil on canvas, 51 × 61 cm<br />Whitney Museum, New York</p>
+          <p>
+            Ford's plant at Dearborn, painted from Sheeler's own 1927 photos
+            (see below). Still water, clean volumes, nobody around.
+            Precisionism: the factory as a Shaker barn.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Charles_Sheeler,_River_Rouge_Plant,_1932_1_15_18_-whitneymuseum_(39273167440).jpg">commons</a>
+          </p>
+          <p class="credit">photo taken in the museum, cropped by the frame</p>
+        </div>
+      </article>
+
+      <article class="p" id="rivera-detroit">
+        <img src="images/web_rivera-detroit.jpg" style="width: 482px" alt="Rivera, Detroit Industry, south wall" />
+        <div class="info">
+          <h3>Detroit Industry Murals</h3>
+          <p class="meta">Diego Rivera · 1932&ndash;33<br />fresco, 27 panels<br />Detroit Institute of Arts</p>
+          <p>
+            The same River Rouge plant, the opposite of Sheeler: crowded,
+            sweaty, packed with bodies. Commissioned by Edsel Ford. South wall:
+            stamping presses, the Ford V8 assembly line. Rivera called it his
+            best work.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Detroit_Industry_Murals">wikipedia</a>
+          </p>
+          <p class="credit">image via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="grossberg-gelbe-kessel">
+        <img src="images/web_grossberg-gelbe-kessel.jpg" style="width: 356px" alt="Carl Grossberg, Der gelbe Kessel" />
+        <div class="info">
+          <h3>Der gelbe Kessel</h3>
+          <p class="meta">Carl Grossberg · 1933<br />oil<br />collection: ?</p>
+          <p>
+            Neue Sachlichkeit. A yellow boiler in an empty plant room, every
+            pipe and valve sharp. No worker, no smoke, no drama. Machines
+            painted as still lifes.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Carl_Grossberg,_Der_gelbe_Kessel,_1933.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="grossberg-papiermaschine">
+        <img src="images/web_grossberg-papiermaschine.jpg" style="width: 465px" alt="Carl Grossberg, Die Papiermaschine" />
+        <div class="info">
+          <h3>Die Papiermaschine</h3>
+          <p class="meta">Carl Grossberg · 1934<br />oil<br />collection: ?</p>
+          <p>
+            Same treatment: rollers in perspective, a hall lit from the side.
+            Grossberg died in 1940, in the first year of the war.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Carl_Grossberg_The_paper_machine_1934.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="dufy-fee-electricite">
+        <img src="images/web_dufy-fee-electricite.jpg" style="width: 497px" alt="Dufy, La Fée Électricité, in the museum room" />
+        <div class="info">
+          <h3>La Fée Électricité</h3>
+          <p class="meta">Raoul Dufy · 1937<br />oil on 250 panels, approx. 600 m²<br />Musée d'Art Moderne de Paris</p>
+          <p>
+            Commissioned by the electricity company for the 1937 Expo.
+            A history of electricity: 110 scientists and inventors, with
+            the power station at the centre like an altar. Advertising and
+            fresco at once.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Raoul_dufy,_la_fata_elettricit%C3%A0,_1937,_03.jpg">commons</a> ·
+            <a href="https://fr.wikipedia.org/wiki/La_F%C3%A9e_%C3%89lectricit%C3%A9">wikipédia</a>
+          </p>
+          <p class="credit">room view, photo CC BY-SA 4.0, see commons page</p>
+        </div>
+      </article>
+
+      <article class="p" id="sheeler-suspended-power">
+        <img src="images/web_sheeler-suspended-power.jpg" style="width: 353px" alt="Sheeler, Suspended Power" />
+        <div class="info">
+          <h3>Suspended Power</h3>
+          <p class="meta">Charles Sheeler · 1939<br />oil on canvas, 82 × 64 cm<br />Dallas Museum of Art</p>
+          <p>
+            A hydraulic turbine being lowered into place at the new
+            Guntersville dam, Alabama (TVA). From the "Power" series
+            commissioned by <em>Fortune</em> in 1938, published as a
+            portfolio in 1940. The machine hangs there like a relic.
+          </p>
+          <p class="links">
+            <a href="https://dma.org/art/collection/object/5040900">dma</a> ·
+            <a href="https://journals.openedition.org/transatlantica/8446">Valance, Transatlantica 2017</a>
+          </p>
+          <p class="credit">image courtesy Dallas Museum of Art (open access)</p>
+        </div>
+      </article>
+
+      <article class="p" id="hopper-gas">
+        <img src="images/web_hopper-gas.png" style="width: 500px" alt="Edward Hopper, Gas" />
+        <div class="info">
+          <h3>Gas</h3>
+          <p class="meta">Edward Hopper · 1940<br />oil on canvas, 67 × 102 cm<br />MoMA, New York</p>
+          <p>
+            Three red pumps, an attendant, dusk, the road running into the
+            woods. No factory here: the machine is part of the American
+            landscape now, and lonely.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Gas_(Hopper)">wikipedia</a>
+          </p>
+          <p class="credit">image via Wikimedia Commons</p>
+        </div>
+      </article>
+
+      <article class="p" id="spencer-riveters">
+        <img src="images/web_spencer-riveters.jpg" style="width: 500px" alt="Stanley Spencer, Shipbuilding on the Clyde: Riveters" />
+        <div class="info">
+          <h3>Shipbuilding on the Clyde: Riveters</h3>
+          <p class="meta">Stanley Spencer · 1941<br />oil on canvas, long frieze<br />Imperial War Museum, London</p>
+          <p>
+            Commissioned by the War Artists' Advisory Committee: Lithgows yard,
+            Port Glasgow. Bodies squeezed into a long strip, like a church
+            predella. Industry as a collective act of devotion.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Shipbuilding_on_the_Clyde_Riveters_(Art.IWM_ART_LD_1375).jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="spencer-furnaces">
+        <img src="images/web_spencer-furnaces.jpg" style="width: 345px" alt="Stanley Spencer, Shipbuilding on the Clyde: The Furnaces" />
+        <div class="info">
+          <h3>Shipbuilding on the Clyde: The Furnaces</h3>
+          <p class="meta">Stanley Spencer · 1946<br />oil on canvas<br />Imperial War Museum, London</p>
+          <p>
+            Same series. A red-hot steel section dragged out of the furnace
+            mouth. A late echo of Wright's forge, 175 years on.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Shipbuilding_on_the_Clyde,_The_Furnaces_(Art.IWM_ART_LD_5871).jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="lowry-going-to-work">
+        <img src="images/web_lowry-going-to-work.jpg" style="width: 470px" alt="L.S. Lowry, Going to Work" />
+        <div class="info">
+          <h3>Going to Work</h3>
+          <p class="meta">L.S. Lowry · 1943<br />oil on canvas<br />Imperial War Museum, London</p>
+          <p>
+            Snow, the Mather &amp; Platt works in Manchester, the crowd of
+            "matchstick men" streaming through the gate. Lowry was a rent
+            collector all his life and painted on the side.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Going_to_Work">wikipedia</a>
+          </p>
+          <p class="credit">image via Wikimedia Commons</p>
+        </div>
+      </article>
+
+      <h2>à ajouter &mdash; no free image found</h2>
+      <ul class="todo">
+        <li><a href="https://en.wikipedia.org/wiki/Gerald_and_Sara_Murphy">Gerald Murphy</a>, <em>Razor</em> (1924), <em>Watch</em> (1925) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Gerald+Murphy+Razor+1924+painting">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Mario_Sironi">Mario Sironi</a>, <em>Paesaggi urbani</em>, 1920s · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Mario+Sironi+paesaggio+urbano">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Aleksandr_Deyneka">Aleksandr Deineka</a>, <em>Building New Factories</em> (1926), Tretyakov · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Deineka+Building+New+Factories+1926">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Yuri_Pimenov_(painter)">Yuri Pimenov</a>, <em>Give to Heavy Industry!</em> (1927), Tretyakov · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Pimenov+Give+to+Heavy+Industry+1927">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Charles_Sheeler">Charles Sheeler</a>, <em>American Landscape</em> (1930), <em>Classic Landscape</em> (1931), <em>Rolling Power</em> (1939) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Charles+Sheeler+American+Landscape+Classic+Landscape+Rolling+Power">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Fernand_L%C3%A9ger">Fernand Léger</a>, <em>Les Constructeurs</em> (1950) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Fernand+L%C3%A9ger+Les+Constructeurs+1950">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Konrad_Klapheck">Konrad Klapheck</a>, typewriters and sewing machines, from 1955 · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Konrad+Klapheck+typewriter+painting">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/James_Rosenquist">James Rosenquist</a>, <em>F-111</em> (1964&ndash;65), MoMA · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Rosenquist+F-111+MoMA">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Neo_Rauch">Neo Rauch</a>, GDR factory memories, 2000s · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Neo+Rauch+painting+factory">images</a></li>
+        <li><a href="https://fr.wikipedia.org/wiki/Liu_Xiaodong">Liu Xiaodong</a>, <em>Three Gorges</em> paintings (2003&ndash;04), workers at the dam · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Liu+Xiaodong+Three+Gorges+painting">images</a></li>
+      </ul>
+
+      <h2>photographie</h2>
+
+      <article class="p" id="hine-mechanic">
+        <img src="images/web_hine-mechanic.jpg" style="width: 340px" alt="Lewis Hine, Power House Mechanic" />
+        <div class="info">
+          <h3>Power House Mechanic Working on Steam Pump</h3>
+          <p class="meta">Lewis Hine · 1920<br />gelatin silver print</p>
+          <p>
+            Hine started out photographing child labour to expose it. Here
+            he turns to the "work portrait": a man bent into the curve of the
+            machine. Man and machine as partners. Probably staged.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Lewis_Wickes_Hine_-_Power_House_Mechanic_-_Google_Art_Project.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="sheeler-conveyors">
+        <img src="images/web_sheeler-conveyors.jpg" style="width: 363px" alt="Sheeler, Criss-Crossed Conveyors, River Rouge Plant" />
+        <div class="info">
+          <h3>Criss-Crossed Conveyors, River Rouge Plant</h3>
+          <p class="meta">Charles Sheeler · 1927<br />gelatin silver print</p>
+          <p>
+            Ford hired Sheeler for six weeks to photograph the Rouge. The
+            conveyors cross the sky like a cathedral's flying buttresses.
+            He went on to paint from these photos for years.
+          </p>
+          <p class="links">
+            <a href="https://commons.wikimedia.org/wiki/File:Criss-Crossed_Conveyors,_River_Rouge_Plant,_Ford_Motor_Company.jpg">commons</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="becher-typologie">
+        <img src="images/web_becher-typologie.jpg" style="width: 381px" alt="Bernd and Hilla Becher, typology of winding towers" />
+        <div class="info">
+          <h3>Typologies (Fördertürme, Hochöfen&hellip;)</h3>
+          <p class="meta">Bernd &amp; Hilla Becher · from 1959<br />gelatin silver prints, grids</p>
+          <p>
+            Winding towers, blast furnaces, water towers, gas tanks. Shot
+            front-on under a grey sky, then hung in grids. "Anonymous
+            sculptures": they shot industry just as it was disappearing.
+            Their students became the Düsseldorf school: Gursky, Struth,
+            Ruff.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Bernd_and_Hilla_Becher">wikipedia</a>
+          </p>
+          <p class="credit">exhibition view, photo CC BY-SA 4.0, see commons page</p>
+        </div>
+      </article>
+
+      <article class="p" id="couturier-alstom">
+        <img src="images/web_couturier-alstom.jpg" style="width: 458px" alt="Stéphane Couturier, Usine Alstom, Belfort, Halle Power" />
+        <div class="info">
+          <h3>Melting Point &ndash; Usine Alstom, Belfort</h3>
+          <p class="meta">Stéphane Couturier · 2009&ndash;2012<br />photo n°16, Halle Power<br />digital colour print</p>
+          <p>
+            A turbine rotor in the Alstom hall at Belfort. <em>Melting
+            Point</em>: two shots of the same place merged into one, so the
+            blades and girders overlap. Too much detail, no clear plane, the
+            eye gets lost. Couturier also did Renault Billancourt, Toyota at
+            Valenciennes, building sites. Prix Niépce 2003.
+          </p>
+          <p class="links">
+            <a href="https://www.stephanecouturier.fr/photo-series/alstom---melting-point">stephanecouturier.fr</a> ·
+            <a href="https://fr.wikipedia.org/wiki/St%C3%A9phane_Couturier">wikipédia</a>
+          </p>
+          <p class="credit">&copy; Stéphane Couturier, low-res excerpt</p>
+        </div>
+      </article>
+
+      <ul class="todo">
+        <li><a href="https://en.wikipedia.org/wiki/Albert_Renger-Patzsch">Albert Renger-Patzsch</a>, <a href="https://en.wikipedia.org/wiki/Die_Welt_ist_sch%C3%B6n"><em>Die Welt ist schön</em></a> (1928), <em>Eisen und Stahl</em> (1931) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Renger-Patzsch+Eisen+und+Stahl">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Germaine_Krull">Germaine Krull</a>, <em>Métal</em> (1928), portfolio of 64 plates · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Germaine+Krull+M%C3%A9tal+1928">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Margaret_Bourke-White">Margaret Bourke-White</a>, <a href="https://en.wikipedia.org/wiki/Fort_Peck_Dam">Fort Peck Dam</a>, first <em>Life</em> cover (1936) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Bourke-White+Fort+Peck+Dam+Life+cover+1936">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Sebasti%C3%A3o_Salgado">Sebastião Salgado</a>, <em>Workers</em> (1993) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Salgado+Workers+1993">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Andreas_Gursky">Andreas Gursky</a>, factory interiors (<em>Siemens, Karlsruhe</em>, 1991) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Gursky+Siemens+Karlsruhe+1991">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Edward_Burtynsky">Edward Burtynsky</a>, <em>China</em> series, quarries, shipbreaking (2000s) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Burtynsky+China+factory">images</a></li>
+      </ul>
+
+      <h2>cinéma</h2>
+
+      <article class="p" id="film-lumiere">
+        <img src="images/web_film-lumiere.jpg" style="width: 467px" alt="La Sortie de l'usine Lumière à Lyon, frame" />
+        <div class="info">
+          <h3>La Sortie de l'usine Lumière à Lyon</h3>
+          <p class="meta">Louis Lumière · 1895<br />46 s, France</p>
+          <p>
+            The first film ever shown publicly is a factory gate at closing
+            time. Cinema starts with workers leaving work. Three versions
+            exist.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Workers_Leaving_the_Lumi%C3%A8re_Factory">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="film-metropolis">
+        <img src="images/web_film-metropolis.jpg" style="width: 272px" alt="Metropolis, German poster" />
+        <div class="info">
+          <h3>Metropolis</h3>
+          <p class="meta">Fritz Lang · 1927<br />Germany</p>
+          <p>
+            Workers in shifts underground, feeding the machine. The machine
+            turns into Moloch and swallows them. Plus the robot Maria. The
+            reference for everything that follows.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Metropolis_(1927_film)">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="film-vertov">
+        <img src="images/web_film-vertov.jpg" style="width: 469px" alt="Man with a Movie Camera, frame" />
+        <div class="info">
+          <h3>Человек с киноаппаратом (Man with a Movie Camera)</h3>
+          <p class="meta">Dziga Vertov · 1929<br />USSR</p>
+          <p>
+            No story, no actors, no intertitles. A day in a city, cut to the
+            rhythm of looms, trams and machines. The camera itself is a
+            machine, the "kino-eye". The optimistic side.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Man_with_a_Movie_Camera">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="film-a-nous-la-liberte">
+        <img src="images/web_film-a-nous-la-liberte.jpg" style="width: 344px" alt="À nous la liberté, poster" />
+        <div class="info">
+          <h3>À nous la liberté</h3>
+          <p class="meta">René Clair · 1931<br />France</p>
+          <p>
+            Prison and the gramophone factory: the same assembly line. The
+            producers sued Chaplin over <em>Modern Times</em>; Clair refused
+            to take part, saying he was flattered.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/%C3%80_Nous_la_Libert%C3%A9">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-modern-times">
+        <img src="images/web_film-modern-times.jpg" style="width: 329px" alt="Modern Times, poster" />
+        <div class="info">
+          <h3>Modern Times</h3>
+          <p class="meta">Charlie Chaplin · 1936<br />USA</p>
+          <p>
+            The tic from tightening bolts, the feeding machine, Charlot
+            swallowed by the gears. The last silent film, nearly: you only
+            hear machines, loudspeakers and a song in nonsense words.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Modern_Times_(film)">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="film-mon-oncle">
+        <img src="images/web_film-mon-oncle.jpg" style="width: 345px" alt="Mon Oncle, poster" />
+        <div class="info">
+          <h3>Mon Oncle</h3>
+          <p class="meta">Jacques Tati · 1958<br />France</p>
+          <p>
+            The Villa Arpel with its fish fountain, and the plastic hose
+            factory where Hulot breaks the extruder and the tubes come out
+            like sausages. Old Saint-Maur against modern gadgets.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Mon_Oncle">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-red-desert">
+        <img src="images/web_film-red-desert.jpg" style="width: 338px" alt="Il deserto rosso, poster" />
+        <div class="info">
+          <h3>Il deserto rosso</h3>
+          <p class="meta">Michelangelo Antonioni · 1964<br />Italy</p>
+          <p>
+            Antonioni's first colour film. Ravenna's petrochemical plants,
+            yellow smoke, painted fruit stalls. Monica Vitti falls apart.
+            Antonioni said he found the factories beautiful.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Red_Desert_(film)">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-playtime">
+        <img src="images/web_film-playtime.jpg" style="width: 346px" alt="Playtime, poster" />
+        <div class="info">
+          <h3>Playtime</h3>
+          <p class="meta">Jacques Tati · 1967<br />France, 70 mm</p>
+          <p>
+            Tativille: a whole glass-and-steel Paris built in Saint-Maurice.
+            The machine here is the city itself. It ruined Tati.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Playtime">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-eraserhead">
+        <img src="images/web_film-eraserhead.jpg" style="width: 357px" alt="Eraserhead, poster" />
+        <div class="info">
+          <h3>Eraserhead</h3>
+          <p class="meta">David Lynch · 1977<br />USA</p>
+          <p>
+            An industrial wasteland with a constant hiss and hum of machines.
+            Lynch drew on Philadelphia. The factory as a nightmare you can
+            hear.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Eraserhead">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="film-koyaanisqatsi">
+        <img src="images/web_film-koyaanisqatsi.jpg" style="width: 335px" alt="Koyaanisqatsi, poster" />
+        <div class="info">
+          <h3>Koyaanisqatsi</h3>
+          <p class="meta">Godfrey Reggio · 1982<br />USA, music Philip Glass</p>
+          <p>
+            Hopi for "life out of balance". No words. Time-lapse of highways,
+            assembly lines, hot dogs and crowds, all moving at the same speed.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Koyaanisqatsi">wikipedia</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="p" id="film-blade-runner">
+        <img src="images/web_film-blade-runner.jpg" style="width: 330px" alt="Blade Runner, poster" />
+        <div class="info">
+          <h3>Blade Runner</h3>
+          <p class="meta">Ridley Scott · 1982<br />USA</p>
+          <p>
+            The opening shot: Los Angeles 2019 as a refinery with flares,
+            based on the Teesside petrochemical works that Scott grew up near.
+            The replicants are the machines that want to be people.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Blade_Runner">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-tetsuo">
+        <img src="images/web_film-tetsuo.jpg" style="width: 342px" alt="Tetsuo: The Iron Man, poster" />
+        <div class="info">
+          <h3>鉄男 Tetsuo: The Iron Man</h3>
+          <p class="meta">Shinya Tsukamoto · 1989<br />Japan, 16 mm, black &amp; white</p>
+          <p>
+            A salaryman turns into scrap metal from the inside. Stop-motion,
+            noise, rust. Body horror meets machines.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Tetsuo:_The_Iron_Man">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-matrix">
+        <img src="images/web_film-matrix.png" style="width: 337px" alt="The Matrix, poster" />
+        <div class="info">
+          <h3>The Matrix</h3>
+          <p class="meta">Lana &amp; Lilly Wachowski · 1999<br />USA</p>
+          <p>
+            Metropolis turned around: the machines have won and run the
+            factory. Humans are grown in fields of pods as batteries. The
+            office is the dream, the power plant is the reality.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/The_Matrix">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-our-daily-bread">
+        <img src="images/web_film-our-daily-bread.jpg" style="width: 363px" alt="Unser täglich Brot, poster" />
+        <div class="info">
+          <h3>Unser täglich Brot</h3>
+          <p class="meta">Nikolaus Geyrhalter · 2005<br />Austria, documentary</p>
+          <p>
+            Industrial food production: abattoirs, greenhouses, chick sorting.
+            No commentary, no music, symmetrical wide shots. The Becher grid,
+            in motion.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Our_Daily_Bread_(2005_film)">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-manufactured-landscapes">
+        <img src="images/web_film-manufactured-landscapes.jpg" style="width: 334px" alt="Manufactured Landscapes, poster" />
+        <div class="info">
+          <h3>Manufactured Landscapes</h3>
+          <p class="meta">Jennifer Baichwal · 2006<br />Canada, documentary</p>
+          <p>
+            Follows Burtynsky in China. Opens with an eight-minute tracking
+            shot along a factory floor, workers in yellow, endlessly. The
+            sublime again, as in Loutherbourg.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/Manufactured_Landscapes">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <article class="p" id="film-walle">
+        <img src="images/web_film-walle.jpg" style="width: 333px" alt="WALL-E, poster" />
+        <div class="info">
+          <h3>WALL&middot;E</h3>
+          <p class="meta">Andrew Stanton (Pixar) · 2008<br />USA</p>
+          <p>
+            Earth is one big landfill. The last working machine compacts trash
+            cubes, piles them into towers and watches <em>Hello, Dolly!</em>
+            Nearly silent for the first 40 minutes, like Chaplin.
+          </p>
+          <p class="links">
+            <a href="https://en.wikipedia.org/wiki/WALL-E">wikipedia</a>
+          </p>
+          <p class="credit">poster, fair use via en.wikipedia</p>
+        </div>
+      </article>
+
+      <ul class="todo">
+        <li><a href="https://en.wikipedia.org/wiki/Sergei_Eisenstein">Eisenstein</a>, <a href="https://en.wikipedia.org/wiki/Strike_(1925_film)"><em>Стачка / Strike</em></a> (1925)</li>
+        <li><a href="https://en.wikipedia.org/wiki/Joris_Ivens">Joris Ivens</a>, <em>Philips Radio</em> (1931) · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Joris+Ivens+Philips+Radio+1931">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Jacques_Tati">Jacques Tati</a>, <a href="https://en.wikipedia.org/wiki/Trafic"><em>Trafic</em></a> (1971)</li>
+        <li><a href="https://en.wikipedia.org/wiki/James_Cameron">James Cameron</a>, <a href="https://en.wikipedia.org/wiki/The_Terminator"><em>The Terminator</em></a> (1984): the final fight in a factory</li>
+        <li><a href="https://en.wikipedia.org/wiki/Harun_Farocki">Harun Farocki</a>, <em>Arbeiter verlassen die Fabrik</em> (1995): a remake-essay on the Lumière film · <a class="g" href="https://www.google.com/search?tbm=isch&amp;q=Farocki+Arbeiter+verlassen+die+Fabrik">images</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Wang_Bing">Wang Bing</a>, <a href="https://en.wikipedia.org/wiki/Tie_Xi_Qu%3A_West_of_the_Tracks"><em>À l&#39;ouest des rails</em></a> (2002): the end of the Tiexi industrial district, 9 h</li>
+      </ul>
+
+      <h2>à lire</h2>
+      <ul class="todo">
+        <li>Hélène Valance, &laquo;&nbsp;<a href="https://journals.openedition.org/transatlantica/8446">Charles Sheeler, <em>Suspended Power</em> (1939)</a>&nbsp;&raquo;, <em>Transatlantica</em>, 1, 2017. On Sheeler's "Power" series for <em>Fortune</em>.</li>
+      </ul>
+
+      <footer>half-hand-coded · images: Wikimedia Commons &amp; en.wikipedia, public domain unless noted, low-res · compiled with Claude Opus 5.5</footer>
+    </div>
+  </body>
+</html>
