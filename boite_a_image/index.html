@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boîte à images</title>
+    <style>
+      body {
+        margin: 0;
+        background: #fbf8f0;
+        font-family: Baskerville, "Libre Baskerville", Georgia, serif;
+        color: #1e1c18;
+        font-size: 1.15em;
+        line-height: 1.6;
+      }
+      nav { position: fixed; top: 2rem; left: 2rem; width: 120px; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.6rem; }
+      nav a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #555;
+        text-decoration: none;
+      }
+      nav a.active { font-weight: bold; border-bottom: 1px solid #555; }
+      .page { max-width: 600px; margin: 0 0 0 190px; padding: 4rem 1rem 5rem 0; }
+      h1, footer { font-family: "Courier New", Courier, monospace; }
+      h1 { font-size: 1.6rem; font-weight: normal; letter-spacing: 0.05em; margin: 0 0 0.2rem; }
+      .sub { font-style: italic; color: #777; margin: 0 0 2.5rem; }
+      ul.artists { list-style: none; padding: 0; }
+      ul.artists li { margin-bottom: 0.8rem; }
+      a { color: #6b2a1a; }
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid #ccc;
+        font-size: 0.72rem;
+        color: #888;
+      }
+      @media (max-width: 900px) {
+        nav { position: static; width: auto; padding: 1rem; }
+        nav li { display: inline; margin-right: 1rem; }
+        .page { margin: 0; padding: 1rem 1rem 3rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../painting/index.html">painting</a></li>
+        <li><a href="../drawing/index.html">drawing</a></li>
+        <li><a href="../notes.html">notes</a></li>
+        <li><a href="index.html" class="active">images</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Boîte à images</h1>
+      <p class="sub">artists I like, one page each</p>
+
+      <p>
+        Each page = one screenshot of an image search, shrunk and
+        degraded, linked to the live results. No image hosted at
+        full size. Works belong to their authors.
+      </p>
+
+      <ul class="artists">
+        <li><a href="jeffrey_smart.html">Jeffrey Smart</a> (1921&ndash;2013)</li>
+        <li><a href="eleanor_swordy.html">Eleanor Swordy</a></li>
+      </ul>
+
+      <footer>
+        Screenshots of Google Images, reduced to 500px / 16 colors.
+        Remove on request.
+      </footer>
+    </div>
+  </body>
+</html>
