@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musées à voir</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f3ecdc;
+        font-family: Baskerville, Georgia, serif;
+        color: #2a1f14;
+        font-size: 1.15em;
+        line-height: 1.55;
+      }
+      nav { position: fixed; top: 2rem; left: 2rem; width: 120px; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.6rem; }
+      nav a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #5a3e28;
+        text-decoration: none;
+      }
+      nav a.active { font-weight: bold; border-bottom: 1px solid #5a3e28; }
+      .page { max-width: 750px; margin: 0 auto; padding: 3rem 1rem 4rem 190px; box-sizing: border-box; }
+      h1, h2, .tag, footer { font-family: "Courier New", Courier, monospace; }
+      h1 { font-size: 1.4rem; font-weight: normal; margin: 0 0 0.3rem; }
+      .sub { font-style: italic; color: #7a5c3a; margin: 0 0 2.5rem; }
+      h2 { font-size: 1rem; margin: 2.2rem 0 0.2rem; }
+      .tag { font-size: 0.75rem; color: #a08060; margin: 0 0 0.5rem; }
+      p { margin: 0 0 0.8rem; }
+      a { color: #6b2a1a; }
+      .scribble { font-style: italic; color: #8a3b1c; margin-left: 1.5rem; }
+      footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid #c8b89a; font-size: 0.75rem; color: #a08060; }
+      @media (max-width: 800px) {
+        nav { position: static; width: auto; padding: 1rem; }
+        nav li { display: inline; margin-right: 1rem; }
+        .page { padding: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../index.html" class="active">painting</a></li>
+        <li><a href="../../notes.html">notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Musées à voir</h1>
+      <p class="sub">liste, pas de visite faite (encore)</p>
+
+      <h2>Musée Marmottan Monet</h2>
+      <p class="tag">Paris 16e</p>
+      <p>
+        Monet en nombre (dont <em>Impression, soleil levant</em>), Berthe
+        Morisot. Petit musée, voir en une demi-journée.
+        <a href="https://www.marmottan.fr">marmottan.fr</a>
+      </p>
+
+      <h2>Madrid</h2>
+      <p class="tag">voyage à prévoir</p>
+      <p>
+        <b>Prado</b> &mdash; Velázquez, Goya, Bosch, Titien. Y aller
+        plusieurs fois plutôt que tout faire d'un coup.
+        <a href="https://www.museodelprado.es">museodelprado.es</a>
+      </p>
+      <p>
+        <b>Museo Sorolla</b> &mdash; ancienne maison-atelier de Joaquín
+        Sorolla. Lumière, plages, jardin.
+        <a href="https://www.museosorolla.es">museosorolla.es</a>
+      </p>
+
+      <h2>Bourdelle</h2>
+      <p class="tag">Paris 15e</p>
+      <p>
+        Musée Bourdelle, atelier et sculptures d'Antoine Bourdelle.
+        <a href="https://www.bourdelle.paris.fr">bourdelle.paris.fr</a>
+      </p>
+      <p class="scribble">
+        ? à confirmer : Bourdelle (sculpteur) ou autre chose.
+      </p>
+
+      <footer>half-hand-coded</footer>
+    </div>
+  </body>
+</html>
