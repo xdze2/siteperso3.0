@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessiner ou peindre, lectures</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f8f5ec;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #222;
+        font-size: 1.15em;
+        line-height: 1.55;
+      }
+      nav { position: fixed; top: 2rem; left: 2rem; width: 120px; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.6rem; }
+      nav a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #555;
+        text-decoration: none;
+      }
+      nav a.active { font-weight: bold; border-bottom: 1px solid #555; }
+
+      .page { max-width: 750px; margin: 0 auto; padding: 3rem 1rem 4rem 170px; }
+      h1, h2, footer, .src { font-family: "Courier New", Courier, monospace; }
+      h1 { font-size: 1.5rem; font-weight: normal; margin: 0 0 0.3rem; }
+      .sub { color: #777; font-style: italic; margin: 0 0 2.5rem; }
+      h2 { font-size: 0.9rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.15em; margin: 2.5rem 0 1rem; }
+      ol { padding-left: 1.4rem; }
+      li { margin-bottom: 0.9rem; }
+      .src { font-size: 0.75rem; }
+      .src a { margin-right: 0.8rem; }
+      a { color: #6b2a1a; }
+      .q { color: #8a3b1c; }
+      img { float: right; width: 200px; margin: 0 0 1rem 1.5rem; filter: sepia(15%); }
+
+      footer {
+        clear: both;
+        margin-top: 4rem;
+        padding-top: 1rem;
+        border-top: 1px solid #ccc;
+        font-size: 0.72rem;
+        color: #888;
+        text-align: center;
+      }
+      @media (max-width: 900px) {
+        nav { position: static; width: auto; padding: 1rem; }
+        nav li { display: inline; margin-right: 1rem; }
+        .page { padding: 1rem 1rem 3rem; }
+        img { width: 140px; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../recipe/index.html">cooking</a></li>
+        <li><a href="../../notes.html">notes</a></li>
+        <li><a href="../../projects/index.html">projects</a></li>
+        <li><a href="../index.html" class="active">painting</a></li>
+        <li><a href="../../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Dessiner ou peindre</h1>
+      <p class="sub">reading list, short. No angle yet. Draft notes <a href="index.html">here</a>.</p>
+
+      <h2>Old texts <span class="src">(free online)</span></h2>
+      <ol>
+        <li>
+          <b>Lodovico Dolce</b>, <em>Dialogo della pittura</em> (L'Aretino), 1557.
+          Venice answers Vasari: colore vs disegno, Titian vs Michelangelo.
+          <br /><span class="src"><a href="https://en.wikipedia.org/wiki/Lodovico_Dolce">wikipedia</a></span>
+        </li>
+        <li>
+          <b>Roger de Piles</b>, <em>Dialogue sur le coloris</em>, 1673.
+          The Rubéniste side of the querelle du coloris at the Académie.
+          <br /><span class="src"><a href="https://fr.wikipedia.org/wiki/Querelle_du_coloris">wikipédia: querelle</a></span>
+        </li>
+        <li>
+          <b>Horace Lecoq de Boisbaudran</b>, <em>L'Éducation de la mémoire pittoresque</em>, 1848.
+          Look, then draw from memory. Taught Fantin-Latour, Rodin (?).
+          <br /><span class="src">
+            <a href="https://archive.org/details/lducationdelam00lecouoft">archive.org fr</a>
+            <a href="https://archive.org/details/TheTrainingOfTheMemoryInArtAndTheEducationOfTheArtist">archive.org en, 1911</a>
+          </span>
+        </li>
+        <li>
+          <img src="images/web_guys-footmen.jpg" alt="Constantin Guys, French carriage footmen" />
+          <b>Charles Baudelaire</b>, <em>Le Peintre de la vie moderne</em>, Le Figaro, 1863.
+          On Constantin Guys. The sketch as modernity. Ch. II, <em>le croquis de mœurs</em>.
+          <br /><span class="src"><a href="https://fr.wikisource.org/wiki/L%E2%80%99Art_romantique/Le_Peintre_de_la_vie_moderne">wikisource</a></span>
+        </li>
+        <li>
+          <b>Max Klinger</b>, <em>Malerei und Zeichnung</em>, Leipzig, 1891.
+          Painting renders the visible, drawing (<em>Griffelkunst</em>) can go where the visible doesn't.
+          <br /><span class="src"><a href="https://archive.org/details/malereiundzeichn00klin_1">archive.org de</a></span>
+        </li>
+        <li>
+          <b>George Moore</b>, <em>Impressions and Opinions</em>, 1891.
+          Degas chapter. Degas on drawing from memory.
+          <br /><span class="src"><a href="https://archive.org/details/impressionsandop00mooruoft">archive.org</a></span>
+        </li>
+      </ol>
+
+      <h2>Books</h2>
+      <ol>
+        <li>
+          <b>Paul Valéry</b>, <em>Degas Danse Dessin</em>, 1936.
+          <span class="q">&laquo; Le dessin n'est pas la forme, il est la manière de voir la forme. &raquo;</span>
+        </li>
+        <li>
+          <b>Kimon Nicolaïdes</b>, <em>The Natural Way to Draw</em>, 1941. Gesture, timed poses. A method, not a theory.
+        </li>
+        <li>
+          <b>Betty Edwards</b>, <em>Drawing on the Right Side of the Brain</em>, 1979.
+          The neuroscience is dated, the exercises are not.
+        </li>
+        <li>
+          <b>John Berger</b>, <em>Berger on Drawing</em>, ed. Jim Savage, 2005.
+        </li>
+        <li>
+          <b>Tim Ingold</b>, <em>Lines: A Brief History</em>, 2007.
+        </li>
+        <li>
+          <b>Deanna Petherbridge</b>, <em>The Primacy of Drawing</em>, Yale, 2010.
+        </li>
+      </ol>
+
+      <h2>Research <span class="src">(to find, refs unchecked)</span></h2>
+      <ol>
+        <li>
+          <b>Cohen &amp; Bennett</b>, &laquo; Why can't most people draw what they see? &raquo;, 1997.
+          Perception vs hand vs decision errors.
+        </li>
+        <li>
+          <b>John Tchalenko</b>, eye-tracking of portrait painters and copying (?).
+        </li>
+        <li>
+          <b>Rebecca Chamberlain</b>, observational drawing skill and perception (?).
+        </li>
+      </ol>
+
+      <footer>half-hand-coded · 2026-10</footer>
+    </div>
+  </body>
+</html>
