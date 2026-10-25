@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perception: volume and depth</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1ede4;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 340px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.25rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: #6e6356; }
+      nav li.here > a { font-weight: bold; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a, h1, h2, .toc b, footer, .fig figcaption {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3a3026;
+        text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2.5rem; }
+      a { color: #1d3d6b; }
+      .toc { list-style: none; padding: 0; }
+      .toc li { margin-bottom: 1.2rem; }
+      .toc b { font-weight: normal; font-size: 1.05rem; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+          table.m { border-collapse: collapse; font-size: 0.8em; width: 100%; margin: 1rem 0; }
+      table.m th, table.m td { border-bottom: 1px solid #cfc5b3; padding: 0.25rem 0.4rem; text-align: left; vertical-align: top; }
+      table.m th { font-family: "Courier New", Courier, monospace; font-weight: normal; background: #e6dfd1; }
+      table.x td.c, table.x th.c { text-align: center; width: 2.6em; }
+      table.x th.c { font-size: 0.85em; }
+      .tw { overflow-x: auto; }
+      .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; align-items: start; }
+      .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+      .grid2 .fig, .grid3 .fig { margin: 0.5rem 0; }
+      .d { background: #f1e6c4; }
+      s { color: #7a6e5e; }
+      td.nb { font-size: 0.9em; }
+      .pn { font-family: "Courier New", Courier, monospace; font-size: 0.85rem; margin-top: 3rem; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li><a href="index.html">sommaire</a>
+        </li>
+        <li><a href="tone.html">1. tone</a>
+          <ul class="sub">
+            <li><a href="tone.html#pourquoi">Pourquoi</a></li>
+            <li><a href="tone.html#threshold-1-bit">Threshold (1 bit)</a></li>
+            <li><a href="tone.html#quantization-n-levels">Quantization (n levels)</a></li>
+            <li><a href="tone.html#dithering">Dithering</a></li>
+            <li><a href="tone.html#halftone">Halftone</a></li>
+            <li><a href="tone.html#stippling-pointill">Stippling (pointillé)</a></li>
+            <li><a href="tone.html#tone-reproduction-how-many-marks">Tone reproduction: how many marks?</a></li>
+            <li><a href="tone.html#retenir">Retenir</a></li>
+          </ul>
+        </li>
+        <li><a href="hatching.html">2. hatching</a>
+          <ul class="sub">
+            <li><a href="hatching.html#a-tone-from-lines">A. Tone from lines</a></li>
+            <li><a href="hatching.html#b-adding-orientation">B. Adding orientation</a></li>
+            <li><a href="hatching.html#c-adding-texture">C. Adding texture</a></li>
+            <li><a href="hatching.html#d-methods-table">D. Methods table</a></li>
+          </ul>
+        </li>
+        <li><a href="lines.html">3. lines</a>
+          <ul class="sub">
+            <li><a href="lines.html#a-lines-from-an-image">A. Lines from an image</a></li>
+            <li><a href="lines.html#b-lines-from-3d">B. Lines from 3D</a></li>
+            <li><a href="lines.html#c-line-quality">C. Line quality</a></li>
+            <li><a href="lines.html#d-depth-with-ink-only">D. Depth with ink only</a></li>
+            <li><a href="lines.html#e-line-simplification">E. Line simplification</a></li>
+            <li><a href="lines.html#f-tools">F. Tools</a></li>
+          </ul>
+        </li>
+        <li class="here"><a href="perception.html">4. perception</a>
+          <ul class="sub">
+            <li><a href="perception.html#the-illusion">1. The illusion</a></li>
+            <li><a href="perception.html#volume">2. Volume</a></li>
+            <li><a href="perception.html#depth">3. Depth</a></li>
+            <li><a href="perception.html#encoding">4. Encoding: information → marks</a></li>
+            <li><a href="perception.html#open-questions">5. Open questions</a></li>
+          </ul>
+        </li>
+        <li><a href="references.html">references</a>
+          <ul class="sub">
+            <li><a href="references.html#surveys-books">Surveys &amp; books</a></li>
+            <li><a href="references.html#tone">Tone: dithering, halftone, stippling</a></li>
+            <li><a href="references.html#hatching">Hatching &amp; engraving</a></li>
+            <li><a href="references.html#lines-contours">Lines &amp; contours</a></li>
+            <li><a href="references.html#depth-art">Depth &amp; the engravers</a></li>
+            <li><a href="references.html#perception">Perception, motion, forces</a></li>
+            <li><a href="references.html#software">Software &amp; libraries</a></li>
+            <li><a href="references.html#images">Images (Wikimedia Commons)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>4. Perception: encoding volume and depth</h1>
+      <p>
+        The question of the whole course: a sheet is flat, the eye sees a
+        scene. Which <b>cues</b> make that illusion, how do engravers put
+        them in ink, how does an algorithm do it. First the perception
+        side (what the eye uses), then the encoding side (which
+        information goes into which property of the marks).
+      </p>
+
+      <h2 id="the-illusion">1. The illusion</h2>
+      <p>
+        A print is flat and binary: ink or no ink. Yet it is seen both as a
+        surface (paper, marks) and as a scene (volumes, distance). Gombrich
+        called it the double reading (<i>Art and Illusion</i>, 1960); Pirenne
+        (<i>Optics, Painting and Photography</i>, 1970) looked at why a
+        perspective picture still works when it is viewed from the wrong
+        place: the awareness of the surface compensates.
+      </p>
+      <p>
+        What a still drawing <b>loses</b>: binocular disparity, motion
+        parallax, accommodation and vergence. Three of the strongest
+        cues at short range. Worse, the flatness cues compete: frame, paper
+        grain, visible marks, no blur. The drawing never fully wins, and
+        doesn't have to.
+      </p>
+      <p>
+        What is left are the <b>pictorial cues</b>: the ones that survive in
+        a single static image. Exactly the engraver's toolbox. Two
+        questions, two scales:
+      </p>
+      <ul>
+        <li><b>Volume</b>: the shape of one object (is it a bump, a dent, round, folded).</li>
+        <li><b>Depth</b>: the layout of the scene (what is in front, how far).</li>
+      </ul>
+
+      <h2 id="volume">2. Volume</h2>
+      <p>
+        For each cue: what the eye does, what the artist does, what the
+        algorithm does.
+      </p>
+
+      <h3 id="v-shading">Shading</h3>
+      <p>
+        <b>Eye.</b> Shape from shading is ill-posed: a grey ramp fits a bump
+        and a dent. The visual system settles it with a prior: light comes
+        from above (Ramachandran 1988). Flip the image and bumps become
+        dents. A second ambiguity, the bas-relief: the same image fits a
+        family of flattened or stretched surfaces (Belhumeur, Kriegman &amp;
+        Yuille 1999). Shading gives shape up to a depth scale.
+      </p>
+      <figure class="fig" id="fig-light-above">
+        <img src="images/percep_light_above.png" alt="shaded discs, lit from above or from below, grey and stippled" />
+        <figcaption>
+          Same disc, light from above or from below (2nd and 5th). Top
+          row: continuous grey. Bottom row: stipple only, same
+          luminance. Most read the 1st, 3rd, 4th, 6th as bumps, the others
+          as dents. The prior survives in ink.
+        </figcaption>
+      </figure>
+      <p>
+        <b>Artist.</b> One consistent light, usually from above.
+        Lit side white, <i>ombre propre</i> with hatching that turns with the
+        form, <i>ombre port&eacute;e</i> as a separate flat regime.
+        <b>Algorithm.</b> Tone = n&middot;l, then threshold, dither or hatch
+        density. Choose the light direction for the prior, not for physics.
+        &rarr; <a href="tone.html">tone</a>,
+        <a href="hatching.html#a-tone-from-lines">hatching A</a>,
+        <a href="hatching.html#fig-invert">inversion</a>.
+      </p>
+
+      <h3 id="v-contour">Occluding contour and junctions</h3>
+      <p>
+        <b>Eye.</b> The silhouette alone says a lot. Koenderink (1984): the
+        sign of the curvature of the contour in the image gives the sign of the
+        Gaussian curvature of the surface behind it. Convex contour,
+        convex (dome-like) surface. Concave contour point, saddle.
+        Inflection, the surface is flat in one direction (parabolic line). And
+        the <b>junctions</b> where lines meet tell which edge passes
+        behind which: a T-junction means the stem is hidden by the bar. Line
+        labelling (Huffman 1971, Clowes 1971, Waltz 1975) turned this into
+        a constraint problem: each edge is convex, concave or occluding.
+      </p>
+      <figure class="fig" id="fig-occlusion">
+        <img src="images/percep_occlusion.png" alt="square and circle with four line treatments" />
+        <figcaption>
+          The same two outlines. 1: both complete, X-junctions, no
+          order (transparent). 2: circle stops at the square, T-junctions,
+          square in front. 3: square stops at the circle, circle in front.
+          4: gap before the junction (the engraver's way): the order is
+          even stronger.
+        </figcaption>
+      </figure>
+      <p>
+        <b>Artist.</b> Outline broken where the form turns away or is
+        covered; a gap left in the line near an overlap; line weight
+        heavier on the bearing side. <b>Algorithm.</b> Hidden-line removal
+        by object id (clip the stroke where something is in front, then
+        shorten it by a small margin), contours only where the
+        depth jumps. Suggestive contours add the curvature
+        information the silhouette misses.
+        &rarr; <a href="lines.html#b-lines-from-3d">lines B</a>,
+        <a href="lines.html#c-line-quality">lines C</a>.
+      </p>
+
+      <h3 id="v-direction">Line direction and texture</h3>
+      <p>
+        <b>Eye.</b> Strokes are read as lying on the surface. Which way
+        they run changes the perceived shape. Interrante (1997) proposed
+        strokes along the principal curvature directions; Girshick,
+        Interrante, Haker &amp; Lemoine (2000, &laquo; Line direction
+        matters &raquo;) found them to convey shape better than other
+        orientations; Kim, Hagh-Shenas &amp; Interrante (2004) tested
+        texture orientation on shape categorization. Effect not huge, but
+        consistent.
+      </p>
+      <figure class="fig" id="fig-line-direction">
+        <img src="images/percep_line_direction.png" alt="a vase hatched along parallels, at a fixed angle, with random short strokes" />
+        <figcaption>
+          Same surface, same light, same amount of ink. Left: strokes along
+          a principal direction (the parallels: cross-contours). Middle: fixed
+          angle, 40&deg;. Right: short strokes, random direction. Only the
+          left one draws the roundness; the middle reads as a flat
+          texture with tone, the right as noise on a silhouette.
+        </figcaption>
+      </figure>
+      <p>
+        <b>Artist.</b> <i>Cross-contours</i>: hatching that wraps the form
+        like a bracelet, the first thing taught in figure drawing; in
+        engraving, the lines follow the form (Mellan, D&uuml;rer). <b>Algorithm.</b>
+        Direction field from the principal directions (or from the
+        normals), streamlines or LIC along it. Conflict with the object's own
+        texture direction: see the note below.
+        &rarr; <a href="hatching.html#b-adding-orientation">hatching B</a>.
+      </p>
+
+      <h3 id="v-how-well">How well do line drawings depict shape?</h3>
+      <p>
+        Measured with the <b>gauge figure</b> (Koenderink, van Doorn &amp;
+        Kappers 1992): the observer rotates a small oriented disc until it
+        looks tangent to the surface. This gives a perceived normal field,
+        which varies from one observer to another (a depth scale again).
+        Cole et al. (2009) used it on 3D models: line drawings made by artists
+        compared with computer line drawings (contours, suggestive
+        contours, ridges and valleys, apparent ridges). Results:
+        people read shape from lines well, artists' drawings are usually
+        as good as shading, and each algorithm misses some of the lines
+        the artists drew. No ground truth for the drawing, only for the
+        reading.
+        &rarr; <a href="lines.html#b-lines-from-3d">lines B</a>.
+      </p>
+
+      <h2 id="depth">3. Depth</h2>
+      <p>
+        Depth cues after Cutting &amp; Vishton (1995), who classify
+        them by the range where each is effective: <i>personal</i>
+        (under about 2&nbsp;m), <i>action</i> (about 2&ndash;30&nbsp;m),
+        <i>vista</i> (beyond). Ranges are rough. The cues struck
+        through are not available on a flat sheet. The last three
+        lines are additions here (not in their list, but part of the
+        engraver's vocabulary).
+      </p>
+      <div class="tw">
+      <table class="m">
+        <tr><th>Cue</th><th>Range</th><th>In ink (artist)</th><th>Algorithm</th><th>Course</th></tr>
+        <tr><td><b>occlusion</b></td><td>all</td><td>overlap, T-junctions, gap in the hidden line</td><td>visibility, hidden-line removal, clip by object id</td><td><a href="#fig-occlusion">fig</a>, <a href="lines.html#b-lines-from-3d">B</a></td></tr>
+        <tr><td><b>relative size</b></td><td>all</td><td>same object smaller, smaller strokes</td><td>perspective projection, <code>w0/z<sup>&alpha;</sup></code></td><td><a href="lines.html#d-depth-with-ink-only">D</a></td></tr>
+        <tr><td><b>height in the visual field</b></td><td>action, vista</td><td>far = higher on the sheet, up to the horizon</td><td>projection of a ground plane</td><td><a href="lines.html#e-line-simplification">E</a> (tree landscape)</td></tr>
+        <tr><td><b>relative density</b> (texture gradient, Gibson 1950)</td><td>all</td><td>strokes and spacing finer and tighter with distance</td><td>texture in perspective; density must be controlled, not left to scale</td><td><a href="lines.html#e-line-simplification">E</a>, <a href="#encoding">marks</a></td></tr>
+        <tr><td><b>aerial perspective</b></td><td>vista</td><td>contrast falls, lines thinner, directions simplified, contours dropped (7 rules, incl. repoussoir)</td><td>remap tone, width, direction and contour by depth</td><td><a href="lines.html#d-depth-with-ink-only">D</a></td></tr>
+        <tr><td>linear perspective <i>(added)</i></td><td>all</td><td>converging lines, floor ruled to a vanishing point</td><td>projection</td><td><a href="#fig-shadow-ball">fig</a></td></tr>
+        <tr><td>cast shadows <i>(added)</i></td><td>personal, action</td><td>hatched <i>ombre port&eacute;e</i>, contact shadow</td><td>shadow ray, separate hatch regime</td><td><a href="#fig-shadow-ball">fig</a></td></tr>
+        <tr><td>level of detail <i>(added)</i></td><td>all</td><td><i>indication</i>: full texture near, suggested, absent</td><td>LOD by depth, stroke culling, simplification</td><td><a href="lines.html#e-line-simplification">E</a></td></tr>
+        <tr><td><s>binocular disparity</s></td><td>personal, action</td><td>lost</td><td>(stereo pair, outside the course)</td><td></td></tr>
+        <tr><td><s>motion parallax</s></td><td>personal, action</td><td>lost</td><td>(animation, outside the course)</td><td></td></tr>
+        <tr><td><s>convergence, accommodation</s></td><td>personal</td><td>lost</td><td>&mdash;</td><td></td></tr>
+      </table>
+      </div>
+
+      <h3 id="d-shadows">Cast shadows anchor the object</h3>
+      <p>
+        The shadow position says where the object touches the ground, or
+        how high it is above. Kersten, Mamassian &amp; Knill (1997):
+        the ball moves along the same path in the image, but when its
+        shadow moves differently the ball is seen to rise or recede in
+        depth instead. Size and image position do not change, only the link
+        to the ground. In drawing: no shadow, the object floats; a contact
+        shadow, the object sits.
+      </p>
+      <figure class="fig" id="fig-shadow-ball">
+        <img src="images/percep_shadow_ball.png" alt="a ball in a box, shadow touching or detached" />
+        <figcaption>
+          Same ball at the same place on the sheet. Left: the shadow touches the
+          ball, it sits on the floor. Right: the shadow is lower and to the right, the
+          ball floats above the floor, or is closer to us.
+        </figcaption>
+      </figure>
+
+      <h3 id="d-texture">Texture gradient and relative density</h3>
+      <p>
+        Uniform texture on a plane, seen in perspective, compresses with
+        distance: that alone gives slant and distance (Gibson). In ink
+        the trap is the opposite one: more lines per area far away
+        makes the horizon darker, against atmospheric perspective.
+        See <a href="lines.html#e-line-simplification">lines E</a>.
+      </p>
+
+      <h3 id="d-atmospheric">Atmospheric perspective in lines</h3>
+      <p>
+        No colour, no real grey: the haze has to become density and
+        character of the line. Seven engraving rules (decreasing contrast,
+        finer lines, simplified direction, vanishing contours, less detail,
+        repoussoir, broken strokes far away), each with a renderer rule:
+        <a href="lines.html#d-depth-with-ink-only">lines D</a>.
+      </p>
+
+      <h3 id="d-lod">Level of detail is a depth cue</h3>
+      <p>
+        Near: every leaf, every blade. Far: a tonal patch, a few strokes
+        that suggest. An engraver stops drawing as the eye would stop
+        resolving. The algorithm has to <i>decide</i> what to keep
+        (select, merge, simplify), not only shrink. Tree landscape:
+        <a href="lines.html#e-line-simplification">lines E</a>.
+      </p>
+
+      <h3 id="d-repoussoir">Repoussoir</h3>
+      <p>
+        A dark foreground element (tree, rock, figure) at the edge of the
+        picture, strong contrast and detail: it pushes the rest back. It
+        sets the scale of the depth range. The cheapest depth cue: one
+        black mass in front, everything else drops by comparison.
+        &rarr; <a href="lines.html#d-depth-with-ink-only">lines D</a>.
+      </p>
+
+      <h2 id="encoding">4. Encoding: information &rarr; marks</h2>
+      <p>
+        Now the other side. Ink has to carry an <b>information field</b>
+        from the scene. Each method is a choice: which field goes into
+        which <b>property of the marks</b>. Physics vocabulary for the
+        marks (density, anisotropy, homogeneity, order, defects), Marr's
+        levels for the information (signal, 2&frac12;D sketch, object), plus
+        one more level on top: the symbol.
+      </p>
+
+      <h3 id="e-information">The information</h3>
+      <p>
+        From physics to symbol. Roughly Marr's ladder (<i>Vision</i>,
+        1982): primal sketch &rarr; 2&frac12;D sketch &rarr; 3D object
+        model, then meaning. Volume cues live in the geometry rows (order
+        1, 2, contours), depth cues in the order 0 row and in light.
+      </p>
+      <div class="tw">
+      <table class="m">
+        <tr><th>Level</th><th>Information</th><th>Field type</th><th>Source in a renderer</th></tr>
+        <tr><td>light</td><td><b>value</b> (luminance)</td><td>scalar</td><td>shaded image</td></tr>
+        <tr><td>light</td><td><b>shadow type</b>: lit side, form shadow (ombre propre), cast shadow (ombre port&eacute;e), reflected light, highlight</td><td>categorical label</td><td>n&middot;l sign, shadow ray, specular term</td></tr>
+        <tr><td>geometry, order 0</td><td><b>depth</b></td><td>scalar, used through its gradient</td><td>z-buffer</td></tr>
+        <tr><td>geometry, order 1</td><td><b>surface orientation</b></td><td>vector &rarr; drawn as a <i>line field</i> (&theta; &equiv; &theta;+180&deg;)</td><td>normal buffer</td></tr>
+        <tr><td>geometry, order 2</td><td><b>curvature</b>, principal directions</td><td>symmetric 2-tensor: two directions</td><td>mesh, shape operator</td></tr>
+        <tr><td>geometry, singular</td><td><b>contours</b>: silhouette (depth jump), crease (normal jump), boundary</td><td>discontinuities, sets of measure zero</td><td>edges in G-buffers</td></tr>
+        <tr><td>matter</td><td><b>material</b>: matte/glossy, roughness, grain</td><td>statistics of a small-scale texture</td><td>BRDF, roughness map</td></tr>
+        <tr><td>object</td><td><b>identity, figure/ground, object texture</b> (wood, fur, foliage)</td><td>segmentation, labels</td><td>object id buffer</td></tr>
+        <tr><td>dynamics</td><td><b>movement</b>: velocity, trajectory, phase of a gesture</td><td>vector field over time, not in one frame</td><td>motion vectors, previous frames, animation curves</td></tr>
+        <tr><td>dynamics</td><td><b>forces</b>: weight distribution, support, tension, balance</td><td>stress tensor; invisible, only inferred</td><td>physics sim, center of mass, contact points</td></tr>
+        <tr><td>meaning</td><td><b>convention</b>: map hachures (slope), section hatching (cut), motion lines</td><td>code shared with the reader</td><td>&mdash; (a rule, not a buffer)</td></tr>
+        <tr><td>meaning</td><td><b>symbol</b>: the drawn tree, the cloud as a curl, importance</td><td>category</td><td>&mdash; (semantics, attention)</td></tr>
+      </table>
+      </div>
+      <p>
+        The dynamics level is different in kind: neither movement nor
+        force is in one frame. A photograph gives motion blur at most, and
+        no forces. A drawing can show both: the trace of time (several
+        positions, speed lines) and the causes (which leg carries the
+        weight). Information <i>beyond the visible</i>, half-way to
+        convention. Higher up, the mark resembles what it stands for less
+        and less: density &rarr; value is analog, glyph &rarr; &laquo; tree &raquo;
+        is a code. Hatching sits in between.
+      </p>
+
+      <h3 id="e-material">The marks, as a material</h3>
+      <p>Describe the ink by its statistics:</p>
+      <ul>
+        <li><b>Density</b> &mdash; ink per area. Value.</li>
+        <li><b>Anisotropy</b> &mdash; dots carry no direction. Lines carry one, like a nematic liquid crystal: a direction without sign. Cross-hatching carries two: the carrier of a tensor (curvature).</li>
+        <li><b>Homogeneity</b> &mdash; uniform statistics read as &laquo; flat, facing me &raquo;. A gradient of spacing or scale reads as depth: <a href="https://en.wikipedia.org/wiki/Texture_gradient">texture gradient</a>.</li>
+        <li><b>Scale</b> &mdash; spacing, stroke length. Finer far away, and indication.</li>
+        <li><b>Order</b> &mdash; crystal (line screen, Bayer), liquid (blue noise, short dashes), gas (white noise). Material, hand vs machine.</li>
+        <li><b>Correlation length</b> &mdash; long streamlines say &laquo; clean continuous surface &raquo;; short dashes promise nothing.</li>
+        <li><b>Amplitude</b> &mdash; width, contrast. Value; atmospheric depth.</li>
+        <li><b>Polarity</b> &mdash; black on white or the reverse (<a href="hatching.html#fig-invert">inversion</a>).</li>
+        <li><b>Trace in time</b> &mdash; repeated shape along a path, streaks along the velocity. Movement.</li>
+        <li><b>Tension of the line</b> &mdash; taut or sagging, heavier on the bearing side. Forces.</li>
+        <li><b>Defects</b> &mdash; a contour is a domain wall of the field; poles of a hatched sphere are real singularities. Engravers place or hide them.</li>
+      </ul>
+
+      <div class="grid3">
+        <figure class="fig"><img src="images/tone_bayer.png" alt="Bayer dither" /><figcaption>crystal: Bayer</figcaption></figure>
+        <figure class="fig"><img src="images/tone_bluenoise.png" alt="blue noise dither" /><figcaption>liquid: blue noise</figcaption></figure>
+        <figure class="fig"><img src="images/tone_noise.png" alt="white noise dither" /><figcaption>gas: white noise</figcaption></figure>
+      </div>
+      <p>Same density, three orders. Same value, different material.</p>
+
+      <div class="grid2">
+        <figure class="fig"><img src="images/hatch_layers.png" alt="threshold layers" /><figcaption>anisotropy, but fake: the direction comes from the tone, not from the surface</figcaption></figure>
+        <figure class="fig"><img src="images/hatch_flow.png" alt="streamlines" /><figcaption>anisotropy carrying orientation: the direction is the surface's</figcaption></figure>
+      </div>
+
+      <h3 id="e-mapping">Mapping: information &rarr; carrier</h3>
+      <p>Default choices. Artists swap them all the time.</p>
+      <div class="tw">
+      <table class="m">
+        <tr><th>Information</th><th>Usual carrier</th><th>Alternatives</th></tr>
+        <tr><td>value</td><td>density</td><td>width, polarity, number of layers</td></tr>
+        <tr><td>shadow type</td><td>change of regime (cast shadow: flat contre-taille; form shadow: follows the form)</td><td>polarity, a contour on the shadow line</td></tr>
+        <tr><td>orientation</td><td>anisotropy (stroke direction)</td><td>stroke curvature, dot elongation</td></tr>
+        <tr><td>curvature</td><td>second direction (cross-hatching), curvature of the strokes</td><td>suggestive contours</td></tr>
+        <tr><td>depth</td><td>scale, contrast, homogeneity gradient</td><td>line weight, contour drop-out, repoussoir</td></tr>
+        <tr><td>contour</td><td>1D line</td><td>domain wall without line (texture change)</td></tr>
+        <tr><td>material</td><td>order, correlation length</td><td>stroke character (wobble, length)</td></tr>
+        <tr><td>object texture</td><td>its own direction field (grain, fur)</td><td>glyphs repeated</td></tr>
+        <tr><td>movement</td><td>speed lines (streaks along the velocity)</td><td>repeated positions (Marey), smeared or doubled contours, line of action</td></tr>
+        <tr><td>forces</td><td>line weight on the bearing side, contact shadow</td><td>line of action, axes of contrapposto, tension of the contour, compression folds, hatching along stress trajectories</td></tr>
+        <tr><td>symbol</td><td>glyph</td><td>convention (hachure, section)</td></tr>
+      </table>
+      </div>
+      <figure class="fig">
+        <img src="images/class_marey_bicycle.jpg" alt="Marey, chronophotograph of a man on a bicycle" />
+        <figcaption>
+          &Eacute;tienne-Jules Marey, <i>Chronophotograph of a Man on a
+          Bicycle</i>, c. 1885&ndash;1890. Movement as repetition: one
+          image, several times. The source of Duchamp's
+          <a href="https://en.wikipedia.org/wiki/Nude_Descending_a_Staircase,_No._2"><i>Nu descendant un escalier</i></a>.
+          <a href="https://en.wikipedia.org/wiki/Chronophotography">wikipedia: chronophotography</a>,
+          <a href="https://commons.wikimedia.org/wiki/File:%C3%89tienne_Jules_Marey,_Chronophotograph_of_a_Man_on_a_Bicycle,_c._1885-1890,_NGA_125658.jpg">Commons</a>, CC0.
+        </figcaption>
+      </figure>
+      <p>
+        Forces have a physics form that fits: weight distribution in a
+        solid is a <b>stress tensor</b>, with principal directions like
+        curvature. Culmann and Meyer drew the stress trajectories in the
+        femur head and the trabeculae lie along them
+        (<a href="https://en.wikipedia.org/wiki/Wolff%27s_law">Wolff's law</a>):
+        the bone is a hatching of its forces. Same idea, cruder, in figure
+        drawing: <a href="https://en.wikipedia.org/wiki/Contrapposto">contrapposto</a>,
+        plumb line, line of action. Also
+        <a href="https://en.wikipedia.org/wiki/Photoelasticity">photoelasticity</a>.
+      </p>
+      <p class="note">
+        <b>Conflict.</b> One stroke direction cannot carry both the
+        surface orientation and the object's own texture direction (wood
+        grain on a cylinder). Engravers decide per object. An algorithm has
+        to choose, or give each its own family of lines.
+      </p>
+
+      <h3 id="e-matrix">Methods &times; information</h3>
+      <p>
+        Each method lets some fields through and drops the others.
+        &#9679; carried, &#9675; partly or if designed for it. The depth
+        column is shaded: it is the course's question.
+      </p>
+      <div class="tw">
+      <table class="m x">
+        <tr><th>Method</th><th class="c">value</th><th class="c">shadow</th><th class="c">orient.</th><th class="c">curv.</th><th class="c d"><b>depth</b></th><th class="c">contour</th><th class="c">material</th><th class="c">motion</th><th class="c">force</th><th class="c">symbol</th></tr>
+        <tr><td><a href="tone.html#threshold-1-bit">threshold</a></td><td class="c">&#9675;</td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="tone.html#dithering">dithering</a>, <a href="tone.html#halftone">halftone</a></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="tone.html#stippling-pointill">stippling</a></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-ramp">line screen</a></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-layers">threshold layers</a></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-engrave">width-modulated engraving</a></td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9679;</td><td class="c">&#9675;</td><td class="c d"></td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>stroke textures (Winkenbach &amp; Salesin)</td><td class="c">&#9679;</td><td class="c">&#9675;</td><td class="c">&#9675;</td><td class="c"></td><td class="c d">&#9675;</td><td class="c">&#9675;</td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-dashes">orientable dashes</a> (Salisbury)</td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9679;</td><td class="c"></td><td class="c d"></td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-flow">streamlines</a> (Jobard &amp; Lefer + flow field)</td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9679;</td><td class="c">&#9675;</td><td class="c d"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>curvature hatching (Hertzmann &amp; Zorin)</td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9679;</td><td class="c">&#9679;</td><td class="c d"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>Tonal Art Maps</td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td><td class="c d">&#9675;</td><td class="c"></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-lic">LIC</a></td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9679;</td><td class="c"></td><td class="c d"></td><td class="c"></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="hatching.html#fig-invert">black/white inversion</a></td><td class="c">&#9679;</td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="lines.html#a-lines-from-an-image">image edges</a> (Sobel, XDoG)</td><td class="c">&#9675;</td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="lines.html#b-lines-from-3d">G-buffer contours</a></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d">&#9675;</td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>suggestive contours</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c">&#9679;</td><td class="c d"></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="lines.html#c-line-quality">sketchy lines</a></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9675;</td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td><a href="lines.html#d-depth-with-ink-only">depth rules</a> (atmospheric)</td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d">&#9679;</td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>cross-contours, principal-direction hatching (<a href="https://doi.org/10.1145/340916.340922">Girshick et al. 2000</a>)</td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9679;</td><td class="c d">&#9679;</td><td class="c d">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>cast and contact shadows (<a href="#fig-shadow-ball">figure</a>)</td><td class="c">&#9675;</td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c d">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td></tr>
+        <tr><td><a href="lines.html#e-line-simplification">level of detail</a> (indication)</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d">&#9679;</td><td class="c"></td><td class="c">&#9675;</td><td class="c"></td><td class="c"></td><td class="c"></td></tr>
+        <tr><td>speed lines (<a href="https://doi.org/10.1145/311625.312369">Masuch et al. 1999</a>; <a href="https://doi.org/10.1016/j.gmod.2004.12.002">Collomosse et al. 2005</a>)</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9675;</td><td class="c"></td><td class="c">&#9679;</td><td class="c"></td><td class="c">&#9675;</td></tr>
+        <tr><td>line of action (<a href="https://doi.org/10.1145/2508363.2508397">Guay, Cani &amp; Ronfard 2013</a>)</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9675;</td><td class="c"></td><td class="c">&#9675;</td><td class="c">&#9679;</td><td class="c">&#9675;</td></tr>
+        <tr><td>neural line drawing (Informative Drawings, CLIPasso)</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c d"></td><td class="c">&#9679;</td><td class="c"></td><td class="c"></td><td class="c"></td><td class="c">&#9675;</td></tr>
+      </table>
+      </div>
+      <p>
+        Reading the table: the tone chapter fills the first column; the
+        hatching chapter adds orientation, curvature and material; the lines
+        chapter fills contour and depth. Depth is carried by few methods
+        and mostly as a side effect of line weight or of a rule applied by
+        hand. Shadow type, motion, force and symbol are almost empty:
+        handled by hand in engraving, by conventions in technical drawing
+        and cartography.
+      </p>
+
+      <h2 id="open-questions">5. Open questions</h2>
+      <ul>
+        <li>Depth as a first-class channel: one parameter z driving contrast, width, direction, contour and detail together, so that the seven rules are one slider, not seven.</li>
+        <li>Light chosen for the prior, not for physics: pick the light direction (and the sign of the bas-relief) that makes the shape read right. Perceptual optimisation of the light, in ink.</li>
+        <li>Cast shadows as their own regime: hatch <i>ombre port&eacute;e</i> and <i>ombre propre</i> differently, with the contact shadow doing the anchoring.</li>
+        <li>Defects of the line field: where to put the singularities (poles, saddles) so they read as intended.</li>
+        <li>Measure instead of believe: gauge-figure on an ink render, per method of the matrix. Which hatching conveys shape best, same ink.</li>
+        <li>Order as a parameter: one slider from crystal to gas, mapped to the material.</li>
+        <li>Forces as hatching: strokes along the principal stress directions, the way trabeculae follow the load. Weight made visible.</li>
+        <li>Toward the symbol: when does a texture of marks become a glyph? Foliage drawn as repeated &laquo; leaf &raquo; marks is half-way.</li>
+      </ul>
+
+      <p class="pn">
+        &larr; <a href="lines.html">3. lines</a> &middot;
+        <a href="references.html">references</a> &rarr;
+      </p>
+
+      <footer>
+        <hr />
+        articles / drawing_computer &mdash; v1, 2026-10
+      </footer>
+
+    </div>
+  </body>
+</html>

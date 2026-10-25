@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. Tone value &mdash; Computer drawing &amp; etching render</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1ede4;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 340px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.25rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: #6e6356; }
+      nav li.here > a { font-weight: bold; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a, h1, h2, .toc b, footer, .fig figcaption {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3a3026;
+        text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2.5rem; }
+      a { color: #1d3d6b; }
+      .toc { list-style: none; padding: 0; }
+      .toc li { margin-bottom: 1.2rem; }
+      .toc b { font-weight: normal; font-size: 1.05rem; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+      .grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+      .grid .fig { margin: 0.5rem 0; flex: 1 1 230px; max-width: 100%; }
+      h3 { font-family: "Courier New", Courier, monospace; font-size: 1rem; font-weight: normal; margin-top: 1.8rem; }
+      .px { image-rendering: pixelated; }
+      .ref { font-size: 0.9em; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li><a href="index.html">sommaire</a>
+        </li>
+        <li class="here"><a href="tone.html">1. tone</a>
+          <ul class="sub">
+            <li><a href="tone.html#pourquoi">Pourquoi</a></li>
+            <li><a href="tone.html#threshold-1-bit">Threshold (1 bit)</a></li>
+            <li><a href="tone.html#quantization-n-levels">Quantization (n levels)</a></li>
+            <li><a href="tone.html#dithering">Dithering</a></li>
+            <li><a href="tone.html#halftone">Halftone</a></li>
+            <li><a href="tone.html#stippling-pointill">Stippling (pointillé)</a></li>
+            <li><a href="tone.html#tone-reproduction-how-many-marks">Tone reproduction: how many marks?</a></li>
+            <li><a href="tone.html#retenir">Retenir</a></li>
+          </ul>
+        </li>
+        <li><a href="hatching.html">2. hatching</a>
+          <ul class="sub">
+            <li><a href="hatching.html#a-tone-from-lines">A. Tone from lines</a></li>
+            <li><a href="hatching.html#b-adding-orientation">B. Adding orientation</a></li>
+            <li><a href="hatching.html#c-adding-texture">C. Adding texture</a></li>
+            <li><a href="hatching.html#d-methods-table">D. Methods table</a></li>
+          </ul>
+        </li>
+        <li><a href="lines.html">3. lines</a>
+          <ul class="sub">
+            <li><a href="lines.html#a-lines-from-an-image">A. Lines from an image</a></li>
+            <li><a href="lines.html#b-lines-from-3d">B. Lines from 3D</a></li>
+            <li><a href="lines.html#c-line-quality">C. Line quality</a></li>
+            <li><a href="lines.html#d-depth-with-ink-only">D. Depth with ink only</a></li>
+            <li><a href="lines.html#e-line-simplification">E. Line simplification</a></li>
+            <li><a href="lines.html#f-tools">F. Tools</a></li>
+          </ul>
+        </li>
+        <li><a href="perception.html">4. perception</a>
+          <ul class="sub">
+            <li><a href="perception.html#the-illusion">1. The illusion</a></li>
+            <li><a href="perception.html#volume">2. Volume</a></li>
+            <li><a href="perception.html#depth">3. Depth</a></li>
+            <li><a href="perception.html#encoding">4. Encoding: information → marks</a></li>
+            <li><a href="perception.html#open-questions">5. Open questions</a></li>
+          </ul>
+        </li>
+        <li><a href="references.html">references</a>
+          <ul class="sub">
+            <li><a href="references.html#surveys-books">Surveys &amp; books</a></li>
+            <li><a href="references.html#tone">Tone: dithering, halftone, stippling</a></li>
+            <li><a href="references.html#hatching">Hatching &amp; engraving</a></li>
+            <li><a href="references.html#lines-contours">Lines &amp; contours</a></li>
+            <li><a href="references.html#depth-art">Depth &amp; the engravers</a></li>
+            <li><a href="references.html#perception">Perception, motion, forces</a></li>
+            <li><a href="references.html#software">Software &amp; libraries</a></li>
+            <li><a href="references.html#images">Images (Wikimedia Commons)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>1. Tone value: black and white &rarr; grey</h1>
+      <p>
+        Chapter 1 of the <a href="index.html">course</a>. One layer only:
+        <b>tone</b>. How dark is this spot, and how to say it with ink or
+        no ink.
+      </p>
+
+      <h2 id="pourquoi">Pourquoi</h2>
+      <p>
+        Engraving, letterpress, laser printer, 1-bit screen (early Mac,
+        e-ink), pen plotter: each pixel is black or white. No grey exists
+        physically. Every grey is <b>optical</b>: the eye
+        averages over a small area. Low-pass filter. Step back from a
+        newspaper and the dots disappear.
+      </p>
+      <p>
+        Rule of the game: <b>mean ink coverage over a neighbourhood =
+        target grey</b>. Everything below is a way to place the marks.
+      </p>
+      <p class="note">
+        Tone check. Blur the binary result (gaussian, radius &asymp;
+        pattern size) and compare to the target. If the blur looks like the
+        original, the tone is right. If not, the method (or the gamma) is
+        wrong. Used below.
+      </p>
+      <div class="grid">
+        <figure class="fig"><img src="images/scene_lum.png" alt="target" /><figcaption>Target. Luminance of a small 3D scene (sphere, torus, ground).</figcaption></figure>
+        <figure class="fig"><img src="images/tone_blur.png" alt="blurred floyd" /><figcaption>Tone check: the Floyd&ndash;Steinberg result below, blurred (&sigma;&nbsp;=&nbsp;2.5&nbsp;px). Back to grey.</figcaption></figure>
+      </div>
+
+      <h2 id="threshold-1-bit">Threshold (1 bit)</h2>
+      <p>
+        <code>out = in &gt; 0.5</code>. The only grey left is the edge
+        between two regions. Good for line art, terrible for volumes:
+        sphere and torus vanish into the ground. Information is lost,
+        not displaced.
+      </p>
+      <h2 id="quantization-n-levels">Quantization (n levels)</h2>
+      <p>
+        Round to n grey levels (posterization). Fine with n = 256, ugly with
+        n = 4: <b>banding</b>, contour lines at the steps. The error is
+        simply dropped, and it is visible because it is correlated with
+        the image. Same issue with 1 bit, only worse.
+      </p>
+      <div class="grid">
+        <figure class="fig"><img src="images/tone_threshold.png" alt="threshold" /><figcaption>Threshold at 0.5.</figcaption></figure>
+        <figure class="fig"><img src="images/tone_quant4.png" alt="4 levels" /><figcaption>4 levels. Banding on the ground.</figcaption></figure>
+      </div>
+      <p>
+        Idea of everything that follows: keep the error, or
+        decorrelate it from the image, so that the eye averages it out.
+      </p>
+
+      <h2 id="dithering">Dithering</h2>
+      <p class="ref">
+        Overview: <a href="https://en.wikipedia.org/wiki/Dither">Wikipedia, Dither</a>;
+        <a href="https://tannerhelland.com/2012/12/28/dithering-eleven-algorithms-source-code.html">Tanner Helland, eleven dithering algorithms</a> (code);
+        <a href="https://surma.dev/things/ditherpunk/">Surma, Ditherpunk</a> (best readable intro, with gamma);
+        <a href="https://forums.tigsource.com/index.php?topic=40832.0">Lucas Pope, Obra Dinn devlog on dithering</a> (1-bit 3D game).
+      </p>
+
+      <h3>Random noise</h3>
+      <p>
+        Compare each pixel to a random number. Grey is right on average,
+        but noise is white: clumps and holes at all scales. Grainy. Seldom
+        used alone, but it is the baseline.
+      </p>
+
+      <h3>Ordered (Bayer)</h3>
+      <p>
+        Compare to a fixed threshold matrix tiled over the image. Bayer
+        matrices (1973) are built recursively
+        (2&times;2, 4&times;4, 8&times;8&hellip;), thresholds spread so
+        that each grey level adds one pixel far from the previous ones
+        (<em>dispersed dot</em>). Fast, parallel, stable between frames
+        (no flicker in animation). Visible cross-hatch pattern. Bayer,
+        <em>An optimum method for two-level rendition of continuous-tone
+        pictures</em>, IEEE ICC 1973.
+        See <a href="https://en.wikipedia.org/wiki/Ordered_dithering">Ordered dithering</a>.
+      </p>
+      <p>
+        If the matrix instead grows a <em>cluster</em> around the centre
+        (<em>clustered dot</em>) you get a halftone screen, see below.
+      </p>
+
+      <h3>Error diffusion</h3>
+      <p>
+        Go pixel by pixel, output 0 or 1, then push the error
+        (wanted &minus; printed) onto the neighbours not yet visited. Mean
+        grey is conserved by construction.
+      </p>
+      <ul>
+        <li><b>Floyd&ndash;Steinberg</b> (1976): 7/16 right, 3/16, 5/16, 1/16 below. The standard.
+          <a href="https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering">Wikipedia</a>.
+          Floyd &amp; Steinberg, <em>An adaptive algorithm for spatial grey scale</em>,
+          Proc. SID 17/2, 1976.</li>
+        <li><b>Jarvis&ndash;Judice&ndash;Ninke</b> (1976): 12 neighbours over 3 rows. Smoother, slower, less worms. The image is slightly more washed.</li>
+        <li><b>Atkinson</b>: Bill Atkinson, original Macintosh (MacPaint). Spreads only 6/8 of the error to 6 neighbours, the rest is lost. Loses detail in pure white and black (clipped extremes), gains contrast in the mid-tones. The "classic Mac look". See Tanner Helland above.</li>
+        <li><b>Riemersma</b>: errors follow a Hilbert curve instead of rows, so no directional bias. Short note: <a href="https://www.compuphase.com/riemer.htm">A balanced dithering technique</a>.</li>
+      </ul>
+      <p>
+        <b>Serpentine scanning</b>: go left to right on even rows, right to
+        left on odd rows (mirror the kernel). Removes the diagonal drift.
+        Artefacts remain: <em>worms</em> (connected lines of dots) near
+        black and white, and regular patterns at exact fractions (1/2, 1/3).
+        A random tweak on the threshold helps, at the price of grain.
+      </p>
+      <div class="grid">
+        <figure class="fig"><img src="images/tone_noise.png" alt="noise" /><figcaption>Random noise.</figcaption></figure>
+        <figure class="fig"><img src="images/tone_bayer.png" alt="bayer" /><figcaption>Bayer 8&times;8.</figcaption></figure>
+        <figure class="fig"><img src="images/tone_floyd.png" alt="floyd" /><figcaption>Floyd&ndash;Steinberg, serpentine.</figcaption></figure>
+        <figure class="fig"><img src="images/tone_atkinson.png" alt="atkinson" /><figcaption>Atkinson. Lighter whites, harder blacks.</figcaption></figure>
+      </div>
+      <figure class="fig">
+        <img src="images/tone_ramp_compare.png" alt="ramps" />
+        <figcaption>Same 0&rarr;1 grey ramp, top to bottom: threshold, noise, Bayer, Floyd&ndash;Steinberg, Atkinson (ends clip before 0 and 1).</figcaption>
+      </figure>
+      <figure class="fig">
+        <img class="px" src="images/tone_zoom_pair.png" alt="zoom" />
+        <figcaption>Zoom &times;8, nearest neighbour. Left: Floyd&ndash;Steinberg, irregular. Right: Bayer, regular grid.</figcaption>
+      </figure>
+
+      <h3>Blue noise</h3>
+      <p>
+        What the eye likes: dots irregular (no pattern) but evenly spread
+        (no clumps). Spectrum: energy at high frequencies only, nothing
+        at low frequency. Called <b>blue noise</b> (Ulichney). Error
+        diffusion approximates it; better, build a <b>blue-noise threshold
+        mask</b> once and use it like a Bayer matrix: ordered dither speed,
+        error-diffusion look.
+        <em>Void-and-cluster</em>: Ulichney, SPIE 1993,
+        <a href="https://doi.org/10.1117/12.152707">doi:10.1117/12.152707</a>.
+        Book: <em>Digital Halftoning</em>, MIT Press 1987.
+        <a href="https://en.wikipedia.org/wiki/Blue_noise">Wikipedia</a>.
+        The mask below is a 64&times;64 tile made by the greedy &laquo;&nbsp;always fill the
+        biggest void&nbsp;&raquo; rule, a simplified void-and-cluster.
+      </p>
+      <figure class="fig">
+        <img src="images/tone_bluenoise.png" alt="blue noise" />
+        <figcaption>Blue-noise mask threshold. Even, no grid, no worms. Stable on animation.</figcaption>
+      </figure>
+
+      <h3>Gamma: do it in linear light</h3>
+      <p>
+        Pixel values in an image file are sRGB, not proportional to
+        light. 50% grey (value 128) emits about 21% of the white's
+        light. A 1-bit pattern with 50% white pixels emits 50% of the
+        light, so looks <em>lighter</em> than 128. Rules:
+        convert to linear before dithering (error diffusion or ordered), and
+        dither a target of &laquo;&nbsp;fraction of light&nbsp;&raquo;. Else mid-tones
+        come out too light. See Surma, Ditherpunk, and
+        <a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a>.
+      </p>
+      <p class="note">
+        In the demos of this page I dither the values as they are, lazily.
+        The scene looks a bit light. Ramp below does it both ways.
+      </p>
+      <figure class="fig">
+        <img src="images/tone_gamma.png" alt="gamma" />
+        <figcaption>Top: target ramp (sRGB). Middle: Floyd&ndash;Steinberg on raw values, too light. Bottom: on linear values, matches the top once blurred.</figcaption>
+      </figure>
+      <p>
+        Check by viewing at 100%. A browser that rescales the image
+        mixes the pixels and spoils the test.
+      </p>
+
+      <h2 id="halftone">Halftone</h2>
+      <p>
+        <a href="https://en.wikipedia.org/wiki/Halftone">Halftone</a>, as in newspaper
+        and offset printing: a regular grid (screen) of dots at 45&deg;
+        whose <b>size</b> varies. Dark = big dot, light = small dot.
+        This is <b>AM screening</b> (amplitude modulated: size changes, spacing
+        fixed). Opposite: <b>FM screening</b> (frequency modulated: fixed dot,
+        varying density), which is what dithering and stippling do. In
+        ordered-dither terms: AM = clustered-dot matrix, FM =
+        dispersed-dot matrix.
+      </p>
+      <p>
+        Why clustered? A press cannot print a lone tiny dot reliably, big
+        clusters are robust. Cost: low resolution (the screen
+        frequency, 85 lpi in a newspaper, 150 lpi in a book).
+      </p>
+      <p>
+        Replace dots by lines and you get the <b>line screen</b>: parallel
+        lines, width = darkness. Same tone model as engraving. This is the
+        bridge to <a href="hatching.html">hatching</a>: let the line follow
+        the form instead of a fixed 45&deg;.
+      </p>
+      <div class="grid">
+        <figure class="fig"><img src="images/tone_halftone.png" alt="halftone" /><figcaption>Halftone screen, 45&deg;, period 5&nbsp;px. AM.</figcaption></figure>
+        <figure class="fig"><img src="images/tone_linescreen.png" alt="line screen" /><figcaption>Line screen, 45&deg;. Width = tone.</figcaption></figure>
+      </div>
+
+      <h2 id="stippling-pointill">Stippling (pointillé)</h2>
+      <p>
+        Dots only, all the same size, density = darkness. The hand version
+        is slow but old: stipple engraving (Giulio Campagnola, c.&nbsp;1510),
+        then scientific illustration, where dots do not hide the edge of a
+        specimen the way hatching does. <a href="https://en.wikipedia.org/wiki/Stippling">Wikipedia: Stippling</a>.
+      </p>
+      <figure class="fig">
+        <img src="images/tone_campagnola_shepherd.jpg" alt="Campagnola shepherd" />
+        <figcaption>Giulio Campagnola, <em>The Young Shepherd</em>, engraving in stipple technique, c.&nbsp;1510 (British Museum). Public domain.
+          <a href="https://commons.wikimedia.org/wiki/File:Giulio_Campagnola_shepherd.jpg">Wikimedia Commons</a>.</figcaption>
+      </figure>
+      <p>
+        Algorithm: <b>weighted Voronoi stippling</b>, Secord, <em>Weighted Voronoi
+        Stippling</em>, NPAR 2002
+        (<a href="https://www.cs.ubc.ca/labs/imager/tr/2002/secord2002b/">page</a>).
+        Start with random points, more where it is dark. Compute the Voronoi
+        cell of each dot, with image darkness as density. Move each dot to
+        the <b>centroid</b> of its cell (weighted). Repeat: this is
+        <a href="https://en.wikipedia.org/wiki/Lloyd%27s_algorithm">Lloyd relaxation</a>.
+        Dots spread evenly (blue-noise look) but dense where dark, with no
+        grid at all. Output is a list of points: good for a pen plotter.
+        Without scipy, the cells are computed per pixel (nearest dot).
+      </p>
+      <figure class="fig">
+        <img src="images/tone_stipple.png" alt="stipple" />
+        <figcaption>Weighted Voronoi stippling, 4000 points, 30 Lloyd steps, dot radius 1.1&nbsp;px. Few dots, so lighter than the target, and the clumps show an under-converged relaxation. Needs more points to read the volumes.</figcaption>
+      </figure>
+
+      <h2 id="tone-reproduction-how-many-marks">Tone reproduction: how many marks?</h2>
+      <p>
+        Grey = ink coverage = (number of marks) &times; (area of a mark) /
+        area. Two knobs: more marks, or bigger marks. Dithering fixes the
+        size and varies the number, halftone the contrary, hatching varies
+        both (spacing and width).
+      </p>
+      <ul>
+        <li>Max grey is limited by the mark size: a dot of 1&nbsp;px cannot fill the area, so true black needs dots to overlap or merge. Tone curve saturates.</li>
+        <li><b>Dot gain</b>: ink spreads in paper, a 50% dot prints as 70%. Same for a pen line that bleeds. Measure a printed ramp, then correct with a <b>tone curve</b> (inverse of the gain). <a href="https://en.wikipedia.org/wiki/Dot_gain">Wikipedia: Dot gain</a>.</li>
+        <li>Calibrate on a step wedge: print 0, 10, &hellip;, 100%, look at it from afar, adjust until the steps are even.</li>
+        <li>Viewing distance sets the scale: marks must stay below the eye resolution (about 1 arcmin) to read as grey, above it to read as <em>drawn</em>. NPR plays with exactly this.</li>
+      </ul>
+
+      <h2 id="retenir">Retenir</h2>
+      <ul>
+        <li>Binary medium: grey = density of marks, read after low-pass.</li>
+        <li>Threshold and quantization lose the error; dithering spreads it.</li>
+        <li>Ordered: fast, stable, patterned. Error diffusion: detail, worms. Blue noise: both.</li>
+        <li>Halftone = fixed grid, variable size. Stipple = fixed size, variable position.</li>
+        <li>Work in linear light, calibrate with a ramp.</li>
+        <li>No direction yet, nor texture: dots do not follow the form.</li>
+      </ul>
+      <p>
+        Next: <a href="hatching.html">2. Hatching &amp; engraving</a>, tone from lines
+        that follow the surface.
+      </p>
+
+      <footer>
+        <hr />
+        articles / drawing_computer / tone &mdash; v1, 2026-10
+      </footer>
+    </div>
+  </body>
+</html>

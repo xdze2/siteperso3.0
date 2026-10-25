@@ -1,0 +1,4 @@
+scene/
+*.pkl
+*.npy
+__pycache__/

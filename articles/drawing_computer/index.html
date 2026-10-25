@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computer drawing &amp; etching render</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1ede4;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 340px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.25rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: #6e6356; }
+      nav li.here > a { font-weight: bold; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a, h1, h2, .toc b, footer, .fig figcaption {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3a3026;
+        text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2.5rem; }
+      a { color: #1d3d6b; }
+      .toc { list-style: none; padding: 0; }
+      .toc li { margin-bottom: 1.2rem; }
+      .toc b { font-weight: normal; font-size: 1.05rem; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li class="here"><a href="index.html">sommaire</a>
+        </li>
+        <li><a href="tone.html">1. tone</a>
+          <ul class="sub">
+            <li><a href="tone.html#pourquoi">Pourquoi</a></li>
+            <li><a href="tone.html#threshold-1-bit">Threshold (1 bit)</a></li>
+            <li><a href="tone.html#quantization-n-levels">Quantization (n levels)</a></li>
+            <li><a href="tone.html#dithering">Dithering</a></li>
+            <li><a href="tone.html#halftone">Halftone</a></li>
+            <li><a href="tone.html#stippling-pointill">Stippling (pointillé)</a></li>
+            <li><a href="tone.html#tone-reproduction-how-many-marks">Tone reproduction: how many marks?</a></li>
+            <li><a href="tone.html#retenir">Retenir</a></li>
+          </ul>
+        </li>
+        <li><a href="hatching.html">2. hatching</a>
+          <ul class="sub">
+            <li><a href="hatching.html#a-tone-from-lines">A. Tone from lines</a></li>
+            <li><a href="hatching.html#b-adding-orientation">B. Adding orientation</a></li>
+            <li><a href="hatching.html#c-adding-texture">C. Adding texture</a></li>
+            <li><a href="hatching.html#d-methods-table">D. Methods table</a></li>
+          </ul>
+        </li>
+        <li><a href="lines.html">3. lines</a>
+          <ul class="sub">
+            <li><a href="lines.html#a-lines-from-an-image">A. Lines from an image</a></li>
+            <li><a href="lines.html#b-lines-from-3d">B. Lines from 3D</a></li>
+            <li><a href="lines.html#c-line-quality">C. Line quality</a></li>
+            <li><a href="lines.html#d-depth-with-ink-only">D. Depth with ink only</a></li>
+            <li><a href="lines.html#e-line-simplification">E. Line simplification</a></li>
+            <li><a href="lines.html#f-tools">F. Tools</a></li>
+          </ul>
+        </li>
+        <li><a href="perception.html">4. perception</a>
+          <ul class="sub">
+            <li><a href="perception.html#the-illusion">1. The illusion</a></li>
+            <li><a href="perception.html#volume">2. Volume</a></li>
+            <li><a href="perception.html#depth">3. Depth</a></li>
+            <li><a href="perception.html#encoding">4. Encoding: information → marks</a></li>
+            <li><a href="perception.html#open-questions">5. Open questions</a></li>
+          </ul>
+        </li>
+        <li><a href="references.html">references</a>
+          <ul class="sub">
+            <li><a href="references.html#surveys-books">Surveys &amp; books</a></li>
+            <li><a href="references.html#tone">Tone: dithering, halftone, stippling</a></li>
+            <li><a href="references.html#hatching">Hatching &amp; engraving</a></li>
+            <li><a href="references.html#lines-contours">Lines &amp; contours</a></li>
+            <li><a href="references.html#depth-art">Depth &amp; the engravers</a></li>
+            <li><a href="references.html#perception">Perception, motion, forces</a></li>
+            <li><a href="references.html#software">Software &amp; libraries</a></li>
+            <li><a href="references.html#images">Images (Wikimedia Commons)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>Computer drawing &amp; etching render</h1>
+      <p>
+        Introductory course, notes form. How a computer turns an image
+        (photo, 3D scene, depth map) into something that reads as
+        <em>drawn</em>: ink or no ink, lines, dots, hatching.
+      </p>
+      <p>
+        Field name: <b>NPR</b>, non-photorealistic rendering. Mostly
+        1990s&ndash;2000s SIGGRAPH papers, then pen plotters and shaders.
+        The starting point is older: la gravure en taille directe is
+        binary. Ink or no ink. Every grey is optical. Same problem as a
+        1-bit screen or a plotter with one pen.
+      </p>
+
+      <h2 id="sommaire">Sommaire</h2>
+      <ul class="toc">
+        <li>
+          <b><a href="tone.html">1. Tone value</a></b><br />
+          Black and white &rarr; grey. Threshold, quantization, dithering
+          (ordered, error diffusion), halftone, stippling. How the eye
+          averages.
+        </li>
+        <li>
+          <b><a href="hatching.html">2. Hatching &amp; engraving</a></b><br />
+          Tone from lines. Spacing, width, cross-hatching. Adding
+          orientation (direction fields, streamlines, curvature). Adding
+          texture (grain, roughness, Tonal Art Maps). Burin vs algorithm.
+        </li>
+        <li>
+          <b><a href="lines.html">3. Stylized drawing</a></b><br />
+          Line drawing: edges, silhouettes, contours, suggestive contours.
+          Line weight, sketchy strokes. Depth perception: atmospheric
+          perspective in lines, indication, repoussoir.
+        </li>
+        <li>
+          <b><a href="perception.html">4. Perception: encoding volume and depth</a></b><br />
+          The illusion on a flat sheet. Cues for volume (shading,
+          contour, line direction) and for depth (occlusion, texture
+          gradient, cast shadows, atmospheric perspective, level of
+          detail), by artists and by algorithms. Then which information
+          goes into which property of the marks, and methods as filters.
+        </li>
+        <li>
+          <b><a href="references.html">References</a></b><br />
+          Papers, books, software, artists, image sources. DOIs checked.
+        </li>
+      </ul>
+
+      <h2 id="le-fil-rouge">Le fil rouge</h2>
+      <p>
+        Three pieces of information to carry with ink only:
+      </p>
+      <ol>
+        <li><b>tone</b> &mdash; how dark (density of ink),</li>
+        <li><b>orientation</b> &mdash; which way the surface turns (direction of strokes),</li>
+        <li><b>texture</b> &mdash; what the surface is made of (character of strokes).</li>
+      </ol>
+      <p>
+        Plus the contours, which say where things stop, and depth, which
+        says what is far. Each chapter adds one layer.
+      </p>
+
+      <p class="note">
+        First version. Images are computed demos (Python, numpy) or
+        public-domain prints from Wikimedia Commons. Papers linked, not
+        reproduced.
+      </p>
+
+      <footer>
+        <hr />
+        articles / drawing_computer &mdash; v1, 2026-10
+      </footer>
+    </div>
+  </body>
+</html>

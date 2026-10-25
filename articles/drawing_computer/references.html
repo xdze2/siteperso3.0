@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>References: computer drawing</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1ede4;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 340px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.25rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: #6e6356; }
+      nav li.here > a { font-weight: bold; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a, h1, h2, .toc b, footer, .fig figcaption {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3a3026;
+        text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2.5rem; }
+      a { color: #1d3d6b; }
+      .toc { list-style: none; padding: 0; }
+      .toc li { margin-bottom: 1.2rem; }
+      .toc b { font-weight: normal; font-size: 1.05rem; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+      .refs { list-style: none; padding: 0; }
+      .refs li { padding-left: 1.5rem; text-indent: -1.5rem; margin-bottom: 0.7rem; font-size: 0.92em; }
+      .tag { font-family: "Courier New", Courier, monospace; font-size: 0.72rem; color: #6e6356; margin-left: 0.3rem; text-indent: 0; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li><a href="index.html">sommaire</a>
+        </li>
+        <li><a href="tone.html">1. tone</a>
+          <ul class="sub">
+            <li><a href="tone.html#pourquoi">Pourquoi</a></li>
+            <li><a href="tone.html#threshold-1-bit">Threshold (1 bit)</a></li>
+            <li><a href="tone.html#quantization-n-levels">Quantization (n levels)</a></li>
+            <li><a href="tone.html#dithering">Dithering</a></li>
+            <li><a href="tone.html#halftone">Halftone</a></li>
+            <li><a href="tone.html#stippling-pointill">Stippling (pointillé)</a></li>
+            <li><a href="tone.html#tone-reproduction-how-many-marks">Tone reproduction: how many marks?</a></li>
+            <li><a href="tone.html#retenir">Retenir</a></li>
+          </ul>
+        </li>
+        <li><a href="hatching.html">2. hatching</a>
+          <ul class="sub">
+            <li><a href="hatching.html#a-tone-from-lines">A. Tone from lines</a></li>
+            <li><a href="hatching.html#b-adding-orientation">B. Adding orientation</a></li>
+            <li><a href="hatching.html#c-adding-texture">C. Adding texture</a></li>
+            <li><a href="hatching.html#d-methods-table">D. Methods table</a></li>
+          </ul>
+        </li>
+        <li><a href="lines.html">3. lines</a>
+          <ul class="sub">
+            <li><a href="lines.html#a-lines-from-an-image">A. Lines from an image</a></li>
+            <li><a href="lines.html#b-lines-from-3d">B. Lines from 3D</a></li>
+            <li><a href="lines.html#c-line-quality">C. Line quality</a></li>
+            <li><a href="lines.html#d-depth-with-ink-only">D. Depth with ink only</a></li>
+            <li><a href="lines.html#e-line-simplification">E. Line simplification</a></li>
+            <li><a href="lines.html#f-tools">F. Tools</a></li>
+          </ul>
+        </li>
+        <li><a href="perception.html">4. perception</a>
+          <ul class="sub">
+            <li><a href="perception.html#the-illusion">1. The illusion</a></li>
+            <li><a href="perception.html#volume">2. Volume</a></li>
+            <li><a href="perception.html#depth">3. Depth</a></li>
+            <li><a href="perception.html#encoding">4. Encoding: information → marks</a></li>
+            <li><a href="perception.html#open-questions">5. Open questions</a></li>
+          </ul>
+        </li>
+        <li class="here"><a href="references.html">references</a>
+          <ul class="sub">
+            <li><a href="references.html#surveys-books">Surveys &amp; books</a></li>
+            <li><a href="references.html#tone">Tone: dithering, halftone, stippling</a></li>
+            <li><a href="references.html#hatching">Hatching &amp; engraving</a></li>
+            <li><a href="references.html#lines-contours">Lines &amp; contours</a></li>
+            <li><a href="references.html#depth-art">Depth &amp; the engravers</a></li>
+            <li><a href="references.html#perception">Perception, motion, forces</a></li>
+            <li><a href="references.html#software">Software &amp; libraries</a></li>
+            <li><a href="references.html#images">Images (Wikimedia Commons)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>References</h1>
+      <p>
+        Everything cited in the three chapters, plus a few books and surveys
+        to start from. Chronological inside each group. DOIs checked
+        against Crossref; Bayer (1973) and Floyd&ndash;Steinberg (1976) have
+        none. Tag = chapter that cites it; <span class="tag">extra</span> =
+        not cited, added for the field.
+      </p>
+
+      <h2 id="surveys-books">Surveys &amp; books</h2>
+      <ul class="refs">
+        <li>R. Ulichney, <i>Digital Halftoning</i>, MIT Press, 1987.
+          [<a href="https://doi.org/10.7551/mitpress/2421.001.0001">doi</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>B. Gooch &amp; A. Gooch, <i>Non-Photorealistic Rendering</i>, A K Peters, 2001.
+          [<a href="https://doi.org/10.1201/9781439864173">doi</a>]
+          <span class="tag">extra</span></li>
+        <li>T. Strothotte &amp; S. Schlechtweg, <i>Non-Photorealistic Computer Graphics: Modeling, Rendering and Animation</i>, Morgan Kaufmann, 2002.
+          <span class="tag">extra</span></li>
+        <li>A. Hertzmann, <i>A Survey of Stroke-Based Rendering</i>, IEEE Computer Graphics and Applications 23(4), 2003.
+          [<a href="https://doi.org/10.1109/MCG.2003.1210867">doi</a>]
+          <span class="tag">extra</span></li>
+        <li>J. E. Kyprianidis, J. Collomosse, T. Wang &amp; T. Isenberg, <i>State of the &ldquo;Art&rdquo;: A Taxonomy of Artistic Stylization Techniques for Images and Video</i>, IEEE TVCG 19(5), 2013.
+          [<a href="https://doi.org/10.1109/TVCG.2012.160">doi</a>]
+          <span class="tag">extra</span></li>
+        <li>P. Rosin &amp; J. Collomosse (eds.), <i>Image and Video-Based Artistic Stylisation</i>, Springer, 2013.
+          [<a href="https://doi.org/10.1007/978-1-4471-4519-6">doi</a>]
+          <span class="tag">extra</span></li>
+        <li>P. B&eacute;nard &amp; A. Hertzmann, <i>Line Drawings from 3D Models: A Tutorial</i>, Foundations and Trends in Computer Graphics and Vision 11(1&ndash;2), 2019.
+          [<a href="https://doi.org/10.1561/0600000075">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#b-lines-from-3d">lines</a></span></li>
+      </ul>
+
+      <h2 id="tone">Tone: dithering, halftone, stippling</h2>
+      <ul class="refs">
+        <li>B. E. Bayer, <i>An optimum method for two-level rendition of continuous-tone pictures</i>, IEEE Int. Conf. on Communications, 1973. (no DOI)
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>R. W. Floyd &amp; L. Steinberg, <i>An adaptive algorithm for spatial grey scale</i>, Proc. SID 17/2, 1976. (no DOI)
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>J. F. Jarvis, C. N. Judice &amp; W. H. Ninke, <i>A survey of techniques for the display of continuous tone pictures on bilevel displays</i>, Computer Graphics and Image Processing 5(1), 1976.
+          [<a href="https://doi.org/10.1016/S0146-664X(76)80003-2">doi</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a> (cited without link)</span></li>
+        <li>R. Ulichney, <i>The void-and-cluster method for dither array generation</i>, SPIE 1913, 1993.
+          [<a href="https://doi.org/10.1117/12.152707">doi</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>A. Secord, <i>Weighted Voronoi Stippling</i>, NPAR 2002.
+          [<a href="https://doi.org/10.1145/508530.508537">doi</a>]
+          [<a href="https://www.cs.ubc.ca/labs/imager/tr/2002/secord2002b/">page</a>]
+          <span class="tag">&rarr; <a href="tone.html#stippling-pointill">tone</a></span></li>
+        <li>T. Helland, <i>Image dithering: eleven algorithms and source code</i>, 2012.
+          [<a href="https://tannerhelland.com/2012/12/28/dithering-eleven-algorithms-source-code.html">web</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>Surma, <i>Ditherpunk: the article I wish I had about monochrome image dithering</i>.
+          [<a href="https://surma.dev/things/ditherpunk/">web</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>T. Riemersma, <i>A balanced dithering technique</i>, C/C++ Users Journal.
+          [<a href="https://www.compuphase.com/riemer.htm">web</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+        <li>L. Pope, devlog on dithering for <i>Return of the Obra Dinn</i> (1-bit 3D), TIGSource forum.
+          [<a href="https://forums.tigsource.com/index.php?topic=40832.0">forum</a>]
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span> (403 to scripts, not checked)</li>
+        <li>Wikipedia:
+          <a href="https://en.wikipedia.org/wiki/Dither">Dither</a>,
+          <a href="https://en.wikipedia.org/wiki/Ordered_dithering">Ordered dithering</a>,
+          <a href="https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering">Floyd&ndash;Steinberg</a>,
+          <a href="https://en.wikipedia.org/wiki/Blue_noise">Blue noise</a>,
+          <a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a>,
+          <a href="https://en.wikipedia.org/wiki/Halftone">Halftone</a>,
+          <a href="https://en.wikipedia.org/wiki/Dot_gain">Dot gain</a>,
+          <a href="https://en.wikipedia.org/wiki/Stippling">Stippling</a>,
+          <a href="https://en.wikipedia.org/wiki/Lloyd%27s_algorithm">Lloyd&rsquo;s algorithm</a>.
+          <span class="tag">&rarr; <a href="tone.html#dithering">tone</a></span></li>
+      </ul>
+
+      <h2 id="hatching">Hatching &amp; engraving</h2>
+      <ul class="refs">
+        <li>B. Cabral &amp; L. Leedom, <i>Imaging Vector Fields Using Line Integral Convolution</i>, SIGGRAPH 1993.
+          [<a href="https://doi.org/10.1145/166117.166151">doi</a>]
+          [<a href="https://en.wikipedia.org/wiki/Line_integral_convolution">wiki</a>]
+          <span class="tag">&rarr; <a href="hatching.html#c-adding-texture">hatching</a></span></li>
+        <li>G. Winkenbach &amp; D. Salesin, <i>Computer-Generated Pen-and-Ink Illustration</i>, SIGGRAPH 1994.
+          [<a href="https://doi.org/10.1145/192161.192184">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>V. Interrante, <i>Illustrating surface shape in volume data via principal direction-driven 3D line integral convolution</i>, SIGGRAPH 1997.
+          [<a href="https://doi.org/10.1145/258734.258796">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a> (cited without link)</span></li>
+        <li>B. Jobard &amp; W. Lef&egrave;r, <i>Creating evenly-spaced streamlines of arbitrary density</i>, Eurographics Workshop on Visualization in Scientific Computing, 1997.
+          [<a href="https://doi.org/10.1007/978-3-7091-6876-9_5">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a></span></li>
+        <li>M. Salisbury, M. Wong, J. Hughes &amp; D. Salesin, <i>Orientable Textures for Image-Based Pen-and-Ink Illustration</i>, SIGGRAPH 1997.
+          [<a href="https://doi.org/10.1145/258734.258890">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a></span></li>
+        <li>V. Ostromoukhov, <i>Digital Facial Engraving</i>, SIGGRAPH 1999.
+          [<a href="https://doi.org/10.1145/311535.311604">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>A. Hertzmann &amp; D. Zorin, <i>Illustrating Smooth Surfaces</i>, SIGGRAPH 2000.
+          [<a href="https://doi.org/10.1145/344779.345074">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a></span></li>
+        <li>E. Praun, H. Hoppe, M. Webb &amp; A. Finkelstein, <i>Real-Time Hatching</i>, SIGGRAPH 2001.
+          [<a href="https://doi.org/10.1145/383259.383328">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#c-adding-texture">hatching</a></span></li>
+        <li>H. Kang, S. Lee &amp; C. K. Chui, <i>Coherent Line Drawing</i>, NPAR 2007.
+          [<a href="https://doi.org/10.1145/1274871.1274878">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a>,
+          <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li>D. Mould &amp; K. Grant, <i>Stylized black and white images from photographs</i>, NPAR 2008.
+          [<a href="https://doi.org/10.1145/1377980.1377991">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+        <li>J. Xu &amp; C. S. Kaplan, <i>Artistic thresholding</i>, NPAR 2008.
+          [<a href="https://doi.org/10.1145/1377980.1377990">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+        <li>E. Kalogerakis, D. Nowrouzezahrai, S. Breslav &amp; A. Hertzmann, <i>Learning Hatching for Pen-and-Ink Illustration of Surfaces</i>, ACM TOG 31(1), 2012.
+          [<a href="https://doi.org/10.1145/2077341.2077342">doi</a>]
+          <span class="tag">&rarr; <a href="hatching.html#c-adding-texture">hatching</a></span></li>
+        <li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Mezzotint">Mezzotint</a>,
+          <a href="https://en.wikipedia.org/wiki/Scratchboard">Scratchboard</a>,
+          <a href="https://en.wikipedia.org/wiki/Figure%E2%80%93ground_(perception)">Figure&ndash;ground</a>.
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+      </ul>
+
+      <h2 id="lines-contours">Lines &amp; contours</h2>
+      <ul class="refs">
+        <li>J. Canny, <i>A Computational Approach to Edge Detection</i>, IEEE TPAMI 8(6), 1986.
+          [<a href="https://doi.org/10.1109/TPAMI.1986.4767851">doi</a>]
+          [<a href="https://en.wikipedia.org/wiki/Canny_edge_detector">wiki</a>]
+          <span class="tag">&rarr; <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li>T. Saito &amp; T. Takahashi, <i>Comprehensible Rendering of 3-D Shapes</i>, SIGGRAPH 1990.
+          [<a href="https://doi.org/10.1145/97879.97901">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#b-lines-from-3d">lines</a></span></li>
+        <li>D. DeCarlo, A. Finkelstein, S. Rusinkiewicz &amp; A. Santella, <i>Suggestive Contours for Conveying Shape</i>, ACM TOG 22(3), 2003.
+          [<a href="https://doi.org/10.1145/882262.882354">doi</a>]
+          [<a href="http://gfx.cs.princeton.edu/proj/sugcon/">project</a>]
+          <span class="tag">&rarr; <a href="lines.html#b-lines-from-3d">lines</a></span></li>
+        <li>T. Judd, F. Durand &amp; E. Adelson, <i>Apparent Ridges for Line Drawing</i>, ACM TOG 26(3), 2007.
+          [<a href="https://doi.org/10.1145/1276377.1276401">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#b-lines-from-3d">lines</a> (cited without link)</span></li>
+        <li>F. Cole, K. Sanik, D. DeCarlo, A. Finkelstein, T. Funkhouser, S. Rusinkiewicz &amp; M. Singh, <i>Where Do People Draw Lines?</i>, ACM TOG 27(3), 2008.
+          [<a href="https://doi.org/10.1145/1360612.1360687">doi</a>]
+          [<a href="https://gfx.cs.princeton.edu/pubs/Cole_2008_WDP/">project</a>]
+          <span class="tag">&rarr; <a href="lines.html#b-lines-from-3d">lines</a></span></li>
+        <li>H. Winnem&ouml;ller, J. E. Kyprianidis &amp; S. C. Olsen, <i>XDoG: An eXtended difference-of-Gaussians compendium including advanced image stylization</i>, Computers &amp; Graphics 36(6), 2012.
+          [<a href="https://doi.org/10.1016/j.cag.2012.03.004">doi</a>]
+          [<a href="https://en.wikipedia.org/wiki/Difference_of_Gaussians">wiki</a>]
+          <span class="tag">&rarr; <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li>J. Wood, P. Isenberg, T. Isenberg, J. Dykes, N. Boukhelifa &amp; A. Slingsby, <i>Sketchy Rendering for Information Visualization</i>, IEEE TVCG 18(12), 2012.
+          [<a href="https://doi.org/10.1109/TVCG.2012.262">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#c-line-quality">lines</a></span></li>
+        <li>C. Chan, F. Durand &amp; P. Isola, <i>Learning to generate line drawings that convey geometry and semantics</i> (Informative Drawings), CVPR 2022.
+          [<a href="https://doi.org/10.1109/CVPR52688.2022.00776">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li>Y. Vinker et al., <i>CLIPasso: Semantically-Aware Object Sketching</i>, ACM TOG 41(4), 2022.
+          [<a href="https://doi.org/10.1145/3528223.3530068">doi</a>]
+          [<a href="https://clipasso.github.io/clipasso/">project</a>]
+          <span class="tag">&rarr; <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Sobel_operator">Sobel operator</a>.
+          <span class="tag">&rarr; <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li>F. T&ouml;pfer &amp; W. Pillewizer, <i>The Principles of Selection</i>, The Cartographic Journal 3(1), 1966.
+          [<a href="https://doi.org/10.1179/caj.1966.3.1.10">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>U. Ramer, <i>An iterative procedure for the polygonal approximation of plane curves</i>, Computer Graphics and Image Processing 1(3), 1972.
+          [<a href="https://doi.org/10.1016/s0146-664x(72)80017-0">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>D. H. Douglas &amp; T. K. Peucker, <i>Algorithms for the reduction of the number of points required to represent a digitized line or its caricature</i>, Cartographica 10(2), 1973.
+          [<a href="https://doi.org/10.3138/fm57-6770-u75u-7727">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>M. Visvalingam &amp; J. D. Whyatt, <i>Line generalisation by repeated elimination of points</i>, The Cartographic Journal 30(1), 1993.
+          [<a href="https://doi.org/10.1179/000870493786962263">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>O. Deussen &amp; T. Strothotte, <i>Computer-generated pen-and-ink illustration of trees</i>, SIGGRAPH 2000.
+          [<a href="https://doi.org/10.1145/344779.344792">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>E. Praun, H. Hoppe, M. Webb &amp; A. Finkelstein, <i>Real-time hatching</i> (Tonal Art Maps), SIGGRAPH 2001.
+          [<a href="https://doi.org/10.1145/383259.383328">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>D. DeCarlo &amp; A. Santella, <i>Stylization and abstraction of photographs</i>, ACM TOG 21(3) (SIGGRAPH 2002).
+          [<a href="https://doi.org/10.1145/566654.566650">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>S. Grabli, F. Durand &amp; F. Sillion, <i>Density measure for line-drawing simplification</i>, Pacific Graphics 2004.
+          [<a href="https://doi.org/10.1109/PCCGA.2004.1348362">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>B. Wilson &amp; K.-L. Ma, <i>Rendering complexity in computer-generated pen-and-ink illustrations</i>, NPAR 2004.
+          [<a href="https://doi.org/10.1145/987657.987674">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+        <li>P. Barla, J. Thollot &amp; F. Sillion, <i>Geometric clustering for line drawing simplification</i>, SIGGRAPH 2005 Sketches.
+          [<a href="https://doi.org/10.1145/1187112.1187227">doi</a>]
+          <span class="tag">&rarr; <a href="lines.html#e-line-simplification">lines</a></span></li>
+      </ul>
+
+      <h2 id="depth-art">Depth &amp; the engravers</h2>
+      <p>
+        Artists and prints named in the text. Images are listed below.
+      </p>
+      <ul class="refs">
+        <li>Albrecht D&uuml;rer: <i>Saint Eustace</i>, c.&nbsp;1500&ndash;1501; <i>Le Monstre marin</i>; <i>Study of praying hands</i>, 1508; <i>Melencolia I</i>, 1514.
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>Giulio Campagnola, <i>The Young Shepherd</i>, stipple engraving, c.&nbsp;1510.
+          <span class="tag">&rarr; <a href="tone.html#stippling-pointill">tone</a></span></li>
+        <li>Claude Mellan, <i>The Sudarium of Saint Veronica</i> (<i>La Sainte Face</i>), 1649, one spiral line.
+          [<a href="https://en.wikipedia.org/wiki/Claude_Mellan">wiki</a>]
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a></span></li>
+        <li>Thomas Bewick, <i>Yellowhammer</i>, wood engraving, 1797; vignettes.
+          [<a href="https://en.wikipedia.org/wiki/Thomas_Bewick">wiki</a>]
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>William Miller after J. M. W. Turner, <i>Windsor Castle</i>, 1838; also Robert Wallis, Edward Goodall.
+          <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>Gustave Dor&eacute;, <i>Inferno</i>, 1861, engraved by his workshop (H&eacute;liodore Pisan).
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>Frederic Leighton, Agnes Miller Parker, Eric Ravilious (wood engraving, 19th&ndash;20th c.).
+          <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>Louis-Joseph Soulas, burin landscapes of the Beauce.
+          [<a href="https://fr.wikipedia.org/wiki/Louis-Joseph_Soulas">wiki fr</a>]
+          Also Albert Decaris. <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>Czes&#322;aw S&#322;ania, Pierre Gandon, stamp engravers.
+          [<a href="https://en.wikipedia.org/wiki/Czes%C5%82aw_S%C5%82ania">wiki</a>]
+          <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>Albert Flocon &amp; Andr&eacute; Barre, <i>La Perspective curviligne</i>, Flammarion, 1968. (not checked online)
+          <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+      </ul>
+
+      <h2 id="perception">Perception, motion, forces</h2>
+      <ul class="refs">
+        <li>E. H. Gombrich, <i>Art and Illusion</i>, Phaidon / Princeton UP, 1960. (no DOI)
+          <span class="tag">&rarr; <a href="perception.html#the-illusion">perception</a></span></li>
+        <li>D. A. Huffman, <i>Impossible objects as nonsense sentences</i>, Machine Intelligence 6, Edinburgh UP, 1971. (no DOI)
+          <span class="tag">&rarr; <a href="perception.html#v-contour">perception</a></span></li>
+        <li>M. B. Clowes, <i>On seeing things</i>, Artificial Intelligence 2(1), 1971.
+          [<a href="https://doi.org/10.1016/0004-3702(71)90005-1">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-contour">perception</a></span></li>
+        <li>M. H. Pirenne, <i>Optics, Painting and Photography</i>, Cambridge UP, 1970. (no DOI)
+          <span class="tag">&rarr; <a href="perception.html#the-illusion">perception</a></span></li>
+        <li>D. Waltz, <i>Understanding line drawings of scenes with shadows</i>, in P. H. Winston (ed.), <i>The Psychology of Computer Vision</i>, McGraw-Hill, 1975. (no DOI)
+          <span class="tag">&rarr; <a href="perception.html#v-contour">perception</a></span></li>
+        <li>J. J. Koenderink, <i>What does the occluding contour tell us about solid shape?</i>, Perception 13(3), 1984.
+          [<a href="https://doi.org/10.1068/p130321">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-contour">perception</a></span></li>
+        <li>V. S. Ramachandran, <i>Perception of shape from shading</i>, Nature 331, 1988.
+          [<a href="https://doi.org/10.1038/331163a0">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-shading">perception</a></span></li>
+        <li>J. J. Koenderink, A. J. van Doorn &amp; A. M. L. Kappers, <i>Surface perception in pictures</i>, Perception &amp; Psychophysics 52(5), 1992.
+          [<a href="https://doi.org/10.3758/bf03206710">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-how-well">perception</a></span></li>
+        <li>J. E. Cutting &amp; P. M. Vishton, <i>Perceiving layout and knowing distances: the integration, relative potency, and contextual use of different information about depth</i>, in W. Epstein &amp; S. Rogers (eds.), <i>Perception of Space and Motion</i>, Academic Press, 1995. (no DOI)
+          <span class="tag">&rarr; <a href="perception.html#depth">perception</a></span></li>
+        <li>V. Interrante, <i>Illustrating surface shape in volume data via principal direction-driven 3D line integral convolution</i>, SIGGRAPH 1997.
+          [<a href="https://doi.org/10.1145/258734.258796">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-direction">perception</a></span></li>
+        <li>D. Kersten, P. Mamassian &amp; D. C. Knill, <i>Moving cast shadows induce apparent motion in depth</i>, Perception 26(2), 1997.
+          [<a href="https://doi.org/10.1068/p260171">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#d-shadows">perception</a></span></li>
+        <li>P. N. Belhumeur, D. J. Kriegman &amp; A. L. Yuille, <i>The bas-relief ambiguity</i>, International Journal of Computer Vision 35(1), 1999.
+          [<a href="https://doi.org/10.1023/a:1008154927611">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-shading">perception</a></span></li>
+        <li>A. Girshick, V. Interrante, S. Haker &amp; T. Lemoine, <i>Line direction matters: an argument for the use of principal directions in 3D line drawings</i>, NPAR 2000.
+          [<a href="https://doi.org/10.1145/340916.340922">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-direction">perception</a></span></li>
+        <li>S. Kim, H. Hagh-Shenas &amp; V. Interrante, <i>Conveying shape with texture: experimental investigations of texture's effects on shape categorization judgments</i>, IEEE TVCG 10(4), 2004.
+          [<a href="https://doi.org/10.1109/tvcg.2004.5">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-direction">perception</a></span></li>
+        <li>F. Cole, K. Sanik, D. DeCarlo, A. Finkelstein, T. Funkhouser, S. Rusinkiewicz &amp; M. Singh, <i>How well do line drawings depict shape?</i>, ACM TOG 28(3), SIGGRAPH 2009.
+          [<a href="https://doi.org/10.1145/1531326.1531334">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#v-how-well">perception</a></span></li>
+        <li>J. J. Gibson, <i>The Perception of the Visual World</i>, Houghton Mifflin, 1950. Texture gradients as a depth cue.
+          <span class="tag">&rarr; <a href="perception.html#e-material">perception</a></span></li>
+        <li>D. Marr, <i>Vision</i>, W. H. Freeman, 1982 (MIT Press reissue 2010). Primal sketch, 2&frac12;D sketch, 3D model.
+          [<a href="https://doi.org/10.7551/mitpress/9780262514620.001.0001">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#e-information">perception</a></span></li>
+        <li>M. Masuch, S. Schlechtweg &amp; R. Schulz, <i>Speedlines: Depicting Motion in Motionless Pictures</i>, SIGGRAPH 1999 sketches.
+          [<a href="https://doi.org/10.1145/311625.312369">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#e-matrix">perception</a></span></li>
+        <li>J. P. Collomosse, D. Rowntree &amp; P. M. Hall, <i>Rendering Cartoon-Style Motion Cues in Post-Production Video</i>, Graphical Models 67(6), 2005.
+          [<a href="https://doi.org/10.1016/j.gmod.2004.12.002">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#e-matrix">perception</a></span></li>
+        <li>M. Guay, M.-P. Cani &amp; R. Ronfard, <i>The Line of Action: An Intuitive Interface for Expressive Character Posing</i>, ACM TOG 32(6), SIGGRAPH Asia 2013.
+          [<a href="https://doi.org/10.1145/2508363.2508397">doi</a>]
+          <span class="tag">&rarr; <a href="perception.html#e-matrix">perception</a></span></li>
+        <li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Chronophotography">Chronophotography</a>,
+          <a href="https://en.wikipedia.org/wiki/Wolff%27s_law">Wolff's law</a> (Culmann &amp; Meyer, stress trajectories in the femur),
+          <a href="https://en.wikipedia.org/wiki/Photoelasticity">Photoelasticity</a>,
+          <a href="https://en.wikipedia.org/wiki/Contrapposto">Contrapposto</a>.
+          <span class="tag">&rarr; <a href="perception.html#e-mapping">perception</a></span></li>
+      </ul>
+
+      <h2 id="software">Software &amp; libraries</h2>
+      <ul class="refs">
+        <li><a href="https://github.com/abey79/vpype">vpype</a> and
+          <a href="https://github.com/abey79/vsketch">vsketch</a> (plotter vector pipeline, sketching in Python).
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#f-tools">lines</a></span></li>
+        <li><a href="https://github.com/plottertools/hatched">hatched</a> (image to hatching, SVG for plotters).
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a>,
+          <a href="lines.html#f-tools">lines</a></span></li>
+        <li><a href="https://github.com/serycjon/vpype-flow-imager">vpype-flow-imager</a> (flow-field lines).
+          <span class="tag">&rarr; <a href="hatching.html#d-methods-table">hatching</a></span></li>
+        <li><a href="https://github.com/evil-mad/stipplegen">StippleGen</a> (weighted Voronoi stippling).
+          <span class="tag">&rarr; <a href="lines.html#f-tools">lines</a></span></li>
+        <li><a href="https://github.com/SonarSonic/DrawingBotV3">DrawingBotV3</a> (image to pen-plotter paths).
+          <span class="tag">&rarr; <a href="lines.html#f-tools">lines</a></span></li>
+        <li><a href="https://docs.blender.org/manual/en/latest/render/freestyle/index.html">Blender Freestyle</a> and
+          <a href="https://docs.blender.org/manual/en/latest/grease_pencil/modifiers/generate/line_art.html">Grease Pencil Line Art</a>.
+          <span class="tag">&rarr; <a href="lines.html#b-lines-from-3d">lines</a></span></li>
+        <li><a href="https://github.com/carolineec/informative-drawings">informative-drawings</a> (code of Chan et al.).
+          <span class="tag">&rarr; <a href="lines.html#a-lines-from-an-image">lines</a></span></li>
+        <li><a href="https://roughjs.com">rough.js</a> (hand-drawn shapes, canvas/SVG).
+          <span class="tag">&rarr; <a href="lines.html#c-line-quality">lines</a></span></li>
+        <li><a href="https://github.com/steveruizok/perfect-freehand">perfect-freehand</a> (variable-width strokes from points).
+          <span class="tag">&rarr; <a href="lines.html#c-line-quality">lines</a></span></li>
+        <li><a href="https://matplotlib.org/stable/gallery/showcase/xkcd.html">matplotlib xkcd</a> (path jitter).
+          <span class="tag">&rarr; <a href="lines.html#c-line-quality">lines</a></span></li>
+        <li><a href="https://www.psoft.co.jp/en/product/pencil/">Pencil+ 4</a> (commercial toon/line shader plugin).
+          <span class="tag">&rarr; <a href="lines.html#f-tools">lines</a></span></li>
+      </ul>
+
+      <h2 id="images">Images (Wikimedia Commons)</h2>
+      <p>All public domain or CC0, resized only.</p>
+      <ul class="refs">
+        <li>Marey, <i>Chronophotograph of a Man on a Bicycle</i>, c. 1885&ndash;1890 (NGA, CC0):
+          <a href="https://commons.wikimedia.org/wiki/File:%C3%89tienne_Jules_Marey,_Chronophotograph_of_a_Man_on_a_Bicycle,_c._1885-1890,_NGA_125658.jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="perception.html#e-mapping">perception</a></span></li>
+        <li>Campagnola, <i>The Young Shepherd</i>:
+          <a href="https://commons.wikimedia.org/wiki/File:Giulio_Campagnola_shepherd.jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="tone.html#stippling-pointill">tone</a></span></li>
+        <li>D&uuml;rer, <i>Melencolia I</i>:
+          <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Melencolia_I_-_Google_Art_Project_(427760).jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+        <li>Bewick, <i>Yellowhammer</i>:
+          <a href="https://commons.wikimedia.org/wiki/File:Brief_History_of_Wood-engraving_Bewick_Yellowhammer.png">Commons</a>.
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+        <li>Dor&eacute;, <i>Inferno</i>, plate 22:
+          <a href="https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_Dante_Alighieri_-_Inferno_-_Plate_22_(Canto_VII_-_Hoarders_and_Wasters).jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+        <li>D&uuml;rer, <i>Praying Hands</i>:
+          <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Praying_Hands,_1508_-_Google_Art_Project.jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="hatching.html#a-tone-from-lines">hatching</a></span></li>
+        <li>Mellan, <i>Sudarium of Saint Veronica</i> (NGA, CC0):
+          <a href="https://commons.wikimedia.org/wiki/File:Claude_Mellan,_The_Sudarium_of_Saint_Veronica,_1649,_NGA_9076.jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="hatching.html#b-adding-orientation">hatching</a></span></li>
+        <li>Miller after Turner, <i>Windsor Castle</i>:
+          <a href="https://commons.wikimedia.org/wiki/File:Windsor_engraving_by_William_Miller_after_Turner.jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+        <li>D&uuml;rer, <i>Saint Eustace</i> (NGA):
+          <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer,_Saint_Eustace,_c._1500-1501,_NGA_35100.jpg">Commons</a>.
+          <span class="tag">&rarr; <a href="lines.html#d-depth-with-ink-only">lines</a></span></li>
+      </ul>
+
+      <p><a href="index.html">&larr; sommaire</a></p>
+
+      <footer>
+        <hr />
+        articles / drawing_computer / references &mdash; v1, 2026-10
+      </footer>
+    </div>
+  </body>
+</html>

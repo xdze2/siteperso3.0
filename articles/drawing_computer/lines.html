@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Lines, contours, depth</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1ede4;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 340px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.25rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: #6e6356; }
+      nav li.here > a { font-weight: bold; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a, h1, h2, h3, .toc b, footer, .fig figcaption {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3a3026;
+        text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h3 { font-size: 0.95rem; font-weight: normal; margin-top: 1.8rem; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2.5rem; }
+      a { color: #1d3d6b; }
+      .toc { list-style: none; padding: 0; }
+      .toc li { margin-bottom: 1.2rem; }
+      .toc b { font-weight: normal; font-size: 1.05rem; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .grid .fig { margin: 0.5rem 0; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li><a href="index.html">sommaire</a>
+        </li>
+        <li><a href="tone.html">1. tone</a>
+          <ul class="sub">
+            <li><a href="tone.html#pourquoi">Pourquoi</a></li>
+            <li><a href="tone.html#threshold-1-bit">Threshold (1 bit)</a></li>
+            <li><a href="tone.html#quantization-n-levels">Quantization (n levels)</a></li>
+            <li><a href="tone.html#dithering">Dithering</a></li>
+            <li><a href="tone.html#halftone">Halftone</a></li>
+            <li><a href="tone.html#stippling-pointill">Stippling (pointillé)</a></li>
+            <li><a href="tone.html#tone-reproduction-how-many-marks">Tone reproduction: how many marks?</a></li>
+            <li><a href="tone.html#retenir">Retenir</a></li>
+          </ul>
+        </li>
+        <li><a href="hatching.html">2. hatching</a>
+          <ul class="sub">
+            <li><a href="hatching.html#a-tone-from-lines">A. Tone from lines</a></li>
+            <li><a href="hatching.html#b-adding-orientation">B. Adding orientation</a></li>
+            <li><a href="hatching.html#c-adding-texture">C. Adding texture</a></li>
+            <li><a href="hatching.html#d-methods-table">D. Methods table</a></li>
+          </ul>
+        </li>
+        <li class="here"><a href="lines.html">3. lines</a>
+          <ul class="sub">
+            <li><a href="lines.html#a-lines-from-an-image">A. Lines from an image</a></li>
+            <li><a href="lines.html#b-lines-from-3d">B. Lines from 3D</a></li>
+            <li><a href="lines.html#c-line-quality">C. Line quality</a></li>
+            <li><a href="lines.html#d-depth-with-ink-only">D. Depth with ink only</a></li>
+            <li><a href="lines.html#e-line-simplification">E. Line simplification</a></li>
+            <li><a href="lines.html#f-tools">F. Tools</a></li>
+          </ul>
+        </li>
+        <li><a href="perception.html">4. perception</a>
+          <ul class="sub">
+            <li><a href="perception.html#the-illusion">1. The illusion</a></li>
+            <li><a href="perception.html#volume">2. Volume</a></li>
+            <li><a href="perception.html#depth">3. Depth</a></li>
+            <li><a href="perception.html#encoding">4. Encoding: information → marks</a></li>
+            <li><a href="perception.html#open-questions">5. Open questions</a></li>
+          </ul>
+        </li>
+        <li><a href="references.html">references</a>
+          <ul class="sub">
+            <li><a href="references.html#surveys-books">Surveys &amp; books</a></li>
+            <li><a href="references.html#tone">Tone: dithering, halftone, stippling</a></li>
+            <li><a href="references.html#hatching">Hatching &amp; engraving</a></li>
+            <li><a href="references.html#lines-contours">Lines &amp; contours</a></li>
+            <li><a href="references.html#depth-art">Depth &amp; the engravers</a></li>
+            <li><a href="references.html#perception">Perception, motion, forces</a></li>
+            <li><a href="references.html#software">Software &amp; libraries</a></li>
+            <li><a href="references.html#images">Images (Wikimedia Commons)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>3. Stylized drawing: lines, contours, depth</h1>
+      <p>
+        Chapters 1&ndash;2 gave tone. Here: the <em>trait</em>. Where do
+        the lines go, how heavy, how shaky, and how does a line drawing say
+        &laquo;&nbsp;far&nbsp;&raquo;. Two input families: a 2D image, or a 3D
+        scene with a depth buffer.
+      </p>
+      <p>
+        Demo scene below (sphere, torus, ground, fog) rendered in numpy.
+        Same scene reused everywhere.
+      </p>
+      <figure class="fig">
+        <img src="images/scene_lum.png" alt="shaded scene" />
+        <figcaption>Luminance. The only thing a photo gives you.</figcaption>
+      </figure>
+
+      <h2 id="a-lines-from-an-image">A. Lines from an image</h2>
+      <p>
+        <b>Sobel</b>: gradient magnitude with two 3&times;3 kernels. Fast,
+        dumb. Catches everything that changes: contours, but also shading
+        and cast shadows. Thick, blurry, no notion of &laquo;&nbsp;object&nbsp;&raquo;.
+        <a href="https://en.wikipedia.org/wiki/Sobel_operator">Wikipedia</a>.
+      </p>
+      <p>
+        <b>Canny</b> (1986): smooth, gradient, non-maximum suppression
+        (1 px thin), hysteresis threshold (keep weak edges only if linked to
+        strong ones). Still the default in OpenCV.
+        <a href="https://doi.org/10.1109/TPAMI.1986.4767851">doi</a>,
+        <a href="https://en.wikipedia.org/wiki/Canny_edge_detector">wiki</a>.
+      </p>
+      <p>
+        <b>DoG</b>: blur at two scales, subtract. Band-pass, approximates
+        the Laplacian of Gaussian (and retinal center-surround cells).
+        <b>XDoG</b> (Winnem&ouml;ller 2011/2012) adds a sharpening factor, a
+        threshold &epsilon; and a soft tanh ramp: the same formula gives
+        ink lines, pencil, or comic-like blacks depending on parameters.
+        Best quick &laquo;&nbsp;drawn&nbsp;&raquo; look from a photo.
+        <a href="https://doi.org/10.1016/j.cag.2012.03.004">Paper (C&amp;G 2012)</a>,
+        <a href="https://en.wikipedia.org/wiki/Difference_of_Gaussians">wiki</a>.
+      </p>
+      <div class="grid">
+        <figure class="fig">
+          <img src="images/lines_sobel.png" alt="sobel" />
+          <figcaption>Sobel on luminance. Shadow edges included.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/lines_dog.png" alt="DoG threshold" />
+          <figcaption>DoG, hard threshold, sigma 1.2, k 1.6.</figcaption>
+        </figure>
+      </div>
+      <figure class="fig">
+        <img src="images/lines_xdog.png" alt="XDoG" />
+        <figcaption>XDoG: soft tanh response. Lines have weight, shadow edge becomes a dark mass.</figcaption>
+      </figure>
+      <p>
+        <b>Coherent Line Drawing</b> (Kang, Lee, Chui 2007): build an edge
+        tangent field (smooth, direction-preserving), then run the DoG
+        <em>along the gradient</em> and integrate along the flow. Lines come
+        out continuous and clean instead of speckled.
+        <a href="https://doi.org/10.1145/1274871.1274878">doi</a>.
+      </p>
+      <p>
+        <b>Neural</b>. <i>Informative Drawings</i> (Chan, Durand, Isola 2022):
+        learn photo &rarr; line drawing, with geometry and CLIP-based losses
+        instead of paired data.
+        <a href="https://github.com/carolineec/informative-drawings">code</a>.
+        <i>CLIPasso</i> (Vinker et al. 2022): optimise a handful of
+        B&eacute;zier strokes so that CLIP sees the same thing as in the photo;
+        fewer strokes = more abstract.
+        <a href="https://clipasso.github.io/clipasso/">project</a>.
+        Nice results, no control over the line character.
+      </p>
+
+      <h2 id="b-lines-from-3d">B. Lines from 3D</h2>
+      <p>With a 3D model we know what a line <em>should</em> be:</p>
+      <ul>
+        <li><b>silhouette</b> / occluding contour: surface normal &perp; view ray, N&middot;V = 0;</li>
+        <li><b>boundary</b>: open edge of a mesh;</li>
+        <li><b>crease</b>: sharp dihedral angle (cube edge);</li>
+        <li><b>material / object-id</b> edge, <b>cast shadow</b> edge (optional).</li>
+      </ul>
+      <p>
+        <b>Image-space trick</b> (Saito &amp; Takahashi 1990): render
+        G-buffers (depth, normal, object id), run an edge filter on them.
+        Depth jump = silhouette, normal jump = crease, id jump = object
+        border. No mesh processing, works on anything the GPU draws. Used in
+        most toon shaders.
+        <a href="https://doi.org/10.1145/97879.97901">doi</a>.
+      </p>
+      <div class="grid">
+        <figure class="fig">
+          <img src="images/lines_depth.png" alt="depth buffer" />
+          <figcaption>G-buffer: depth.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/lines_normal.png" alt="normal buffer" />
+          <figcaption>G-buffer: normals (rgb = xyz).</figcaption>
+        </figure>
+      </div>
+      <figure class="fig">
+        <img src="images/lines_gbuf_edges.png" alt="edges from gbuffer" />
+        <figcaption>
+          Edges from depth + normal + id. Compare with Sobel: only
+          geometry, shadows and shading are gone. Note: Laplacian on 1/depth,
+          because a plane is linear in 1/z &mdash; a raw depth gradient
+          lights up the whole ground near the horizon (first try: big black band).
+        </figcaption>
+      </figure>
+      <p>
+        <b>Object-space</b>: lines as curves on the surface. Silhouettes
+        alone feel empty on smooth shapes (a sphere is a circle). Add:
+      </p>
+      <ul>
+        <li>
+          <b>Suggestive contours</b> (DeCarlo, Finkelstein, Rusinkiewicz,
+          Santella 2003): places that <em>would be</em> silhouettes from a
+          nearby viewpoint (N&middot;V local minimum).
+          <a href="https://doi.org/10.1145/882262.882354">doi</a>,
+          <a href="http://gfx.cs.princeton.edu/proj/sugcon/">project</a>.
+        </li>
+        <li>
+          <b>Apparent ridges</b> (Judd, Durand, Adelson 2007): ridges of
+          view-dependent curvature. Fewer spurious lines, handles
+          foreshortening. IEEE TVCG / SIGGRAPH 2007.
+        </li>
+        <li>
+          <b>Where do people draw lines?</b> (Cole et al. 2008): compare
+          real artists&rsquo; drawings to computed lines. Result: artists
+          draw contours + a bit of suggestive; no single method matches
+          them all; they agree with each other more than with algorithms.
+          <a href="https://gfx.cs.princeton.edu/pubs/Cole_2008_WDP/">project</a>.
+        </li>
+        <li>
+          <b>Survey</b>: B&eacute;nard &amp; Hertzmann, <i>Line Drawings from
+          3D Models: A Tutorial</i>, Foundations and Trends in Computer
+          Graphics and Vision, 2019. The reference to read.
+        </li>
+      </ul>
+      <p>
+        Practice: Blender <a href="https://docs.blender.org/manual/en/latest/render/freestyle/index.html">Freestyle</a>
+        (render-time, view-dependent, line sets by type, thickness
+        modifiers), and Grease Pencil
+        <a href="https://docs.blender.org/manual/en/latest/grease_pencil/modifiers/generate/line_art.html">Line Art</a>
+        (strokes you can edit and export as SVG).
+      </p>
+
+      <h2 id="c-line-quality">C. Line quality</h2>
+      <p>
+        A perfect 1 px line looks like CAD. A drawn line has:
+      </p>
+      <ul>
+        <li>
+          <b>weight</b> varying: thicker on silhouette, near the viewer, on
+          the shadow side, at the base of an object; thinner inside,
+          far, on the lit side. This is the cheapest way to get depth and
+          volume from lines.
+        </li>
+        <li><b>taper</b>: pressure in, pressure out. Start heavy, end light, or the reverse.</li>
+        <li><b>overshoot</b> at corners, and <b>gaps</b> where two lines should meet.</li>
+        <li><b>double stroke</b>: the hand goes over the shape twice, slightly off.</li>
+        <li><b>wobble</b>: low-frequency noise on the position (bowing), plus a tiny high-frequency jitter.</li>
+      </ul>
+      <div class="grid">
+        <figure class="fig">
+          <img src="images/lines_weight.png" alt="weighted lines" />
+          <figcaption>Same edges, width = f(depth, type): silhouettes and near parts heavier.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/lines_sketchy.png" alt="sketchy lines" />
+          <figcaption>Silhouettes traced from the id mask, redrawn: 2 strokes, wobble, taper, overshoot, gap.</figcaption>
+        </figure>
+      </div>
+      <p>
+        Code to start from: Wood et al., <i>Sketchy Rendering for Information
+        Visualization</i> (IEEE TVCG 2012, the Handy library);
+        <a href="https://roughjs.com">rough.js</a> (hand-drawn
+        shapes in canvas/SVG); <a href="https://github.com/steveruizok/perfect-freehand">perfect-freehand</a>
+        (pressure-like variable-width stroke from points);
+        <a href="https://matplotlib.org/stable/gallery/showcase/xkcd.html">matplotlib xkcd</a>
+        (path jitter by sinusoids, 3 lines of code).
+      </p>
+      <p class="note">
+        Here the strokes were extracted from the object-id mask (polar
+        max-radius contour, smoothed) and redrawn with ImageDraw at 3&times;
+        then downsampled. Dumb but enough. Real tools do it on stroke
+        paths, after chaining and simplification.
+      </p>
+
+      <h2 id="d-depth-with-ink-only">D. Depth with ink only</h2>
+      <p>
+        No colour, no real grey. Atmospheric perspective has to become
+        density and character of the line. Seven rules from the engravers
+        (notes <i>gravure</i>):
+      </p>
+      <ol>
+        <li>
+          <b>Contraste d&eacute;croissant.</b> Near: solid blacks next to pure
+          white. Far: everything closes toward a light mid grey, no true
+          black.
+          <br /><i>Renderer</i>: remap tone with depth, <code>t' = lerp(t, grey_far, f(z))</code>;
+          or limit the max ink density.
+        </li>
+        <li>
+          <b>Lignes plus fines.</b> Far planes: thin, shallow cuts, a single
+          layer without cross-hatching.
+          <br /><i>Renderer</i>: <code>width = w0 / z^&alpha;</code>; cross layer
+          enabled only if z &lt; z1.
+        </li>
+        <li>
+          <b>Direction simplifi&eacute;e.</b> Near: strokes follow the form,
+          varied. Far: nearly parallel and horizontal. Sky = regular
+          horizontal lines (often ruled by machine, 19th c.).
+          <br /><i>Renderer</i>: blend direction field toward horizontal,
+          <code>angle = lerp(flow, 0, smoothstep(z))</code>; less
+          angular randomness far.
+        </li>
+        <li>
+          <b>Contours qui disparaissent.</b> Near objects are outlined. Far
+          ones have no outline, only a change of density or angle.
+          <br /><i>Renderer</i>: contour threshold rises with depth, or
+          contour opacity &rarr; 0 past z2.
+        </li>
+        <li>
+          <b>Moins de d&eacute;tail</b> (<i>indication</i>, Winkenbach &amp; Salesin
+          1994): full texture near, suggested, then absent.
+          <br /><i>Renderer</i>: hatch LOD by depth; stroke culling by
+          priority.
+          <a href="https://doi.org/10.1145/192161.192184">doi</a>.
+        </li>
+        <li>
+          <b>Repoussoir.</b> Dark foreground (tree, rock, backlit bank)
+          pushes the rest back by contrast.
+          <br /><i>Renderer</i>: not a per-pixel rule; composition. Can be
+          faked by a darkening term on the nearest layer.
+        </li>
+        <li>
+          <b>Grain des points.</b> Far: very fine dots or broken strokes
+          instead of continuous lines: haze.
+          <br /><i>Renderer</i>: stroke dash/dot probability up with depth.
+        </li>
+      </ol>
+      <div class="grid">
+        <figure class="fig">
+          <img src="images/lines_depth_flat.png" alt="flat lines" />
+          <figcaption>Uniform lines. Reads as a flat pattern; only size says far.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/lines_depth_rules.png" alt="depth rules" />
+          <figcaption>Rules applied on the same layout: near hatched and varied, mid parallel, far dotted. Python/PIL.</figcaption>
+        </figure>
+      </div>
+      <p>
+        Same triangles, same positions. Right: width ~ 1/z, grey up with z,
+        hatch angle random only near, no hatch beyond z&nbsp;7, contour
+        replaced by dots beyond z&nbsp;5.5, sky lines pale, dark bank in
+        front. Crude but the depth is already there. The same problem, done
+        properly with levels of detail and a tone check:
+        <a href="#e-line-simplification">E. Line simplification</a>.
+      </p>
+      <figure class="fig">
+        <img src="images/lines_turner_windsor.jpg" alt="Windsor Castle engraving" />
+        <figcaption>
+          William Miller after J.M.W. Turner, <i>Windsor Castle</i>, 1838
+          (Picturesque Views in England and Wales). Steel engraving, public
+          domain. <a href="https://commons.wikimedia.org/wiki/File:Windsor_engraving_by_William_Miller_after_Turner.jpg">Commons</a>.
+          Look: dark boat and horses at right/left, castle in light grey
+          with almost no outline, sky in soft horizontal tailles.
+        </figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/lines_durer_eustace.jpg" alt="Durer Saint Eustace" style="max-width: 300px" />
+        <figcaption>
+          Albrecht D&uuml;rer, <i>Saint Eustace</i>, c. 1500&ndash;1501, engraving
+          (National Gallery of Art, CC0).
+          <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer,_Saint_Eustace,_c._1500-1501,_NGA_35100.jpg">Commons</a>.
+          Dark animals and trees in front, landscape thinning toward the
+          background.
+        </figcaption>
+      </figure>
+      <p><b>To look at, with a loupe:</b></p>
+      <ul>
+        <li>D&uuml;rer landscapes (<i>Saint Eustace</i>, <i>Le Monstre marin</i>).</li>
+        <li>Turner&rsquo;s engravers: William Miller, Robert Wallis, Edward Goodall. Atmosphere in pure line.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Thomas_Bewick">Thomas Bewick</a> vignettes: white-line wood engraving, depth in 5 cm.</li>
+        <li>Doré&rsquo;s engravers (H&eacute;liodore Pisan); Leighton, Agnes Miller Parker, Ravilious.</li>
+        <li><a href="https://fr.wikipedia.org/wiki/Louis-Joseph_Soulas">Soulas</a>: burin landscapes of Beauce, textbook case. Also Decaris, Flocon (<i>La Perspective curviligne</i>).</li>
+        <li>Stamp engravers, <a href="https://en.wikipedia.org/wiki/Czes%C5%82aw_S%C5%82ania">Czes&#322;aw S&#322;ania</a>, Pierre Gandon: a deep landscape in 3 cm, no half-tone.</li>
+        <li>Digital cousin: Ostromoukhov, <i>Digital Facial Engraving</i> (SIGGRAPH 1999), modulating line width and direction.</li>
+      </ul>
+
+      <h2 id="e-line-simplification">E. Line simplification</h2>
+      <p>
+        Rule 5 above (<i>indication</i>) says &laquo;&nbsp;less detail
+        far&nbsp;&raquo;. How to do it on strokes is its own problem.
+      </p>
+
+      <h3>Downscaling an image is not simplifying a drawing</h3>
+      <p>
+        An image is a signal: low-pass filter, then resample (mipmaps, box,
+        Lanczos). It works because averaging grey values gives a grey value.
+        Lines are binary marks. Average them and you get either grey mush or
+        a pile of lines on a few pixels. Simplifying a drawing means
+        <i>deciding</i>: select, merge, simplify.
+      </p>
+      <p>
+        The trap: under perspective, the number of lines per screen area
+        grows with distance (roughly &prop;&nbsp;1/scale&sup2;, same tree
+        density, smaller trees). A naive render gets <b>darker</b> toward the
+        horizon. Atmospheric perspective wants the opposite. The tone check
+        (blur, as in <a href="tone.html">chapter 1</a>) shows it at once.
+        Vocabulary of <a href="perception.html#e-material">perception</a>:
+        density must be controlled, not left as a by-product of scale.
+      </p>
+
+      <h3>The demo: a tree landscape</h3>
+      <p>
+        Same scene, same 1100 trees placed at random on a ground plane
+        (uniform density in the world), light from the left. Each tree: trunk,
+        tiered contour, hatching on the shadow side, hatched cast shadow.
+        Ground: dashed rows.
+      </p>
+      <div class="grid">
+        <figure class="fig">
+          <img src="images/lines_trees_naive.png" alt="naive tree landscape" />
+          <figcaption>Naive. Every tree at full detail, only scaled. Fixed pen width. Black band at the horizon.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/lines_trees_lod.png" alt="tree landscape with level of detail" />
+          <figcaption>Generalized. Five levels by screen height, ground rows thinned and paler with depth.</figcaption>
+        </figure>
+      </div>
+      <figure class="fig">
+        <img src="images/lines_trees_levels.png" alt="the five levels of detail of one tree" />
+        <figcaption>
+          The levels, large (top) and at their real size (bottom). Each step
+          drops one thing: tiers, then hatching, then the trunk, then the
+          shadow, then the tree itself.
+        </figcaption>
+      </figure>
+      <ul>
+        <li><b>L0 full</b>: tiers, trunk, hatching following the tier slope, hatched cast shadow.</li>
+        <li><b>L1</b>: one triangle, 4 hatch lines, shadow in one stroke.</li>
+        <li><b>L2</b>: thin outline only, faint shadow tick (kept while longer than a few px).</li>
+        <li><b>L3</b>: a chevron, no shadow (it would be &lt;&nbsp;2&nbsp;px).</li>
+        <li><b>L4</b>: individual trees disappear. The clump gets one ragged line along its top edge: <i>typification</i>, the pattern is kept, the elements are not.</li>
+        <li>Plus line width and grey up with depth (rules 1 and 2), ground rows thinned then removed in the haze.</li>
+      </ul>
+      <figure class="fig">
+        <img src="images/lines_trees_tone.png" alt="blurred versions and ink per row" />
+        <figcaption>
+          Tone check: both drawings blurred (Gaussian, &sigma;&nbsp;=&nbsp;7&nbsp;px,
+          contrast stretched), and mean ink per row on the right. Naive: ink
+          piles up to ~50&nbsp;% on the horizon rows. Generalized: it stays low
+          and flat, and the far forest reads as a light grey band.
+        </figcaption>
+      </figure>
+      <p>
+        Script: <code>scripts/lines/trees_lod.py</code> (Python/PIL, numpy,
+        4&times; supersampling). Levels are chosen from the projected height
+        of the tree, so the cost is one threshold per object. Reuses the
+        triangles of <a href="#d-depth-with-ink-only">section D</a>, with
+        more rules and a real scene instead of a layout.
+      </p>
+
+      <h3>Cartographic generalization</h3>
+      <p>
+        Maps had this problem first: same data, scale 1:25&nbsp;000 to
+        1:1&nbsp;000&nbsp;000. The operators, as listed in the literature:
+        <i>selection / elimination</i> (drop objects), <i>simplification</i>
+        (fewer vertices), <i>smoothing</i>, <i>aggregation</i> (merge
+        neighbours: houses &rarr; built-up area), <i>collapse</i> (area
+        &rarr; line &rarr; point), <i>exaggeration</i> (keep a small but
+        important thing, enlarged), <i>displacement</i> (push apart what
+        would touch), <i>typification</i> (keep the pattern, fewer
+        elements). L2&rarr;L4 above is selection, collapse, aggregation,
+        typification in that order.
+      </p>
+      <p>
+        How many objects to keep: T&ouml;pfer&rsquo;s <i>radical law</i>,
+        n<sub>f</sub> = n<sub>a</sub>&middot;&radic;(M<sub>a</sub>/M<sub>f</sub>),
+        with M the scale denominators. Halve the scale: keep 1/&radic;2 of
+        the objects, not 1/2 (the drawing space shrinks with 1/scale&sup2;;
+        keeping all would be the naive render above).
+        <a href="https://doi.org/10.1179/caj.1966.3.1.10">T&ouml;pfer &amp; Pillewizer 1966</a>.
+      </p>
+
+      <h3>Polyline simplification</h3>
+      <p>
+        <b>Douglas&ndash;Peucker</b> (Ramer 1972; Douglas &amp; Peucker 1973):
+        draw the chord between the ends, find the vertex farthest from it; if
+        farther than &epsilon;, keep it and recurse on both halves, else drop
+        everything between. <b>Visvalingam&ndash;Whyatt</b> (1993): repeatedly
+        remove the vertex whose triangle with its two neighbours has the
+        smallest &laquo;&nbsp;effective area&nbsp;&raquo;. DP keeps the
+        sharp features, VW gives smoother results. Both are one parameter,
+        no semantics: they do not know a tree line from a coast.
+      </p>
+      <figure class="fig">
+        <img src="images/lines_dp.png" alt="Douglas-Peucker at three tolerances" />
+        <figcaption>
+          Douglas&ndash;Peucker on a fractal contour (midpoint displacement,
+          257 points), &epsilon; = 1.2, 3.5, 7&nbsp;px. Grey: original.
+          Same script.
+        </figcaption>
+      </figure>
+
+      <h3>In NPR</h3>
+      <ul>
+        <li>
+          <b>Density control.</b> Grabli, Durand &amp; Sillion
+          (<i>Density measure for line-drawing simplification</i>, 2004):
+          measure line density on screen, remove lines until it fits a target.
+          <a href="https://doi.org/10.1109/PCCGA.2004.1348362">doi</a>.
+          Wilson &amp; Ma (2004): pen-and-ink with complexity controlled by
+          what the viewer needs to read, not by geometry.
+          <a href="https://doi.org/10.1145/987657.987674">doi</a>.
+        </li>
+        <li>
+          <b>Trees.</b> Deussen &amp; Strothotte (2000): foliage drawn with
+          abstract leaf primitives (disc, stroke), whose size and rendering
+          depend on distance, outlines kept only above a depth-difference
+          threshold. The same idea as the demo, with real trees.
+          <a href="https://doi.org/10.1145/344779.344792">doi</a>.
+        </li>
+        <li>
+          <b>Tonal Art Maps.</b> Praun et al. (2001): hatch textures
+          pre-built per mip level so that stroke density stays constant
+          across levels, instead of strokes getting denser as they shrink.
+          <a href="https://doi.org/10.1145/383259.383328">doi</a>.
+        </li>
+        <li>
+          <b>Clustering.</b> Barla, Thollot &amp; Sillion (2005): group
+          nearby lines and replace each group by one representative line.
+          Aggregation, on strokes.
+          <a href="https://doi.org/10.1145/1187112.1187227">doi</a> (SIGGRAPH sketch).
+        </li>
+        <li>
+          <b>Attention.</b> DeCarlo &amp; Santella (2002): keep detail where
+          the eye looked (eye tracking), abstract the rest.
+          <a href="https://doi.org/10.1145/566654.566650">doi</a>.
+        </li>
+        <li>
+          <b>Indication.</b> Winkenbach &amp; Salesin (1994): texture drawn
+          on a few spots only (edges, shadows), the eye completes the rest.
+        </li>
+        <li>
+          3D analogue in real-time rendering: <i>level of detail</i> (LOD)
+          meshes per distance, <i>impostors</i> (billboards standing in for
+          far objects), <i>mipmaps</i> for textures. A forest in a game does
+          exactly the L0&rarr;L4 chain, with triangles instead of strokes.
+        </li>
+      </ul>
+      <p>
+        Retenir: scale shrinks the drawing, not the number of lines. Lines
+        must be removed, merged, or lightened with depth, and checked by
+        blurring.
+      </p>
+
+      <h2 id="f-tools">F. Tools</h2>
+      <ul>
+        <li><a href="https://roughjs.com">rough.js</a> &mdash; hand-drawn shapes, JS.</li>
+        <li><a href="https://github.com/steveruizok/perfect-freehand">perfect-freehand</a> &mdash; pressure-like strokes from points.</li>
+        <li><a href="https://github.com/abey79/vpype">vpype</a> / <a href="https://github.com/abey79/vsketch">vsketch</a> &mdash; plotter-oriented vector pipeline and sketching in Python.</li>
+        <li><a href="https://github.com/plottertools/hatched">hatched</a> &mdash; image to hatching, SVG for plotters.</li>
+        <li><a href="https://github.com/SonarSonic/DrawingBotV3">DrawingBotV3</a> &mdash; image to pen-plotter paths, many styles.</li>
+        <li><a href="https://github.com/evil-mad/stipplegen">StippleGen</a> &mdash; weighted Voronoi stippling.</li>
+        <li><a href="https://docs.blender.org/manual/en/latest/render/freestyle/index.html">Blender Freestyle</a>, <a href="https://docs.blender.org/manual/en/latest/grease_pencil/modifiers/generate/line_art.html">Grease Pencil Line Art</a> &mdash; 3D to lines.</li>
+        <li><a href="https://www.psoft.co.jp/en/product/pencil/">Pencil+ 4</a> &mdash; commercial toon/line shader plugin (Maya, 3ds Max...).</li>
+        <li><a href="https://matplotlib.org/stable/gallery/showcase/xkcd.html">matplotlib xkcd</a> &mdash; the cheap sketchy look.</li>
+      </ul>
+
+      <p>
+        &larr; <a href="hatching.html">2. hatching</a> &nbsp;|&nbsp;
+        <a href="index.html">sommaire</a> &nbsp;|&nbsp;
+        <a href="perception.html">4. perception</a> &rarr;
+      </p>
+
+      <footer>
+        <hr />
+        articles / drawing_computer / lines &mdash; v1, 2026-10
+      </footer>
+    </div>
+  </body>
+</html>

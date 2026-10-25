@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hatching &amp; engraving</title>
+    <style>
+      body {
+        margin: 0;
+        background: #f1ede4;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 340px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.25rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.72rem; color: #6e6356; }
+      nav li.here > a { font-weight: bold; }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a, h1, h2, h3, .toc b, footer, .fig figcaption {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3a3026;
+        text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2.5rem; }
+      h3 { font-size: 0.95rem; font-weight: normal; margin-top: 1.8rem; }
+      a { color: #1d3d6b; }
+      .toc { list-style: none; padding: 0; }
+      .toc li { margin-bottom: 1.2rem; }
+      .toc b { font-weight: normal; font-size: 1.05rem; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+      .grid2 .fig { margin: 0.5rem 0; }
+      table { border-collapse: collapse; font-size: 0.8em; width: 100%; }
+      th, td { border: 1px solid #b8ad99; padding: 0.3rem 0.5rem; text-align: left; vertical-align: top; }
+      th { font-family: "Courier New", Courier, monospace; font-weight: normal; background: #e6dfd0; }
+      table.methods { font-size: 0.72em; }
+      table.methods th, table.methods td { padding: 0.15rem 0.3rem; }
+      .tw { overflow-x: auto; }
+      .legend { font-size: 0.85em; color: #5b5045; }
+      .pn { display: flex; justify-content: space-between; font-family: "Courier New", Courier, monospace; font-size: 0.85rem; margin-top: 3rem; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li><a href="index.html">sommaire</a>
+        </li>
+        <li><a href="tone.html">1. tone</a>
+          <ul class="sub">
+            <li><a href="tone.html#pourquoi">Pourquoi</a></li>
+            <li><a href="tone.html#threshold-1-bit">Threshold (1 bit)</a></li>
+            <li><a href="tone.html#quantization-n-levels">Quantization (n levels)</a></li>
+            <li><a href="tone.html#dithering">Dithering</a></li>
+            <li><a href="tone.html#halftone">Halftone</a></li>
+            <li><a href="tone.html#stippling-pointill">Stippling (pointillé)</a></li>
+            <li><a href="tone.html#tone-reproduction-how-many-marks">Tone reproduction: how many marks?</a></li>
+            <li><a href="tone.html#retenir">Retenir</a></li>
+          </ul>
+        </li>
+        <li class="here"><a href="hatching.html">2. hatching</a>
+          <ul class="sub">
+            <li><a href="hatching.html#a-tone-from-lines">A. Tone from lines</a></li>
+            <li><a href="hatching.html#b-adding-orientation">B. Adding orientation</a></li>
+            <li><a href="hatching.html#c-adding-texture">C. Adding texture</a></li>
+            <li><a href="hatching.html#d-methods-table">D. Methods table</a></li>
+          </ul>
+        </li>
+        <li><a href="lines.html">3. lines</a>
+          <ul class="sub">
+            <li><a href="lines.html#a-lines-from-an-image">A. Lines from an image</a></li>
+            <li><a href="lines.html#b-lines-from-3d">B. Lines from 3D</a></li>
+            <li><a href="lines.html#c-line-quality">C. Line quality</a></li>
+            <li><a href="lines.html#d-depth-with-ink-only">D. Depth with ink only</a></li>
+            <li><a href="lines.html#e-line-simplification">E. Line simplification</a></li>
+            <li><a href="lines.html#f-tools">F. Tools</a></li>
+          </ul>
+        </li>
+        <li><a href="perception.html">4. perception</a>
+          <ul class="sub">
+            <li><a href="perception.html#the-illusion">1. The illusion</a></li>
+            <li><a href="perception.html#volume">2. Volume</a></li>
+            <li><a href="perception.html#depth">3. Depth</a></li>
+            <li><a href="perception.html#encoding">4. Encoding: information → marks</a></li>
+            <li><a href="perception.html#open-questions">5. Open questions</a></li>
+          </ul>
+        </li>
+        <li><a href="references.html">references</a>
+          <ul class="sub">
+            <li><a href="references.html#surveys-books">Surveys &amp; books</a></li>
+            <li><a href="references.html#tone">Tone: dithering, halftone, stippling</a></li>
+            <li><a href="references.html#hatching">Hatching &amp; engraving</a></li>
+            <li><a href="references.html#lines-contours">Lines &amp; contours</a></li>
+            <li><a href="references.html#depth-art">Depth &amp; the engravers</a></li>
+            <li><a href="references.html#perception">Perception, motion, forces</a></li>
+            <li><a href="references.html#software">Software &amp; libraries</a></li>
+            <li><a href="references.html#images">Images (Wikimedia Commons)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>2. Hatching &amp; engraving</h1>
+      <p>
+        Tone from lines, then orientation, then texture. The burin has
+        one black and one white. Everything else is where the lines go,
+        how thick they are, which way they run.
+      </p>
+
+      <h2 id="a-tone-from-lines">A. Tone from lines</h2>
+
+      <p>
+        The burin's vocabulary (see the notes on <em>taille directe</em>):
+      </p>
+      <ul>
+        <li><b>width of the taille</b> &mdash; press harder, cut deeper, wider line. One line can swell then taper.</li>
+        <li><b>spacing</b> &mdash; same width, tighter lines, darker grey.</li>
+        <li><b>interruptions</b> &mdash; short or broken tailles lighten without changing tool.</li>
+        <li><b>contre-taille</b> &mdash; a second layer crossing the first. Crossing at 30&ndash;60&deg; (losange) is softer and vibrates; 90&deg; looks mechanical.</li>
+        <li><b>entre-taille</b> &mdash; one fine line slipped between two existing ones. Darkens a bit, does not clog.</li>
+        <li><b>dots</b> &mdash; a taille ending in dots melts a shadow into the light. Flesh, distance, transitions.</li>
+      </ul>
+
+      <div class="grid2">
+        <figure class="fig">
+          <img src="images/hatch_durer_dog.jpg" alt="Durer, Melencolia I, detail of the dog" />
+          <figcaption>
+            D&uuml;rer, <i>Melencolia I</i>, 1514, detail. Short tailles on the
+            dog, contre-taille in the shadows, dots on the sphere.
+            <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Melencolia_I_-_Google_Art_Project_(427760).jpg">Commons</a>, public domain.
+          </figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/hatch_bewick_bird.jpg" alt="Bewick, Yellowhammer" />
+          <figcaption>
+            Thomas Bewick, <i>Yellowhammer</i>, wood engraving, 1797.
+            Taille blanche: white lines cut in black. Greys from the
+            density of white.
+            <a href="https://commons.wikimedia.org/wiki/File:Brief_History_of_Wood-engraving_Bewick_Yellowhammer.png">Commons</a>, public domain.
+          </figcaption>
+        </figure>
+      </div>
+
+      <p>
+        Bewick works the other way round (<em>bois de bout</em>,
+        <em>taille blanche</em>): engrave white into black with a
+        <em>vélo</em>. Same logic, reversed.
+      </p>
+
+      <h3>Computer equivalents</h3>
+
+      <p>
+        <b>Line screen, tone by spacing.</b> Lines at a given angle; each
+        darker tone brings them closer. Mechanical. Fine for a plotter:
+        one pen, one width.
+      </p>
+      <p>
+        <b>Width modulation.</b> Spacing fixed, the line swells where it is
+        darker. This is the burin's look. Ostromoukhov, <a
+        href="https://doi.org/10.1145/311535.311604"><i>Digital Facial
+        Engraving</i></a>, SIGGRAPH 1999: lines follow the form of the face
+        (a parametrization), their thickness comes from comparing a periodic
+        profile with the tone.
+      </p>
+      <p>
+        <b>Threshold layers.</b> Cut the image in brightness bands; each
+        band gets one more hatch angle. Simple, effective. The <a
+        href="https://github.com/plottertools/hatched">hatched</a> plugin
+        for <a href="https://github.com/abey79/vpype">vpype</a> does exactly this, with a plotter-ready output.
+      </p>
+      <p>
+        <b>Prioritized stroke textures.</b> Winkenbach &amp; Salesin, <a
+        href="https://doi.org/10.1145/192161.192184"><i>Computer-Generated
+        Pen-and-Ink Illustration</i></a>, SIGGRAPH 1994. Strokes are
+        ranked by priority; add them one after the other until the tone is
+        reached. Then the tone is matched, not the pixels. The ancestor of
+        everything below.
+      </p>
+
+      <figure class="fig" id="fig-ramp">
+        <img src="images/hatch_ramp.png" alt="Same ramp three ways" />
+        <figcaption>
+          The same ramp (dark left, white right), three ways. Top: spacing.
+          Middle: width, constant spacing. Bottom: threshold layers,
+          four angles (45, 105, 15, 75&deg;), constant width and spacing.
+        </figcaption>
+      </figure>
+
+      <figure class="fig" id="fig-layers">
+        <img src="images/hatch_layers.png" alt="Scene hatched with threshold layers" />
+        <figcaption>
+          Threshold layers on the shaded scene. Fixed angles, no relation to
+          the shapes. It reads as tone, not as volume. The sphere is flat.
+        </figcaption>
+      </figure>
+
+      <p class="note">
+        <b>Rule for one pen.</b> One line width (measured on paper: a
+        0.05&ndash;0.1 fineliner draws 0.2&ndash;0.3 mm). Tone = spacing
+        only. The white gap must stay at least the line width, else the pen
+        fills it and the hatching becomes a black patch. In numbers:
+        <b>&Eacute;cart &ge; 8 &times; Trait</b> (Trait 0.15 mm, &Eacute;cart
+        &ge; 1.2 mm). Darker than that: cross-hatching, a second family at
+        30&ndash;60&deg;, not a tighter spacing.
+      </p>
+
+      <p>
+        <b>Tone check.</b> Render the strokes, blur by what the eye
+        resolves (Gaussian, 0.2&ndash;0.5 mm of paper), compare with the
+        target tone. Independent of the screen and the printer. This is what
+        Winkenbach and Salisbury do internally: add strokes until the blurred
+        result matches.
+      </p>
+
+      <h3>Black line, white line (inversion)</h3>
+
+      <p>
+        No single name for it. Wood engravers say <em>black-line</em> vs
+        <em>white-line</em> (taille blanche); in perception it is a
+        <a href="https://en.wikipedia.org/wiki/Figure%E2%80%93ground_(perception)">figure&ndash;ground</a>
+        switch; NPR papers say <em>contrast inversion</em> or just
+        black-and-white stylization. The idea: in the lights, draw black
+        lines on white; in the darks, the ground becomes black and you draw
+        <b>white lines on black</b>.
+      </p>
+      <p>
+        Why it works. Past 50% ink, the white is the minority, so the white
+        is what the eye reads as the marks. A black hatching at 80% ink is
+        really white lines 4&times; thinner than the black ones. Once you
+        say it that way, the rule for one pen applies again, mirrored:
+        the black gap between two white lines must stay at least the
+        line width. With constant-width lines, tone by spacing only goes
+        from 0 to 50%; inversion gives the other half, 50 to 100%, with
+        the same pen width. No clogging, no cross-hatching needed.
+      </p>
+
+      <figure class="fig" id="fig-invert">
+        <img src="images/hatch_invert_ramp.png" alt="Ramp: black lines only vs with inversion" />
+        <figcaption>
+          Constant line width, tone by spacing (P, P/2, P/4: each step
+          slips an entre-taille between two lines). Top: black lines only,
+          stuck at 50% (gap = line width). Bottom: past 50%, the ground
+          turns black and the same spacings come back as white lines,
+          down to pure black.
+        </figcaption>
+      </figure>
+
+      <div class="grid2">
+        <figure class="fig">
+          <img src="images/hatch_invert_off.png" alt="Scene, black lines only" />
+          <figcaption>Black lines only. The shadow side of the sphere, the cast shadows and the ground all flatten to the same 50% grey.</figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/hatch_invert_on.png" alt="Scene with inversion" />
+          <figcaption>With inversion. The shadows go to black, the core shadow of the sphere is white lines on black. Same line field, same pen.</figcaption>
+        </figure>
+      </div>
+
+      <p>
+        Where the switch happens there is a seam. Engravers hide it: the
+        black line swells until it touches its neighbours, and what is left
+        between them is a white line that keeps thinning. Width-modulated
+        screens (Ostromoukhov, below) do this for free: one periodic
+        profile, ink above the threshold, and black-on-white turns into
+        white-on-black continuously. With constant-width pens (plotter)
+        the seam stays; put it on a form edge or a shadow line, where a
+        change of texture is expected.
+      </p>
+
+      <figure class="fig">
+        <img src="images/hatch_dore_detail.jpg" alt="Doré, Inferno plate 22, detail" />
+        <figcaption>
+          Gustave Dor&eacute; (wood engraving, by his engravers),
+          <i>Inferno</i>, Canto VII, 1861, detail. The dark sky: white
+          wavy lines cut in black. The lit bodies: black lines on white.
+          Both in the same block.
+          <a href="https://commons.wikimedia.org/wiki/File:Gustave_Dor%C3%A9_-_Dante_Alighieri_-_Inferno_-_Plate_22_(Canto_VII_-_Hoarders_and_Wasters).jpg">Commons</a>, public domain.
+        </figcaption>
+      </figure>
+
+      <p>Same idea, other media:</p>
+      <ul>
+        <li><b>Bois de bout, taille blanche</b> &mdash; Bewick (above). The block prints black; every cut is white. Lights are made by cutting a lot.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Mezzotint">Manière noire</a></b> (mezzotint) &mdash; the plate is first roughened all over (berceau), prints solid black; the engraver scrapes and burnishes toward the lights. Drawing in white.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Scratchboard">Scratchboard</a></b> &mdash; black ink on white clay, scratched. The modern hand version.</li>
+        <li><b>Papier teint&eacute;, rehauts de blanc</b> &mdash; drawing on mid-grey or blue paper: black for the darks, white chalk or gouache for the lights. The paper is the 50%. Three tones instead of two, same logic.</li>
+      </ul>
+
+      <figure class="fig">
+        <img src="images/hatch_durer_hands.jpg" alt="Dürer, Praying Hands" style="max-width: 300px" />
+        <figcaption>
+          D&uuml;rer, <i>Study of praying hands</i>, 1508. Brush, black
+          and white on blue prepared paper. Black hatching in the shadows,
+          white hatching in the lights, the blue does the middle.
+          <a href="https://commons.wikimedia.org/wiki/File:Albrecht_D%C3%BCrer_-_Praying_Hands,_1508_-_Google_Art_Project.jpg">Commons</a>, public domain.
+        </figcaption>
+      </figure>
+
+      <p>
+        In NPR: Mould &amp; Grant, <a
+        href="https://doi.org/10.1145/1377980.1377991"><i>Stylized black
+        and white images from photographs</i></a>, NPAR 2008 &mdash;
+        segments the image, decides per region if it is drawn black on
+        white or white on black, keeps detail with lines of the opposite
+        colour. Xu &amp; Kaplan, <a
+        href="https://doi.org/10.1145/1377980.1377990"><i>Artistic
+        thresholding</i></a>, NPAR 2008 &mdash; same question as a
+        segmentation/optimization problem: which regions go black, which
+        white, so that the boundaries still tell the shapes.
+      </p>
+
+      <h2 id="b-adding-orientation">B. Adding orientation</h2>
+
+      <p>
+        Strokes that follow the form give tone <em>and</em> shape in one
+        gesture: the curve of a trunk, a hill, a cheek. Fixed angles (above)
+        give tone only. Two questions: which direction, then where to put
+        the lines.
+      </p>
+
+      <h3>Direction sources</h3>
+      <ul>
+        <li>
+          <b>From a photo: edge tangent flow.</b> Take the image gradient,
+          rotate by 90&deg; (the tangent runs along the edges), smooth it
+          with a filter that keeps the strong edges. Kang, Lee &amp; Chui,
+          <a href="https://doi.org/10.1145/1274871.1274878"><i>Coherent Line
+          Drawing</i></a>, NPAR 2007. Much of the noise of a naive field is
+          the direction jumping from pixel to pixel; smooth first.
+        </li>
+        <li>
+          <b>From 3D: principal curvature directions.</b> Hertzmann &amp;
+          Zorin, <a href="https://doi.org/10.1145/344779.345074"><i>Illustrating
+          Smooth Surfaces</i></a>, SIGGRAPH 2000: hatch along the curvature
+          directions, with a smoothed, regularized field. Earlier, Interrante
+          (1997) used curvature directions to draw strokes on transparent
+          surfaces so that the shape reads through.
+        </li>
+        <li>
+          <b>By hand.</b> A few guide curves, interpolate. In the demos below
+          the field is analytic: latitude lines on the sphere, concentric
+          ellipses on the torus, horizontals on the ground.
+        </li>
+      </ul>
+
+      <h3>Placement</h3>
+      <p>
+        <b>Evenly spaced streamlines.</b> Jobard &amp; Lef&egrave;r, <a
+        href="https://doi.org/10.1007/978-3-7091-6876-9_5"><i>Creating
+        evenly-spaced streamlines of arbitrary density</i></a>, 1997 (a
+        flow-visualization paper). Trace a line along the field; seed new
+        lines at distance <i>d</i> on both sides; stop a line when it gets
+        closer than 0.5&ndash;0.7&thinsp;<i>d</i> to another. Let <i>d</i>
+        depend on the tone: darker, closer. Long continuous lines, ideal for
+        a pen. Add a second family (contre-taille) in the darkest parts.
+      </p>
+      <p>
+        <b>Orientable textures.</b> Salisbury, Wong, Hughes &amp; Salesin,
+        <a href="https://doi.org/10.1145/258734.258890"><i>Orientable
+        Textures for Image-Based Pen-and-Ink Illustration</i></a>, SIGGRAPH
+        1997. Short strokes, scattered evenly at random (blue noise), each
+        oriented by the field, as many as the tone requires. Tirets rather
+        than lines: tolerant of a noisy field, since a dash promises no
+        continuous line.
+      </p>
+
+      <figure class="fig" id="fig-flow">
+        <img src="images/hatch_flow.png" alt="Streamlines following the form, two families" />
+        <figcaption>
+          Evenly spaced streamlines, spacing from tone, per object so lines
+          stop at the contours. Second family where it is darkest: across
+          the first on the objects, at about 55&deg; on the ground. Sphere
+          and torus now have volume.
+        </figcaption>
+      </figure>
+
+      <div class="grid2">
+        <figure class="fig" id="fig-dashes">
+          <img src="images/hatch_dashes.png" alt="Short oriented dashes" />
+          <figcaption>Oriented dashes, random placement by dart throwing, radius from tone.</figcaption>
+        </figure>
+        <figure class="fig" id="fig-engrave">
+          <img src="images/hatch_engrave.png" alt="Width-modulated engraving screen" />
+          <figcaption>Width-modulated screen. Lines are iso-lines of a surface function (n&middot;axis on the objects); width = tone &times; local spacing.</figcaption>
+        </figure>
+      </div>
+
+      <p>
+        The second image is the burin look: lines swell in the shadow,
+        thin in the light, and bunch up toward the silhouette because
+        they follow the form. A cheap version of Ostromoukhov: no face
+        parametrization needed when the object gives iso-lines for free.
+      </p>
+
+      <h3>Limit case: one line</h3>
+      <p>
+        Claude Mellan, <i>Sudarium of Saint Veronica</i> (<i>La Sainte
+        Face</i>), 1649: the whole face is one continuous spiral that
+        starts at the tip of the nose. No contre-taille, no dots. Only the
+        width varies: thick in the shadow, hair-thin in the light. Pure width
+        modulation, with the line itself as the orientation field.
+        <a href="https://en.wikipedia.org/wiki/Claude_Mellan">Wikipedia</a>.
+      </p>
+
+      <div class="grid2">
+        <figure class="fig" id="fig-mellan">
+          <img src="images/hatch_mellan_face.jpg" alt="Mellan, Sainte Face" />
+          <figcaption>
+            Claude Mellan, <i>The Sudarium of Saint Veronica</i>, 1649,
+            engraving (NGA). <a href="https://commons.wikimedia.org/wiki/File:Claude_Mellan,_The_Sudarium_of_Saint_Veronica,_1649,_NGA_9076.jpg">Commons</a>, CC0.
+          </figcaption>
+        </figure>
+        <figure class="fig">
+          <img src="images/hatch_mellan_detail.jpg" alt="Mellan, detail, spiral at the nose" />
+          <figcaption>
+            Detail: eyes and nose. The spiral starts on the nose. Width
+            alone makes the eyes.
+          </figcaption>
+        </figure>
+      </div>
+
+      <figure class="fig" id="fig-spiral">
+        <img src="images/hatch_spiral.png" alt="Scene rendered as one spiral" />
+        <figcaption>
+          Same trick on the scene: an Archimedean spiral (one line, a
+          single pen stroke on paper), width from tone. Not the form this time:
+          Mellan's spiral is centred on the face and bends with it, this one
+          just ignores the shapes.
+        </figcaption>
+      </figure>
+
+      <h2 id="c-adding-texture">C. Adding texture</h2>
+
+      <p>
+        Third layer: what the surface is made of. Same tone, same
+        direction, but stroke <em>character</em> changes: straight and
+        regular (metal, glass), wiggly (cloth, hair), short dashes
+        (stone, grass), stipple (flesh, distance), grain (paper, pencil).
+      </p>
+
+      <ul>
+        <li>
+          <b>Noise along the stroke.</b> Displace points perpendicular to the
+          line with smooth noise (not white noise), vary the width, break the
+          line into pieces with small gaps, let it overshoot. Cheap and
+          effective. Same idea as rough.js / Handy for the sketchy look.
+        </li>
+        <li>
+          <b>Line Integral Convolution.</b> Cabral &amp; Leedom, <a
+          href="https://doi.org/10.1145/166117.166151"><i>Imaging Vector
+          Fields Using Line Integral Convolution</i></a>, SIGGRAPH 1993
+          (<a href="https://en.wikipedia.org/wiki/Line_integral_convolution">Wikipedia</a>).
+          White noise averaged along the streamlines of the field gives
+          streaky grain; threshold it against the tone. Pencil on rough
+          paper. Grey pixels at heart, so not a plotter method.
+        </li>
+        <li>
+          <b>Tonal Art Maps.</b> Praun, Hoppe, Webb &amp; Finkelstein, <a
+          href="https://doi.org/10.1145/383259.383328"><i>Real-Time
+          Hatching</i></a>, SIGGRAPH 2001. Pre-drawn stroke textures for each
+          tone level, <em>nested</em> (a darker level contains the strokes of
+          the lighter one, so nothing flickers), with mip-maps so the stroke
+          density stays constant at any distance. Blended per pixel by the
+          lighting, oriented along a 3D direction field. Real-time; the basis
+          of most game hatching shaders.
+        </li>
+        <li>
+          <b>Learned hatching.</b> Kalogerakis, Nowrouzezahrai, Breslav &amp;
+          Hertzmann, <i>Learning Hatching for Pen-and-Ink Illustration of
+          Surfaces</i>, ACM TOG 2012 (<a
+          href="https://doi.org/10.1145/2077341.2077342">doi</a>). Learn the
+          direction, density and length of strokes from a drawing of one
+          model, then apply to another.
+        </li>
+        <li>
+          <b>Indication.</b> Winkenbach &amp; Salesin again: full texture
+          where the eye should look (in front, in the light), then only
+          suggested (a few strokes, a patch at the edge of the shadow), then
+          nothing. The engraver stops before the paper ends. Less texture is
+          also less data to plot.
+        </li>
+      </ul>
+
+      <div class="grid2">
+        <figure class="fig" id="fig-lic">
+          <img src="images/hatch_lic.png" alt="LIC grain" />
+          <figcaption>LIC: noise averaged along the field, thresholded by tone. Pencil.</figcaption>
+        </figure>
+        <figure class="fig" id="fig-wobble">
+          <img src="images/hatch_wobble.png" alt="Wobbly broken strokes" />
+          <figcaption>Same streamlines as above, with smooth wobble, width swell and interruptions. Hand.</figcaption>
+        </figure>
+      </div>
+
+      <h2 id="d-methods-table">D. Methods table</h2>
+
+      <p>
+        Two families: tone from where the strokes are placed (a pen can draw
+        it), or from grey pixels (only a printed image). For a plotter only
+        the first counts.
+      </p>
+
+      <p class="legend">
+        Carries: &#9679;&#9679;&#9679; = tone, orientation, texture, in this
+        order; a dot is a layer present. Input: image, 3D model, or an image
+        with an estimated direction field.
+      </p>
+
+      <div class="tw">
+      <table class="methods">
+        <tr><th>Method</th><th>Input</th><th>T O X</th><th>How</th><th>Look</th><th>Plotter</th><th>Demo</th></tr>
+        <tr><td>Line screen</td><td>image</td><td>&#9679;&nbsp;&nbsp;&nbsp;</td><td>Fixed angle; tone by spacing</td><td>mechanical</td><td>yes, one width</td><td><a href="#fig-ramp">ramp</a></td></tr>
+        <tr><td>Width-modulated screen, <a href="https://doi.org/10.1145/311535.311604">Ostromoukhov 1999</a></td><td>image (+ form)</td><td>&#9679;&#9679;&nbsp;</td><td>Periodic profile vs tone; line swells where darker</td><td>burin, swell and taper</td><td>only with several pen passes</td><td><a href="#fig-engrave">engrave</a>, <a href="#fig-ramp">ramp</a></td></tr>
+        <tr><td>Threshold layers, <a href="https://github.com/plottertools/hatched">vpype hatched</a></td><td>image</td><td>&#9679;&nbsp;&nbsp;&nbsp;</td><td>One more hatch angle per brightness band</td><td>graphic, flat</td><td>yes</td><td><a href="#fig-layers">layers</a></td></tr>
+        <tr><td>Prioritized stroke textures, <a href="https://doi.org/10.1145/192161.192184">Winkenbach &amp; Salesin 1994</a></td><td>3D</td><td>&#9679;&#9679;&#9679;</td><td>Strokes ranked by priority, added until the tone matches</td><td>hand-drawn</td><td>yes</td><td>&mdash;</td></tr>
+        <tr><td>Orientable textures, <a href="https://doi.org/10.1145/258734.258890">Salisbury et al. 1997</a></td><td>image + field</td><td>&#9679;&#9679;&#9679;</td><td>Short strokes, blue noise, oriented by field</td><td>tirets</td><td>yes</td><td><a href="#fig-dashes">dashes</a></td></tr>
+        <tr><td>Evenly spaced streamlines, <a href="https://doi.org/10.1007/978-3-7091-6876-9_5">Jobard &amp; Lef&egrave;r 1997</a></td><td>image + field, or 3D</td><td>&#9679;&#9679;&nbsp;</td><td>Trace along field, seed at distance <i>d</i>(tone), stop when too close</td><td>flowing, follows form</td><td>yes, ideal (<a href="https://github.com/serycjon/vpype-flow-imager">flow-imager</a>)</td><td><a href="#fig-flow">flow</a></td></tr>
+        <tr><td>Edge tangent flow, <a href="https://doi.org/10.1145/1274871.1274878">Kang et al. 2007</a></td><td>image</td><td>&nbsp;&nbsp;&#9679;&nbsp;</td><td>Gradient rotated 90&deg;, smoothed, edges kept</td><td>&mdash; (field only)</td><td>prerequisite</td><td>&mdash;</td></tr>
+        <tr><td>Curvature-aligned hatching, <a href="https://doi.org/10.1145/344779.345074">Hertzmann &amp; Zorin 2000</a>; <a href="https://doi.org/10.1145/258734.258796">Interrante 1997</a></td><td>3D</td><td>&#9679;&#9679;&nbsp;</td><td>Strokes along principal curvature directions, regularized field</td><td>engraved, volumetric</td><td>yes</td><td>&mdash; (analytic field in <a href="#fig-flow">flow</a>)</td></tr>
+        <tr><td>Tonal Art Maps, <a href="https://doi.org/10.1145/383259.383328">Praun et al. 2001</a></td><td>3D</td><td>&#9679;&#9679;&#9679;</td><td>Nested stroke textures per tone, mip-mapped, blended per pixel</td><td>hand-drawn, coherent</td><td>through the strokes only</td><td>&mdash;</td></tr>
+        <tr><td>LIC pencil, <a href="https://doi.org/10.1145/166117.166151">Cabral &amp; Leedom 1993</a></td><td>image + field</td><td>&nbsp;&#9679;&#9679;</td><td>Noise averaged along field, thresholded by tone</td><td>pencil, grain</td><td>no (grey pixels)</td><td><a href="#fig-lic">LIC</a></td></tr>
+        <tr><td>Learned hatching, <a href="https://doi.org/10.1145/2077341.2077342">Kalogerakis et al. 2012</a></td><td>3D</td><td>&#9679;&#9679;&#9679;</td><td>Learn direction, density, length from one drawn model</td><td>that artist&rsquo;s hand</td><td>yes (strokes)</td><td>&mdash;</td></tr>
+        <tr><td>Single-line spiral (Mellan 1649)</td><td>image</td><td>&#9679;&nbsp;&nbsp;&nbsp;</td><td>One spiral, width from tone</td><td>burin, swelling line</td><td>only with several passes (width)</td><td><a href="#fig-mellan">Mellan</a>, <a href="#fig-spiral">spiral</a></td></tr>
+        <tr><td>Black/white inversion, <a href="https://doi.org/10.1145/1377980.1377991">Mould &amp; Grant 2008</a>; <a href="https://doi.org/10.1145/1377980.1377990">Xu &amp; Kaplan 2008</a></td><td>image</td><td>&#9679;&nbsp;&nbsp;&nbsp;</td><td>Per region: black on white or white on black</td><td>Doré, scratchboard</td><td>black areas = dense fill, slow; or white pen on black paper</td><td><a href="#fig-invert">invert</a></td></tr>
+        <tr><td>Stippling</td><td>image</td><td>&#9679;&nbsp;&nbsp;&nbsp;</td><td>Dots, density from tone</td><td>pointillé</td><td>yes, slow (many pen lifts)</td><td><a href="tone.html#stippling-pointill">tone</a></td></tr>
+        <tr><td>Dithering, halftone</td><td>image</td><td>&#9679;&nbsp;&nbsp;&nbsp;</td><td>Pixel patterns, grey by dot area</td><td>print</td><td>no (pixels)</td><td><a href="tone.html#dithering">tone</a></td></tr>
+      </table>
+      </div>
+
+      <h3>How to choose</h3>
+      <ul>
+        <li><b>Plotter, a photo</b> &mdash; ETF, then streamlines (vpype flow-imager). Without coding: vpype + hatched, DrawingBotV3.</li>
+        <li><b>Plotter, clean and quick</b> &mdash; threshold layers. Fixed angles, but predictable.</li>
+        <li><b>One pen, dark tones</b> &mdash; cross-hatching or inversion. Not a tighter spacing: the pen clogs.</li>
+        <li><b>Real-time 3D</b> &mdash; Tonal Art Maps. Strokes are texture, the plotter gets nothing.</li>
+        <li><b>3D model, offline</b> &mdash; curvature directions + streamlines. Learned hatching if a reference drawing exists.</li>
+        <li><b>Noisy field or noisy areas</b> &mdash; short oriented dashes. Grain look, no plotter: LIC.</li>
+        <li>Always start with the tone check; add direction before adding texture.</li>
+      </ul>
+
+      <p class="note">
+        Demo images computed in Python (numpy, PIL) on a synthetic scene;
+        the direction fields are analytic, not estimated. Historical prints
+        are public domain, resized only.
+      </p>
+
+      <div class="pn">
+        <a href="tone.html">&larr; 1. tone</a>
+        <a href="lines.html">3. lines &rarr;</a>
+      </div>
+
+      <footer>
+        <hr />
+        articles / drawing_computer &mdash; v1, 2026-10
+      </footer>
+    </div>
+  </body>
+</html>
