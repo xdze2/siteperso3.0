@@ -42,6 +42,9 @@
       .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
       .pair { display: flex; gap: 10px; align-items: flex-start; }
       .pair img { max-width: calc(50% - 5px); }
+      .ext { display: flex; gap: 12px; align-items: flex-start; margin-top: 6px; }
+      .ext img { width: 360px; flex-shrink: 0; }
+      .ext figcaption { margin-top: 0; }
       .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
       .margin { color: #8a2a1a; font-style: italic; }
       table { border-collapse: collapse; font-size: 0.8em; margin: 1rem 0; }
@@ -68,7 +71,8 @@
             <li><a href="#glued">5. Many points, glued</a></li>
             <li><a href="#normals">6. Rays as normals</a></li>
             <li><a href="#table">7. Table</a></li>
-            <li><a href="#todo">8. À faire</a></li>
+            <li><a href="#art">8. Art references</a></li>
+            <li><a href="#todo">9. À faire</a></li>
             <li><a href="#references">References</a></li>
           </ul>
         </li>
@@ -86,6 +90,12 @@
         three systems. It is one system, the pinhole on a plane, seen from
         three angles. The real choices are elsewhere: the shape of the
         sheet, the shape of the eye, the shape of the rays.
+      </p>
+      <p>
+        Next to most pictures, a small <b>outside view</b>: the same scene
+        seen from elsewhere, with the camera in it. Red dot = the eye,
+        black = the sheet, red lines = some of its rays, up to what they hit.
+        Pale red where hidden behind a box.
       </p>
       <p>
         Every picture below is the same scene: a street of boxes, a grid
@@ -133,15 +143,24 @@
       </p>
       <figure class="fig">
         <img src="images/persp_1pt.png" alt="street of boxes, one-point perspective" />
-        <figcaption>1 point. The plane faces the street. Only z converges (to the tower). Verticals and horizontals stay parallel.</figcaption>
+        <div class="ext">
+          <img src="images/ext_1pt.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>1 point. The plane faces the street. Only z converges (to the tower). Verticals and horizontals stay parallel.</figcaption>
+        </div>
       </figure>
       <figure class="fig">
         <img src="images/persp_2pt.png" alt="block of boxes seen from a corner, two-point perspective" />
-        <figcaption>2 points. The eye turns 33&deg;. x and z converge, left and right, on the horizon. Verticals still vertical: the plane is still vertical.</figcaption>
+        <div class="ext">
+          <img src="images/ext_2pt.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>2 points. The eye turns 33&deg;. x and z converge, left and right, on the horizon. Verticals still vertical: the plane is still vertical.</figcaption>
+        </div>
       </figure>
       <figure class="fig">
         <img src="images/persp_3pt.png" alt="block of boxes seen from above, three-point perspective" />
-        <figcaption>3 points. The eye also looks down 30&deg;. The verticals now converge too, far below the frame.</figcaption>
+        <div class="ext">
+          <img src="images/ext_3pt.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>3 points. The eye also looks down 30&deg;. The verticals now converge too, far below the frame.</figcaption>
+        </div>
       </figure>
       <p>
         Same eye, same rays. The three images are crops of the same
@@ -155,7 +174,10 @@
       </p>
       <figure class="fig">
         <img src="images/persp_wide.png" alt="street at 150 degrees field of view, edges stretched" />
-        <figcaption>Pinhole, plane, 150&deg; across. Correct, and unreadable. The near boxes are smeared to the borders.</figcaption>
+        <div class="ext">
+          <img src="images/ext_wide.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>Pinhole, plane, 150&deg; across. Correct, and unreadable. The near boxes are smeared to the borders.</figcaption>
+        </div>
       </figure>
 
       <h2 id="curved-sheet">2. One point, a curved sheet</h2>
@@ -175,7 +197,10 @@
       </p>
       <figure class="fig">
         <img src="images/persp_cylinder.png" alt="cylindrical projection, 220 degrees" />
-        <figcaption>Cylinder, 220&deg; across. The street still goes to the centre, the side boxes bend. Each horizontal edge has two vanishing points, at &plusmn;90&deg; of it: a sine.</figcaption>
+        <div class="ext">
+          <img src="images/ext_cylinder.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>Cylinder, 220&deg; across. The street still goes to the centre, the side boxes bend. Each horizontal edge has two vanishing points, at &plusmn;90&deg; of it: a sine. Outside: the cylinder sheet around the eye, 220&deg; of it, rays in red.</figcaption>
+        </div>
       </figure>
 
       <h3>Sphere: curvilinear perspective</h3>
@@ -193,7 +218,11 @@
           <img src="images/persp_fisheye.png" alt="fisheye looking down the street" />
           <img src="images/persp_fisheye_up.png" alt="fisheye looking up from the street" />
         </div>
-        <figcaption>Fisheye 180&deg;. Left: down the street. Right: from the middle of the street, looking straight up. Every vertical goes to the centre (the zenith), the street runs across.</figcaption>
+        <div class="pair">
+          <img src="images/ext_fisheye.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <img src="images/ext_fisheye_up.png" alt="outside view: the eye, the sheet and some rays in red" />
+        </div>
+        <figcaption>Fisheye 180&deg;. Left: down the street. Right: from the middle of the street, looking straight up. Every vertical goes to the centre (the zenith), the street runs across. Below, outside: the sheet is a hemisphere in front of the eye, then turned to the sky. Angle from the axis = distance from the centre of the disc.</figcaption>
       </figure>
       <p>
         Count the vanishing points. Each family of parallels converges
@@ -203,7 +232,10 @@
       </p>
       <figure class="fig">
         <img src="images/persp_equirect.png" alt="equirectangular 360 degree view from the middle of the street" />
-        <figcaption>Full sphere, equirectangular map (longitude &times; latitude), the format of 360&deg; photos. From the middle of the street. The street converges twice: to the tower in the centre, and behind, at both edges of the image.</figcaption>
+        <div class="ext">
+          <img src="images/ext_equirect.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>Full sphere, equirectangular map (longitude &times; latitude), the format of 360&deg; photos. From the middle of the street. The street converges twice: to the tower in the centre, and behind, at both edges of the image. Outside: the sheet is the whole sphere, rays leave in every direction, front and back.</figcaption>
+        </div>
       </figure>
       <p class="margin">
         Note: a curved sheet changes nothing to what is seen, only to how
@@ -230,11 +262,17 @@
       </p>
       <figure class="fig">
         <img src="images/persp_iso.png" alt="isometric view of the street" />
-        <figcaption>Isometric: rays parallel, perpendicular to the sheet, along the diagonal of the cube. The three axes at 120&deg;. The tower is cut by the frame.</figcaption>
+        <div class="ext">
+          <img src="images/ext_iso.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>Isometric: rays parallel, perpendicular to the sheet, along the diagonal of the cube. The three axes at 120&deg;. The tower is cut by the frame. Outside: no eye, a rectangle of origins. All rays parallel and perpendicular to it.</figcaption>
+        </div>
       </figure>
       <figure class="fig">
         <img src="images/persp_oblique.png" alt="oblique projection of the street" />
-        <figcaption>Oblique (cavalière): rays parallel but slanted to the sheet. Front faces stay true shape, depth recedes at an angle. The scroll painter's projection.</figcaption>
+        <div class="ext">
+          <img src="images/ext_oblique.png" alt="outside view: the eye, the sheet and some rays in red" />
+          <figcaption>Oblique (cavalière): rays parallel but slanted to the sheet. Front faces stay true shape, depth recedes at an angle. The scroll painter's projection. Outside: same rectangle, rays still parallel but slanted to the sheet.</figcaption>
+        </div>
       </figure>
       <p>
         A parallel projection can be read as the eye very far away with a
@@ -446,7 +484,187 @@
         <tr><td>collage</td><td>by patches</td><td>many</td><td>any</td><td>Cézanne, Hockney, Cubism</td></tr>
       </table>
 
-      <h2 id="todo">8. À faire</h2>
+      <h2 id="art">8. Art references</h2>
+      <p>
+        Painters met the problem long before the ray tracers. Notes by topic,
+        tied to the sections above.
+      </p>
+
+      <h3>The window (the pinhole, <a href="#pinhole">1</a>)</h3>
+      <ul>
+        <li><b><a href="https://en.wikipedia.org/wiki/Filippo_Brunelleschi">Brunelleschi</a></b>,
+          Florence, c. 1415&ndash;20. Painted the Baptistery on a small panel,
+          drilled a hole in it, looked through from the back at its reflection
+          in a mirror. Known from Manetti's later account; the panel is lost.
+          The first eye that is a point, literally: a hole.</li>
+        <li><b>Alberti</b>, <a href="https://en.wikipedia.org/wiki/De_pictura"><i>De pictura</i></a>
+          (1435). The picture as an open window, a section of the visual
+          pyramid. The plane sheet of section <a href="#pinhole">1</a>, in words.</li>
+        <li><b>Piero della Francesca</b>,
+          <a href="https://en.wikipedia.org/wiki/De_prospectiva_pingendi"><i>De prospectiva pingendi</i></a>
+          (late 15th c.). Perspective as geometry, step by step, with the
+          solids drawn from points.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Albrecht_D%C3%BCrer">D&uuml;rer</a></b>,
+          <i>Underweysung der Messung</i> (1525). Woodcuts of perspective
+          machines: a string from the object through a frame to a fixed
+          point. A camera as a function pixel &rarr; ray, 450 years early
+          (<a href="#camera">0</a>).</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Lamentation_over_the_Dead_Christ_(Mantegna)">Mantegna</a></b>,
+          <i>Lamentation over the Dead Christ</i> (c. 1480). The body seen from
+          the feet, extreme foreshortening. The wide-angle stretch of
+          <a href="#pinhole">1</a>, accepted.</li>
+      </ul>
+
+      <h3>Breaking the window</h3>
+      <ul>
+        <li><b><a href="https://en.wikipedia.org/wiki/The_Ambassadors_(Holbein)">Holbein</a></b>,
+          <i>The Ambassadors</i> (1533). The skull in the foreground is an
+          <a href="https://en.wikipedia.org/wiki/Anamorphosis">anamorphosis</a>:
+          readable only from a spot at the side, nearly along the picture.
+          Same picture, two eyes.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Andrea_Pozzo">Pozzo</a></b>,
+          nave ceiling of <a href="https://en.wikipedia.org/wiki/Sant%27Ignazio,_Rome">Sant'Ignazio</a>,
+          Rome (1685&ndash;94). The painted architecture and dome are correct
+          from one marked spot of the floor. Anywhere else the columns lean.
+          A pinhole imposed on the visitor.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Satire_on_False_Perspective">Hogarth</a></b>,
+          <i>Satire on False Perspective</i> (1754). Frontispiece joke: a
+          landscape where near and far are mixed up: figures and trees at the
+          wrong scale, a man lighting his pipe from a far-away candle. A catalogue of what
+          happens when the single eye is dropped.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Carceri_d%27invenzione">Piranesi</a></b>,
+          <i>Carceri d'invenzione</i> (c. 1749&ndash;50, reworked 1761).
+          Prisons of stairs and arches, vanishing points shifting from one
+          vault to the next. Not an optical theory, an effect.</li>
+      </ul>
+
+      <h3>Escher</h3>
+      <p>
+        Escher (<a href="https://en.wikipedia.org/wiki/M._C._Escher">1898&ndash;1972</a>)
+        covers three of our sections with prints.
+      </p>
+      <ul>
+        <li><b>Curved sheet</b> (<a href="#curved-sheet">2</a>): <i>High and
+          Low</i> (1947) and <i>House of Stairs</i> (1951), both with
+          fisheye-like lines, drawn by hand. The correspondence with Flocon is
+          already mentioned above. Bruno Ernst, <i>The Magic Mirror of M.C.
+          Escher</i> (1976), explains the constructions.</li>
+        <li><b>Several points glued</b> (<a href="#glued">5</a>):
+          <a href="https://en.wikipedia.org/wiki/Relativity_(M._C._Escher)"><i>Relativity</i></a>
+          (1953), three gravities and three sets of stairs in one frame;
+          <i>Other World</i> (1947), one scene seen with three horizons,
+          floor, wall and ceiling swapped.</li>
+        <li><b>Impossible constructions</b>:
+          <a href="https://en.wikipedia.org/wiki/Belvedere_(M._C._Escher)"><i>Belvedere</i></a>
+          (1958),
+          <a href="https://en.wikipedia.org/wiki/Ascending_and_Descending"><i>Ascending and Descending</i></a>
+          (1960),
+          <a href="https://en.wikipedia.org/wiki/Waterfall_(M._C._Escher)"><i>Waterfall</i></a>
+          (1961). Local perspective is right everywhere, the global map does
+          not close. Ascending and Descending uses the
+          <a href="https://en.wikipedia.org/wiki/Penrose_triangle">Penrose</a>
+          stairs (Penroses' paper, 1958). The seams of
+          <a href="#glued">5</a> that do not match.</li>
+        <li><i>Depth</i> (1955): fish in a regular 3D lattice, receding.
+          Pure pinhole, depth carried by size alone.</li>
+      </ul>
+
+      <h3>Hockney</h3>
+      <p>
+        <a href="https://en.wikipedia.org/wiki/David_Hockney">David Hockney</a>
+        has argued for decades against the one-point &laquo; window &raquo;: it
+        freezes one eye at one instant, and nobody looks like that.
+      </p>
+      <ul>
+        <li><b>Joiners</b> (<a href="#glued">5</a>). Polaroid composites from
+          1982, then photo collages. Every print is a separate pinhole, time
+          passes between them, the viewer's eye is made to move.
+          <a href="https://en.wikipedia.org/wiki/Pearblossom_Highway"><i>Pearblossom Hwy.</i></a>
+          (1986): hundreds of photos of a desert crossroads, assembled by hand.</li>
+        <li><b>The film</b> <i>A Day on the Grand Canal with the Emperor of
+          China, or: Surface Is Illusion But So Is Depth</i> (1988, directed by
+          Philip Haas). Hockney looks at a Chinese scroll of the Kangxi
+          Emperor's southern tour (Wang Hui and assistants, 1691&ndash;98),
+          frame by frame. The viewpoint moves along the road; no horizon
+          shared, no vanishing point. The oblique, scroll side of
+          <a href="#not-a-point">3</a>. He sets it against a later Qianlong
+          scroll, more European.</li>
+        <li><b>Reverse perspective</b> (<a href="#not-a-point">3</a>).
+          He plays with it in several paintings of the 1970s&ndash;80s. For
+          instance <i>Kerby (After Hogarth) Useful Knowledge</i> (1975), a
+          direct nod to Hogarth's false perspective above. <i>Large Interior,
+          Los Angeles</i> (1988): tilted table, widening floor, &agrave;
+          v&eacute;rifier.</li>
+        <li><b>Optics and the Old Masters</b>. <a href="https://en.wikipedia.org/wiki/Secret_Knowledge:_Rediscovering_the_Lost_Techniques_of_the_Old_Masters"><i>Secret
+          Knowledge</i></a> (2001): the thesis (with the physicist Charles
+          Falco) that painters used mirrors and lenses from the early 15th c.,
+          which explains the sudden realism. The
+          <a href="https://en.wikipedia.org/wiki/Hockney%E2%80%93Falco_thesis">Hockney&ndash;Falco thesis</a>
+          is contested by many historians and scientists. Useful here anyway:
+          it asks what the optical device put into the picture.</li>
+        <li><b>A History of Pictures</b> (2016, with Martin Gayford). Short
+          history of image-making, with the same distrust of the single
+          viewpoint.</li>
+        <li><b>Later work</b>. <i>A Bigger Grand Canyon</i> (1998), many
+          canvases side by side, viewed from near. Landscape videos filmed
+          with several cameras at once (2010s) and shown as a grid. Exact
+          titles and counts &agrave; v&eacute;rifier.</li>
+      </ul>
+
+      <h3>Other systems</h3>
+      <ul>
+        <li><b>Icons</b> (<a href="#not-a-point">3</a>, reverse perspective).
+          <a href="https://en.wikipedia.org/wiki/Pavel_Florensky">Florensky</a>
+          wrote <i>Reverse Perspective</i> (c. 1920): the icon looks from the
+          saint to the viewer, not the opposite. See
+          <a href="https://en.wikipedia.org/wiki/Reverse_perspective">reverse perspective</a>.
+          Part of the effect comes from other causes (inconsistent
+          construction, not a system), a debate to keep in mind.</li>
+        <li><b>Chinese handscrolls</b>. <a href="https://en.wikipedia.org/wiki/Along_the_River_During_the_Qingming_Festival"><i>Along
+          the River During the Qingming Festival</i></a> (Zhang Zeduan, 12th
+          c.): about five metres, from the country to the city to the bridge,
+          the eye walks. A moving viewpoint, close to a pushbroom
+          (<a href="#not-a-point">3</a>).</li>
+        <li><b>Japanese emaki</b>. Genji scrolls (12th c.): the roof removed,
+          <a href="https://en.wikipedia.org/wiki/Fukinuki_yatai"><i>fukinuki
+          yatai</i></a>, the room seen from above at an angle. Oblique
+          projection (<a href="#not-a-point">3</a>).</li>
+        <li><b>C&eacute;zanne</b> (<a href="https://en.wikipedia.org/wiki/Paul_C%C3%A9zanne">1839&ndash;1906</a>).
+          Still lifes with the table edge broken on each side of the cloth,
+          plates tilted open. Several eyes, small displacements, kept visible
+          (<a href="#glued">5</a>).</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Cubism">Cubism</a></b>
+          (Picasso, <a href="https://en.wikipedia.org/wiki/Georges_Braque">Braque</a>,
+          c. 1907&ndash;14). Front and profile in the same face, a bottle
+          seen from above and from the side. The collage of <a href="#glued">5</a>,
+          made on purpose.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Jean_Fouquet">Fouquet</a></b>:
+          curved space in some miniatures? &Agrave; v&eacute;rifier, not
+          enough to claim.</li>
+        <li><b><a href="https://en.wikipedia.org/wiki/Johannes_Vermeer">Vermeer</a></b>
+          and the <a href="https://en.wikipedia.org/wiki/Camera_obscura">camera
+          obscura</a>: probable use is debated, no proof. The camera obscura is
+          a real pinhole (<a href="#pinhole">1</a>).</li>
+      </ul>
+
+      <h3>Reading</h3>
+      <ul class="refs">
+        <li>Erwin <a href="https://en.wikipedia.org/wiki/Erwin_Panofsky">Panofsky</a>,
+          <i>Die Perspektive als &laquo; symbolische Form &raquo;</i> (1927).
+          The plane perspective is a convention of one period, not nature. He
+          notes that the retina is curved, so the curved sheet of
+          <a href="#curved-sheet">2</a> is closer to the eye than the plane.</li>
+        <li>Hubert <a href="https://en.wikipedia.org/wiki/Hubert_Damisch">Damisch</a>,
+          <i>L'Origine de la perspective</i> (1987). Perspective as a
+          thinking device, from Brunelleschi's panel on.</li>
+        <li>Hockney, <i>Secret Knowledge</i> (2001); Hockney &amp; Gayford,
+          <i>A History of Pictures</i> (2016).</li>
+        <li>Bruno Ernst, <i>The Magic Mirror of M.C. Escher</i> (1976).</li>
+        <li>Wikipedia: <a href="https://en.wikipedia.org/wiki/Perspective_(graphical)">Perspective (graphical)</a>,
+          <a href="https://en.wikipedia.org/wiki/Giovanni_Battista_Piranesi">Piranesi</a>.</li>
+      </ul>
+
+      <h2 id="todo">9. À faire</h2>
       <ul>
         <li>a camera from a non-trivial surface: saddle, torus, the street
           itself as sensor. Render, see the focal surfaces.</li>

@@ -126,8 +126,13 @@ def save(img, name):
 
 
 # ---------------------------------------------------------------- cameras
+UV = None  # (u, v) arrays: override the pixel grid, to get a few rays only (extview.py)
+
+
 def grid(W, H):
     """pixel centres, u in [-1, 1] across the width, v same scale, up positive"""
+    if UV is not None:
+        return UV
     w, h = W * SS, H * SS
     x = (np.arange(w) + 0.5) / w * 2 - 1
     y = ((np.arange(h) + 0.5) - h / 2) / (w / 2)
