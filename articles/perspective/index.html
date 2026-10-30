@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perspective, other cameras</title>
+    <style>
+      body {
+        margin: 0;
+        background: #efece3;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #1f1a14;
+        font-size: 1.15em;
+        line-height: 1.5;
+        display: flex;
+      }
+      nav {
+        width: 300px; flex-shrink: 0; box-sizing: border-box;
+        padding: 2rem 1rem 2rem 2rem;
+        position: sticky; top: 0; align-self: flex-start;
+        max-height: 100vh; overflow-y: auto;
+      }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav ul.sub { margin: 0.4rem 0 0 0.6rem; }
+      nav ul.sub li { margin-bottom: 0.3rem; line-height: 1.15; }
+      nav ul.sub a { text-transform: none; letter-spacing: 0; font-size: 0.75rem; color: #6e6356; }
+      nav a, h1, h2, h3, footer, .fig figcaption, table th {
+        font-family: "Courier New", Courier, monospace;
+      }
+      nav a {
+        font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+        color: #3a3026; text-decoration: none;
+      }
+      .page { max-width: 750px; padding: 3rem 2rem 6rem 1rem; }
+      h1 { font-size: 1.5rem; font-weight: normal; letter-spacing: 0.05em; }
+      h2 { font-size: 1.05rem; font-weight: normal; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 3rem; }
+      h3 { font-size: 0.95rem; font-weight: normal; margin-top: 2rem; text-decoration: underline; }
+      a { color: #1d3d6b; }
+      .fig { margin: 1.5rem 0; }
+      .fig img { max-width: 100%; border: 1px solid #b8ad99; background: #fff; }
+      .fig figcaption { font-size: 0.75rem; color: #5b5045; margin-top: 0.3rem; }
+      .pair { display: flex; gap: 10px; align-items: flex-start; }
+      .pair img { max-width: calc(50% - 5px); }
+      .note { background: #fffbe8; border-left: 3px solid #c9b46a; padding: 0.5rem 1rem; font-size: 0.95em; }
+      .margin { color: #8a2a1a; font-style: italic; }
+      table { border-collapse: collapse; font-size: 0.8em; margin: 1rem 0; }
+      td, th { border: 1px solid #b8ad99; padding: 0.25rem 0.45rem; vertical-align: top; text-align: left; }
+      th { font-weight: normal; background: #e4dfd2; }
+      .refs li { margin-bottom: 0.6rem; font-size: 0.92em; }
+      footer { font-size: 0.75rem; color: #6e6356; margin-top: 4rem; }
+      footer hr { border: 0; border-top: 1px solid #b8ad99; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../drawing/index.html">drawing</a></li>
+        <li><a href="../drawing_computer/index.html">computer drawing</a></li>
+        <li><a href="index.html">perspective</a>
+          <ul class="sub">
+            <li><a href="#camera">0. What is a camera</a></li>
+            <li><a href="#pinhole">1. One point, a plane</a></li>
+            <li><a href="#curved-sheet">2. One point, a curved sheet</a></li>
+            <li><a href="#not-a-point">3. The eye is not a point</a></li>
+            <li><a href="#bent-rays">4. Bent rays</a></li>
+            <li><a href="#glued">5. Many points, glued</a></li>
+            <li><a href="#normals">6. Rays as normals</a></li>
+            <li><a href="#table">7. Table</a></li>
+            <li><a href="#todo">8. À faire</a></li>
+            <li><a href="#references">References</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="page">
+      <h1>Perspective: what if the eye is not a point</h1>
+      <p>
+        Follow-up of <a href="../drawing_computer/index.html">computer
+        drawing &amp; etching render</a>. There the camera was given: one
+        pinhole, one flat image. Here the camera is the subject.
+      </p>
+      <p>
+        School perspective has 1, 2 or 3 vanishing points. Those are not
+        three systems. It is one system, the pinhole on a plane, seen from
+        three angles. The real choices are elsewhere: the shape of the
+        sheet, the shape of the eye, the shape of the rays.
+      </p>
+      <p>
+        Every picture below is the same scene: a street of boxes, a grid
+        on the ground every 2 units, a tower at the end. Only the camera
+        changes. Ray-traced, flat grey per face, black edges.
+      </p>
+
+      <h2 id="camera">0. What is a camera</h2>
+      <p>
+        A camera is a function: <b>pixel &rarr; ray</b>. Each point of
+        the sheet looks along one line of space and gets the colour of the
+        first thing it hits. That's all.
+      </p>
+      <p>
+        Yu, McMillan &amp; Sturm (2008) cut it in two steps:
+      </p>
+      <ol>
+        <li><b>which rays</b>: a family of lines in space. Mathematicians
+          call a 2-parameter family of lines a <i>congruence</i> (Kummer,
+          1860s). Two parameters because the sheet is 2D.</li>
+        <li><b>how they are laid out</b> on the sheet: which ray goes to
+          which pixel.</li>
+      </ol>
+      <p>
+        The pinhole: all rays through one point (step 1), cut by a plane
+        (step 2). Change step 2 only &rarr; curvilinear perspective,
+        panoramas, fisheye. Change step 1 &rarr; the eye stops being a
+        point. Change the lines themselves into curves &rarr; Gröller's
+        nonlinear ray tracing.
+      </p>
+      <p>
+        One useful property: <b>order one</b>. Through a generic point of
+        space passes exactly one ray. Then each thing in the scene appears
+        once, and only once. All the cameras of sections 1&ndash;3 are
+        order one. Break it and objects appear twice or vanish.
+      </p>
+
+      <h2 id="pinhole">1. One point, a plane</h2>
+      <p>
+        The number of vanishing points = the number of axes of the boxes
+        that are <i>not</i> parallel to the picture plane. Each family of
+        parallel edges converges to the point where the ray parallel to it
+        pierces the plane. Parallel to the plane &rarr; no piercing, the
+        edges stay parallel.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_1pt.png" alt="street of boxes, one-point perspective" />
+        <figcaption>1 point. The plane faces the street. Only z converges (to the tower). Verticals and horizontals stay parallel.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/persp_2pt.png" alt="block of boxes seen from a corner, two-point perspective" />
+        <figcaption>2 points. The eye turns 33&deg;. x and z converge, left and right, on the horizon. Verticals still vertical: the plane is still vertical.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/persp_3pt.png" alt="block of boxes seen from above, three-point perspective" />
+        <figcaption>3 points. The eye also looks down 30&deg;. The verticals now converge too, far below the frame.</figcaption>
+      </figure>
+      <p>
+        Same eye, same rays. The three images are crops of the same
+        sphere of directions, by planes that turn. Hence no &laquo;
+        4-point perspective &raquo; with a plane: a box has 3 axes.
+      </p>
+      <p>
+        The price of the plane: it cannot hold more than 180&deg;, and
+        long before that the edges stretch. Distortion of wide angle is
+        not a lens defect, it is the plane.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_wide.png" alt="street at 150 degrees field of view, edges stretched" />
+        <figcaption>Pinhole, plane, 150&deg; across. Correct, and unreadable. The near boxes are smeared to the borders.</figcaption>
+      </figure>
+
+      <h2 id="curved-sheet">2. One point, a curved sheet</h2>
+      <p>
+        Keep the point. Bend the sheet around it. Rays are the same, only
+        the layout changes. Straight lines of the scene become curves on
+        the sheet: a line + the eye = a plane, and a plane cuts a
+        cylinder or a sphere along a curve.
+      </p>
+
+      <h3>Cylinder</h3>
+      <p>
+        The sheet is a vertical cylinder around the eye, then unrolled.
+        Verticals stay straight (they are parallel to the axis), horizontals
+        bend into sine-like arcs. Field of view without limit across. The
+        19th c. panoramas (rotundas), the phone panorama mode.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_cylinder.png" alt="cylindrical projection, 220 degrees" />
+        <figcaption>Cylinder, 220&deg; across. The street still goes to the centre, the side boxes bend. Each horizontal edge has two vanishing points, at &plusmn;90&deg; of it: a sine.</figcaption>
+      </figure>
+
+      <h3>Sphere: curvilinear perspective</h3>
+      <p>
+        The sheet is a sphere, flattened by some map. Here equidistant
+        fisheye: distance from the centre = angle from the axis. All
+        straight lines become arcs (approximately circles). Flocon &amp;
+        Barre, <i>La Perspective curviligne</i> (1968), worked the whole
+        thing out as a drawing method, with grids. Escher drew it by hand
+        before them: <i>House of Stairs</i> (1951), <i>High and Low</i>
+        (1947). Flocon wrote to Escher in 1959, long correspondence.
+      </p>
+      <figure class="fig">
+        <div class="pair">
+          <img src="images/persp_fisheye.png" alt="fisheye looking down the street" />
+          <img src="images/persp_fisheye_up.png" alt="fisheye looking up from the street" />
+        </div>
+        <figcaption>Fisheye 180&deg;. Left: down the street. Right: from the middle of the street, looking straight up. Every vertical goes to the centre (the zenith), the street runs across.</figcaption>
+      </figure>
+      <p>
+        Count the vanishing points. Each family of parallels converges
+        to 2 points on the sphere, opposite. 3 axes &rarr; 6 points. A
+        hemisphere shows up to 5 of them: 5-point perspective. The full
+        sphere: 6-point, and then the flat map has to tear somewhere.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_equirect.png" alt="equirectangular 360 degree view from the middle of the street" />
+        <figcaption>Full sphere, equirectangular map (longitude &times; latitude), the format of 360&deg; photos. From the middle of the street. The street converges twice: to the tower in the centre, and behind, at both edges of the image.</figcaption>
+      </figure>
+      <p class="margin">
+        Note: a curved sheet changes nothing to what is seen, only to how
+        it is laid out. Re-project a 360&deg; photo and you get any of the
+        above. Different eye positions cannot be recovered that way.
+      </p>
+
+      <h2 id="not-a-point">3. The eye is not a point</h2>
+      <p>
+        Now change the rays. The pinhole is the case where the whole
+        congruence passes through one point. Other choices: the point at
+        infinity, a line, two lines, a point behind the scene, a surface.
+      </p>
+
+      <h3>The point at infinity: parallel projection</h3>
+      <p>
+        All rays parallel. No vanishing point, no foreshortening by
+        distance: a box at the end of the street is the same size as a
+        box at the front. Engineers (axonometry, isometric), early video
+        games, and a long tradition in East Asian painting: Chinese
+        handscrolls, the Japanese <i>fukinuki yatai</i> (&laquo; blown-off
+        roof &raquo;) of the Genji scrolls, oblique projection, the
+        viewer floating above.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_iso.png" alt="isometric view of the street" />
+        <figcaption>Isometric: rays parallel, perpendicular to the sheet, along the diagonal of the cube. The three axes at 120&deg;. The tower is cut by the frame.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/persp_oblique.png" alt="oblique projection of the street" />
+        <figcaption>Oblique (cavalière): rays parallel but slanted to the sheet. Front faces stay true shape, depth recedes at an angle. The scroll painter's projection.</figcaption>
+      </figure>
+      <p>
+        A parallel projection can be read as the eye very far away with a
+        very long lens. Or as an eye that is everywhere at once, a plane
+        of eyes. The second reading is the useful one for what follows.
+      </p>
+
+      <h3>A line: pushbroom</h3>
+      <p>
+        The eye slides along a line and keeps only one column at each
+        position. Along the line: parallel projection. Across: perspective.
+        It is the strip camera: the photo-finish at the race track, the
+        satellite scanners (linear CCD on an orbit), Ed Ruscha's <i>Every
+        Building on the Sunset Strip</i> (1966) is close to it.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_pushbroom.png" alt="pushbroom view of one side of the street" />
+        <figcaption>Pushbroom: the eye walks the street (34 units), looks to the right. All facades the same width, whatever their distance. The side faces of the boxes are never seen: the rays are parallel to them. Vertically, normal perspective: the second row, further, is shorter.</figcaption>
+      </figure>
+
+      <h3>Two lines: crossed slits</h3>
+      <p>
+        Take a vertical slit and a horizontal slit, at different
+        distances. The rays are the lines that go through both. Two
+        perspectives in one image: horizontally the eye is at the first
+        slit, vertically at the second. The proportions of a box depend
+        on its distance. Zomet, Feldman, Peleg &amp; Weinshall (2003)
+        built such images by mosaicking video from a moving camera.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_crossed_slits.png" alt="crossed slits view, near boxes stretched vertically" />
+        <figcaption>Crossed slits. Same pose as the 2-point image. Vertical slit at the eye, horizontal slit 6 units in front. Near boxes stretched up, far ones squashed. The ground grid lines are not straight any more: in this camera, straight lines become conics.</figcaption>
+      </figure>
+      <p>
+        Yu &amp; McMillan, <i>General Linear Cameras</i> (2004): take
+        any three rays, the set of their linear combinations is a
+        camera. Exactly 8 kinds come out: pinhole, orthographic,
+        pushbroom, crossed slits, pencil, twisted orthographic, bilinear,
+        and the epipolar plane (degenerate). The pinhole is not the
+        centre of anything, it is one corner of the list.
+      </p>
+
+      <h3>A point behind the scene: reverse perspective</h3>
+      <p>
+        The rays start on a plane of eyes and converge on a point
+        <i>beyond</i> the scene. Same lines as a pinhole placed back
+        there, only the direction of sight is reversed. The far is
+        bigger than the near; the street widens. Byzantine and Russian
+        icons (Florensky, <i>Reverse perspective</i>, 1920): tables seen
+        from above with their far edge longer, books open toward the
+        viewer.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_reverse.png" alt="reverse perspective, street widening with distance" />
+        <figcaption>Reverse perspective. Rays converge 90 units ahead, beyond the tower. The street opens instead of closing, the tower at the end is the biggest thing in the image. Both sides of each box visible.</figcaption>
+      </figure>
+
+      <h3>A surface: rays normal to a cylinder</h3>
+      <p>
+        The sheet is a cylinder <i>around the scene</i>, and each point
+        of it looks along its normal, inward. A ring of eyes. The object
+        is seen from all sides at once, unrolled. Rollout photography
+        does exactly this: the vase turns on a table in front of a slit
+        camera (Justin Kerr's rollouts of Maya vases).
+      </p>
+      <figure class="fig">
+        <img src="images/persp_cluster_pin.png" alt="small group of boxes, normal pinhole view" /><br />
+        <img src="images/persp_cylinder_in.png" alt="rollout view of the same group of boxes, 360 degrees around" />
+        <figcaption>Above: a group of 4 boxes, ordinary pinhole. Below: rays normal to a cylinder of radius 14 around them, slightly tilted down (so in fact normals of a cone). 360&deg; across. The big box shows its 4 faces in a row; the tall thin one twice its sides.</figcaption>
+      </figure>
+      <p>
+        Note: the pushbroom above is the same kind of family. Rays that
+        cross a line at right angle = normals of a cylinder whose axis is
+        the line. Pushbroom: the eye on the axis, looking out. Rollout:
+        the eye on the cylinder, looking in.
+      </p>
+
+      <h2 id="bent-rays">4. Bent rays</h2>
+      <p>
+        Last step: the rays are not straight lines. Gröller,
+        <i>Nonlinear Ray Tracing: Visualizing Strange Worlds</i> (1995):
+        the ray is the trajectory of a particle in a force field, or a
+        curve given by a differential equation. March it in small
+        straight steps, test each step against the scene.
+      </p>
+      <p>
+        Not only a game. Light really bends: mirages (hot air, gradient
+        of refractive index), gravitational lenses, the black hole of
+        <i>Interstellar</i> (James et al. 2015). The eye always assumes
+        straight rays, hence the illusion.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_lens.png" alt="street seen through a point mass lens" />
+        <figcaption>A point mass floating above the street, 18 units ahead. Rays pulled toward it, 1/r&sup2;. The end of the street is seen inside a disc, surrounded by rings: rays that went round the mass once, twice, each ring a copy of the city. Near the edge of the disc the rays are chaotic, hence the noise.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/persp_twist.png" alt="street with rays twisting around the street axis" />
+        <figcaption>Twist: the direction of each ray turns around the axis of the street, faster and faster with depth. The street bends away and rolls over; at its end, rays that spiraled into the ground make a small disc.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/persp_fall.png" alt="street with rays falling like thrown stones" />
+        <figcaption>Falling rays: each ray is a thrown stone, constant pull downward (parabolas). Eye tilted up 12&deg;. The ground rises like the inside of a bowl and the horizon disappears: the far end of the street climbs to the top of the frame. The opposite of a small planet. Superior mirages (looming) do a mild version of this.</figcaption>
+      </figure>
+      <p>
+        Bent rays break order one easily: two rays reach the same point,
+        a thing appears twice (the lens). Or no ray reaches a region:
+        blind spots.
+      </p>
+
+      <h2 id="glued">5. Many points, glued</h2>
+      <p>
+        The other way to leave the single point: no single camera at all,
+        but patches from several cameras, glued along seams. The usual way
+        painters do it, mostly without saying so.
+      </p>
+      <ul>
+        <li><b>Chinese handscroll</b>: the viewpoint moves with the
+          scroll. No single place to stand.</li>
+        <li><b>Cézanne</b>: the table edge at two heights on each side
+          of the cloth. <b>Cubism</b>: several views of the same object
+          side by side.</li>
+        <li><b>Hockney's joiners</b> (<i>Pearblossom Hwy.</i>, 1986):
+          hundreds of photos, each its own pinhole, assembled by
+          hand.</li>
+        <li><b>Escher</b>, <i>Other World</i> (1947), <i>Relativity</i>
+          (1953): several consistent pinholes in one frame, so that
+          up/down depends on where you look.</li>
+        <li><b>Cel animation backgrounds</b>: Wood et al. (1997),
+          <i>Multiperspective panoramas</i>: one long painted background
+          that, cropped by a sliding window, looks like a camera moving
+          through 3D.</li>
+      </ul>
+      <p>
+        Not a congruence any more. A map: each region of the sheet with
+        its own camera, continuity only along the seams.
+      </p>
+
+      <h2 id="normals">6. Rays as normals</h2>
+      <p>
+        The idea from the draft: put the eye on a surface, each point
+        looking along its normal. The sensor is a surface, not a point.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_normals.png" alt="normals of a circle meeting at a point, of a line parallel, of an ellipse enveloping a cusp curve" />
+        <figcaption>Normals of a curve. Circle &rarr; all through the centre: the pinhole. Line &rarr; parallel: orthographic. Ellipse &rarr; no common point; the normals touch an envelope (dashed), the caustic. Its cusp is where they bunch most.</figcaption>
+      </figure>
+      <p>
+        So the &laquo; gradient field &raquo; version: a function
+        <i>&phi;</i> on space, the sensor is a level set, the rays are the
+        lines of <i>&nabla;&phi;</i>. Sphere &rarr; pinhole, plane &rarr;
+        orthographic, cylinder &rarr; pushbroom / rollout. Any other
+        surface: a new camera.
+      </p>
+      <p>
+        The literature search in the draft found no paper on it as a
+        camera model. But optics has had it since 1808&ndash;1830:
+      </p>
+      <ul>
+        <li>rays are orthogonal to the <b>wavefronts</b> (in a uniform
+          medium): the rays are the normals of a surface. Hamilton,
+          eikonal: rays = gradient of the optical path length. A sensor
+          surface = a wavefront run backwards.</li>
+        <li><b>Malus&ndash;Dupin</b> theorem: a family of rays normal to a
+          surface stays normal to some surface after any number of
+          reflections and refractions.</li>
+        <li>the &laquo; eye &raquo; of such a family is not a point: each
+          ray touches the envelope in 2 <b>focal points</b> (the 2
+          centres of curvature of the surface). All together: 2 focal
+          surfaces, the caustic. A pinhole is the case where both collapse
+          to one point.</li>
+      </ul>
+      <p>
+        That gives the general answer to the title question: <b>the eye of a
+        camera is its focal set</b>. Pinhole: one point. Orthographic:
+        at infinity. Pushbroom: a line (and infinity). Crossed slits: two
+        lines. A general surface: two surfaces.
+      </p>
+      <p>
+        Not every camera is a family of normals. For normals of a surface,
+        the two focal planes through each ray are perpendicular (they are
+        the principal directions). For crossed slits with direction
+        (p, q, 1) the two planes have normals (&minus;1, 0, p) and
+        (0, 1, &minus;q): dot product &minus;pq, not zero. No surface is
+        orthogonal to the crossed-slit rays. Same for the twisted and
+        bilinear cameras of the GLC list. Normal families are a subclass,
+        the &laquo; wavefront &raquo; cameras.
+      </p>
+      <p class="margin">
+        To check: whether this is written down as such somewhere (Ponce
+        2009? line geometry books on normal congruences). Probably yes,
+        under another name.
+      </p>
+
+      <h2 id="table">7. Table</h2>
+      <table>
+        <tr><th>camera</th><th>rays</th><th>&laquo; eye &raquo;</th><th>sheet</th><th>where</th></tr>
+        <tr><td>1, 2, 3 points</td><td>through a point</td><td>point</td><td>plane</td><td>Alberti, photography</td></tr>
+        <tr><td>panorama</td><td>through a point</td><td>point</td><td>cylinder</td><td>rotundas, phone</td></tr>
+        <tr><td>curvilinear, fisheye</td><td>through a point</td><td>point</td><td>sphere</td><td>Flocon &amp; Barre, Escher</td></tr>
+        <tr><td>360&deg;</td><td>through a point</td><td>point</td><td>sphere, unrolled</td><td>360 photos</td></tr>
+        <tr><td>axonometric</td><td>parallel</td><td>at infinity</td><td>plane</td><td>engineers, games</td></tr>
+        <tr><td>oblique</td><td>parallel, slanted</td><td>at infinity</td><td>plane</td><td>handscrolls, Genji</td></tr>
+        <tr><td>pushbroom</td><td>cross a line at 90&deg;</td><td>line</td><td>plane</td><td>photo finish, satellites</td></tr>
+        <tr><td>rollout</td><td>normals of a cylinder</td><td>axis</td><td>cylinder</td><td>Maya vases (Kerr)</td></tr>
+        <tr><td>crossed slits</td><td>meet two lines</td><td>2 lines</td><td>plane</td><td>Zomet et al.</td></tr>
+        <tr><td>reverse</td><td>through a point beyond</td><td>point, behind</td><td>plane</td><td>icons</td></tr>
+        <tr><td>normals of S</td><td>&nabla;&phi;</td><td>2 focal surfaces</td><td>S</td><td>wavefronts, caustics</td></tr>
+        <tr><td>bent rays</td><td>curves</td><td>&mdash;</td><td>any</td><td>Gröller, mirages, black holes</td></tr>
+        <tr><td>collage</td><td>by patches</td><td>many</td><td>any</td><td>Cézanne, Hockney, Cubism</td></tr>
+      </table>
+
+      <h2 id="todo">8. À faire</h2>
+      <ul>
+        <li>a camera from a non-trivial surface: saddle, torus, the street
+          itself as sensor. Render, see the focal surfaces.</li>
+        <li>vanishing points drawn on the 1/2/3 images.</li>
+        <li>draw by hand a cylinder grid and a 5-point grid (Flocon's
+          method), one real sketch each.</li>
+        <li>hatching (from the <a href="../drawing_computer/hatching.html">other
+          article</a>) in these cameras: the hatching direction follows
+          the same projection?</li>
+        <li>read Ponce 2009 for real. Read Flocon &amp; Barre.</li>
+      </ul>
+
+      <h2 id="references">References</h2>
+      <h3>Overview and classification</h3>
+      <ul class="refs">
+        <li>Yu, McMillan &amp; Sturm, <i>Multiperspective Modeling, Rendering, and Imaging</i>, Eurographics STAR 2008 / Computer Graphics Forum 2010. Start here. <a href="https://www.eecis.udel.edu/~jye/lab_research/08/STAR.pdf">PDF</a>, <a href="https://diglib.eg.org/items/3a46658f-7a6c-4d2d-9606-7d03601dc099/full">EG library</a></li>
+        <li>Yu &amp; McMillan, <i>General Linear Cameras</i>, ECCV 2004. The 8 kinds. <a href="https://www.eecis.udel.edu/~jye/lab_research/ECCV/ECCV04.pdf">PDF</a></li>
+        <li>Ponce, <i>What Is a Camera?</i>, CVPR 2009. Cameras as congruences, projective geometry. <a href="https://mlanthology.org/cvpr/2009/ponce2009cvpr-camera">link</a></li>
+        <li>Trager, Sturmfels, Canny, Hebert &amp; Ponce, <i>General models for rational cameras and the case of two-slit projections</i>, 2017. <a href="https://arxiv.org/pdf/1612.01160">arXiv</a></li>
+        <li><i>Order-One Rolling Shutter Cameras</i>, 2024. States Kummer's classification of order-one congruences. <a href="https://arxiv.org/pdf/2403.11295">arXiv</a></li>
+        <li><i>Congruences and Concurrent Lines in Multi-View Geometry</i>, 2016. Panoramic cameras as congruences. <a href="https://arxiv.org/pdf/1608.05924">arXiv</a></li>
+      </ul>
+      <h3>Specific cameras</h3>
+      <ul class="refs">
+        <li>Gupta &amp; Hartley, <i>Linear Pushbroom Cameras</i>, IEEE PAMI 1997.</li>
+        <li>Zomet, Feldman, Peleg &amp; Weinshall, <i>Mosaicing New Views: The Crossed-Slits Projection</i>, IEEE PAMI 2003.</li>
+        <li>Wood, Finkelstein, Hughes, Thayer &amp; Salesin, <i>Multiperspective Panoramas for Cel Animation</i>, SIGGRAPH 1997.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Strip_photography">Strip photography</a>, <a href="https://en.wikipedia.org/wiki/Rollout_photography">rollout photography</a> (Wikipedia).</li>
+      </ul>
+      <h3>Curved sheets, the artists</h3>
+      <ul class="refs">
+        <li>Flocon &amp; Barre, <i>La Perspective curviligne</i>, Flammarion 1968. English: <i>Curvilinear Perspective</i>, UC Press 1987.</li>
+        <li>Flocon &amp; Taton, <i>La Perspective</i>, PUF Que sais-je ?, 1963.</li>
+        <li>Santoyo, <i>The 360&deg; Curvilinear Perspective</i>, Nexus Network Journal 2021. <a href="https://anahuac.mx/investigacion/publicaciones/360deg-curvilinear-perspective-hybrid-hypercubic-angular-space-grid-based-1968-barre">link</a></li>
+        <li>Bruno Ernst, <i>The Magic Mirror of M.C. Escher</i>.</li>
+        <li>Florensky, <i>Reverse Perspective</i> (Обратная перспектива), 1920.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Curvilinear_perspective">Curvilinear perspective</a>, <a href="https://en.wikipedia.org/wiki/Reverse_perspective">reverse perspective</a>, <a href="https://en.wikipedia.org/wiki/Oblique_projection">oblique projection</a> (Wikipedia).</li>
+      </ul>
+      <h3>Bent rays</h3>
+      <ul class="refs">
+        <li>Gröller, <i>Nonlinear Ray Tracing: Visualizing Strange Worlds</i>, The Visual Computer 11, 1995. <a href="https://www.cg.tuwien.ac.at/research/rendering/nlinrt/">project page</a></li>
+        <li><i>Non-linear Monte Carlo Ray Tracing for Warped Spacetime</i>, 2021. <a href="https://www.scitepress.org/Papers/2021/102176">link</a></li>
+        <li>James, von Tunzelmann, Franklin &amp; Thorne, <i>Gravitational lensing by spinning black holes in astrophysics, and in the movie Interstellar</i>, Classical and Quantum Gravity 2015.</li>
+      </ul>
+
+      <p class="note">
+        First version. Images: <code>scripts/render.py</code> (ray tracer,
+        numpy, one function per camera) and <code>scripts/normals.py</code>.
+        Reading order from the draft: Flocon &amp; Barre, then Yu&ndash;McMillan&ndash;Sturm,
+        Ponce, Gröller.
+      </p>
+
+      <footer>
+        <hr />
+        articles / perspective &mdash; v1, 2026-10
+      </footer>
+    </div>
+  </body>
+</html>
