@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dessiner ou peindre</title>
+    <style>
+      body {
+        margin: 0;
+        background: #fbf8f0;
+        font-family: Baskerville, "Libre Baskerville", Georgia, serif;
+        color: #1e1c18;
+        font-size: 1.15em;
+        line-height: 1.6;
+      }
+
+      nav {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        width: 120px;
+      }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.6rem; }
+      nav a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #555;
+        text-decoration: none;
+      }
+      nav a.active { font-weight: bold; border-bottom: 1px solid #555; }
+
+      /* book page: text column + right margin for notes */
+      .book {
+        max-width: 580px;
+        margin: 0 0 0 calc(40vw - 232px);
+        padding: 4rem 270px 5rem 0;
+      }
+
+      h1, h2, .side, .note, footer { font-family: "Courier New", Courier, monospace; }
+      h1 {
+        font-size: 1.6rem;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 0.2rem;
+        letter-spacing: 0.05em;
+      }
+      .sub {
+        text-align: center;
+        font-style: italic;
+        color: #777;
+        margin: 0 0 3rem;
+      }
+      h2 {
+        font-size: 0.85rem;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin: 3.5rem 0 1.2rem;
+      }
+      h2 span { text-transform: none; letter-spacing: 0; font-style: italic; color: #888; }
+
+      p { margin: 0 0 1rem; text-align: justify; hyphens: auto; }
+      .item { margin: 0 0 1.4rem; text-align: justify; hyphens: auto; }
+      .item b { font-weight: normal; font-variant: small-caps; letter-spacing: 0.03em; }
+      a { color: #6b2a1a; }
+
+      .side {
+        float: right;
+        clear: right;
+        width: 230px;
+        margin: 0.2rem -270px 1rem 0;
+        font-size: 0.8rem;
+        line-height: 1.45;
+        color: #666;
+        text-align: left;
+      }
+      .side a { color: #6b2a1a; display: block; }
+      .side img {
+        width: 100%;
+        display: block;
+        margin-bottom: 0.3rem;
+        filter: sepia(15%);
+      }
+
+      .axes { margin: 1.5rem 2rem; font-size: 0.95em; }
+      .axes p { margin: 0.2rem 0; text-align: left; }
+
+      .note { font-size: 0.8rem; color: #777; font-style: normal; }
+      .scribble {
+        font-style: italic;
+        color: #8a3b1c;
+        margin: 1.5rem 0 1.5rem 2rem;
+      }
+      ul.todo { padding-left: 1.2rem; }
+      .sub-item { margin-left: 1.5rem; }
+
+      footer {
+        clear: both;
+        margin-top: 4rem;
+        padding-top: 1.2rem;
+        border-top: 1px solid #ccc;
+        font-size: 0.72rem;
+        color: #888;
+        text-align: center;
+      }
+
+      @media (max-width: 1150px) {
+        .book { margin: 0 auto; padding-left: 170px; max-width: 580px; }
+      }
+      @media (max-width: 900px) {
+        nav { position: static; width: auto; padding: 1rem; }
+        nav li { display: inline; margin-right: 1rem; }
+        .book { padding: 1.5rem 1rem 3rem; }
+        .side { display: block; float: none; width: auto; margin: 0 0 0.6rem; padding-left: 0.8rem; border-left: 2px solid #ddd; }
+        .side img { max-width: 260px; }
+        .axes, .scribble { margin-left: 0.5rem; margin-right: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../recipe/index.html">cooking</a></li>
+        <li><a href="../../notes.html">notes</a></li>
+        <li><a href="../../projects/index.html">projects</a></li>
+        <li><a href="../index.html" class="active">painting</a></li>
+        <li><a href="../../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="book">
+      <h1>Dessiner ou peindre</h1>
+      <p class="sub">draw or paint, a reading list</p>
+
+      <p>
+        <span class="side note">
+          Compiled with an AI model (Claude Opus 5.5) from a chat, then
+          sorted. Quotes paraphrased unless in quotation marks. Check before
+          citing. (?) = not sure.
+        </span>
+        Usual answer: drawing is graphite, charcoal, ink, line, paper.
+        Painting is brush, color, surface. True, but thin. Not a thesis
+        here, a reading list. Sorted by the question each item asks.
+      </p>
+
+      <div class="axes">
+        <p><b>1. medium</b> &mdash; line vs color. The textbook split.</p>
+        <p><b>2. time &amp; context</b> &mdash; one session in front of the subject vs open time. Capturing an instant vs making an image.</p>
+        <p><b>3. relation to the real</b> &mdash; rendering the visible vs giving form to the imagined.</p>
+        <p><b>4. seeing</b> &mdash; drawing as a way of looking, whatever the result.</p>
+      </div>
+
+      <h2>1. Medium <span>&mdash; the old quarrel</span></h2>
+      <p>
+        Even the medium split was never only about material. Line =
+        intellect, design, idea. Color = senses, flesh, seduction.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Disegno">wikipedia: disegno</a></span>
+        <b>Disegno vs colore</b>, Florence vs Venice, 16th c. Vasari for
+        disegno (Michelangelo). Lodovico Dolce, <em>Dialogo della
+        pittura</em> (1557), answers for colore (Titian).
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://fr.wikipedia.org/wiki/Querelle_du_coloris">wikipédia: querelle du coloris</a></span>
+        <b>Querelle du coloris</b>, Académie royale, 1670s&ndash;1680s.
+        Poussinistes vs Rubénistes. Roger de Piles wins for color.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Jean-Auguste-Dominique_Ingres">wikipedia: Ingres</a></span>
+        <b>Ingres vs Delacroix</b>, 19th c. Same fight, new names. Ingres:
+        <em>&laquo; le dessin est la probité de l'art &raquo;</em>.
+      </p>
+      <p class="scribble">
+        Already here: drawing = thinking, painting = appearing. The medium
+        is a proxy.
+      </p>
+
+      <h2>2. Time &amp; context <span>&mdash; capturer vs fabriquer</span></h2>
+      <p>
+        Drawing as the trace of an encounter. The subject moves, the light
+        changes, the session ends. The limits are part of the work.
+        Painting (or the finished drawing) as construction: time is open,
+        the image is revised until it fits an intention. French has a word
+        for the first: <em>dessin sur le vif</em>. Also croquis, pochade,
+        sketch, vs étude, tableau.
+      </p>
+
+      <p class="item">
+        <span class="side">
+          <img src="images/web_guys-footmen.jpg" alt="Constantin Guys, French carriage footmen" />
+          Constantin Guys, <em>French Carriage Footmen</em>.
+          <a href="https://commons.wikimedia.org/wiki/File:Constantin_Guys_-_French_Carriage_Footmen_-_8559.jpg">commons</a>
+          <a href="https://en.wikipedia.org/wiki/The_Painter_of_Modern_Life">wikipedia: the essay</a>
+          <a href="https://fr.wikisource.org/wiki/Le_Peintre_de_la_vie_moderne">wikisource: full text fr</a>
+          <a href="https://en.wikipedia.org/wiki/Constantin_Guys">wikipedia: Guys</a>
+        </span>
+        <b>Baudelaire, <em>Le Peintre de la vie moderne</em></b>, 1863.
+        The founding text. On Constantin Guys, who sketched Paris street
+        life at speed. Modernity = the fleeting. Note: Guys looked in the
+        street but drew at home, from memory.
+      </p>
+      <p class="item">
+        <span class="side">
+          <a href="https://en.wikipedia.org/wiki/Kimon_Nicolaides">wikipedia: Nicolaïdes</a>
+          <a href="https://archive.org/search?query=natural+way+to+draw+nicolaides">archive.org</a>
+        </span>
+        <b>Kimon Nicolaïdes, <em>The Natural Way to Draw</em></b>, 1941.
+        A method built on gesture drawing: timed poses, 30 s to 2 min.
+      </p>
+      <p class="item">
+        <span class="side">
+          <img src="images/web_hokusai-manga.jpg" alt="Hokusai Manga, bathing people" />
+          Hokusai, <em>Manga</em>, bathers.
+          <a href="https://commons.wikimedia.org/wiki/File:Hokusai-MangaBathingPeople.jpg">commons</a>
+          <a href="https://en.wikipedia.org/wiki/Hokusai_Manga">wikipedia: Hokusai Manga</a>
+          <a href="https://en.wikipedia.org/wiki/Masaoka_Shiki">wikipedia: Shiki</a>
+        </span>
+        <b>Shasei</b> (写生), Japan. Sketching directly from life. Became a
+        doctrine for painters, then for haiku via Masaoka Shiki. Before
+        that, Hokusai's <em>Manga</em>.
+      </p>
+      <p class="item">
+        <span class="side">
+          <a href="https://en.wikipedia.org/wiki/Honor%C3%A9_Daumier">wikipedia: Daumier</a>
+          <a href="https://en.wikipedia.org/wiki/Auguste_Rodin">wikipedia: Rodin</a>
+        </span>
+        <b>Historical sketchers of the instant.</b> Rembrandt's ink
+        sketches. Daumier. Rodin drawing dancers without looking at the
+        paper. Degas at the ballet (but see 4.).
+      </p>
+      <p class="item">
+        <span class="side">
+          <a href="https://en.wikipedia.org/wiki/Alberto_Giacometti">wikipedia: Giacometti</a>
+          <a href="https://en.wikipedia.org/wiki/Final_Portrait">wikipedia: Final Portrait</a>
+        </span>
+        <b>Counter-case: Giacometti.</b> Endless observation that never
+        finishes. Same model, same chair, for weeks. James Lord kept a
+        diary of sitting for him: <em>A Giacometti Portrait</em> (1965).
+        Film: <em>Final Portrait</em>, Stanley Tucci, 2017.
+      </p>
+
+      <p>The sport-like side. Fast, accurate, on the spot, sometimes judged.</p>
+
+      <p class="item">
+        <span class="side">
+          <a href="https://urbansketchers.org/">urbansketchers.org</a>
+          <a href="https://en.wikipedia.org/wiki/Urban_Sketchers">wikipedia</a>
+        </span>
+        <b>Urban Sketchers</b>, founded 2007 by Gabriel Campanario.
+        Manifesto: draw on location, from direct observation, tell the
+        story of what you see.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://www.pleinaireaston.com/">pleinaireaston.com</a></span>
+        <b>Plein air &laquo; Quick Draw &raquo;</b> contests, e.g. Plein
+        Air Easton (Maryland). About two hours to finish a piece on the
+        spot. Literally a competition.
+      </p>
+      <p class="item">
+        <span class="side">
+          <img src="images/web_courtroom-sketch.jpg" alt="Courtroom sketch by Butch Krieger" />
+          Courtroom sketch, Butch Krieger.
+          <a href="https://commons.wikimedia.org/wiki/File:Accused_flanked_by_attorneys_at_sentencing,_courtroom_sketch_by_Butch_Krieger.jpg">commons</a>
+          <a href="https://en.wikipedia.org/wiki/Courtroom_sketch">wikipedia</a>
+        </span>
+        <b>Courtroom sketch.</b> No cameras allowed, so fast and accurate
+        under pressure. Jane Rosenberg, Elizabeth Williams. Probably the
+        purest professional version.
+      </p>
+      <p class="item">
+        <span class="side">
+          <a href="https://en.wikipedia.org/wiki/Feliks_Topolski">wikipedia: Topolski</a>
+          <a href="https://en.wikipedia.org/wiki/Ronald_Searle">wikipedia: Searle</a>
+          <a href="https://en.wikipedia.org/wiki/Paul_Hogarth">wikipedia: Hogarth</a>
+        </span>
+        <b>Reportage drawing.</b> Drawing as witnessing, close to
+        journalism. Feliks Topolski, Ronald Searle, Paul Hogarth. Today:
+        George Butler (conflict zones), Olivier Kugler, Jill Gibbon
+        (undercover at arms fairs).
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Graphic_facilitation">wikipedia</a></span>
+        <b>Graphic recording</b>, live scribes. Drawing meetings and talks
+        in real time.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Trisha_Brown">wikipedia: Trisha Brown</a></span>
+        <b>Performance drawing.</b> The time-bound act is the work. Tony
+        Orrico, Heather Hansen, Trisha Brown.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Kim_Jung_Gi">wikipedia</a></span>
+        <b>Counter-case: Kim Jung Gi</b> (1975&ndash;2022). Huge detailed
+        scenes, live, from memory, no sketch. Speed and performance, but
+        in service of making an image, not capturing one.
+      </p>
+
+      <h2>3. Relation to the real <span>&mdash; Klinger</span></h2>
+      <p class="item">
+        <span class="side">
+          <img src="images/web_klinger-abduction.jpg" alt="Max Klinger, Abduction, plate nine of Paraphrase on the Finding of a Glove" />
+          Klinger, <em>Abduction</em>, plate 9 of the glove cycle, 1881. MET.
+          <a href="https://commons.wikimedia.org/wiki/File:Abduction_(plate_nine_from_Paraphrase_on_the_Finding_of_a_Glove)_MET_DP334017.jpg">commons</a>
+          <a href="https://en.wikipedia.org/wiki/Max_Klinger">wikipedia: Klinger</a>
+          <a href="https://archive.org/search?query=Klinger+Malerei+und+Zeichnung">archive.org: the essay</a>
+        </span>
+        <b>Max Klinger, <em>Malerei und Zeichnung</em></b>, 1891.
+        Separates the two by something other than material too, but the
+        criterion is reality, not time.
+      </p>
+      <p class="item sub-item">
+        Painting (<em>Malerei</em>): complete, harmonious rendering of the
+        visible, color, light. Bound to the world as it is.
+      </p>
+      <p class="item sub-item">
+        Drawing (<em>Griffelkunst</em>, &laquo; art of the stylus &raquo;,
+        includes etching and print): closer to thought and poetry. Without
+        color it can be selective, fragmentary, suggestive. Can show what
+        the visible world doesn't contain: fantasy, ideas, the dark side.
+        Can leave gaps for the viewer. Can work in cycles, like literature.
+      </p>
+      <p class="item sub-item">
+        Klinger's own cycles: <em>Paraphrase über den Fund eines
+        Handschuhes</em> (the glove), <em>Ein Leben</em>, <em>Eine
+        Liebe</em>, <em>Vom Tode</em>. Dreamlike, narrative.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/K%C3%A4the_Kollwitz">wikipedia: Kollwitz</a></span>
+        <b>Käthe Kollwitz</b> read the essay. It helped her choose print
+        and drawing over painting.
+      </p>
+      <p class="scribble">
+        Baudelaire / Klinger = opposite poles. One: drawing catches the
+        passing real. Other: drawing escapes the real. Both agree that
+        incompleteness is the strength, not a lack.
+      </p>
+
+      <h2>4. Seeing <span>&mdash; Valéry &amp; Degas</span></h2>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Paul_Val%C3%A9ry">wikipedia: Valéry</a></span>
+        <b>Paul Valéry, <em>Degas Danse Dessin</em></b>, 1936. Loose
+        portrait of Degas, really an essay on drawing. Folio essais,
+        short. Degas, reported: <em>&laquo; Le dessin n'est pas la forme,
+        il est la manière de voir la forme. &raquo;</em> Valéry: looking at
+        a thing and looking at it while drawing it are not the same.
+        Drawing replaces habitual perception by attention. An act of the
+        mind, not just of the hand.
+      </p>
+      <p class="item">
+        <span class="side">
+          <img src="images/web_degas-dancers.jpg" alt="Degas, Study of Two Dancers, charcoal" />
+          Degas, <em>Study of Two Dancers</em>, charcoal. High Museum of Art.
+          <a href="https://commons.wikimedia.org/wiki/File:Study_of_Two_Dancers_by_Edgar_Degas,_charcoal,_High_Museum_of_Art.jpg">commons</a>
+          <a href="https://en.wikipedia.org/wiki/Edgar_Degas">wikipedia: Degas</a>
+          <a href="https://en.wikipedia.org/wiki/The_Horse_in_Motion">wikipedia: Muybridge</a>
+        </span>
+        <b>Degas, the paradox.</b> The work looks like snapshots:
+        off-center, cut figures, bodies mid-gesture. The method is the
+        opposite. Studio, tracing paper, poses recombined, same motif for
+        years. Mocked plein air. Knew Muybridge's plates: the machine catches the
+        instant, the drawing has to do something else.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://www.gutenberg.org/ebooks/search/?query=george+moore+impressions+and+opinions">gutenberg: Moore</a></span>
+        <b>Degas on memory</b>, paraphrased: copying what you see is fine,
+        drawing what you only see in memory is better. Memory keeps what
+        struck you, the necessary. Free from the tyranny of nature. He
+        imagined (?) an academy with the model on the ground floor and students
+        drawing from memory one floor up, higher each year. George Moore,
+        <em>Impressions and Opinions</em>, 1891: Degas says no art is less
+        spontaneous than his.
+      </p>
+      <p class="item">
+        <span class="side">
+          <a href="https://en.wikipedia.org/wiki/Horace_Lecoq_de_Boisbaudran">wikipedia</a>
+          <a href="https://archive.org/search?query=training+of+the+memory+in+art">archive.org: English text</a>
+        </span>
+        <b>Horace Lecoq de Boisbaudran, <em>L'Éducation de la mémoire
+        pittoresque</em></b>, 1848. Brief observation, then draw from
+        memory. Trained Fantin-Latour, Rodin. The athletic training side.
+        English: <em>The Training of the Memory in Art</em>, 1911.
+      </p>
+      <p class="scribble">
+        So a third position: observation = training, memory = filter,
+        studio = where the instant is built. The quick sketch is the
+        exercise, not the product. Only courtroom artists and urban
+        sketchers fuse looking and executing in the same moment.
+      </p>
+
+      <h2>Plus loin <span>&mdash; general</span></h2>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/John_Berger">wikipedia: Berger</a></span>
+        <b>John Berger, <em>Berger on Drawing</em></b> (ed. Jim Savage,
+        2005). Three kinds: drawings that study what is seen, drawings that
+        communicate ideas, drawings from memory. An observational drawing
+        contains the time of looking. Maps onto axes 2 and 3.
+      </p>
+      <p class="item">
+        <b>Deanna Petherbridge, <em>The Primacy of Drawing</em></b>, Yale,
+        2010. Big, historical, drawing as process.
+      </p>
+      <p class="item">
+        <span class="side"><a href="https://en.wikipedia.org/wiki/Tim_Ingold">wikipedia: Ingold</a></span>
+        <b>Tim Ingold, <em>Lines: A Brief History</em></b>, 2007.
+        Anthropology of the line: walking, weaving, writing, drawing.
+      </p>
+
+      <h2>To do</h2>
+      <ul class="todo">
+        <li>read Klinger in German, find the source for Kollwitz reading him</li>
+        <li>find the exact Degas academy quote (probably Moore, <em>Impressions and Opinions</em>, Degas chapter)</li>
+        <li>put myself on the axes: what do I actually do on a Sunday?</li>
+        <li>try: 10 &times; 2 min gesture, then the same pose from memory</li>
+      </ul>
+
+      <footer>half-hand-coded · started 2026-10</footer>
+    </div>
+  </body>
+</html>
