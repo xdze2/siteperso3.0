@@ -7,6 +7,9 @@ render.py    ray tracer, one street of boxes, one function per camera
              python3 render.py            all images
              python3 render.py p1 cyl     only some (keys in main())
 normals.py   2D figure: normals of a circle, a line, an ellipse (caustic).
+schema_regimes.py  2D figure: one box seen from a fixed direction at several distances.
+             r = top face / front face against a/d: constant, linear, curved.
+             writes schema_regimes.svg/.png (png via inkscape).
 extview.py   outside views: the scene from elsewhere, the camera drawn in it
              (eye, sheet, its real rays in red, pale where hidden). library.
 ext_pinhole.py   outside views, section 1 (ext_1pt, 2pt, 3pt, wide)

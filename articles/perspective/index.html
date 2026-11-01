@@ -136,6 +136,20 @@
 
       <h2 id="pinhole">1. One point, a plane</h2>
       <p>
+        Two ways to draw the same linear camera. Physical: the scene, a
+        pinhole, a screen behind it; the image is upside down. Software
+        (Blender, OpenGL): the eye is a point, the sheet a <i>window</i> in
+        front of it, between the eye and the scene; the image is upright.
+        Same rays, the window is the screen mirrored through the pinhole.
+        Third drawing: the parallel projection, the same thing with the eye
+        sent to infinity. The rays no longer cross, they stay parallel and
+        hit the screen at right angle.
+      </p>
+      <figure class="fig">
+        <img src="images/schema_perspective.png" alt="two schemas of a linear camera: pinhole with screen behind, and eye with a flat window in front" />
+        <figcaption>Top: pinhole, rays cross at the lens, flat screen behind (u, v). Middle: the eye as a point, flat window in front, as in Blender's camera. Bottom: parallel projection, orthographic camera, no eye point, rays parallel. The first two are one point and a plane; the last is the same with the point at infinity.</figcaption>
+      </figure>
+      <p>
         The number of vanishing points = the number of axes of the boxes
         that are <i>not</i> parallel to the picture plane. Each family of
         parallel edges converges to the point where the ray parallel to it
@@ -279,6 +293,52 @@
         A parallel projection can be read as the eye very far away with a
         very long lens. Or as an eye that is everywhere at once, a plane
         of eyes. The second reading is the useful one for what follows.
+      </p>
+      <p>
+        The first reading says when it is a fair approximation. One box,
+        size <i>a</i>, seen from one direction, 30&deg; down, the eye aimed
+        at it. Move it away along the line of sight, distance <i>d</i>.
+        One number to watch: <b>r = top face / front face</b>, as seen.
+      </p>
+      <figure class="fig">
+        <img src="images/schema_regimes.png" alt="side view of the same box at three distances along a line of sight 30 degrees down; graph of the ratio top face over front face against box size over distance, with what the eye sees above it" />
+        <figcaption>A: the same box at three distances. B: r against a/d, 0 = infinitely far, on the left. Red: the real perspective. Black dashed: order 0, constant. Blue: order 1, a straight line. Above: the box as seen, scaled to the same front face.</figcaption>
+      </figure>
+      <p>Three regimes:</p>
+      <ol>
+        <li><b>far</b> (<i>d</i> &gt; 20 <i>a</i>): r is <b>constant</b>,
+          r&#8734; = tan 30&deg; for a cube. The rays to the box are almost
+          parallel: it is the parallel projection along the line of sight.
+          Distance gives the size, not the shape. Weak perspective and
+          orthographic live here.</li>
+        <li><b>closer</b> (2 <i>a</i> &lt; <i>d</i> &lt; 20 <i>a</i>): r is
+          <b>linear in <i>a</i>/<i>d</i></b>,
+          r &asymp; r&#8734; (1 &minus; <i>k</i> <i>a</i>/<i>d</i>), here
+          <i>k</i> &asymp; 0.8. Linear in size over distance, not in distance.
+          The parallel projection plus one correction.</li>
+        <li><b>close</b> (<i>d</i> &lt; 2 <i>a</i>): r curves. At
+          <i>d</i> = <i>a</i> the eye is level with the top face, r = 0;
+          closer, the top face is hidden. Full perspective, no shortcut.</li>
+      </ol>
+      <p>
+        The same in one line: the picture of an object depends on its
+        direction and on <i>a</i>/<i>d</i>. Expand in <i>a</i>/<i>d</i>:
+        order 0 is the parallel projection, order 1 is the straight line,
+        the rest is perspective. <i>k</i> depends on the angle and on the
+        proportions of the box.
+      </p>
+      <p>
+        Special case, the head-on view (0&deg;): r&#8734; = 0, the top face
+        is edge-on, and stays hidden at every distance. A cube seen
+        straight is a square, near or far. Only its size changes. Nothing
+        to measure, which is why it hides the regimes.
+      </p>
+      <p>
+        Hence the telephoto look: from far away, with a long lens,
+        <i>a</i>/<i>d</i> is small for everything in the frame, every
+        object is drawn in parallel projection, only the sizes still
+        differ. The other way round: a portrait at arm's length,
+        <i>a</i>/<i>d</i> &asymp; 1/2, the nose too big.
       </p>
 
       <h3>A line: pushbroom</h3>
