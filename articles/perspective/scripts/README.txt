@@ -7,6 +7,10 @@ render.py    ray tracer, one street of boxes, one function per camera
              python3 render.py            all images
              python3 render.py p1 cyl     only some (keys in main())
 normals.py   2D figure: normals of a circle, a line, an ellipse (caustic).
+schema_crossed_slits.py  2D figure: crossed slits from above and from the side, same depth axis;
+             and a longer focal alone (only a scale). writes schema_crossed_slits.svg/.png.
+schema_reverse.py  2D figure: top view, two equal boxes, pinhole vs rays converging on a point
+             beyond the scene. writes schema_reverse.svg/.png.
 schema_regimes.py  2D figure: one box seen from a fixed direction at several distances.
              r = top face / front face against a/d: constant, linear, curved.
              writes schema_regimes.svg/.png (png via inkscape).

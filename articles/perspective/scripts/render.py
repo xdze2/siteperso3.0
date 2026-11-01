@@ -35,6 +35,20 @@ def cluster():
                      (-3, 0, 0.5, -1.5, 5, 2), (-0.5, 0, 1, 0.5, 6.5, 2)], float)
 
 
+def landscape():
+    """a fence at 6, a shed, a village at 40-70, mountains (blocks) at 500-700"""
+    rng = np.random.default_rng(5)
+    b = [(k * 1.5 - 0.08, 0, 6, k * 1.5 + 0.08, 1.1, 6.16) for k in range(-12, 13)]
+    b.append((3, 0, 9, 6, 2.5, 12))
+    for k in range(8):
+        x = rng.uniform(-40, 40); z = rng.uniform(40, 70); h = rng.uniform(3, 7)
+        b.append((x, 0, z, x + rng.uniform(4, 8), h, z + 5))
+    for k in range(7):
+        x = -600 + k * 170 + rng.uniform(-30, 30); z = rng.uniform(500, 700); h = rng.uniform(60, 140)
+        b.append((x, 0, z, x + rng.uniform(120, 220), h, z + 100))
+    return np.array(b, float)
+
+
 # ---------------------------------------------------------------- intersection
 def hit_boxes(O, D, boxes, tmax):
     """first hit within (0, tmax). returns t, key (0 none, 1 ground, 2+.. box*4+axis)"""
@@ -212,6 +226,7 @@ def crossed_slits(W, H, C, yaw, pitch, a, b, d1, d2):
     f, r, up = frame(yaw, pitch)
     D = f + col(u * a) * r + col(v * b) * up
     O = C - col(d1 * u * a) * r - col(d2 * v * b) * up
+    O = O + min(d1, d2, 0) * D   # a slit behind the eye: start the rays there
     return O, D, None
 
 
@@ -251,6 +266,7 @@ def main(which):
     S = street()
     W, H = 700, 380
     eye = np.array([0, 1.6, -4.0])
+    L, land_eye, K50 = landscape(), np.array([0, 1.6, 0.0]), math.tan(math.radians(50))
     todo = {
         # 1. the pinhole, three poses of the same plane
         'p1': lambda: render('persp_1pt.png', W, H, pinhole(W, H, eye, 0, 0, 80), S),
@@ -268,6 +284,10 @@ def main(which):
         'push': lambda: render('persp_pushbroom.png', W, 300, pushbroom(W, 300, np.array([0, 3.5, 0]), 0, 34, 5, 0.25), S),
         'slit': lambda: render('persp_crossed_slits.png', W, H,
                                crossed_slits(W, H, np.array([-15, 3.0, -9.0]), 33, 0, 0.7, 0.7 * 25 / 19, 0, 6), S),
+        # crossed slits on a landscape: 100 deg across. pinhole, pinhole stretched, horizontal slit 30 behind
+        'landpin': lambda: render('persp_land_pin.png', W, 300, crossed_slits(W, 300, land_eye, 0, 0, K50, K50, 0, 0), L, tgrid=200),
+        'landstr': lambda: render('persp_land_stretch.png', W, 300, crossed_slits(W, 300, land_eye, 0, 0, K50, 0.47, 0, 0), L, tgrid=200),
+        'landslit': lambda: render('persp_land_slit.png', W, 300, crossed_slits(W, 300, land_eye, 0, 0, K50, 0.45, 0, -30), L, tgrid=200),
         'rev': lambda: render('persp_reverse.png', W, H, reverse(W, H, np.array([0, 8.0, -25.0]), 0, -8, 14, 90), S),
         'cylin': lambda: render('persp_cylinder_in.png', W, 300, cylinder_in(W, 300, np.zeros(3), 14, 4.5, 9, 0.3), cluster(), grid=1.0),
         'cylpin': lambda: render('persp_cluster_pin.png', 360, 300, pinhole(360, 300, np.array([-9, 5, -11.0]), 40, -15, 50), cluster(), grid=1.0),

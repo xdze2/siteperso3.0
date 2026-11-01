@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 750" width="680" height="750" font-family="'Liberation Mono','Courier New',monospace"><rect width="680" height="750" fill="#fff"/>
+<text x="340.0" y="30.0" fill="#000" text-anchor="middle" font-size="15">A. pinhole: the eye behind the sheet</text>
+<line x1="20.0" y1="195.0" x2="650.0" y2="195.0" stroke="#ddd" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="520.0" y1="45.0" x2="520.0" y2="345.0" stroke="#000" stroke-width="1.5"/>
+<rect x="374" y="195" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1"/>
+<line x1="426.0" y1="195.0" x2="426.0" y2="247.0" stroke="#d40000" stroke-width="4"/>
+<line x1="374.0" y1="195.0" x2="426.0" y2="195.0" stroke="#d40000" stroke-width="4"/>
+<line x1="640.0" y1="195.0" x2="374.0" y2="195.0" stroke="#d40000" stroke-width="1.2"/>
+<line x1="640.0" y1="195.0" x2="426.0" y2="247.0" stroke="#d40000" stroke-width="1.2"/>
+<line x1="520.0" y1="195.0" x2="520.0" y2="224.2" stroke="#d40000" stroke-width="5"/>
+<text x="530.0" y="227.6" fill="#d40000" text-anchor="start" font-size="12">near: 29</text>
+<text x="400.0" y="265.0" fill="#d40000" text-anchor="middle" font-size="12">near</text>
+<rect x="204" y="147" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1"/>
+<line x1="256.0" y1="147.0" x2="256.0" y2="199.0" stroke="#1d3d6b" stroke-width="4"/>
+<line x1="640.0" y1="195.0" x2="256.0" y2="147.0" stroke="#1d3d6b" stroke-width="1.2"/>
+<line x1="640.0" y1="195.0" x2="256.0" y2="199.0" stroke="#1d3d6b" stroke-width="1.2"/>
+<line x1="520.0" y1="180.0" x2="520.0" y2="196.2" stroke="#1d3d6b" stroke-width="5"/>
+<text x="530.0" y="192.1" fill="#1d3d6b" text-anchor="start" font-size="12">far: 16</text>
+<text x="230.0" y="217.0" fill="#1d3d6b" text-anchor="middle" font-size="12">far</text>
+<circle cx="640.0" cy="195.0" r="3.5" fill="#000"/>
+<text x="640.0" y="217.0" fill="#000" text-anchor="middle" font-size="12">eye</text>
+<text x="514.0" y="340.0" fill="#000" text-anchor="end" font-size="12">sheet</text>
+<text x="340.0" y="395.0" fill="#000" text-anchor="middle" font-size="15">B. reverse: every point of the sheet an eye</text>
+<line x1="20.0" y1="560.0" x2="650.0" y2="560.0" stroke="#ddd" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="520.0" y1="410.0" x2="520.0" y2="710.0" stroke="#000" stroke-width="1.5"/>
+<rect x="374" y="560" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1"/>
+<line x1="426.0" y1="560.0" x2="426.0" y2="612.0" stroke="#d40000" stroke-width="4"/>
+<line x1="374.0" y1="612.0" x2="426.0" y2="612.0" stroke="#d40000" stroke-width="4"/>
+<line x1="520.0" y1="560.0" x2="374.0" y2="560.0" stroke="#d40000" stroke-width="1.2"/>
+<line x1="374.0" y1="560.0" x2="30.0" y2="560.0" stroke="#999" stroke-width="0.8" stroke-dasharray="3 3"/>
+<line x1="520.0" y1="634.1" x2="374.0" y2="612.0" stroke="#d40000" stroke-width="1.2"/>
+<line x1="374.0" y1="612.0" x2="30.0" y2="560.0" stroke="#999" stroke-width="0.8" stroke-dasharray="3 3"/>
+<line x1="520.0" y1="560.0" x2="520.0" y2="634.1" stroke="#d40000" stroke-width="5"/>
+<text x="530.0" y="601.0" fill="#d40000" text-anchor="start" font-size="12">near: 74</text>
+<text x="400.0" y="630.0" fill="#d40000" text-anchor="middle" font-size="12">near</text>
+<rect x="204" y="512" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1"/>
+<line x1="256.0" y1="512.0" x2="256.0" y2="564.0" stroke="#1d3d6b" stroke-width="4"/>
+<line x1="204.0" y1="512.0" x2="256.0" y2="512.0" stroke="#1d3d6b" stroke-width="4"/>
+<line x1="204.0" y1="564.0" x2="256.0" y2="564.0" stroke="#1d3d6b" stroke-width="4"/>
+<line x1="520.0" y1="424.8" x2="204.0" y2="512.0" stroke="#1d3d6b" stroke-width="1.2"/>
+<line x1="204.0" y1="512.0" x2="30.0" y2="560.0" stroke="#999" stroke-width="0.8" stroke-dasharray="3 3"/>
+<line x1="520.0" y1="571.3" x2="204.0" y2="564.0" stroke="#1d3d6b" stroke-width="1.2"/>
+<line x1="204.0" y1="564.0" x2="30.0" y2="560.0" stroke="#999" stroke-width="0.8" stroke-dasharray="3 3"/>
+<line x1="520.0" y1="424.8" x2="520.0" y2="571.3" stroke="#1d3d6b" stroke-width="5"/>
+<text x="530.0" y="502.0" fill="#1d3d6b" text-anchor="start" font-size="12">far: 146</text>
+<text x="230.0" y="582.0" fill="#1d3d6b" text-anchor="middle" font-size="12">far</text>
+<circle cx="30.0" cy="560.0" r="3.5" fill="#000"/>
+<text x="30.0" y="582.0" fill="#000" text-anchor="start" font-size="12">point beyond</text>
+<text x="30.0" y="597.0" fill="#000" text-anchor="start" font-size="12">the scene</text>
+<text x="514.0" y="705.0" fill="#000" text-anchor="end" font-size="12">sheet = plane of eyes</text>
+<text x="20.0" y="738.0" fill="#000" text-anchor="start" font-size="12">thick: the faces seen. reverse sees the outer side, and the far box bigger</text></svg>

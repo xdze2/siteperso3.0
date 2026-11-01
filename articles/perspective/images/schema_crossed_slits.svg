@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 900" width="680" height="900" font-family="'Liberation Mono','Courier New',monospace"><rect width="680" height="900" fill="#fff"/>
+<line x1="230.0" y1="40.0" x2="230.0" y2="650.0" stroke="#ddd" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="420.0" y1="40.0" x2="420.0" y2="650.0" stroke="#ddd" stroke-width="1" stroke-dasharray="2 4"/>
+<line x1="560.0" y1="40.0" x2="560.0" y2="650.0" stroke="#ddd" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="340.0" y="30.0" fill="#000" text-anchor="middle" font-size="15">A. top view: X</text>
+<circle cx="67" cy="135" r="7" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<circle cx="81" cy="163" r="9" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<circle cx="61" cy="193" r="5" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<circle cx="77" cy="221" r="8" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<circle cx="87" cy="249" r="6" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<circle cx="69" cy="275" r="7" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<line x1="75.0" y1="135.0" x2="560.0" y2="354.0" stroke="#d40000" stroke-width="1.2"/>
+<line x1="75.0" y1="275.0" x2="560.0" y2="56.0" stroke="#d40000" stroke-width="1.2"/>
+<line x1="560.0" y1="354.0" x2="560.0" y2="56.0" stroke="#d40000" stroke-width="4"/>
+<circle cx="230.0" cy="205.0" r="3.5" fill="#000"/>
+<line x1="420.0" y1="55.0" x2="420.0" y2="355.0" stroke="#999" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="560.0" y1="45.0" x2="560.0" y2="365.0" stroke="#000" stroke-width="1.5"/>
+<text x="230.0" y="231.0" fill="#000" text-anchor="middle" font-size="12">vertical slit</text>
+<text x="414.0" y="325.0" fill="#999" text-anchor="end" font-size="12">horizontal slit</text>
+<text x="414.0" y="340.0" fill="#999" text-anchor="end" font-size="11">a line: every ray passes it</text>
+<text x="568.0" y="209.0" fill="#000" text-anchor="start" font-size="12">sheet</text>
+<text x="140.0" y="110.0" fill="#d40000" text-anchor="start" font-size="12">wide: 49&#176;</text>
+<text x="340.0" y="400.0" fill="#000" text-anchor="middle" font-size="15">B. side view: Y, same scene, same sheet</text>
+<rect x="55" y="490" width="14" height="70" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<rect x="69" y="505" width="18" height="55" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<rect x="85" y="480" width="12" height="80" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<rect x="95" y="515" width="16" height="45" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<line x1="35.0" y1="560.0" x2="600.0" y2="560.0" stroke="#000" stroke-width="1"/>
+<line x1="75.0" y1="480.0" x2="290.0" y2="535.5" stroke="#999" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="75.0" y1="560.0" x2="290.0" y2="504.5" stroke="#999" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="75.0" y1="480.0" x2="560.0" y2="536.2" stroke="#d40000" stroke-width="1.2"/>
+<line x1="75.0" y1="560.0" x2="560.0" y2="503.8" stroke="#d40000" stroke-width="1.2"/>
+<line x1="560.0" y1="536.2" x2="560.0" y2="503.8" stroke="#d40000" stroke-width="4"/>
+<circle cx="420.0" cy="520.0" r="3.5" fill="#000"/>
+<line x1="230.0" y1="410.0" x2="230.0" y2="550.0" stroke="#999" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line x1="560.0" y1="410.0" x2="560.0" y2="550.0" stroke="#000" stroke-width="1.5"/>
+<text x="420.0" y="546.0" fill="#000" text-anchor="middle" font-size="12">horizontal slit</text>
+<text x="224.0" y="425.0" fill="#999" text-anchor="end" font-size="12">vertical slit</text>
+<text x="240.0" y="578.0" fill="#999" text-anchor="start" font-size="11">grey: a pinhole here would see this wide</text>
+<text x="360.0" y="470.0" fill="#d40000" text-anchor="start" font-size="12">narrow: 13&#176;</text>
+<text x="568.0" y="524.0" fill="#000" text-anchor="start" font-size="12">sheet</text>
+<text x="568.0" y="540.0" fill="#999" text-anchor="start" font-size="11">(small)</text>
+<text x="340.0" y="690.0" fill="#000" text-anchor="middle" font-size="15">C. not this: same crossing point, sheet further</text>
+<rect x="55" y="760" width="14" height="70" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<rect x="69" y="775" width="18" height="55" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<rect x="85" y="750" width="12" height="80" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<rect x="95" y="785" width="16" height="45" fill="#fff" stroke="#000" stroke-width="1.2"/>
+<line x1="75.0" y1="750.0" x2="560.0" y2="875.2" stroke="#d40000" stroke-width="1.2"/>
+<line x1="75.0" y1="830.0" x2="560.0" y2="704.8" stroke="#d40000" stroke-width="1.2"/>
+<circle cx="230.0" cy="790.0" r="3.5" fill="#000"/>
+<line x1="300.0" y1="759.9" x2="300.0" y2="820.1" stroke="#000" stroke-width="1.5"/>
+<line x1="300.0" y1="771.9" x2="300.0" y2="808.1" stroke="#d40000" stroke-width="4"/>
+<line x1="560.0" y1="692.8" x2="560.0" y2="887.2" stroke="#000" stroke-width="1.5"/>
+<line x1="560.0" y1="704.8" x2="560.0" y2="875.2" stroke="#d40000" stroke-width="4"/>
+<text x="300.0" y="852.0" fill="#000" text-anchor="middle" font-size="12">short f</text>
+<text x="568.0" y="794.0" fill="#000" text-anchor="start" font-size="12">long f</text>
+<text x="20.0" y="888.0" fill="#000" text-anchor="start" font-size="12">same rays, same picture, only bigger: a scale, not a perspective</text></svg>

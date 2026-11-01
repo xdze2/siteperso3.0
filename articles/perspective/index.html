@@ -356,17 +356,89 @@
 
       <h3>Two lines: crossed slits</h3>
       <p>
+        The problem: a long, narrow thing. A mountain chain, a street of
+        facades. Two cases. Far away: turn the camera, stitch. One
+        viewpoint, no parallax, it joins. A crop of a wide angle gives the
+        same picture, with fewer pixels. Close: turning shows the far
+        facades edge-on. The camera has to walk. Then frames do not join:
+        between two shots a point shifts by f&middot;b/Z, align the
+        facades and the far trees repeat, the near poles are cut. Only one
+        depth matches.
+      </p>
+      <p>
+        Thin strips, one column per frame of a video, and there are no
+        seams left. Every ray passes through the path of the camera: that
+        is one slit, horizontal. Which column to keep is the second
+        choice. Always the same: pushbroom, the second slit at infinity.
+        A column that slides with the camera, so that all the kept rays
+        cross one vertical line: crossed slits. Turning covers an angle,
+        walking covers a length.
+      </p>
+      <p>
         Take a vertical slit and a horizontal slit, at different
         distances. The rays are the lines that go through both. Two
         perspectives in one image: horizontally the eye is at the first
         slit, vertically at the second. The proportions of a box depend
-        on its distance. Zomet, Feldman, Peleg &amp; Weinshall (2003)
-        built such images by mosaicking video from a moving camera.
+        on its distance.
+      </p>
+      <p>
+        Vertical slit at depth 0, horizontal slit at depth <i>s</i>, sheet
+        at <i>f</i>. A point (X, Y, Z) lands at
+      </p>
+      <p>
+        u = f &middot; X / Z &nbsp;&nbsp;&nbsp;
+        v = (f &minus; s) &middot; Y / (Z &minus; s)
+      </p>
+      <p>
+        The factors in front, f and f &minus; s, are focal lengths: they
+        only scale the picture. A different focal in X and Y alone is a
+        pinhole with rectangular pixels, the photo stretched afterwards.
+        What counts is the denominator: Z in one, Z &minus; s in the
+        other. Each axis has its own <i>viewpoint</i>, at its own distance
+        from the scene. Two slits close together, s &rarr; 0: one
+        viewpoint, the pinhole again.
+      </p>
+      <figure class="fig">
+        <img src="images/schema_crossed_slits.png" alt="top view and side view of a crossed slits camera, aligned on the same depth axis; below, a pinhole with the sheet at two distances" />
+        <figcaption>A, B: the same camera seen from above and from the side. Horizontally the rays cross at the vertical slit, near the scene: wide angle. Vertically they cross at the horizontal slit, far back: narrow angle, the viewpoint of a long lens. In each view the other slit is a line every ray passes, it does nothing. C: a longer focal alone moves the sheet, not the crossing point. Same rays, bigger picture.</figcaption>
+      </figure>
+      <p class="note">
+        Not to scale. In a real camera the object is 100 times further
+        than the screen; here it is 1:1. For the picture it does not
+        matter, the screen distance is only a scale. For the slits it
+        does: the effect goes as <i>s</i> / Z, the gap between the slits
+        over the distance to the object. Two slits 3 cm apart in a
+        camera, a scene 10 m away: <i>s</i>/Z = 0.003, a pinhole. Hence
+        the moving camera below: its path makes a gap of metres.
       </p>
       <figure class="fig">
         <img src="images/persp_crossed_slits.png" alt="crossed slits view, near boxes stretched vertically" />
         <figcaption>Crossed slits. Same pose as the 2-point image. Vertical slit at the eye, horizontal slit 6 units in front. Near boxes stretched up, far ones squashed. The ground grid lines are not straight any more: in this camera, straight lines become conics.</figcaption>
       </figure>
+      <p>
+        The other way round: horizontal slit <i>behind</i> the eye. Wide
+        angle across, long lens up and down. A landscape: a fence at 6 m,
+        a village at 40&ndash;70 m, mountains at 500&ndash;700 m.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_land_pin.png" alt="landscape, ordinary wide pinhole: tall fence posts, low mountains" />
+        <img src="images/persp_land_stretch.png" alt="same pinhole stretched vertically: mountains taller, fence posts too" />
+        <img src="images/persp_land_slit.png" alt="crossed slits: tall mountains, squat fence posts, curved ground grid" />
+        <figcaption>100&deg; across in all three. Top: pinhole, the fence dominates, the mountains are a low band. Middle: the same, stretched vertically until the mountains match. The posts grow just as much: a stretch, nothing new. Bottom: crossed slits, vertical slit at the eye, horizontal slit 30 m behind. Mountains as tall, posts squat: depth flattened in Y only. The telephoto skyline inside a wide panorama. The ground lines curve. To shoot it: drive along a road 30 m behind the viewpoint, keep in each frame the column aimed at the viewpoint. 100&deg; takes 2 &times; 30 &times; tan 50&deg; &asymp; 72 m of road.</figcaption>
+      </figure>
+      <p>
+        Building one. Two slits in a box are a few cm apart: s/Z is tiny,
+        a pinhole. For a street the gap must be metres, a dark room-sized
+        camera obscura. Zomet, Feldman, Peleg &amp; Weinshall (2003) used
+        video instead: the camera slides sideways along a line, and from
+        each frame they keep one column, its position shifting with the
+        camera. The path of the camera is the horizontal slit, every ray
+        passes through it. The columns, chosen that way, all look through
+        one common vertical line: the vertical slit, which exists only in
+        the processing. Not an approximation: the same rays, one column at
+        a time, as long as the camera keeps a straight path and a fixed
+        orientation.
+      </p>
       <p>
         Yu &amp; McMillan, <i>General Linear Cameras</i> (2004): take
         any three rays, the set of their linear combinations is a
@@ -386,6 +458,10 @@
         from above with their far edge longer, books open toward the
         viewer.
       </p>
+      <figure class="fig">
+        <img src="images/schema_reverse.png" alt="top view, two equal boxes near and far: with a pinhole the near box has the bigger image, with rays converging on a point beyond the scene the far box has the bigger image" />
+        <figcaption>Top view, two equal boxes. A: pinhole, the rays spread out from the eye, the near box covers more of the sheet. B: the rays close in on a point beyond the scene. The far box sits where the bundle is narrow, it takes more rays: bigger. Thick: the faces seen. The outer sides show, the ones a pinhole never sees.</figcaption>
+      </figure>
       <figure class="fig">
         <img src="images/persp_reverse.png" alt="reverse perspective, street widening with distance" />
         <figcaption>Reverse perspective. Rays converge 90 units ahead, beyond the tower. The street opens instead of closing, the tower at the end is the biggest thing in the image. Both sides of each box visible.</figcaption>
