@@ -12,5 +12,9 @@ extview.py   outside views: the scene from elsewhere, the camera drawn in it
 ext_pinhole.py   outside views, section 1 (ext_1pt, 2pt, 3pt, wide)
 ext_curved.py    outside views, section 2 (ext_cylinder, fisheye, fisheye_up, equirect)
 ext_parallel.py  outside views, iso and oblique (ext_iso, ext_oblique)
+ext_bent.py      falling rays: outside view (ext_fall), the morphed world where straight
+                 rays give the same picture (ext_fall_morph), and the check: morphed
+                 wireframe over the curved-ray picture (persp_fall_morph).
+                 caches the slow curved render in cache_fall.npz (not in git).
 
 Output: ../images/persp_*.png, ../images/ext_*.png

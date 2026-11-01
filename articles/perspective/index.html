@@ -68,6 +68,7 @@
             <li><a href="#curved-sheet">2. One point, a curved sheet</a></li>
             <li><a href="#not-a-point">3. The eye is not a point</a></li>
             <li><a href="#bent-rays">4. Bent rays</a></li>
+            <li><a href="#falling-rays">&nbsp;&nbsp;4b. falling rays &amp; morph</a></li>
             <li><a href="#glued">5. Many points, glued</a></li>
             <li><a href="#normals">6. Rays as normals</a></li>
             <li><a href="#table">7. Table</a></li>
@@ -374,13 +375,134 @@
       </figure>
       <figure class="fig">
         <img src="images/persp_fall.png" alt="street with rays falling like thrown stones" />
-        <figcaption>Falling rays: each ray is a thrown stone, constant pull downward (parabolas). Eye tilted up 12&deg;. The ground rises like the inside of a bowl and the horizon disappears: the far end of the street climbs to the top of the frame. The opposite of a small planet. Superior mirages (looming) do a mild version of this.</figcaption>
+        <figcaption>Falling rays: each ray is pulled downward, at constant speed, like a thrown stone (close to parabolas for flat rays). Eye tilted up 12&deg;. The ground rises like the inside of a bowl and the horizon disappears: the far end of the street climbs to the top of the frame. The opposite of a small planet. Superior mirages (looming) do a mild version of this.</figcaption>
       </figure>
       <p>
         Bent rays break order one easily: two rays reach the same point,
         a thing appears twice (the lens). Or no ray reaches a region:
         blind spots.
       </p>
+
+      <h3 id="falling-rays">Falling rays, in detail</h3>
+      <p>
+        The rule: at each step the direction is pulled down by
+        <i>g</i>, then renormalised (speed 1). So the turning rate is
+        <i>g</i>&nbsp;cos&nbsp;&theta;, &theta; the angle above the
+        horizontal. In optics that is a refractive index decreasing with
+        height, <i>n</i> &prop; e<sup>&minus;<i>g y</i></sup>: denser
+        below. The real atmosphere does exactly this, weakly.
+      </p>
+      <p>
+        Two facts make it simple. The pull is vertical, so each ray stays
+        in its vertical plane. And the angle drops linearly with the
+        horizontal distance &rho;:
+      </p>
+      <p style="text-align:center">
+        &theta; = &theta;<sub>0</sub> &minus; <i>g</i>&rho; &nbsp;&nbsp;&rarr;&nbsp;&nbsp;
+        <i>y</i>(&rho;) = ln( cos&nbsp;&theta; / cos&nbsp;&theta;<sub>0</sub> ) / <i>g</i>
+      </p>
+      <p>
+        Every ray ends up going down, none comes back up. At a given
+        distance, a steeper ray is always higher: each point of space is
+        reached by exactly one ray from the eye. Order one, no doubles,
+        no holes. Here <i>g</i> = 0.035: a ray turns 2&deg; per unit,
+        90&deg; in 45 units.
+      </p>
+      <figure class="fig">
+        <img src="images/ext_fall.png" alt="outside view: the eye and its rays curving down onto the street" />
+        <figcaption>Outside view. The same 9 rays as the corners and middles of the picture, curved. The upper ones arc over the street and land on the far boxes or the ground: that is why the far end of the street shows at the top of the picture.</figcaption>
+      </figure>
+
+      <h3 id="morph">The same picture by morphing the world</h3>
+      <p>
+        Yes, it can. Take each point of the world, find the ray from the
+        eye that reaches it, its initial direction <b>d</b><sub>0</sub>
+        and the length <i>s</i> travelled. Move the point to
+        <b>eye</b> + <i>s</i>&nbsp;<b>d</b><sub>0</sub>. In the morphed world,
+        straight rays hit the same things, in the same order, at the same
+        distances: same picture, same occlusions.
+      </p>
+      <p>
+        In differential geometry this map has a name: the <b>exponential
+        map</b> at the eye, the curved rays read as geodesics and
+        straightened into <i>normal coordinates</i>. Here both ways have
+        closed forms (inverse: &theta; = atan(sinh(asinh(tan&nbsp;&theta;<sub>0</sub>) &minus; <i>g s</i>))),
+        so the morphed world can be ray-traced directly.
+      </p>
+      <figure class="fig">
+        <img src="images/persp_fall_morph.png" alt="the falling rays picture with the morphed world drawn in red on top, matching" />
+        <figcaption>Check. Grey: the falling-rays picture (curved rays, flat world). Red: the morphed world, edges and ground grid, drawn by an ordinary pinhole with straight rays, hidden lines removed. They coincide.</figcaption>
+      </figure>
+      <figure class="fig">
+        <img src="images/ext_fall_morph.png" alt="outside view of the morphed world: the ground lifted into a bowl" />
+        <figcaption>The morphed world, from the side, from inside the bowl (ray-traced through the inverse morph). Ground lifted into a bowl: 40 units ahead of the eye it is 28 units up. Boxes lean outward and stretch. Red: the same 9 rays, now straight, same length.</figcaption>
+      </figure>
+      <p>
+        For flat rays (small angles) the morph is just a lift:
+        <i>y</i>&prime; = <i>y</i> + <i>g</i>&rho;&sup2;/2. A paraboloid
+        bowl. The other sign, rays curving up (hot road, inferior
+        mirage): the world drops by <i>g</i>&rho;&sup2;/2, a small planet
+        of radius 1/<i>g</i>.
+      </p>
+      <p>
+        Limits of the trick:
+      </p>
+      <ul>
+        <li><b>One eye only.</b> The morph depends on the eye. Move the
+          eye, compute another morph. Bent rays are a property of the
+          space, the morph a property of the viewpoint. (Video-game
+          &laquo; curved world &raquo; shaders do this: bend the geometry
+          by distance to the camera, each frame.)</li>
+        <li><b>Order one needed.</b> The lens above cannot be morphed:
+          a point seen twice would have to be in two places.</li>
+        <li><b>Light and shadows</b> come from other eyes (the sun):
+          they need their own morph. In one morphed world, shadows are
+          wrong.</li>
+      </ul>
+      <p>
+        The trade goes both ways in graphics. Barr (1986) ray-traced
+        deformed objects by doing the opposite: keep the object flat,
+        bend the rays.
+      </p>
+
+      <h3 id="earth">The Earth, a bowl a little</h3>
+      <p>
+        Air is denser below, so light bends down: the real falling rays,
+        very weak. Surveyors correct for it with a coefficient
+        <i>k</i>: the line of sight is a curve of radius <i>R</i>/<i>k</i>,
+        and everything works as straight rays on an Earth of radius
+        <i>R</i>/(1&nbsp;&minus;&nbsp;<i>k</i>). A morph, exactly as above:
+        the lift <i>g</i>&rho;&sup2;/2 partly cancels the drop of the
+        curved Earth. On average the optical Earth is about 15&nbsp;% less
+        curved than the real one.
+      </p>
+      <p>
+        Strong inversion (cold air on cold sea, warm air above): the
+        rays bend as much as the Earth, the sea looks flat, distant
+        coasts are lifted into view (looming), stretched (towering),
+        stacked (Fata Morgana). Rowbotham's Bedford Level experiment
+        (1838) &laquo; proved &raquo; a flat Earth this way: a gradient of
+        about 0.11&nbsp;&deg;C per metre is enough to make the canal look
+        flat. Strong enough and the rays bend more than the Earth: the
+        ground rises like the bowl above.
+      </p>
+      <ul class="refs">
+        <li><a href="https://en.wikipedia.org/wiki/Mirage">Mirage</a>,
+          <a href="https://en.wikipedia.org/wiki/Looming_and_similar_refraction_phenomena">Looming and similar refraction phenomena</a>,
+          <a href="https://en.wikipedia.org/wiki/Fata_Morgana_(mirage)">Fata Morgana</a> (Wikipedia).</li>
+        <li>Andrew T. Young, <a href="https://aty.sdsu.edu/mirages/mirintro.html">An introduction to mirages</a> and
+          <a href="https://aty.sdsu.edu/explain/atmos_refr/phenomena.html">atmospheric refraction phenomena</a> (SDSU). The best pages on it.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Atmospheric_refraction">Atmospheric refraction</a> (effective radius <i>R</i>/(1&minus;<i>k</i>)),
+          <a href="https://en.wikipedia.org/wiki/Atmospheric_duct">atmospheric duct</a>,
+          <a href="https://en.wikipedia.org/wiki/Bedford_Level_experiment">Bedford Level experiment</a> (Wikipedia).</li>
+        <li><a href="https://en.wikipedia.org/wiki/Exponential_map_(Riemannian_geometry)">Exponential map</a>,
+          <a href="https://en.wikipedia.org/wiki/Normal_coordinates">normal coordinates</a>,
+          <a href="https://en.wikipedia.org/wiki/Gradient-index_optics">gradient-index optics</a>,
+          <a href="https://en.wikipedia.org/wiki/Fermat%27s_principle">Fermat's principle</a> (Wikipedia).</li>
+        <li>Barr, <i>Ray tracing deformed surfaces</i>, SIGGRAPH 1986.
+          <a href="https://doi.org/10.1145/15922.15918">doi</a>,
+          <a href="https://history.siggraph.org/?p=116049">SIGGRAPH archive</a></li>
+      </ul>
 
       <h2 id="glued">5. Many points, glued</h2>
       <p>
@@ -705,7 +827,8 @@
       </ul>
       <h3>Bent rays</h3>
       <ul class="refs">
-        <li>Gröller, <i>Nonlinear Ray Tracing: Visualizing Strange Worlds</i>, The Visual Computer 11, 1995. <a href="https://www.cg.tuwien.ac.at/research/rendering/nlinrt/">project page</a></li>
+        <li>Gröller, <i>Nonlinear Ray Tracing: Visualizing Strange Worlds</i>, The Visual Computer 11, 1995. <a href="https://www.cg.tuwien.ac.at/research/rendering/nlinrt/">project page</a>, <a href="https://doi.org/10.1007/BF01901044">doi</a></li>
+        <li>Barr, <i>Ray tracing deformed surfaces</i>, SIGGRAPH 1986. Deform space or bend rays: the same thing. <a href="https://doi.org/10.1145/15922.15918">doi</a></li>
         <li><i>Non-linear Monte Carlo Ray Tracing for Warped Spacetime</i>, 2021. <a href="https://www.scitepress.org/Papers/2021/102176">link</a></li>
         <li>James, von Tunzelmann, Franklin &amp; Thorne, <i>Gravitational lensing by spinning black holes in astrophysics, and in the movie Interstellar</i>, Classical and Quantum Gravity 2015.</li>
       </ul>
