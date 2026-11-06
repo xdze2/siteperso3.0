@@ -5,9 +5,10 @@ PREFIX="web_"
 MAX_WIDTH=500
 COLORS=16
 DETOUR=0
+SOFT=0
 
 usage() {
-  echo "Usage: $0 [--detour] <image> [image ...]"
+  echo "Usage: $0 [--detour] [--soft] <image> [image ...]"
   exit 1
 }
 
@@ -18,6 +19,8 @@ ARGS=()
 for ARG in "$@"; do
   if [[ "$ARG" == "--detour" ]]; then
     DETOUR=1
+  elif [[ "$ARG" == "--soft" ]]; then
+    SOFT=1   # milder: 700px wide, 64 colors, no posterize
   else
     ARGS+=("$ARG")
   fi
@@ -51,6 +54,13 @@ for INPUT in "${ARGS[@]}"; do
       -posterize 8 \
       -dither Riemersma \
       -colors "$COLORS" \
+      "$OUTPUT"
+  elif [[ "$SOFT" -eq 1 ]]; then
+    convert "$INPUT" \
+      -thumbnail "700x>" \
+      -dither Riemersma \
+      -colors 64 \
+      -quality 80 \
       "$OUTPUT"
   else
     convert "$INPUT" \

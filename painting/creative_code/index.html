@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative code &amp; generative art</title>
+    <style>
+      body {
+        margin: 0;
+        background: #ece6da;
+        background-image: radial-gradient(#e4ddcf 0.5px, transparent 0.5px);
+        background-size: 5px 5px;
+        font-family: Georgia, "Times New Roman", serif;
+        color: #26221c;
+        display: flex;
+        font-size: 1.1em;
+        line-height: 1.5;
+      }
+
+      nav {
+        width: 140px;
+        flex-shrink: 0;
+        padding: 2rem 1rem 4rem 2rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+      nav ul { list-style: none; padding: 0; margin: 0; }
+      nav li { margin-bottom: 0.75rem; }
+      nav a {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #4a4036;
+        text-decoration: none;
+      }
+      nav a.active { font-weight: bold; border-bottom: 1px solid #4a4036; }
+
+      .page {
+        max-width: 900px;
+        padding: 2rem 2rem 4rem 1rem;
+      }
+
+      h1, h2, h3, .meta, .links, .credit {
+        font-family: "Courier New", Courier, monospace;
+      }
+      h1 { font-size: 1.4rem; margin: 0 0 0.3rem; }
+      .intro { max-width: 620px; margin: 0 0 1rem; }
+      .disclaimer {
+        max-width: 620px;
+        margin: 0 0 3rem;
+        padding: 0.5rem 0.8rem;
+        border-left: 3px solid #8a3b1c;
+        font-size: 0.85em;
+        color: #5a5046;
+      }
+
+      h2 {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #8a3b1c;
+        margin: 4rem 0 1.5rem;
+      }
+
+      .p {
+        display: grid;
+        grid-template-columns: minmax(0, 500px) 1fr;
+        gap: 1.6rem;
+        margin-bottom: 3rem;
+        align-items: start;
+      }
+      .p img {
+        max-width: 100%;
+        margin-left: auto;
+        display: block;
+        border: 1px solid #3a332b;
+        box-shadow: 3px 3px 0 #c9bfae;
+      }
+
+      h3 { font-size: 1rem; margin: 0 0 0.2rem; }
+      .meta { font-size: 0.78rem; color: #6b5f50; margin: 0 0 0.8rem; }
+      .info p { margin: 0 0 0.8rem; font-size: 0.95em; }
+      .links { font-size: 0.75rem; }
+      .links a { color: #8a3b1c; }
+      .credit { font-size: 0.68rem; color: #8b8070; }
+
+      .todo { font-size: 0.95em; padding-left: 1.2rem; }
+      .todo li { margin-bottom: 0.4rem; }
+      .todo a { color: #8a3b1c; }
+      .todo a.g { font-family: "Courier New", Courier, monospace; font-size: 0.75rem; }
+
+      ul.who { padding-left: 1.2rem; font-size: 0.95em; }
+      ul.who li { margin-bottom: 0.5rem; }
+      ul.who a, .info a { color: #8a3b1c; }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #c8b89a;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.75rem;
+        color: #8b8070;
+      }
+
+      @media (max-width: 760px) {
+        body { display: block; }
+        nav { position: static; height: auto; width: auto; padding: 1rem; }
+        nav li { display: inline; margin-right: 1rem; }
+        .page { padding: 1rem; }
+        .p { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../recipe/index.html">cooking</a></li>
+        <li><a href="../../notes.html">notes</a></li>
+        <li><a href="../../projects/index.html">projects</a></li>
+        <li><a href="../" class="active">painting</a></li>
+        <li><a href="../../about.html">about</a></li>
+      </ul>
+    </nav>
+
+    <div class="page">
+      <h1>Creative code &amp; generative art</h1>
+      <p class="intro">
+        Using the computer to make the image. Who to look at, from plotters
+        in 1965 to shaders. Notes for later, to try on a plotter or in
+        a sketch. Images from Wikimedia Commons, lightly reduced.
+      </p>
+      <p class="disclaimer">
+        Disclaimer: list compiled with an AI model, from memory. Titles,
+        dates and attributions not all checked. Only the wikipedia links
+        were picked on purpose.
+      </p>
+
+      <h2>1960s&ndash;80s &mdash; the computer as a drawing machine</h2>
+
+      <article class="p" id="molnar">
+        <img src="images/web_molnar-interruptions.jpg" style="width: 500px" alt="Vera Molnár, Interruptions à recouvrements" />
+        <div class="info">
+          <h3>Interruptions à recouvrements</h3>
+          <p class="meta">Vera Molnár · 1969<br />plotter drawing (?)</p>
+          <p>Started in 1959 with an &laquo;imaginary machine&raquo;, real computer from 1968. Systematic variation, controlled disorder: &laquo;1% disorder&raquo; in grids of squares. Behaves like constructivist painting.</p>
+          <p class="links"><a href="https://commons.wikimedia.org/wiki/File:Vera_Molnar._Interruptions_%C3%A0_recouvrements_from_1969.jpg">commons</a> · <a href="https://en.wikipedia.org/wiki/Vera_Moln%C3%A1r">wikipedia</a></p>
+        </div>
+      </article>
+
+      <article class="p" id="mohr">
+        <img src="images/web_mohr-p021g.png" style="width: 420px" alt="Manfred Mohr, P021G" />
+        <div class="info">
+          <h3>Cubes &amp; hypercubes</h3>
+          <p class="meta">Manfred Mohr · P-021 series, 1970s (?)<br />algorithmic drawing</p>
+          <p>Rigorous, close to logic made visible. The cube is taken apart and recombined by rule, then pushed to higher dimensions.</p>
+          <p class="links"><a href="https://commons.wikimedia.org/wiki/File:Manfred_Mohr_P021G.jpg">commons</a> · <a href="https://commons.wikimedia.org/wiki/File:Manfred_Mohr_P-306-O.jpg">commons (P-306-O)</a> · <a href="https://en.wikipedia.org/wiki/Manfred_Mohr">wikipedia</a></p>
+        </div>
+      </article>
+
+      <article class="p" id="lewitt">
+        <img src="images/web_lewitt-spoleto.jpg" style="width: 330px" alt="Sol LeWitt, wall drawing, Spoleto" />
+        <div class="info">
+          <h3>Wall drawings</h3>
+          <p class="meta">Sol LeWitt · 1968 onward<br />instructions, executed by others</p>
+          <p>Not a coder. The work is the instruction; the drawing is whoever executes it. Conceptual ancestor of all of it.</p>
+          <p class="links"><a href="https://commons.wikimedia.org/wiki/File:Wall_drawing_Sol_LeWitt._Spoleto.jpg">commons</a> · <a href="https://en.wikipedia.org/wiki/Sol_LeWitt">wikipedia</a></p>
+        </div>
+      </article>
+
+      <p><b>Also:</b></p>
+      <ul class="who">
+        <li><a href="https://en.wikipedia.org/wiki/Georg_Nees">Frieder Nake, Georg Nees, A. Michael Noll</a>: early plotter artists, Germany and US. <i>Hommage à Paul Klee</i>, <i>Schotter</i>.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Harold_Cohen_(artist)">Harold Cohen</a>: built AARON, a program that painted for decades. Painting as code, literally. Later color work is beautiful.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Ken_Knowlton">Lillian Schwartz, Ken Knowlton</a>: early computer film and mosaics.</li>
+      </ul>
+
+      <h2>2000s &mdash; Processing generation</h2>
+
+      <article class="p" id="tarbell">
+        <img src="images/web_tarbell-substrate.jpg" style="width: 500px" alt="Jared Tarbell, Substrate" />
+        <div class="info">
+          <h3>Substrate</h3>
+          <p class="meta">Jared Tarbell · 2003<br />print</p>
+          <p>Cracks growing and stopping when they hit another. Defined the organic, growing look of early Flash/Processing art.</p>
+          <p class="links"><a href="https://commons.wikimedia.org/wiki/File:Substrate_print_-_Flickr_-_jared.jpg">commons</a> · <a href="http://www.complexification.net/">complexification</a></p>
+        </div>
+      </article>
+
+      <ul class="who">
+        <li><a href="https://en.wikipedia.org/wiki/Casey_Reas">Casey Reas</a>: co-creator of Processing. <i>Process</i> series: rules, the image emerges from behavior.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Ben_Fry">Ben Fry</a>: other half of Processing. More data as art (<i>Genome Valence</i>, <i>All Streets</i>).</li>
+        <li><a href="https://en.wikipedia.org/wiki/Robert_Hodgin">Robert Hodgin</a>: particles, flocking, physics-based beauty.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Marius_Watz">Marius Watz</a>: abstract generative graphics, publishes sketches and process.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Golan_Levin">Golan Levin</a>: audiovisual instruments, art of the computer's eye.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Lia_(artist)">Lia</a>: quiet, line-based minimal web art. <a href='https://www.liaworks.com/'>liaworks.com</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Zach_Lieberman">Zach Lieberman</a>: openFrameworks, School for Poetic Computation.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Daniel_Shiffman">Matt Pearson, Daniel Shiffman</a>: teaching side (<i>Nature of Code</i>), essential.</li>
+      </ul>
+
+      <h2>Data as art</h2>
+      <ul class="who">
+        <li><a href="https://en.wikipedia.org/wiki/Aaron_Koblin">Aaron Koblin</a>: <i>Flight Patterns</i>, <i>The Sheep Market</i>. Crowdsourced and real-world data as image.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Jer_Thorp">Jer Thorp</a>: <i>Cascade</i>, NYT R&amp;D lab, <i>Random Number Multiples</i>.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Refik_Anadol">Refik Anadol</a>: big ML-driven immersive projections. Popular, debated.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Ryoji_Ikeda">Ryoji Ikeda</a>: data, sound, light as pure signal (<i>data.matrix</i>, <i>test pattern</i>).</li>
+        <li><a href="https://en.wikipedia.org/wiki/Nicholas_Felton">Nicholas Felton</a>: personal data, annual reports.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Martin_M._Wattenberg">Fernanda Viégas &amp; Martin Wattenberg</a>: <i>Wind Map</i>, <i>History Flow</i>.</li>
+      </ul>
+
+      <h2>Art Blocks / fxhash era</h2>
+      <ul class="who">
+        <li><a href="https://en.wikipedia.org/wiki/Tyler_Hobbs">Tyler Hobbs</a>: <i>Fidenza</i>, the best known. Essays on algorithmic composition and plotter work.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Dmitri_Cherniak">Dmitri Cherniak</a>: <i>Ringers</i>. Constraint and rule, sculptural variety.</li>
+        <li><a href="https://www.mattdesl.com/">Matt DesLauriers</a>: tools, plotter work, open-source teaching.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Manolo_Gamboa_Naon">Manolo Gamboa Naon (MGXS)</a>: <i>Hypnagogic</i>, color-poetic.</li>
+        <li><a href="https://www.kgolid.com/">Kjetil Golid</a>: <i>Archetype</i>, layered line work.</li>
+        <li><a href="https://emilyxie.com/">Emily Xie</a>: <i>Memories of Qilin</i>, figurative and textural.</li>
+        <li><a href="https://www.artblocks.io/">Zancan, Snowfro, Harvey Rayner, Monica Rizzolli</a>: to browse on Art Blocks.</li>
+      </ul>
+
+      <h2>3D, shader, real-time</h2>
+      <ul class="who">
+        <li><a href="https://iquilezles.org/">Inigo Quilez</a>: raymarching, signed distance functions. Art as math.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Memo_Akten">Memo Akten</a>: ML and simulation, philosophical edge.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Quayola">Quayola</a>: <i>Pencil</i>, <i>Remains</i>. Very painterly outputs from algorithms.</li>
+        <li><a href="https://field.io/">Universal Everything, Field.io</a>: studios mixing code, simulation, sculpture-like forms.</li>
+        <li><a href="https://en.wikipedia.org/wiki/Mario_Klingemann">Mario Klingemann, Anna Ridler</a>: neural nets as portrait machines; datasets as artworks (tulips).</li>
+      </ul>
+
+      <h2>Where to start</h2>
+      <ul class="todo">
+        <li><a href="https://www.tylerxhobbs.com/words">tylerxhobbs.com</a>: essays, clear on the craft</li>
+        <li><a href="https://generativeartistry.com/">generativeartistry.com</a>: tutorials</li>
+        <li><a href="https://thebookofshaders.com/">The Book of Shaders</a>, <a href="https://www.shadertoy.com/">Shadertoy</a></li>
+        <li><a href="https://thecodingtrain.com/">The Coding Train</a>: approachable intro</li>
+        <li><a href="https://processing.org/">Processing</a>, <a href="https://openprocessing.org/">OpenProcessing</a></li>
+        <li><a href="https://www.fxhash.xyz/">fxhash</a>, <a href="https://www.artblocks.io/">Art Blocks</a>: browse real work</li>
+        <li>Compart (Bremen), V&amp;A digital art archive: historical works</li>
+      </ul>
+
+      <h2>Todo</h2>
+      <ul class="todo">
+        <li>pick one direction: rule-based abstraction, data, shader, painterly</li>
+        <li>reproduce a Molnár grid with a plotter</li>
+      </ul>
+
+      <footer>
+        <a href="../index.html">&larr; painting</a>
+      </footer>
+    </div>
+  </body>
+</html>
